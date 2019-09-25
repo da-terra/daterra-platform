@@ -1,0 +1,31 @@
+{
+  "name": "template-repository",
+  "version": "1.0.0",
+  "license": "GNU AGPLv3",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "@types/node": "12.7.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2",
+    "styled-components": "^4.3.2",
+    "typescript": "3.6.3"
+  },
+  "lint-staged": {
+    "*.(tsx?|css|json)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/da-terra/template-repository.git"
+  },
+  "author": "Leroy Korterink <s1106266@student.windesheim.nl> (https://leroy.dev)",
+  "bugs": {
+    "url": "https://github.com/da-terra/template-repository/issues"
+  },
+  "homepage": "https://github.com/da-terra/template-repository#readme"
+}
