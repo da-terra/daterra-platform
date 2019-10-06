@@ -1,1 +1,1 @@
-export { default, SolidButton, LinkButton } from "./Button";
+export { default, SolidButton } from "./Button";
