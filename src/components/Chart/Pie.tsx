@@ -1,55 +1,37 @@
-import React, { useContext } from "react";
-import Vector2 from "./utils/Vector2";
-import { CanvasContext } from "./Chart";
-
-type PieProps = {
-  children: React.ReactNode;
-  total: number;
-  hue?: number;
-};
+import React from "react";
 
 type PieContextType = {
   progress: number;
   total: number;
-  scale: number;
-  center: Vector2;
-  radius: number;
   hue: number;
+  slices: { color: string; label: string }[];
 };
 
 export const PieContext = React.createContext<PieContextType>({
   progress: 0,
   total: 1,
-  scale: 1,
-  center: new Vector2(0, 0),
-  radius: 0,
-  hue: 0
+
+  // Keep track of hue for fill color of slices
+  hue: 0,
+
+  // List of slices that are rendered
+  slices: []
 });
 
-const Pie: React.FC<PieProps> = props => {
-  const { element } = useContext(CanvasContext);
+type PieProps = {
+  children: React.ReactNode;
+};
 
-  const center = new Vector2(element.width / 2, element.height / 2);
-
+const Pie: React.FC<PieProps> = ({ children, ...props }) => {
   const contextValue = {
-    progress: -(0.25 * props.total),
-    total: props.total,
-    scale: 1 / props.total,
-
-    // Initial cursor position is center canvas
-    center,
-
-    // Pie should fill the canvas element
-    radius: Math.min(center.x, center.y),
-
-    // Keep track of hue when for slices with no predefined color
-    hue: props.hue || 0
+    progress: 0,
+    total: 0,
+    hue: 0,
+    slices: []
   };
 
   return (
-    <PieContext.Provider value={contextValue}>
-      {props.children}
-    </PieContext.Provider>
+    <PieContext.Provider value={contextValue}>{children}</PieContext.Provider>
   );
 };
 
