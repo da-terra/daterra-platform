@@ -1,28 +1,24 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, DefaultTheme } from "styled-components";
 import LocalStorageKeys from "../../data/LocalStorageKeys";
-import Theme from "../../types/Theme";
+import themes from "../../data/style/themes";
 
 type ThemeProps = {
-  themes: Theme[];
   children: JSX.Element;
 };
 
 type ThemeContext = {
-  theme: Theme;
-  themes: Theme[];
+  theme: DefaultTheme;
+  themes: DefaultTheme[];
   setTheme: Function;
+  cycleThemes: Function;
 };
 
 export const Context = React.createContext<ThemeContext>({
-  theme: {
-    uuid: "",
-    backgroundColor: "",
-    foregroundColor: "",
-    accentColor: ""
-  },
-  themes: [],
-  setTheme: () => {}
+  theme: themes[0],
+  themes: themes,
+  setTheme: () => {},
+  cycleThemes: () => {}
 });
 
 class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
@@ -30,20 +26,19 @@ class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
     super(props);
 
     const savedThemeUuid = localStorage.getItem(LocalStorageKeys.THEME_UUID);
-    const savedTheme = props.themes.find(
-      theme => theme.uuid === savedThemeUuid
-    );
+    const savedTheme = themes.find(theme => theme.uuid === savedThemeUuid);
 
-    const [firstTheme] = props.themes;
+    const [firstTheme] = themes;
 
     this.state = {
       theme: savedTheme || firstTheme,
-      themes: props.themes,
-      setTheme: this.setTheme
+      themes,
+      setTheme: this.setTheme,
+      cycleThemes: this.cycleThemes
     };
   }
 
-  setTheme = (theme: Theme) => {
+  setTheme = (theme: DefaultTheme) => {
     if (!theme) {
       return;
     }
@@ -51,6 +46,17 @@ class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
     localStorage.setItem(LocalStorageKeys.THEME_UUID, theme.uuid);
 
     this.setState({ theme });
+  };
+
+  cycleThemes = () => {
+    const activeThemeUuid = this.state.theme.uuid;
+    const activeThemeIndex = themes.findIndex(
+      theme => theme.uuid === activeThemeUuid
+    );
+
+    const nextThemeIndex = (activeThemeIndex + 1) % themes.length;
+
+    this.setTheme(themes[nextThemeIndex]);
   };
 
   render() {
