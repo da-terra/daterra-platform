@@ -6,6 +6,7 @@ import Heading from "../../general/Heading";
 import Paragraph from "../../general/Paragraph";
 import Carousel from "../../general/Carousel";
 import { Wrapper } from "../../../util/layout";
+import CaseStudyCard from "./components/CaseStudyCard";
 
 const Container = styled.div`
   position: relative;
@@ -38,7 +39,8 @@ const ContentRow = styled.div`
 `;
 
 const CaseStudiesParagraph = styled(Paragraph)`
-  width: 25rem;
+  max-width: 25rem;
+  flex: 1 0 auto;
   margin: auto 10rem 0 0;
   color: ${props => props.theme.color.invertForeground};
 `;
@@ -47,6 +49,8 @@ const CarouselButton = styled(Button)`
   display: flex !important;
   align-items: center;
   color: ${props => props.theme.color.invertForeground} !important;
+  cursor: pointer;
+  z-index: 1;
 
   &:not(:first-child) {
     margin-left: 1rem;
@@ -55,116 +59,61 @@ const CarouselButton = styled(Button)`
 
 // @ts-ignore
 const CaseStudyCarousel = styled(Carousel)`
+  overflow: hidden;
+  flex: 1 0 0;
+  margin: -5rem;
+`;
+
+const Slide = styled.div`
   flex: 1 0 auto;
-`;
+  padding: 5rem;
+  width: 100%;
 
-const CaseStudyCard = styled.div`
-  height: 25rem;
-  width: 200px;
-  border-radius: ${props => props.theme.card.borderRadius}px;
-  background: ${props => props.theme.color.invertForeground};
-  box-shadow: rgba(3, 54, 62, 0.1) 3px 3px 10px 0;
-  margin: 0 auto;
-
-  &:first-child {
-    margin-left: 0;
+  @media (min-width: 600px) {
+    width: calc(100% / 2);
   }
 
-  &:last-child {
-    margin-right: 0;
+  @media (min-width: 1200px) {
+    width: calc(100% / 3);
   }
 `;
+
+const caseStudy = {
+  uuid: "f7aa558a-6bb5-447e-91c5-cfd0429b05d8",
+  title: "The Method of Full Featured Innovation",
+  publishedDate: "2019-10-06T18:43:26.007Z",
+  author: {
+    image: {
+      url: "https://source.unsplash.com/100x100/?avatar",
+      alt: "Image of Peter Parker"
+    },
+    link: {
+      url: "https://google.com/",
+      target: "_blank"
+    },
+    fullName: "Peter Parker",
+    company: "Advanced Investements",
+    location: "San Fransisco"
+  },
+  collaborators: [
+    {
+      fullName: "Matthias Verweij",
+      image: {
+        url: "https://source.unsplash.com/100x100/?avatar",
+        alt: "Image of Matthias Verweij"
+      },
+      tags: ["Student", "Data Analyst"]
+    }
+  ]
+};
+
+const caseStudies = ["1", "2", "3", "4", "5", "6", "7", "8", "9"].map(key => {
+  return { ...caseStudy, uuid: key };
+});
 
 const CaseStudies: React.FC = () => {
   const forwardButton = useRef(null);
   const backButton = useRef(null);
-
-  const caseStudies = [
-    {
-      id: "f7aa558a-6bb5-447e-91c5-cfd0429b05d6",
-      title: "The Method of Full Featured Innovation",
-      publishedDate: "2019-10-06T18:43:26.007Z",
-      author: {
-        image: {
-          url: "https://source.unsplash.com/100x100/?avatar",
-          alt: "Image of Peter Parker"
-        },
-        link: {
-          url: "https://google.com/",
-          target: "_blank"
-        },
-        fullName: "Peter Parker",
-        company: "Advanced Investements",
-        location: "San Fransisco"
-      },
-      collaborators: [
-        {
-          fullName: "Matthias Verweij",
-          image: {
-            url: "https://source.unsplash.com/100x100/?avatar",
-            alt: "Image of Matthias Verweij"
-          },
-          tags: ["Student", "Data Analyst"]
-        }
-      ]
-    },
-    {
-      id: "f7aa558a-6bb5-447e-91c5-cfd0429b05d7",
-      title: "The Method of Full Featured Innovation",
-      publishedDate: "2019-10-06T18:43:26.007Z",
-      author: {
-        image: {
-          url: "https://source.unsplash.com/100x100/?avatar",
-          alt: "Image of Peter Parker"
-        },
-        link: {
-          url: "https://google.com/",
-          target: "_blank"
-        },
-        fullName: "Peter Parker",
-        company: "Advanced Investements",
-        location: "San Fransisco"
-      },
-      collaborators: [
-        {
-          fullName: "Matthias Verweij",
-          image: {
-            url: "https://source.unsplash.com/100x100/?avatar",
-            alt: "Image of Matthias Verweij"
-          },
-          tags: ["Student", "Data Analyst"]
-        }
-      ]
-    },
-    {
-      id: "f7aa558a-6bb5-447e-91c5-cfd0429b05d8",
-      title: "The Method of Full Featured Innovation",
-      publishedDate: "2019-10-06T18:43:26.007Z",
-      author: {
-        image: {
-          url: "https://source.unsplash.com/100x100/?avatar",
-          alt: "Image of Peter Parker"
-        },
-        link: {
-          url: "https://google.com/",
-          target: "_blank"
-        },
-        fullName: "Peter Parker",
-        company: "Advanced Investements",
-        location: "San Fransisco"
-      },
-      collaborators: [
-        {
-          fullName: "Matthias Verweij",
-          image: {
-            url: "https://source.unsplash.com/100x100/?avatar",
-            alt: "Image of Matthias Verweij"
-          },
-          tags: ["Student", "Data Analyst"]
-        }
-      ]
-    }
-  ];
 
   return (
     <Container>
@@ -192,7 +141,9 @@ const CaseStudies: React.FC = () => {
             backButton={backButton}
           >
             {caseStudies.map(card => (
-              <CaseStudyCard {...card} key={card.id} />
+              <Slide key={card.uuid}>
+                <CaseStudyCard {...card} />
+              </Slide>
             ))}
           </CaseStudyCarousel>
         </ContentRow>

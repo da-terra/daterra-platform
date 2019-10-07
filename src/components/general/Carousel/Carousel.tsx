@@ -6,9 +6,8 @@ const CarouselWrapper = styled.div`
 `;
 
 const ItemWrapper = styled.div`
-  display: inline-flex;
-  width: 100%;
-  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+  transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1);
 `;
 
 type CarouselProps = {
@@ -19,7 +18,7 @@ type CarouselProps = {
 };
 
 class Carousel extends React.Component<CarouselProps> {
-  private readonly carouselElement = React.createRef<any>();
+  private readonly itemWrapper = React.createRef<any>();
 
   private childRefs: any = {};
   private resizeRaf: number = 0;
@@ -102,7 +101,7 @@ class Carousel extends React.Component<CarouselProps> {
     const targetChild = Object.values(this.childRefs)[index] as HTMLElement;
 
     // Set carousel wrapper transform to adjust scroll position
-    this.carouselElement.current!.style.transform = `translateX(-${targetChild.offsetLeft}px)`;
+    this.itemWrapper.current!.style.transform = `translateX(-${targetChild.offsetLeft}px)`;
   };
 
   render() {
@@ -118,7 +117,7 @@ class Carousel extends React.Component<CarouselProps> {
 
     return (
       <CarouselWrapper className={this.props.className}>
-        <ItemWrapper ref={this.carouselElement}>{children}</ItemWrapper>
+        <ItemWrapper ref={this.itemWrapper}>{children}</ItemWrapper>
       </CarouselWrapper>
     );
   }
