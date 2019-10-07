@@ -36,6 +36,9 @@ const SigninButton = styled(Button)`
 const ToggleThemeButton = styled(Button)`
   color: ${props => props.theme.color.accentForeground} !important;
   margin-left: 2rem;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 
   &:hover {
     color: ${props => props.theme.color.darkAccent} !important;
