@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import NavigationButton from "../../general/NavigationButton";
 import { Wrapper } from "../../../util/layout";
+import RoutePath from "../../../data/RoutePath";
 
 const NavigationWrapper = styled(Wrapper)`
   display: flex;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  z-index: 1;
 `;
 
 const List = styled.ul`
@@ -25,15 +27,21 @@ const Navigation: React.FC = () => (
   <NavigationWrapper>
     <List>
       <ListItem>
-        <NavigationButton to="/business">Voor Business</NavigationButton>
+        <NavigationButton to={RoutePath.ForBusiness}>
+          Voor Bedrijven
+        </NavigationButton>
       </ListItem>
 
       <ListItem>
-        <NavigationButton to="/students">Voor Students</NavigationButton>
+        <NavigationButton to={RoutePath.ForStudents}>
+          Voor Studenten
+        </NavigationButton>
       </ListItem>
 
       <ListItem>
-        <NavigationButton to="/data-scientists">Voor Experts</NavigationButton>
+        <NavigationButton to={RoutePath.ForExperts}>
+          Voor Experts
+        </NavigationButton>
       </ListItem>
     </List>
   </NavigationWrapper>

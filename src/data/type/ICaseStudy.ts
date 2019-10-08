@@ -1,29 +1,30 @@
+export type IImage = {
+  url: string;
+  alt: string;
+  fallbackColor: string;
+};
+
 export type ICollaborator = {
   fullName: string;
-  image: {
-    url: string;
-    alt: string;
-  };
+  image: IImage;
   tags: string[];
+};
+
+export type IPartner = {
+  image: IImage;
+  link: {
+    href: string;
+    target: "_blank" | "_self";
+  };
+  title: string;
+  location: string;
 };
 
 type ICaseStudy = {
   uuid: string;
   title: string;
   publishedDate: string;
-  author: {
-    image: {
-      url: string;
-      alt: string;
-    };
-    link: {
-      url: string;
-      target: string;
-    };
-    fullName: string;
-    company: string;
-    location: string;
-  };
+  partner: IPartner;
   collaborators: ICollaborator[];
 };
 

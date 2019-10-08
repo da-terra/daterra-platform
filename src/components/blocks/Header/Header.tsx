@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Wrapper } from "../../../util/layout";
 import { FontFamily } from "../../../data/style/variables";
+import RoutePath from "../../../data/RoutePath";
 import { Context as ThemeManagerContext } from "../../ThemeManager";
 import Button from "../../general/Button";
 import Icon from "../../general/Icon";
@@ -46,7 +47,7 @@ const Header: React.FC = () => (
     <Logo>DaTerra</Logo>
 
     <CtaContainer>
-      <SigninButton to="/signin">Inloggen</SigninButton>
+      <SigninButton to={RoutePath.SignIn}>Inloggen</SigninButton>
 
       <ThemeManagerContext.Consumer>
         {({ cycleThemes }) => (

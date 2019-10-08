@@ -14,10 +14,12 @@ export type HeadingProps = {
 
 const primary = css`
   font-size: 4.8rem;
+  line-height: 5.8rem;
 `;
 
 const secondary = css`
-  font-size: 2rem;
+  font-size: 2.5rem;
+  line-height: 3.8rem;
 `;
 
 // Map to get the right styles for the right type

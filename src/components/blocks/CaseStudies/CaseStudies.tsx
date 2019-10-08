@@ -8,7 +8,7 @@ import Heading from "../../general/Heading";
 import Paragraph from "../../general/Paragraph";
 import Carousel from "../../general/Carousel";
 import { Wrapper } from "../../../util/layout";
-import CaseStudyCard from "./components/CaseStudyCard";
+import CaseStudyCard from "../../general/CaseStudyCard";
 
 const Container = styled.div`
   position: relative;
@@ -69,7 +69,7 @@ const CaseStudyCarousel = styled(Carousel)`
 
 const Slide = styled.div`
   flex: 1 0 auto;
-  padding: 5rem;
+  padding: 5rem 2.5rem;
   width: 100%;
 
   @media (min-width: 600px) {

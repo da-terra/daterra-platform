@@ -4,47 +4,59 @@ import { FontWeight, FontFamily } from "../../../data/style/variables";
 export enum ParagraphType {
   Primary,
   Secondary,
-  Tertiary
+  Muted,
+  Small
 }
 
-type ParagraphProps = {
-  type?: ParagraphType;
-  italic?: boolean;
-  left?: boolean;
-  center?: boolean;
-  right?: boolean;
-};
-
 const primary = css`
+  font-family: ${FontFamily.ROBOTO_SLAB};
+  font-weight: ${FontWeight.REGULAR};
   font-size: 1.8rem;
   line-height: 3.2rem;
-  font-weight: ${FontWeight.REGULAR};
-  font-family: ${FontFamily.ROBOTO_SLAB};
 `;
 
 const secondary = css`
-  font-weight: ${FontWeight.REGULAR};
   font-family: ${FontFamily.ROBOTO};
-  font-size: 2rem;
-  font-size: 2.5rem;
-`;
-
-const tertiary = css`
   font-weight: ${FontWeight.REGULAR};
-  font-family: ${FontFamily.ROBOTO};
   font-size: 1.8rem;
   line-height: 2.5rem;
+`;
+
+const muted = css`
+  font-family: ${FontFamily.ROBOTO};
+  font-weight: ${FontWeight.REGULAR};
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: ${props => props.theme.color.mutedForeground};
+`;
+
+const small = css`
+  font-family: ${FontFamily.ROBOTO};
+  font-weight: ${FontWeight.BLACK};
+  font-size: 1.6rem;
+  line-height: 2rem;
 `;
 
 // Map to get the right styles for the right type
 const styleMap = {
   [ParagraphType.Primary]: primary,
   [ParagraphType.Secondary]: secondary,
-  [ParagraphType.Tertiary]: tertiary
+  [ParagraphType.Muted]: muted,
+  [ParagraphType.Small]: small
 };
 
-const Paragraph = styled.p<ParagraphProps>`
-  white-space: pre-line;
+export type ParagraphProps = {
+  type?: ParagraphType;
+  italic?: boolean;
+  left?: boolean;
+  center?: boolean;
+  right?: boolean;
+  serif?: boolean;
+};
+
+export const paragraphCss = css<ParagraphProps>`
+white-space: pre-line;
+  margin: 0;
 
   // Get paragraph style from style map
   ${props => styleMap[props.type || ParagraphType.Primary]}
@@ -54,10 +66,13 @@ const Paragraph = styled.p<ParagraphProps>`
   ${props => props.left && "text-align: left;"}
   ${props => props.right && "text-align: right;"}
 
-  ${props => props.italic && "font-style: italic;"}
+  font-family: ${props =>
+    props.serif ? FontFamily.ROBOTO_SLAB : FontFamily.ROBOTO};
+
+  font-style: ${props => (props.italic ? "italic" : "normal")};
 
   a {
-    color: ${props => props.theme.color.foreground};
+    color: currentColor;
     font-weight: ${FontWeight.BOLD};
     text-decoration: none;
 
@@ -65,6 +80,10 @@ const Paragraph = styled.p<ParagraphProps>`
       text-decoration: underline;
     }
   }
+`;
+
+const Paragraph = styled.p<ParagraphProps>`
+  ${paragraphCss}
 `;
 
 export default Paragraph;
