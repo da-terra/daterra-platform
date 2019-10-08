@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../../general/Button";
+import NavigationButton from "../../general/NavigationButton";
 import { Wrapper } from "../../../util/layout";
-import { FontWeight, FontFamily } from "../../../data/style/variables";
 
 const NavigationWrapper = styled(Wrapper)`
   display: flex;
@@ -19,19 +18,6 @@ const List = styled.ul`
 const ListItem = styled.li`
   &:not(:first-child) {
     margin-left: 4rem;
-  }
-`;
-
-const NavigationButton = styled(Button)`
-  font-weight: ${FontWeight.BOLD};
-  font-family: ${FontFamily.ROBOTO_SLAB};
-  color: ${props => props.theme.color.darkAccent} !important;
-  padding: 0.6rem 0 !important;
-  display: inline-block !important;
-  white-space: nowrap;
-
-  &:hover {
-    color: ${props => props.theme.color.foreground} !important;
   }
 `;
 

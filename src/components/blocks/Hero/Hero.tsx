@@ -48,7 +48,7 @@ const Hero: React.FC = () => (
     <Header />
 
     <Content>
-      <Slogan>Maakt Data Science {"\n"}Toegangkelijk</Slogan>
+      <Slogan>Maakt Data Science {"\n"}Toegankelijk</Slogan>
     </Content>
   </Background>
 );

@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Wrapper } from "../../../util/layout";
-import { FontFamily, FontWeight } from "../../../data/style/variables";
+import { FontFamily } from "../../../data/style/variables";
 import { Context as ThemeManagerContext } from "../../ThemeManager";
 import Button from "../../general/Button";
 import Icon from "../../general/Icon";
+import Logo from "../../general/Logo";
 
 const HeaderWrapper = styled(Wrapper)`
   display: flex;
-`;
-
-const Logo = styled.h1`
-  color: ${props => props.theme.color.darkAccent};
-  font-family: ${FontFamily.ROBOTO_SLAB};
-  font-weight: ${FontWeight.BOLD};
-  font-size: 3.6rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 `;
 
 const CtaContainer = styled.div`

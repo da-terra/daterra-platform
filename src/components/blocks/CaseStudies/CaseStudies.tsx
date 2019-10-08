@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import IBlock from "../../../data/type/IBlock";
+import ICaseStudy from "../../../data/type/ICaseStudy";
 import Button from "../../general/Button";
 import Icon from "../../general/Icon";
 import Heading from "../../general/Heading";
@@ -10,6 +12,7 @@ import CaseStudyCard from "./components/CaseStudyCard";
 
 const Container = styled.div`
   position: relative;
+  margin-bottom: 7.5rem;
 `;
 
 const Background = styled.div`
@@ -78,49 +81,24 @@ const Slide = styled.div`
   }
 `;
 
-const caseStudy = {
-  uuid: "f7aa558a-6bb5-447e-91c5-cfd0429b05d8",
-  title: "The Method of Full Featured Innovation",
-  publishedDate: "2019-10-06T18:43:26.007Z",
-  author: {
-    image: {
-      url: "https://source.unsplash.com/100x100/?avatar",
-      alt: "Image of Peter Parker"
-    },
-    link: {
-      url: "https://google.com/",
-      target: "_blank"
-    },
-    fullName: "Peter Parker",
-    company: "Advanced Investements",
-    location: "San Fransisco"
-  },
-  collaborators: [
-    {
-      fullName: "Matthias Verweij",
-      image: {
-        url: "https://source.unsplash.com/100x100/?avatar",
-        alt: "Image of Matthias Verweij"
-      },
-      tags: ["Student", "Data Analyst"]
-    }
-  ]
+type CaseStudiesProps = IBlock & {
+  caseStudies: ICaseStudy[];
 };
 
-const caseStudies = ["1", "2", "3", "4", "5", "6", "7", "8", "9"].map(key => {
-  return { ...caseStudy, uuid: key };
-});
-
-const CaseStudies: React.FC = () => {
+const CaseStudies: React.FC<CaseStudiesProps> = ({
+  className,
+  caseStudies
+}) => {
   const forwardButton = useRef(null);
   const backButton = useRef(null);
 
   return (
-    <Container>
+    <Container className={className}>
       <Background>
         <CarouselButton ref={backButton}>
           <Icon.ArrowBack />
         </CarouselButton>
+
         <CarouselButton ref={forwardButton}>
           <Icon.ArrowForward />
         </CarouselButton>

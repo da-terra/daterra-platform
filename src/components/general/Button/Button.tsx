@@ -11,6 +11,17 @@ export type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
+const ButtonElement = styled.button`
+  background: none;
+  border: none;
+  display: inline;
+  font-size: ${ParagraphSize.NORMAL}rem;
+  padding: 0;
+  text-align: left;
+  color: ${props => props.theme.color.foreground};
+  text-decoration: none;
+`;
+
 const Button: React.FC<ButtonProps> = React.forwardRef(
   ({ children, ...props }, ref: any) => {
     let element: any;
@@ -23,21 +34,10 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
       element = "button";
     }
 
-    const Component = styled.button`
-      background: none;
-      border: none;
-      display: inline;
-      font-size: ${ParagraphSize.NORMAL}rem;
-      padding: 0;
-      text-align: left;
-      color: ${props => props.theme.color.foreground};
-      text-decoration: none;
-    `;
-
     return (
-      <Component {...props} as={element} ref={ref}>
+      <ButtonElement {...props} as={element} ref={ref}>
         {children}
-      </Component>
+      </ButtonElement>
     );
   }
 );
