@@ -21,7 +21,9 @@ class Carousel extends React.Component<CarouselProps> {
   private readonly itemWrapper = React.createRef<any>();
 
   private childRefs: any = {};
+
   private resizeRaf: number = 0;
+  private autoScrollTimeout: number = 0;
 
   state = {
     index: 0,
@@ -51,6 +53,9 @@ class Carousel extends React.Component<CarouselProps> {
     }
 
     window.addEventListener("resize", this.handleResize);
+
+    // Initialize carousel by setting the first slide
+    // this.updatePosition();
   }
 
   componentWillUnmount() {
@@ -102,6 +107,13 @@ class Carousel extends React.Component<CarouselProps> {
 
     // Set carousel wrapper transform to adjust scroll position
     this.itemWrapper.current!.style.transform = `translateX(-${targetChild.offsetLeft}px)`;
+
+    // Auto scroll carousel every 5 seconds
+    clearTimeout(this.autoScrollTimeout);
+    this.autoScrollTimeout = setTimeout(() => {
+      const nextIndex = (this.state.index + 1) % (this.state.slideCount + 1);
+      this.go(nextIndex);
+    }, 5000);
   };
 
   render() {

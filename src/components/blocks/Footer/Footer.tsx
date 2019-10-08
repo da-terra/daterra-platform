@@ -6,6 +6,7 @@ import Button from "../../general/Button";
 import Paragraph, { ParagraphType } from "../../general/Paragraph";
 import { Wrapper } from "../../../util/layout";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
+import RoutePath from "../../../data/RoutePath";
 
 const FooterContainer = styled.div`
   border-top: 2px solid ${props => props.theme.color.darkAccent};
@@ -58,7 +59,7 @@ const Footer: React.FC<FooterProps> = ({
         <Logo>DaTerra</Logo>
 
         <FooterContent>
-          <Paragraph as="address" type={ParagraphType.Tertiary} italic>
+          <Paragraph as="address" type={ParagraphType.Secondary} italic>
             {address}
             {"\n"}
             {"\n"}
@@ -68,13 +69,13 @@ const Footer: React.FC<FooterProps> = ({
           </Paragraph>
 
           <FooterNavigation>
-            <FooterNavigationLink to="/business">
-              Voor Business
+            <FooterNavigationLink to={RoutePath.ForBusiness}>
+              Voor Bedrijven
             </FooterNavigationLink>
-            <FooterNavigationLink to="/students">
-              Voor Students
+            <FooterNavigationLink to={RoutePath.ForStudents}>
+              Voor Studenten
             </FooterNavigationLink>
-            <FooterNavigationLink to="/data-scientists">
+            <FooterNavigationLink to={RoutePath.ForExperts}>
               Voor Experts
             </FooterNavigationLink>
           </FooterNavigation>

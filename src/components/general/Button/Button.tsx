@@ -2,11 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ParagraphSize } from "../../../data/style/variables";
+import RoutePath from "../../../data/RoutePath";
 
-export type ButtonProps = {
+type ButtonProps = {
   children: JSX.Element | string;
-  to?: string;
+  to?: RoutePath;
   href?: string;
+  target?: "_blank" | "_self";
+  title?: string;
   ref?: any;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };

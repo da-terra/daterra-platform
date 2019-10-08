@@ -1,1 +1,1 @@
-export { default, ParagraphType } from "./Paragraph";
+export { default, paragraphCss, ParagraphType } from "./Paragraph";
