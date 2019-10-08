@@ -1,20 +1,34 @@
 import React from "react";
+import styled from "styled-components";
 import { Page } from "../../util/layout";
 import Hero from "../../components/blocks/Hero";
 import Navigation from "../../components/blocks/Navigation";
 import CaseStudies from "../../components/blocks/CaseStudies";
+import Footer from "../../components/blocks/Footer";
 
-const Footer: React.FC = () => <div></div>;
+// Mock data
+import caseStudies from "../../data/mock/caseStudies";
+
+const LandingCaseStudies = styled(CaseStudies)`
+  margin-top: -8rem;
+`;
+
+const LandingFooter = styled(Footer)`
+  margin-top: 25rem;
+`;
 
 const Landing: React.FC = () => {
   return (
     <Page>
       <Hero />
-
       <Navigation />
-      <CaseStudies />
+      <LandingCaseStudies caseStudies={caseStudies} />
 
-      <Footer />
+      <LandingFooter
+        address={"787 Chapel Hill Ct, \nHelena \nMontana, 22920"}
+        email="info@daterra.nl"
+        phone="(677) 296-8090"
+      />
     </Page>
   );
 };

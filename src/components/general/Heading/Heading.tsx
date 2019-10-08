@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
 
-enum HeadingType {
+export enum HeadingType {
   Primary,
   Secondary
 }
