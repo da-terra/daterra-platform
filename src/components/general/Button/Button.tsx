@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ParagraphSize } from "../../../data/style/variables";
+import {
+  FontFamily,
+  ParagraphSize,
+  FontWeight
+} from "../../../data/style/variables";
+import Easings from "../../../data/style/easings";
 import RoutePath from "../../../data/RoutePath";
 
 type ButtonProps = {
@@ -23,6 +28,14 @@ const ButtonElement = styled.button`
   text-align: left;
   color: ${props => props.theme.color.foreground};
   text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ${Easings.easeOutExpo};
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 `;
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
@@ -52,6 +65,30 @@ export default Button;
  */
 export const SolidButton = styled(Button)`
   display: inline-block;
-  padding: 1rem;
-  font-size: 1.75rem;
+  padding: 0 6rem;
+  font-size: 1.6rem;
+  min-height: 6rem;
+  line-height: 5rem;
+  text-align: center;
+  border-radius: 100vw;
+  font-family: ${FontFamily.ROBOTO_SLAB};
+  font-weight: ${FontWeight.BOLD};
+  background: ${props => props.theme.button.solid.backgroundColor}
+  color: ${props => props.theme.button.solid.copyColor}
+
+  &:hover {
+    background: ${props => props.theme.button.solid.hoverBackgroundColor}
+    color: ${props => props.theme.button.solid.hoverCopyColor}
+  }
+`;
+
+export const LinkButton = styled(Button)`
+  font-family: ${FontFamily.ROBOTO_SLAB};
+  font-size: 1.4rem;
+  text-decoration: underline;
+  color: ${props => props.theme.button.link.copyColor}
+
+  &:hover {
+    text-decoration: none;
+  }
 `;

@@ -10,7 +10,7 @@ import Logo from "../../general/Logo";
 
 const HeaderWrapper = styled(Wrapper)`
   display: flex;
-  margin-top: 2rem;
+  margin-top: 5rem;
   margin-bottom: 4rem;
 `;
 
@@ -32,10 +32,10 @@ const SigninButton = styled(Button)`
 
 const ToggleThemeButton = styled(Button)`
   color: ${props => props.theme.color.accentForeground} !important;
-  margin-left: 2rem;
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-left: 2rem;
 
   &:hover {
     color: ${props => props.theme.color.darkAccent} !important;
@@ -44,7 +44,7 @@ const ToggleThemeButton = styled(Button)`
 
 const Header: React.FC = () => (
   <HeaderWrapper>
-    <Logo>DaTerra</Logo>
+    <Logo>Studata</Logo>
 
     <CtaContainer>
       <SigninButton to={RoutePath.SignIn}>Inloggen</SigninButton>

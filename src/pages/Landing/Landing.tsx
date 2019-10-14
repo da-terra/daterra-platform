@@ -27,7 +27,7 @@ const Landing: React.FC = () => {
 
       <LandingFooter
         address={"787 Chapel Hill Ct, \nHelena \nMontana, 22920"}
-        email="info@daterra.nl"
+        email="info@studata.nl"
         phone="(677) 296-8090"
       />
     </Page>
