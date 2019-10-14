@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
-import { Wrapper } from "../../../util/layout";
+import { Wrapper, Circle } from "../../../util/layout";
 import Header from "../Header";
 
 const Background = styled.div`
@@ -11,17 +11,6 @@ const Background = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-`;
-
-const Circle = styled.div`
-  background: ${props => props.theme.color.lightAccent};
-  min-width: 150rem;
-  min-height: 150rem;
-  position: absolute;
-  top: 0;
-  right: calc(50vw - 30rem);
-  border-radius: 100%;
-  transform: translate(0, -50%);
 `;
 
 const Slogan = styled.h2`
@@ -43,7 +32,7 @@ const Content = styled(Wrapper)`
 
 const Hero: React.FC = () => (
   <Background>
-    <Circle />
+    <Circle x={-30} y={-50} />
 
     <Header />
 

@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <FooterContainer className={className}>
       <FooterWrapper>
-        <Logo>DaTerra</Logo>
+        <Logo>Studata</Logo>
 
         <FooterContent>
           <Paragraph as="address" type={ParagraphType.Secondary} italic>

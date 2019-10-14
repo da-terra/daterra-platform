@@ -55,7 +55,7 @@ class Carousel extends React.Component<CarouselProps> {
     window.addEventListener("resize", this.handleResize);
 
     // Initialize carousel by setting the first slide
-    // this.updatePosition();
+    this.updatePosition();
   }
 
   componentWillUnmount() {

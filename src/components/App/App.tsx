@@ -6,6 +6,7 @@ import ThemeManager from "../ThemeManager";
 
 const LandingPage = React.lazy(() => import("../../pages/Landing"));
 const SettingsPage = React.lazy(() => import("../../pages/Settings"));
+const SigninPage = React.lazy(() => import("../../pages/Signin"));
 
 const GlobalStyle = createGlobalStyle<{ gridSize: number }>`
   html,
@@ -42,6 +43,8 @@ const App: React.FC = () => {
             <Switch>
               <Route path="/" exact component={LandingPage} />
               <Route path="/settings" exact component={SettingsPage} />
+              <Route path="/signin" exact component={SigninPage} />
+              <Route path="/forgot-password" exact component={SigninPage} />
             </Switch>
           </Suspense>
         </ThemeManager>
