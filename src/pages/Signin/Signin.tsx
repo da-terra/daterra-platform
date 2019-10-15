@@ -1,7 +1,7 @@
 import React from "react";
 import { Page, Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
-import Header from "../../components/blocks/Header";
+import PublicHeader from "../../components/blocks/PublicHeader";
 import {
   FormWrapper,
   Form,
@@ -54,7 +54,7 @@ const Signin: React.FC = () => {
         </Form>
       </FormWrapper>
 
-      <Header />
+      <PublicHeader />
     </Page>
   );
 };

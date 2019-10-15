@@ -12,6 +12,7 @@ enum RoutePath {
   ForgetPassword = "/forget-password",
 
   // Profile
+  Dashboard = "/dashboard",
   Settings = "/settings"
 }
 

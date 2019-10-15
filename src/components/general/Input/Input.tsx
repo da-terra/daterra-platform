@@ -4,7 +4,7 @@ import { Wrapper, Label, InputElement, Tooltip } from "./styled";
 type InputProps = {
   label: string;
   name: string;
-  type?: "text" | "email" | "password" | "number";
+  type?: "text" | "number" | "email" | "password" | "search";
   className?: string;
   error?: {
     icon: any;

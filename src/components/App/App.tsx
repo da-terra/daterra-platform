@@ -8,7 +8,10 @@ import ThemeManager from "../ThemeManager";
 const LandingPage = React.lazy(() => import("../../pages/Landing"));
 const SettingsPage = React.lazy(() => import("../../pages/Settings"));
 const SigninPage = React.lazy(() => import("../../pages/Signin"));
-const ForgetPassword = React.lazy(() => import("../../pages/ForgetPassword"));
+const ForgetPasswordPage = React.lazy(() =>
+  import("../../pages/ForgetPassword")
+);
+const DashboardPage = React.lazy(() => import("../../pages/Dashboard"));
 const ErrorPage = React.lazy(() => import("../../pages/Error"));
 
 const GlobalStyle = createGlobalStyle<{ gridSize: number }>`
@@ -45,12 +48,21 @@ const App: React.FC = () => {
           <Suspense fallback="Loading...">
             <Switch>
               <Route path={RoutePath.Home} exact component={LandingPage} />
+
+              {/* Account */}
               <Route path={RoutePath.Settings} exact component={SettingsPage} />
               <Route path={RoutePath.Signin} exact component={SigninPage} />
               <Route
                 path={RoutePath.ForgetPassword}
                 exact
-                component={ForgetPassword}
+                component={ForgetPasswordPage}
+              />
+
+              {/* Dashboard */}
+              <Route
+                path={RoutePath.Dashboard}
+                exact
+                component={DashboardPage}
               />
 
               <Route path={RoutePath.All} status={404} component={ErrorPage} />
