@@ -3,7 +3,7 @@ import { FontFamily, FontWeight } from "../../../data/style/variables";
 import Icon from "../Icon";
 
 export const LogoWrapper = styled.h1`
-  color: ${props => props.theme.color.darkAccent};
+  color: ${props => props.theme.copy.primaryAccent};
   font-family: ${FontFamily.ROBOTO_SLAB};
   font-weight: ${FontWeight.BOLD};
   font-size: 3.6rem;

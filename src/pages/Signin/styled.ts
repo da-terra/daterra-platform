@@ -12,6 +12,7 @@ export const ErrorIcon = styled(Icon.Error)`
 `;
 
 export const SigninInput = styled(Input)`
+  display: flex;
   margin-bottom: 0.75rem;
 
   &:first-child {
@@ -20,8 +21,6 @@ export const SigninInput = styled(Input)`
 `;
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
   max-width: 40rem;
   padding: 2rem;
   box-sizing: content-box;

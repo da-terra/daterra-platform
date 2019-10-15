@@ -27,7 +27,7 @@ const muted = css`
   font-weight: ${FontWeight.REGULAR};
   font-size: 1.4rem;
   line-height: 2rem;
-  color: ${props => props.theme.color.mutedForeground};
+  color: ${props => props.theme.copy.muted};
 `;
 
 const small = css`

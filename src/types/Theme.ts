@@ -6,6 +6,13 @@ declare module "styled-components" {
   export interface DefaultTheme {
     uuid: string;
 
+    background: {
+      primary: string;
+      secondary: string;
+      primaryAccent: string;
+      secondaryAccent: string;
+    };
+
     button: {
       solid: {
         backgroundColor: string;
@@ -20,28 +27,16 @@ declare module "styled-components" {
 
     card: {
       borderRadius: number;
+      shadow: string;
+      invertedShadow: string;
     };
 
-    color: {
-      // Shapes
-      shapeBackground: string;
-
-      // Backgrounds
-      background: string;
-      foreground: string;
-
-      // Copy
-      invertForeground: string;
-      mutedForeground: string;
-      accentForeground: string;
-      darkAccent: string;
-      lightAccent: string;
-      lighterAccent: string;
-    };
-
-    font: {
-      sansSerif: string;
-      serif: string;
+    copy: {
+      muted: string;
+      primary: string;
+      primaryInverted: string;
+      primaryAccent: string;
+      secondaryAccent: string;
     };
 
     input: {
@@ -50,6 +45,15 @@ declare module "styled-components" {
       copyColor: string;
       errorColor: string;
       warningColor: string;
+    };
+
+    font: {
+      sansSerif: string;
+      serif: string;
+    };
+
+    shape: {
+      background: string;
     };
 
     tooltip: {

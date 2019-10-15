@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Icon from "../../components/general/Icon";
 import { SolidButton, LinkButton } from "../../components/general/Button";
+import Input from "../../components/general/Input";
 
 export const WarningIcon = styled(Icon.Warning)`
   fill: ${props => props.theme.input.warningColor};
@@ -10,9 +11,11 @@ export const ErrorIcon = styled(Icon.Error)`
   fill: ${props => props.theme.input.errorColor};
 `;
 
-export const Form = styled.form`
+export const ForgetPasswordInput = styled(Input)`
   display: flex;
-  flex-direction: column;
+`;
+
+export const Form = styled.form`
   max-width: 40rem;
   padding: 2rem;
   box-sizing: content-box;

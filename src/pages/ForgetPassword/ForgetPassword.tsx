@@ -1,11 +1,11 @@
 import React from "react";
 import { Page, Circle } from "../../util/layout";
 import PublicHeader from "../../components/blocks/PublicHeader";
-import Input from "../../components/general/Input";
 import RoutePath from "../../data/RoutePath";
 import {
   FormWrapper,
   Form,
+  ForgetPasswordInput,
   ForgotPasswordLink,
   ForgetPasswordButton,
   ButtonWrapper,
@@ -14,7 +14,7 @@ import {
 
 const mockError = {
   icon: ErrorIcon,
-  message: "Veld is verplicht"
+  message: "Dit veld is verplicht"
 };
 
 const Signin: React.FC = () => {
@@ -24,7 +24,7 @@ const Signin: React.FC = () => {
 
       <FormWrapper>
         <Form method="post">
-          <Input
+          <ForgetPasswordInput
             label="E-mailadres"
             name="email"
             type="email"

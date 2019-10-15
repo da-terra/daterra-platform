@@ -11,7 +11,7 @@ import { ParagraphType } from "../Paragraph";
 import {
   Title,
   TitleWrapper,
-  Card,
+  CaseStudyCard as Card,
   PublishedAt,
   Partner,
   Collaborator

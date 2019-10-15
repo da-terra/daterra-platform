@@ -22,7 +22,9 @@ const Landing: React.FC = () => {
   return (
     <Page>
       <Hero />
+
       <Navigation />
+
       <LandingCaseStudies caseStudies={caseStudies as ICaseStudy[]} />
 
       <LandingFooter

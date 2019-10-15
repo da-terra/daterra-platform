@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  color: ${props => props.theme.color.foreground};
-  background: ${props => props.theme.color.background};
+  color: ${props => props.theme.copy.primary};
+  background: ${props => props.theme.background.primary};
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -23,7 +23,7 @@ type CircleProps = {
 };
 
 export const Circle = styled.div<CircleProps>`
-  background: ${props => props.theme.color.shapeBackground};
+  background: ${props => props.theme.shape.background};
   min-width: 150rem;
   min-height: 150rem;
   border-radius: 100%;
@@ -31,4 +31,26 @@ export const Circle = styled.div<CircleProps>`
   top: 0;
   left: 50%;
   transform: ${props => `translate(${-50 + props.x}%, ${props.y}%)`};
+`;
+
+type CardProps = {
+  inverted?: boolean;
+};
+
+export const Card = styled.div<CardProps>`
+  padding: 2rem;
+  border-radius: ${props => props.theme.card.borderRadius}px;
+
+  box-shadow: ${props =>
+    props.inverted ? props.theme.card.invertedShadow : props.theme.card.shadow};
+
+  background: ${props =>
+    props.inverted
+      ? props.theme.background.primaryAccent
+      : props.theme.background.primary};
+
+  color: ${props =>
+    props.inverted
+      ? props.theme.copy.primaryInverted
+      : props.theme.copy.primary};
 `;

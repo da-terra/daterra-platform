@@ -3,7 +3,7 @@ import { Wrapper } from "../../../util/layout";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
 
 export const Background = styled.div`
-  background: ${props => props.theme.color.lighterAccent};
+  background: ${props => props.theme.background.secondaryAccent};
   height: 55rem;
   position: relative;
   overflow: hidden;
@@ -12,7 +12,7 @@ export const Background = styled.div`
 `;
 
 export const Slogan = styled.h2`
-  color: ${props => props.theme.color.darkAccent};
+  color: ${props => props.theme.copy.primaryAccent};
   position: relative;
   font-size: 6.4rem;
   white-space: pre-line;

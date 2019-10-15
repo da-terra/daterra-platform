@@ -17,10 +17,14 @@ type CarouselProps = {
   className?: string;
 };
 
+type RefObject = {
+  [key: string]: HTMLElement;
+};
+
 class Carousel extends React.Component<CarouselProps> {
   private readonly itemWrapper = React.createRef<any>();
 
-  private childRefs: any = {};
+  private childRefs: RefObject = {};
 
   private resizeRaf: number = 0;
   private autoScrollTimeout: number = 0;
@@ -59,6 +63,9 @@ class Carousel extends React.Component<CarouselProps> {
   }
 
   componentWillUnmount() {
+    cancelAnimationFrame(this.resizeRaf);
+    clearTimeout(this.autoScrollTimeout);
+
     const forwardButton =
       this.props.forwardButton && this.props.forwardButton.current;
     const backButton = this.props.backButton && this.props.backButton.current;
@@ -100,13 +107,18 @@ class Carousel extends React.Component<CarouselProps> {
   };
 
   private updatePosition = () => {
-    const index = this.state.index;
+    Object.values(this.childRefs).forEach((element, index) => {
+      const isTargetChild = this.state.index === index;
 
-    // Get index of target child from child refs
-    const targetChild = Object.values(this.childRefs)[index] as HTMLElement;
+      element.dataset.isActive = isTargetChild.toString();
 
-    // Set carousel wrapper transform to adjust scroll position
-    this.itemWrapper.current!.style.transform = `translateX(-${targetChild.offsetLeft}px)`;
+      if (isTargetChild) {
+        const wrapperElement = this.itemWrapper.current!;
+
+        // Set carousel wrapper transform to adjust scroll position
+        wrapperElement.style.transform = `translateX(-${element.offsetLeft}px)`;
+      }
+    });
 
     // Auto scroll carousel every 5 seconds
     clearTimeout(this.autoScrollTimeout);
@@ -123,7 +135,7 @@ class Carousel extends React.Component<CarouselProps> {
     // Get refs for all children
     const children = React.Children.map(this.props.children, (child: any) =>
       React.cloneElement(child, {
-        ref: (c: React.ReactNode) => (this.childRefs[child.key] = c)
+        ref: (c: HTMLElement) => (this.childRefs[child.key] = c)
       })
     );
 

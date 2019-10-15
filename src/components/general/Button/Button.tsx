@@ -26,7 +26,7 @@ const ButtonElement = styled.button`
   font-size: ${ParagraphSize.NORMAL}rem;
   padding: 0;
   text-align: left;
-  color: ${props => props.theme.color.foreground};
+  color: ${props => props.theme.copy.primary};
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ${Easings.easeOutExpo};

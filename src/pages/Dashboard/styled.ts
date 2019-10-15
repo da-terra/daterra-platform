@@ -1,16 +1,25 @@
 import styled from "styled-components";
+import { Wrapper } from "../../util/layout";
 import Input from "../../components/general/Input";
 
-export const SearchForm = styled.form``;
+export { Page, Circle } from "../../util/layout";
+export { default as Header } from "../../components/blocks/Header";
+export {
+  default as PersonalStatistics
+} from "../../components/general/PersonalStatistics";
 
 export const SearchInput = styled(Input)`
   max-width: 50rem;
   width: 100%;
 `;
 
-export const DashboardContent = styled.div``;
+export const SearchForm = styled(Wrapper)`
+  margin: 5rem auto 7rem;
+`;
 
-export const DashboardRow = styled.div``;
+export const ProjectWrapper = styled(Wrapper)`
+  display: flex;
+`;
 
 type ProjectCarouselProps = {
   title: string;
@@ -21,8 +30,16 @@ type ProjectCarouselProps = {
   };
 };
 
-export const ProjectCarousel = styled.div<ProjectCarouselProps>``;
+export const ProjectCarousel = styled.div<ProjectCarouselProps>`
+  background: white;
+  width: 70%;
+  height: 80px;
+`;
 
 export const ProjectCard = styled.div``;
 
-export const PersonalStatistics = styled.div``;
+export const Sidebar = styled.div`
+  width: 30%;
+  height: 150px;
+  padding-left: 5rem;
+`;

@@ -18,19 +18,28 @@ const themes: DefaultTheme[] = [
     },
 
     card: {
-      borderRadius: 10
+      borderRadius: 10,
+      shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
+      invertedShadow: "rgba(0, 0, 0, 0.15) 3px -3px 15px 2px"
     },
 
-    color: {
-      shapeBackground: "rgba(0, 0, 0, 0.02)",
-      background: "#F8FBFB",
-      foreground: "#434E4D",
-      invertForeground: "#FFFFFF",
-      mutedForeground: "#A1A7A6",
-      accentForeground: "#50908B",
-      darkAccent: "#03363E",
-      lightAccent: "#D1E9E8",
-      lighterAccent: "#D5EEED"
+    background: {
+      primary: "#F8FBFB",
+      secondary: "#FFFFFF",
+      primaryAccent: "#03363E",
+      secondaryAccent: "#D5EEED"
+    },
+
+    copy: {
+      muted: "#A1A7A6",
+      primary: "#434E4D",
+      primaryInverted: "#FFFFFF",
+      primaryAccent: "#03363E",
+      secondaryAccent: "#D5EEED"
+    },
+
+    shape: {
+      background: "rgba(0, 0, 0, 0.02)"
     },
 
     font: {
