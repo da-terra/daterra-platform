@@ -1,9 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Icon from "../Icon";
+
+const appear = keyframes`
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+`;
 
 export const Wrapper = styled.div`
   position: relative;
-  inline-block;
+  display: inline-block;
+  animation: 0.5s ${appear} forwards;
 
   svg {
     display: block;
