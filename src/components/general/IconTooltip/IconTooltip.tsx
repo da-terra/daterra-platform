@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import styled from "styled-components";
 import useEvent from "../../../util/hooks/useEvent";
 import Icon from "../Icon";
 import { Wrapper, Tooltip, Arrow } from "./styled";
@@ -14,15 +15,15 @@ const IconTooltip: React.FC<IconTooltipProps> = ({
   className,
   icon = Icon.Info
 }) => {
-  const IconComponent = icon;
-
   const targetRef = useRef(null);
   const [isVisible, setVisible] = useState(false);
 
-  // Handlers
   useEvent(targetRef, "mouseenter", () => setVisible(true));
-
   useEvent(targetRef, "mouseleave", () => setVisible(false));
+
+  const IconComponent = styled(icon)`
+    cursor: pointer;
+  `;
 
   return (
     <Wrapper className={className} ref={targetRef}>

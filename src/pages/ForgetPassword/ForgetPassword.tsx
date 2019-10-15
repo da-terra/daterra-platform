@@ -1,26 +1,20 @@
 import React from "react";
 import { Page, Circle } from "../../util/layout";
-import RoutePath from "../../data/RoutePath";
 import Header from "../../components/blocks/Header";
+import Input from "../../components/general/Input";
+import RoutePath from "../../data/RoutePath";
 import {
   FormWrapper,
   Form,
-  SigninInput,
   ForgotPasswordLink,
-  SigninButton,
+  ForgetPasswordButton,
   ButtonWrapper,
-  WarningIcon,
   ErrorIcon
 } from "./styled";
 
 const mockError = {
   icon: ErrorIcon,
-  message: "Wachtwoord of gebruikersnaam onjuist"
-};
-
-const mockWarning = {
-  icon: WarningIcon,
-  message: "Wachtwoord of gebruikersnaam onjuist"
+  message: "Veld is verplicht"
 };
 
 const Signin: React.FC = () => {
@@ -30,26 +24,18 @@ const Signin: React.FC = () => {
 
       <FormWrapper>
         <Form method="post">
-          <SigninInput
+          <Input
             label="E-mailadres"
             name="email"
             type="email"
             error={mockError}
           />
 
-          <SigninInput
-            label="Password"
-            name="password"
-            type="password"
-            error={mockWarning}
-          />
-
-          <ForgotPasswordLink to={RoutePath.ForgetPassword}>
-            wachtwoord vergeten
-          </ForgotPasswordLink>
-
           <ButtonWrapper>
-            <SigninButton>Inloggen</SigninButton>
+            <ForgetPasswordButton>Reset wachtwoord</ForgetPasswordButton>
+            <ForgotPasswordLink to={RoutePath.Signin}>
+              Inloggen
+            </ForgotPasswordLink>
           </ButtonWrapper>
         </Form>
       </FormWrapper>

@@ -47,7 +47,7 @@ const Header: React.FC = () => (
     <Logo>Studata</Logo>
 
     <CtaContainer>
-      <SigninButton to={RoutePath.SignIn}>Inloggen</SigninButton>
+      <SigninButton to={RoutePath.Signin}>Inloggen</SigninButton>
 
       <ThemeManagerContext.Consumer>
         {({ cycleThemes }) => (
