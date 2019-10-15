@@ -1,32 +1,43 @@
-import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { FontFamily, FontWeight } from "../../../data/style/variables";
 
-/**
- * Headings
- */
+export enum HeadingType {
+  Primary,
+  Secondary
+}
+
 export type HeadingProps = {
-  level: number;
-  children: JSX.Element;
+  type?: HeadingType;
+  serif?: boolean;
+  italic?: boolean;
 };
 
-export const PrimaryHeading = ({
-  level = 1,
-  children,
-  ...props
-}: HeadingProps) => {
-  const Component = React.createFactory(`h${level}`);
-  const Heading = styled(Component)``;
+const primary = css`
+  font-size: 4.8rem;
+  line-height: 5.8rem;
+`;
 
-  return <Heading {...props}>{children}</Heading>;
+const secondary = css`
+  font-size: 2.5rem;
+  line-height: 3.8rem;
+`;
+
+// Map to get the right styles for the right type
+const styleMap = {
+  [HeadingType.Primary]: primary,
+  [HeadingType.Secondary]: secondary
 };
 
-export const SecondaryHeading = ({
-  level = 2,
-  children,
-  ...props
-}: HeadingProps) => {
-  const Component = React.createFactory(`h${level}`);
-  const Heading = styled(Component)``;
+const Heading = styled.h1<HeadingProps>`
+  font-weight: ${FontWeight.BOLD}
 
-  return <Heading {...props}>{children}</Heading>;
-};
+  ${props => styleMap[props.type || HeadingType.Primary]}
+
+  // Default customization
+  font-family: ${props =>
+    props.serif ? FontFamily.ROBOTO_SLAB : FontFamily.ROBOTO};
+
+  font-style: ${props => (props.italic ? "italic" : "normal")};
+`;
+
+export default Heading;

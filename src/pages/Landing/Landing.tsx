@@ -1,42 +1,36 @@
 import React from "react";
-import Chart, { Pie, Slice } from "../../components/Chart";
-import SolidButton from "../../components/general/Button";
+import styled from "styled-components";
+import { Page } from "../../util/layout";
+import Hero from "../../components/blocks/Hero";
+import Navigation from "../../components/blocks/Navigation";
+import CaseStudies from "../../components/blocks/CaseStudies";
+import Footer from "../../components/blocks/Footer";
+
+// Mock data
+import caseStudies from "../../data/mock/caseStudies.json";
+import ICaseStudy from "../../data/type/ICaseStudy";
+
+const LandingCaseStudies = styled(CaseStudies)`
+  margin-top: -8rem;
+`;
+
+const LandingFooter = styled(Footer)`
+  margin-top: 25rem;
+`;
 
 const Landing: React.FC = () => {
-  const MyPie = (
-    <Chart>
-      <Pie total={1}>
-        <Slice value={0.05} strokeColor="black" strokeWidth={2} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-        <Slice value={0.05} />
-      </Pie>
-    </Chart>
-  );
-
   return (
-    <div>
-      <SolidButton to="/settings">Hallo</SolidButton>
+    <Page>
+      <Hero />
+      <Navigation />
+      <LandingCaseStudies caseStudies={caseStudies as ICaseStudy[]} />
 
-      {MyPie}
-    </div>
+      <LandingFooter
+        address={"787 Chapel Hill Ct, \nHelena \nMontana, 22920"}
+        email="info@studata.nl"
+        phone="(677) 296-8090"
+      />
+    </Page>
   );
 };
 

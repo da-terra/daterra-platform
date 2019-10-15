@@ -1,21 +1,87 @@
-import Theme from "../../types/Theme";
+import { DefaultTheme } from "styled-components";
 
-const themes: Theme[] = [
+const themes: DefaultTheme[] = [
   // Light theme
   {
     uuid: "15b7e36c-d595-11e9-bb65-2a2ae2dbcce4",
-    accentColor: "#0ff",
-    backgroundColor: "#fff",
-    foregroundColor: "#000"
-  },
+
+    button: {
+      solid: {
+        backgroundColor: "#03363E",
+        hoverBackgroundColor: "#175C66",
+        copyColor: "#FFFFFF",
+        hoverCopyColor: "#FFFFFF"
+      },
+      link: {
+        copyColor: "#03363E"
+      }
+    },
+
+    card: {
+      borderRadius: 10
+    },
+
+    color: {
+      shapeBackground: "rgba(0, 0, 0, 0.02)",
+      background: "#F8FBFB",
+      foreground: "#434E4D",
+      invertForeground: "#FFFFFF",
+      mutedForeground: "#A1A7A6",
+      accentForeground: "#50908B",
+      darkAccent: "#03363E",
+      lightAccent: "#D1E9E8",
+      lighterAccent: "#D5EEED"
+    },
+
+    font: {
+      sansSerif: '"Roboto", sans-serif',
+      serif: '"Roboto Slab", serif'
+    },
+
+    input: {
+      backgroundColor: "#FFFFFF",
+      borderColor: "#E5F1F1",
+      copyColor: "#A1A7A6",
+      errorColor: "#FF383E",
+      warningColor: "#FFA23C"
+    },
+
+    tooltip: {
+      backgroundColor: "#FFFFFF",
+      shadow: "rgba(0,0,0,0.1) 2px 2px 30px 0px"
+    }
+  }
 
   // Dark theme
-  {
-    uuid: "f7aa558a-6bb5-447e-91c5-cfd0429b05d6",
-    accentColor: "#0ff",
-    backgroundColor: "#000",
-    foregroundColor: "#fff"
-  }
+  // {
+  //   uuid: "f7aa558a-6bb5-447e-91c5-cfd0429b05d6",
+
+  //   input: {
+  //     backgroundColor: "#FFFFFFF",
+  //     borderColor: "#E5F1F1"
+  //   },
+
+  //   card: {
+  //     borderRadius: 10
+  //   },
+
+  //   font: {
+  //     sansSerif: '"Roboto", sans-serif',
+  //     serif: '"Roboto Slab", serif'
+  //   },
+
+  //   color: {
+  //     shapeBackground: "rgba(255, 255, 255, 0.02)",
+  //     background: "#090c0c",
+  //     foreground: "#F8FBFB",
+  //     invertForeground: "#000000",
+  //     mutedForeground: "#A1A7A6",
+  //     accentForeground: "#50908B",
+  //     darkAccent: "#FFFFFF",
+  //     lightAccent: "#053f48",
+  //     lighterAccent: "#03363E"
+  //   }
+  // }
 ];
 
 export default themes;
