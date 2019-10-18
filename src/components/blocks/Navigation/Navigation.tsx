@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import NavigationButton from "../../general/NavigationButton";
-import { Wrapper } from "../../../util/layout";
+import IBlock from "../../../types/IBlock";
 import RoutePath from "../../../data/RoutePath";
+import { Wrapper } from "../../../util/layout";
+import NavigationButton from "../../general/NavigationButton";
 
 const NavigationWrapper = styled(Wrapper)`
   display: flex;
@@ -23,7 +24,7 @@ const ListItem = styled.li`
   }
 `;
 
-const Navigation: React.FC = () => (
+const Navigation: React.FC<IBlock> = () => (
   <NavigationWrapper>
     <List>
       <ListItem>

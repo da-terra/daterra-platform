@@ -6,12 +6,15 @@ import {
   Header,
   SearchForm,
   SearchInput,
-  ProjectWrapper,
-  ProjectCarousel,
+  TopWrapper,
+  Wrapper,
+  DashboardProjectCarousel,
   Sidebar,
   PersonalStatistics
 } from "./styled";
-import { projectMock, personalStatistics } from "./mockData";
+
+//
+import { activeProject, newProject, personalStatistics } from "./mockData";
 
 const Dashboard: React.FC = () => {
   return (
@@ -20,35 +23,41 @@ const Dashboard: React.FC = () => {
 
       <Header />
 
-      <SearchForm as="form">
-        <SearchInput label="Zoeken" name="search" type="search" />
-      </SearchForm>
+      <TopWrapper>
+        <SearchForm>
+          <SearchInput label="Zoeken" name="search" type="search" />
+        </SearchForm>
 
-      <ProjectWrapper>
-        <ProjectCarousel
+        <Sidebar>
+          <PersonalStatistics {...personalStatistics} />
+        </Sidebar>
+      </TopWrapper>
+
+      <Wrapper>
+        <DashboardProjectCarousel
           title="Actieve projecten"
           link={{
             to: RoutePath.Home,
             children: "Bekijk mijn actieve projecten"
           }}
-          projects={[projectMock, projectMock, projectMock, projectMock]}
+          projects={[
+            { ...activeProject, uuid: "1" },
+            { ...activeProject, uuid: "1" }
+          ]}
         />
 
-        <Sidebar>
-          <PersonalStatistics {...personalStatistics} />
-        </Sidebar>
-      </ProjectWrapper>
-
-      <ProjectWrapper>
-        <ProjectCarousel
+        <DashboardProjectCarousel
           title="Nieuwe projecten"
           link={{
             to: RoutePath.Home,
             children: "Bekijk nieuwe projecten"
           }}
-          projects={[projectMock, projectMock, projectMock, projectMock]}
+          projects={[
+            { ...newProject, uuid: "1" },
+            { ...newProject, uuid: "1" }
+          ]}
         />
-      </ProjectWrapper>
+      </Wrapper>
     </Page>
   );
 };

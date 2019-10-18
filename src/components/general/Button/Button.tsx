@@ -16,6 +16,7 @@ type ButtonProps = {
   target?: "_blank" | "_self";
   title?: string;
   ref?: any;
+  paragraphType?: "submit" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -41,6 +42,7 @@ const ButtonElement = styled.button`
 const Button: React.FC<ButtonProps> = React.forwardRef(
   ({ children, ...props }, ref: any) => {
     let element: any;
+    const attributes = { ...props };
 
     if (props.to) {
       element = Link;
@@ -48,10 +50,14 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
       element = "a";
     } else {
       element = "button";
+
+      if (props.paragraphType == null) {
+        attributes.paragraphType = "button";
+      }
     }
 
     return (
-      <ButtonElement {...props} as={element} ref={ref}>
+      <ButtonElement {...attributes} as={element} ref={ref}>
         {children}
       </ButtonElement>
     );

@@ -1,12 +1,17 @@
 import React from "react";
-import { ICollaborator } from "../../../data/type/ICaseStudy";
+import IUser from "../../../types/IUser";
 import Paragraph, { ParagraphType } from "../Paragraph";
 import { Wrapper } from "./styled";
 
-const Collaborator: React.FC<ICollaborator> = ({ fullName, tags }) => (
+const Collaborator: React.FC<IUser> = ({ fullName, tags }) => (
   <Wrapper>
-    <Paragraph type={ParagraphType.Small}>{fullName}</Paragraph>
-    <Paragraph type={ParagraphType.Muted}>{tags.join(" - ")}</Paragraph>
+    <Paragraph paragraphType={ParagraphType.Small}>{fullName}</Paragraph>
+
+    {tags && (
+      <Paragraph paragraphType={ParagraphType.Muted}>
+        {tags.join(" - ")}
+      </Paragraph>
+    )}
   </Wrapper>
 );
 

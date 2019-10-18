@@ -5,7 +5,7 @@ import {
   differenceInDays,
   parseISO
 } from "date-fns";
-import ICaseStudy from "../../../data/type/ICaseStudy";
+import ICaseStudy from "../../../types/ICaseStudy";
 import { HeadingType } from "../Heading";
 import { ParagraphType } from "../Paragraph";
 import {
@@ -27,9 +27,9 @@ enum TimeFormatUnit {
 }
 
 const CaseStudyCard: React.FC<ICaseStudy> = ({
-  collaborators,
+  team: collaborators,
   title,
-  partner,
+  owner: partner,
   publishedDate
 }) => {
   const date = parseISO(publishedDate);
@@ -55,7 +55,11 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
           {title}
         </Title>
 
-        <PublishedAt as="time" type={ParagraphType.Muted} time={publishedDate}>
+        <PublishedAt
+          as="time"
+          paragraphType={ParagraphType.Muted}
+          time={publishedDate}
+        >
           {relativeTimeFormat.format(value, unit)}
         </PublishedAt>
       </TitleWrapper>

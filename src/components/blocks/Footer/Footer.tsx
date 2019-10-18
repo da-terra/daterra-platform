@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import IBlock from "../../../data/type/IBlock";
+import IBlock from "../../../types/IBlock";
 import Logo from "../../general/Logo";
 import Button from "../../general/Button";
 import Paragraph, { ParagraphType } from "../../general/Paragraph";
@@ -59,7 +59,11 @@ const Footer: React.FC<FooterProps> = ({
         <Logo>Studata</Logo>
 
         <FooterContent>
-          <Paragraph as="address" type={ParagraphType.Secondary} italic>
+          <Paragraph
+            as="address"
+            paragraphType={ParagraphType.Secondary}
+            italic
+          >
             {address}
             {"\n"}
             {"\n"}

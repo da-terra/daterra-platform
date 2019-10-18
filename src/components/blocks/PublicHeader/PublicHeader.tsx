@@ -1,4 +1,5 @@
 import React from "react";
+import IBlock from "../../../types/IBlock";
 import RoutePath from "../../../data/RoutePath";
 import { Context as ThemeManagerContext } from "../../ThemeManager";
 import Icon from "../../general/Icon";
@@ -10,7 +11,7 @@ import {
   ToggleThemeButton
 } from "./styled";
 
-const Header: React.FC = () => (
+const Header: React.FC<IBlock> = () => (
   <HeaderWrapper>
     <Logo>Studata</Logo>
 

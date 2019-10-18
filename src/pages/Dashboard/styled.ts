@@ -1,45 +1,34 @@
 import styled from "styled-components";
-import { Wrapper } from "../../util/layout";
 import Input from "../../components/general/Input";
+import { Wrapper } from "../../util/layout";
+import ProjectCarousel from "../../components/general/ProjectCarousel";
 
-export { Page, Circle } from "../../util/layout";
+export { Page, Circle, Wrapper } from "../../util/layout";
 export { default as Header } from "../../components/blocks/Header";
 export {
   default as PersonalStatistics
 } from "../../components/general/PersonalStatistics";
+
+export const TopWrapper = styled(Wrapper)`
+  margin: 5rem auto 7rem;
+  z-index: 1;
+`;
+
+export const SearchForm = styled.form``;
 
 export const SearchInput = styled(Input)`
   max-width: 50rem;
   width: 100%;
 `;
 
-export const SearchForm = styled(Wrapper)`
-  margin: 5rem auto 7rem;
-`;
-
-export const ProjectWrapper = styled(Wrapper)`
-  display: flex;
-`;
-
-type ProjectCarouselProps = {
-  title: string;
-  projects: any[];
-  link: {
-    to: string;
-    children: React.ReactNode;
-  };
-};
-
-export const ProjectCarousel = styled.div<ProjectCarouselProps>`
-  background: white;
-  width: 70%;
-  height: 80px;
-`;
-
-export const ProjectCard = styled.div``;
-
 export const Sidebar = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 30%;
-  height: 150px;
   padding-left: 5rem;
+`;
+
+export const DashboardProjectCarousel = styled(ProjectCarousel)`
+  width: 70%;
 `;

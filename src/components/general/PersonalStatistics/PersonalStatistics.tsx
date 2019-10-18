@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import IProject from "../../../types/IProject";
 import { HeadingType } from "../Heading";
 import {
   CarouselButton,
@@ -15,19 +16,13 @@ import {
   FinishedProject
 } from "./styled";
 
-//
-import { projectMock } from "../../../pages/Dashboard/mockData";
-const projects = [
-  projectMock,
-  projectMock,
-  projectMock,
-  projectMock,
-  projectMock
-];
+type PersonalStatisticsProps = {
+  finishedProjects: IProject[];
+};
 
-type PersonalStatisticsProps = {};
-
-const PersonalStatistics: React.FC<PersonalStatisticsProps> = () => {
+const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
+  finishedProjects
+}) => {
   const forwardButton = useRef(null);
   const backButton = useRef(null);
 
@@ -61,9 +56,9 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = () => {
           forwardButton={forwardButton}
           backButton={backButton}
         >
-          {projects.map((project, index) => (
+          {finishedProjects.map((project, index) => (
             <Slide key={index}>
-              <FinishedProject {...project}>Slide {index}</FinishedProject>
+              <FinishedProject {...project} />
             </Slide>
           ))}
         </FinishedProjectsCarousel>

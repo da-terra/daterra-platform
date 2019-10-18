@@ -35,7 +35,7 @@ const themes: DefaultTheme[] = [
       primary: "#434E4D",
       primaryInverted: "#FFFFFF",
       primaryAccent: "#03363E",
-      secondaryAccent: "#D5EEED"
+      secondaryAccent: "#50908B"
     },
 
     shape: {

@@ -7,8 +7,7 @@ import CaseStudies from "../../components/blocks/CaseStudies";
 import Footer from "../../components/blocks/Footer";
 
 // Mock data
-import caseStudies from "../../data/mock/caseStudies.json";
-import ICaseStudy from "../../data/type/ICaseStudy";
+import caseStudies from "../../data/mock/caseStudies";
 
 const LandingCaseStudies = styled(CaseStudies)`
   margin-top: -8rem;
@@ -25,7 +24,7 @@ const Landing: React.FC = () => {
 
       <Navigation />
 
-      <LandingCaseStudies caseStudies={caseStudies as ICaseStudy[]} />
+      <LandingCaseStudies caseStudies={caseStudies} />
 
       <LandingFooter
         address={"787 Chapel Hill Ct, \nHelena \nMontana, 22920"}

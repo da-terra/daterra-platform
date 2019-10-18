@@ -46,7 +46,7 @@ const styleMap = {
 };
 
 export type ParagraphProps = {
-  type?: ParagraphType;
+  paragraphType?: ParagraphType;
   italic?: boolean;
   left?: boolean;
   center?: boolean;
@@ -59,7 +59,7 @@ white-space: pre-line;
   margin: 0;
 
   // Get paragraph style from style map
-  ${props => styleMap[props.type || ParagraphType.Primary]}
+  ${props => styleMap[props.paragraphType || ParagraphType.Primary]}
 
   // Style for align properties
   ${props => props.center && "text-align: center;"}

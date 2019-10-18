@@ -1,5 +1,5 @@
 import React from "react";
-import { IImage } from "../../../data/type/ICaseStudy";
+import IImage from "../../../types/IImage";
 import { AvatarWrapper } from "./styled";
 
 type AvatarProps = IImage & {
@@ -7,13 +7,13 @@ type AvatarProps = IImage & {
 };
 
 const Avatar: React.FC<AvatarProps> = ({
-  url,
+  src,
   alt,
   fallbackColor,
   className
 }) => (
   <AvatarWrapper fallbackColor={fallbackColor} className={className}>
-    <img src={url} alt={alt} />
+    <img src={src} alt={alt} />
   </AvatarWrapper>
 );
 

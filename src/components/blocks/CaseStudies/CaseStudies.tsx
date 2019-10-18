@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import IBlock from "../../../data/type/IBlock";
-import ICaseStudy from "../../../data/type/ICaseStudy";
+import IBlock from "../../../types/IBlock";
+import ICaseStudy from "../../../types/ICaseStudy";
 import Icon from "../../general/Icon";
 import { Wrapper } from "../../../util/layout";
 import CaseStudyCard from "../../general/CaseStudyCard";

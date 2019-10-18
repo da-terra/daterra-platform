@@ -13,11 +13,10 @@ export const CtaContainer = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
-  opacity: 0.5;
 `;
 
 export const SigninButton = styled(Button)`
-  color: ${props => props.theme.copy.primaryAccent} !important;
+  color: ${props => props.theme.copy.secondaryAccent} !important;
   font-size: 1.4rem;
   font-family: ${FontFamily.ROBOTO_SLAB};
 
@@ -27,7 +26,7 @@ export const SigninButton = styled(Button)`
 `;
 
 export const ToggleThemeButton = styled(Button)`
-  color: ${props => props.theme.copy.primaryAccent} !important;
+  color: ${props => props.theme.copy.secondaryAccent} !important;
   width: 24px;
   height: 24px;
   cursor: pointer;

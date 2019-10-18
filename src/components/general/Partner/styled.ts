@@ -4,17 +4,16 @@ import { paragraphCss } from "../Paragraph";
 import Avatar from "../Avatar";
 
 export const Wrapper = styled.div`
-  margin-top: auto;
   display: flex;
   align-items: center;
 `;
 
 export const PartnerAvatar = styled(Avatar)`
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   flex: 1 0 auto;
 `;
 
-export const PartnerLink = styled(Button)`
+export const PartnerLink: React.FC<any> = styled(Button)`
   ${paragraphCss}
 
   display: inline-block;

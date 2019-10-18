@@ -5,6 +5,7 @@ import Carousel from "../Carousel";
 import Heading from "../Heading";
 import Paragraph from "../Paragraph";
 import Button from "../Button";
+import ProjectCard from "../ProjectCard";
 export { default as Icon } from "../Icon";
 
 export const WrapperCard = styled(Card)`
@@ -58,7 +59,7 @@ export const Slide = styled.div`
   }
 `;
 
-export const FinishedProject = styled(Card)`
+export const FinishedProject = styled(ProjectCard)`
   height: 200px;
 `;
 

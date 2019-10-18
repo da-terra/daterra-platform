@@ -1,15 +1,25 @@
 import React from "react";
-import { IPartner } from "../../../data/type/ICaseStudy";
+import IOwner from "../../../types/IOwner";
 import Paragraph, { ParagraphType } from "../Paragraph";
 import { Wrapper, PartnerAvatar, PartnerLink, PartnerDetails } from "./styled";
 
-const Partner: React.FC<IPartner> = ({ image, title, location, link }) => (
-  <Wrapper>
+type PartnerProps = IOwner & {
+  className?: string;
+};
+
+const Partner: React.FC<PartnerProps> = ({
+  className,
+  image,
+  title,
+  location,
+  link
+}) => (
+  <Wrapper className={className}>
     {image && <PartnerAvatar {...image} />}
 
     <PartnerDetails>
       <PartnerLink
-        type={ParagraphType.Small}
+        paragraphType={ParagraphType.Small}
         href={link.href}
         target={link.target}
         title={title}
@@ -17,7 +27,7 @@ const Partner: React.FC<IPartner> = ({ image, title, location, link }) => (
         {title}
       </PartnerLink>
 
-      <Paragraph type={ParagraphType.Muted}>{location}</Paragraph>
+      <Paragraph paragraphType={ParagraphType.Muted}>{location}</Paragraph>
     </PartnerDetails>
   </Wrapper>
 );
