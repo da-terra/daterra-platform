@@ -49,7 +49,7 @@ const themes: DefaultTheme[] = [
 
     input: {
       backgroundColor: "#FFFFFF",
-      borderColor: "#E5F1F1",
+      borderColor: "#D9E2E2",
       copyColor: "#A1A7A6",
       errorColor: "#FF383E",
       warningColor: "#FFA23C"

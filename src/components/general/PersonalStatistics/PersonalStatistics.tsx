@@ -15,6 +15,7 @@ import {
   FinishedProjectsCarousel,
   FinishedProject
 } from "./styled";
+import { ParagraphSize } from "../Paragraph";
 
 type PersonalStatisticsProps = {
   finishedProjects: IProject[];
@@ -32,7 +33,7 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
 
       <HorizontalLine />
 
-      <StatisticsParagraph>
+      <StatisticsParagraph paragraphSize={ParagraphSize.Large}>
         Je score is 622 en je hebt 3 projecten afgerond. Daarmee heb je €1250.00
         euro verdient.
       </StatisticsParagraph>

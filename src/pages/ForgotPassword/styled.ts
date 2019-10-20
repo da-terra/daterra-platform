@@ -31,11 +31,11 @@ export const FormWrapper = styled.div`
   width: 100%;
 `;
 
-export const ForgotPasswordLink = styled(LinkButton)`
+export const BackToSigninButton = styled(LinkButton)`
   margin: 1.5rem auto 0;
 `;
 
-export const ForgetPasswordButton = styled(SolidButton)`
+export const SubmitButton = styled(SolidButton)`
   display: block;
   margin: 4rem auto 0;
 `;

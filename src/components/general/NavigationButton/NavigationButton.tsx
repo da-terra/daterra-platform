@@ -3,8 +3,8 @@ import Button from "../Button";
 import { FontWeight, FontFamily } from "../../../data/style/variables";
 
 const NavigationButton = styled(Button)`
-  font-weight: ${FontWeight.BOLD};
-  font-family: ${FontFamily.ROBOTO_SLAB};
+  font-weight: ${FontWeight.Bold};
+  font-family: ${FontFamily.RobotoSlab};
   color: ${props => props.theme.copy.primaryAccent} !important;
   padding: 0.6rem 0 !important;
   display: inline-block !important;

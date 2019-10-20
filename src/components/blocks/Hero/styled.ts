@@ -16,8 +16,8 @@ export const Slogan = styled.h2`
   position: relative;
   font-size: 6.4rem;
   white-space: pre-line;
-  font-family: ${FontFamily.ROBOTO};
-  font-weight: ${FontWeight.BLACK};
+  font-family: ${FontFamily.Roboto};
+  font-weight: ${FontWeight.Black};
   font-style: italic;
   margin: auto 0;
   padding-bottom: 10rem;

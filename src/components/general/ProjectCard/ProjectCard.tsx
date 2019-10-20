@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { formatDistanceToNow } from "date-fns";
 import IProject from "../../../types/IProject";
 import { HeadingType } from "../Heading";
-import { ParagraphType } from "../Paragraph";
+import { ParagraphSize, ParagraphColor } from "../Paragraph";
 import {
   CardWrapper,
   ProjectTitle,
@@ -33,7 +33,12 @@ const FinishedProject: React.FC<IProject> = ({
       {title}
     </ProjectTitle>
 
-    <FinishedProjectTime as="time" paragraphType={ParagraphType.Muted} italic>
+    <FinishedProjectTime
+      as="time"
+      paragraphSize={ParagraphSize.Small}
+      paragraphColor={ParagraphColor.Muted}
+      italic
+    >
       {formatDistanceToNow(
         new Date(finishedDate!),
         formateDistanceToNowOptions

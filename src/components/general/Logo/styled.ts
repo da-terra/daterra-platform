@@ -4,8 +4,8 @@ import Icon from "../Icon";
 
 export const LogoWrapper = styled.h1`
   color: ${props => props.theme.copy.primaryAccent};
-  font-family: ${FontFamily.ROBOTO_SLAB};
-  font-weight: ${FontWeight.BOLD};
+  font-family: ${FontFamily.RobotoSlab};
+  font-weight: ${FontWeight.Bold};
   font-size: 3.6rem;
   margin: 0;
   display: flex;

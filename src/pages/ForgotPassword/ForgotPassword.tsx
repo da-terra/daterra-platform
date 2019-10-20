@@ -2,12 +2,13 @@ import React from "react";
 import { Page, Circle } from "../../util/layout";
 import PublicHeader from "../../components/blocks/PublicHeader";
 import RoutePath from "../../data/RoutePath";
+import { ParagraphSize } from "../../components/general/Paragraph";
 import {
   FormWrapper,
   Form,
   ForgetPasswordInput,
-  ForgotPasswordLink,
-  ForgetPasswordButton,
+  BackToSigninButton,
+  SubmitButton,
   ButtonWrapper,
   ErrorIcon
 } from "./styled";
@@ -17,7 +18,7 @@ const mockError = {
   message: "Dit veld is verplicht"
 };
 
-const Signin: React.FC = () => {
+const ForgotPassword: React.FC = () => {
   return (
     <Page>
       <Circle x={25} y={-20} />
@@ -32,10 +33,15 @@ const Signin: React.FC = () => {
           />
 
           <ButtonWrapper>
-            <ForgetPasswordButton>Reset wachtwoord</ForgetPasswordButton>
-            <ForgotPasswordLink to={RoutePath.Signin}>
+            <SubmitButton>Reset wachtwoord</SubmitButton>
+
+            <BackToSigninButton
+              to={RoutePath.Signin}
+              paragraphSize={ParagraphSize.Small}
+              serif
+            >
               Inloggen
-            </ForgotPasswordLink>
+            </BackToSigninButton>
           </ButtonWrapper>
         </Form>
       </FormWrapper>
@@ -45,4 +51,4 @@ const Signin: React.FC = () => {
   );
 };
 
-export default Signin;
+export default ForgotPassword;

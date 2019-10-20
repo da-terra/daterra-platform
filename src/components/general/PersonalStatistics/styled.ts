@@ -24,7 +24,6 @@ export const HorizontalLine = styled.hr`
 `;
 
 export const StatisticsParagraph = styled(Paragraph)`
-  letter-spacing: 1.2px;
   margin-right: 2rem;
   margin-bottom: 5rem;
 `;

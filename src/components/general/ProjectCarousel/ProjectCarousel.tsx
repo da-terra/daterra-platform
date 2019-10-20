@@ -2,6 +2,7 @@ import React from "react";
 import IProject from "../../../types/IProject";
 import RoutePath from "../../../data/RoutePath";
 import { HeadingType } from "../Heading";
+import { ParagraphSize } from "../Paragraph";
 import {
   ProjectCarouselWrapper,
   ProjectCarouselHeading,
@@ -40,7 +41,11 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
       ))}
     </ProjectCarouselCards>
 
-    <ProjectCarouselLinkButton to={link.to}>
+    <ProjectCarouselLinkButton
+      to={link.to}
+      paragraphSize={ParagraphSize.Small}
+      serif
+    >
       {link.children}
     </ProjectCarouselLinkButton>
   </ProjectCarouselWrapper>

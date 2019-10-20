@@ -9,7 +9,7 @@ const LandingPage = React.lazy(() => import("../../pages/Landing"));
 const SettingsPage = React.lazy(() => import("../../pages/Settings"));
 const SigninPage = React.lazy(() => import("../../pages/Signin"));
 const ForgetPasswordPage = React.lazy(() =>
-  import("../../pages/ForgetPassword")
+  import("../../pages/ForgotPassword")
 );
 const DashboardPage = React.lazy(() => import("../../pages/Dashboard"));
 const ErrorPage = React.lazy(() => import("../../pages/Error"));
@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle<{ gridSize: number }>`
   }
 
   body {
-    font-family: ${FontFamily.ROBOTO};
+    font-family: ${FontFamily.Roboto};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

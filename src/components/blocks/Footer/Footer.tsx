@@ -3,7 +3,7 @@ import styled from "styled-components";
 import IBlock from "../../../types/IBlock";
 import Logo from "../../general/Logo";
 import Button from "../../general/Button";
-import Paragraph, { ParagraphType } from "../../general/Paragraph";
+import Paragraph, { ParagraphSize } from "../../general/Paragraph";
 import { Wrapper } from "../../../util/layout";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
 import RoutePath from "../../../data/RoutePath";
@@ -26,8 +26,6 @@ const FooterNavigationLink = styled(Button)`
   text-decoration: none;
   display: block;
   text-align: right;
-  font-size: 1.8rem;
-  line-height: 3.3rem;
 
   &:hover {
     text-decoration: underline;
@@ -37,8 +35,8 @@ const FooterNavigationLink = styled(Button)`
 const FooterNavigation = styled.div`
   margin-top: auto;
   margin-left: auto;
-  font-family: ${FontFamily.ROBOTO};
-  font-weight: ${FontWeight.BOLD};
+  font-family: ${FontFamily.Roboto};
+  font-weight: ${FontWeight.Bold};
 `;
 
 type FooterProps = IBlock & {
@@ -59,11 +57,7 @@ const Footer: React.FC<FooterProps> = ({
         <Logo>Studata</Logo>
 
         <FooterContent>
-          <Paragraph
-            as="address"
-            paragraphType={ParagraphType.Secondary}
-            italic
-          >
+          <Paragraph as="address" paragraphSize={ParagraphSize.Small} italic>
             {address}
             {"\n"}
             {"\n"}

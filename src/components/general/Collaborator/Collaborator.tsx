@@ -1,14 +1,14 @@
 import React from "react";
 import IUser from "../../../types/IUser";
-import Paragraph, { ParagraphType } from "../Paragraph";
+import Paragraph, { ParagraphSize } from "../Paragraph";
 import { Wrapper } from "./styled";
 
 const Collaborator: React.FC<IUser> = ({ fullName, tags }) => (
   <Wrapper>
-    <Paragraph paragraphType={ParagraphType.Small}>{fullName}</Paragraph>
+    <Paragraph paragraphSize={ParagraphSize.Small}>{fullName}</Paragraph>
 
     {tags && (
-      <Paragraph paragraphType={ParagraphType.Muted}>
+      <Paragraph paragraphSize={ParagraphSize.Small}>
         {tags.join(" - ")}
       </Paragraph>
     )}

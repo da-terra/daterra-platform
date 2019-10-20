@@ -2,13 +2,14 @@ import React from "react";
 import IBlock from "../../../types/IBlock";
 import RoutePath from "../../../data/RoutePath";
 import { Context as ThemeManagerContext } from "../../ThemeManager";
+import { ParagraphColor, ParagraphSize } from "../../general/Paragraph";
 import Icon from "../../general/Icon";
 import Logo from "../../general/Logo";
 import {
   HeaderWrapper,
   CtaContainer,
-  SigninButton,
-  ToggleThemeButton
+  SigninLinkButton,
+  ToggleThemeLinkButton
 } from "./styled";
 
 const Header: React.FC<IBlock> = () => (
@@ -16,13 +17,23 @@ const Header: React.FC<IBlock> = () => (
     <Logo>Studata</Logo>
 
     <CtaContainer>
-      <SigninButton to={RoutePath.Signin}>Inloggen</SigninButton>
+      <SigninLinkButton
+        to={RoutePath.Signin}
+        paragraphColor={ParagraphColor.SecondaryAccent}
+        paragraphSize={ParagraphSize.Small}
+        serif
+      >
+        Inloggen
+      </SigninLinkButton>
 
       <ThemeManagerContext.Consumer>
         {({ cycleThemes }) => (
-          <ToggleThemeButton onClick={() => cycleThemes()}>
+          <ToggleThemeLinkButton
+            onClick={() => cycleThemes()}
+            paragraphColor={ParagraphColor.SecondaryAccent}
+          >
             <Icon.InvertColor />
-          </ToggleThemeButton>
+          </ToggleThemeLinkButton>
         )}
       </ThemeManagerContext.Consumer>
     </CtaContainer>

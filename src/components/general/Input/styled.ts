@@ -10,7 +10,7 @@ export const Tooltip = styled(IconTooltip)`
 export const Label = styled.label`
   position: absolute;
   left: 3rem;
-  font-weight: ${FontWeight.BLACK};
+  font-weight: ${FontWeight.Black};
   font-size: 1.6rem;
   transition: 0.05s ease-out all;
 `;

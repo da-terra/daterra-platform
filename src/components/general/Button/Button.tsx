@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  FontFamily,
-  ParagraphSize,
-  FontWeight
-} from "../../../data/style/variables";
-import Easings from "../../../data/style/easings";
 import RoutePath from "../../../data/RoutePath";
+import { FontFamily, FontWeight } from "../../../data/style/variables";
+import { paragraphCss } from "../Paragraph";
+import { ButtonElement } from "./styled";
 
 type ButtonProps = {
   children: JSX.Element | string;
@@ -16,28 +13,9 @@ type ButtonProps = {
   target?: "_blank" | "_self";
   title?: string;
   ref?: any;
-  paragraphType?: "submit" | "button";
+  type?: "submit" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
-
-const ButtonElement = styled.button`
-  background: none;
-  border: none;
-  display: inline;
-  font-size: ${ParagraphSize.NORMAL}rem;
-  padding: 0;
-  text-align: left;
-  color: ${props => props.theme.copy.primary};
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ${Easings.easeOutExpo};
-
-  &:disabled,
-  &[disabled] {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-`;
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
   ({ children, ...props }, ref: any) => {
@@ -51,8 +29,8 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
     } else {
       element = "button";
 
-      if (props.paragraphType == null) {
-        attributes.paragraphType = "button";
+      if (props.type == null) {
+        attributes.type = "button";
       }
     }
 
@@ -67,7 +45,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
 export default Button;
 
 /**
- * Extend default button with more styling for more button variants
+ * Extend default button with more styling for button variants
  */
 export const SolidButton = styled(Button)`
   display: inline-block;
@@ -77,8 +55,8 @@ export const SolidButton = styled(Button)`
   line-height: 5rem;
   text-align: center;
   border-radius: 100vw;
-  font-family: ${FontFamily.ROBOTO_SLAB};
-  font-weight: ${FontWeight.BOLD};
+  font-family: ${FontFamily.RobotoSlab};
+  font-weight: ${FontWeight.Bold};
   background: ${props => props.theme.button.solid.backgroundColor}
   color: ${props => props.theme.button.solid.copyColor}
 
@@ -89,10 +67,9 @@ export const SolidButton = styled(Button)`
 `;
 
 export const LinkButton = styled(Button)`
-  font-family: ${FontFamily.ROBOTO_SLAB};
-  font-size: 1.4rem;
+  ${paragraphCss}
+
   text-decoration: underline;
-  color: ${props => props.theme.button.link.copyColor}
 
   &:hover {
     text-decoration: none;

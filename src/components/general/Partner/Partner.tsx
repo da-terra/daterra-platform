@@ -1,6 +1,10 @@
 import React from "react";
 import IOwner from "../../../types/IOwner";
-import Paragraph, { ParagraphType } from "../Paragraph";
+import Paragraph, {
+  ParagraphSize,
+  ParagraphColor,
+  ParagraphWeight
+} from "../Paragraph";
 import { Wrapper, PartnerAvatar, PartnerLink, PartnerDetails } from "./styled";
 
 type PartnerProps = IOwner & {
@@ -19,15 +23,22 @@ const Partner: React.FC<PartnerProps> = ({
 
     <PartnerDetails>
       <PartnerLink
-        paragraphType={ParagraphType.Small}
+        paragraphSize={ParagraphSize.Small}
+        paragraphWeight={ParagraphWeight.Bold}
         href={link.href}
         target={link.target}
         title={title}
+        serif
       >
         {title}
       </PartnerLink>
 
-      <Paragraph paragraphType={ParagraphType.Muted}>{location}</Paragraph>
+      <Paragraph
+        paragraphSize={ParagraphSize.Small}
+        paragraphColor={ParagraphColor.Muted}
+      >
+        {location}
+      </Paragraph>
     </PartnerDetails>
   </Wrapper>
 );

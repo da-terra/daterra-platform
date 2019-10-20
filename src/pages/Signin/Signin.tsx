@@ -12,6 +12,7 @@ import {
   WarningIcon,
   ErrorIcon
 } from "./styled";
+import { ParagraphSize } from "../../components/general/Paragraph";
 
 const mockError = {
   icon: ErrorIcon,
@@ -44,7 +45,11 @@ const Signin: React.FC = () => {
             error={mockWarning}
           />
 
-          <ForgotPasswordLink to={RoutePath.ForgetPassword}>
+          <ForgotPasswordLink
+            to={RoutePath.ForgetPassword}
+            paragraphSize={ParagraphSize.Small}
+            serif
+          >
             wachtwoord vergeten
           </ForgotPasswordLink>
 

@@ -43,13 +43,13 @@ const styleMap = {
 };
 
 const Heading = styled.h1<HeadingProps>`
-  font-weight: ${FontWeight.BOLD}
+  font-weight: ${FontWeight.Bold}
 
   ${props => styleMap[props.type || HeadingType.Primary]}
 
   // Default customization
   font-family: ${props =>
-    props.serif ? FontFamily.ROBOTO_SLAB : FontFamily.ROBOTO};
+    props.serif ? FontFamily.RobotoSlab : FontFamily.Roboto};
 
   font-style: ${props => (props.italic ? "italic" : "normal")};
 `;
