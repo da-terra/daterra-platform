@@ -7,7 +7,7 @@ import {
 } from "date-fns";
 import ICaseStudy from "../../../types/ICaseStudy";
 import { HeadingType } from "../Heading";
-import { ParagraphSize } from "../Paragraph";
+import { ParagraphSize, ParagraphColor } from "../Paragraph";
 import {
   Title,
   TitleWrapper,
@@ -58,6 +58,7 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
         <PublishedAt
           as="time"
           paragraphSize={ParagraphSize.Small}
+          paragraphColor={ParagraphColor.Muted}
           time={publishedDate}
         >
           {relativeTimeFormat.format(value, unit)}
