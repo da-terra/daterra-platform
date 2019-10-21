@@ -9,4 +9,5 @@ export type ParagraphProps = {
   center?: boolean;
   right?: boolean;
   serif?: boolean;
+  preserveWhitespace?: boolean;
 };

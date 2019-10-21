@@ -42,6 +42,8 @@ export const paragraphCss = css<ParagraphProps>`
 
   font-style: ${props => (props.italic ? "italic" : "normal")};
 
+  ${props => props.preserveWhitespace && "white-space: pre-line"}
+
   // Style for align properties
   ${props => props.center && "text-align: center;"}
   ${props => props.left && "text-align: left;"}
@@ -55,6 +57,10 @@ export const paragraphCss = css<ParagraphProps>`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  time {
+    font-style: italic;
   }
 `;
 

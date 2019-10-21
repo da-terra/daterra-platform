@@ -1,84 +1,20 @@
-import React, { Fragment } from "react";
-import { formatDistanceToNow } from "date-fns";
+import React from "react";
 import IProject from "../../../types/IProject";
-import { HeadingType } from "../Heading";
-import { ParagraphSize, ParagraphColor } from "../Paragraph";
-import {
-  CardWrapper,
-  ProjectTitle,
-
-  // Finished project
-  FinishedProjectPartner,
-  FinishedProjectTime,
-
-  // Active project
-  ActiveProjectPartner,
-
-  // New Project
-  NewProjectPartner
-} from "./styled";
-
-const formateDistanceToNowOptions = {
-  addSuffix: true,
-  includeSeconds: true
-};
-
-const FinishedProject: React.FC<IProject> = ({
-  title,
-  finishedDate,
-  owner
-}) => (
-  <Fragment>
-    <ProjectTitle type={HeadingType.Secondary} serif>
-      {title}
-    </ProjectTitle>
-
-    <FinishedProjectTime
-      as="time"
-      paragraphSize={ParagraphSize.Small}
-      paragraphColor={ParagraphColor.Muted}
-      italic
-    >
-      {formatDistanceToNow(
-        new Date(finishedDate!),
-        formateDistanceToNowOptions
-      )}
-    </FinishedProjectTime>
-
-    <FinishedProjectPartner {...owner} />
-  </Fragment>
-);
-
-const ActiveProject: React.FC<IProject> = ({ title, finishedDate, owner }) => (
-  <Fragment>
-    <ActiveProjectPartner {...owner} />
-
-    <ProjectTitle type={HeadingType.Secondary} serif>
-      {title}
-    </ProjectTitle>
-  </Fragment>
-);
-
-const NewProject: React.FC<IProject> = ({ title, finishedDate, owner }) => (
-  <Fragment>
-    <NewProjectPartner {...owner} />
-
-    <ProjectTitle type={HeadingType.Secondary} serif>
-      {title}
-    </ProjectTitle>
-  </Fragment>
-);
+import FinishedProjectCard from "./cards/FinishedProjectCard";
+import ActiveProjectCard from "./cards/ActiveProjectCard";
+import NewProjectCard from "./cards/NewProjectCard";
+import { CardWrapper } from "./styled";
 
 const getContentComponent = (props: IProject) => {
   if (props.finishedDate) {
-    return FinishedProject;
+    return FinishedProjectCard;
   }
 
   if (props.publishedDate) {
-    return ActiveProject;
+    return ActiveProjectCard;
   }
 
-  return NewProject;
+  return NewProjectCard;
 };
 
 const ProjectCard: React.FC<IProject> = props => {

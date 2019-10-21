@@ -7,7 +7,8 @@ import { paragraphCss } from "../Paragraph";
 import { ButtonElement } from "./styled";
 
 type ButtonProps = {
-  children: JSX.Element | string;
+  className?: string;
+  children: React.ReactNode;
   to?: RoutePath;
   href?: string;
   target?: "_blank" | "_self";
@@ -15,10 +16,28 @@ type ButtonProps = {
   ref?: any;
   type?: "submit" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+
+  //
+  paragraphSize?: any;
+  paragraphType?: any;
+  paragraphWeight?: any;
+  paragraphColor?: any;
+  serif?: any;
 };
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
-  ({ children, ...props }, ref: any) => {
+  (
+    {
+      children,
+      paragraphSize,
+      paragraphType,
+      paragraphWeight,
+      paragraphColor,
+      serif,
+      ...props
+    },
+    ref: any
+  ) => {
     let element: any;
     const attributes = { ...props };
 

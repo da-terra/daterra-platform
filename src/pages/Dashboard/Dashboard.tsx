@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
           }}
           projects={[
             { ...activeProject, uuid: "1" },
-            { ...activeProject, uuid: "1" }
+            { ...activeProject, uuid: "2" }
           ]}
         />
 
@@ -54,7 +54,7 @@ const Dashboard: React.FC = () => {
           }}
           projects={[
             { ...newProject, uuid: "1" },
-            { ...newProject, uuid: "1" }
+            { ...newProject, uuid: "2" }
           ]}
         />
       </Wrapper>

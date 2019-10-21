@@ -3,7 +3,7 @@ import React from "react";
 type GatewayProps = {
   url: string;
   options: RequestInit;
-  children: JSX.Element;
+  children: React.ReactNode;
 };
 
 export const Context = React.createContext({

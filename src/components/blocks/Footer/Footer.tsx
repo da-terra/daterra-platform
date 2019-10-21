@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import IBlock from "../../../types/IBlock";
 import Logo from "../../general/Logo";
-import Button from "../../general/Button";
-import Paragraph, { ParagraphSize } from "../../general/Paragraph";
+import NavigationButton from "../../general/NavigationButton";
+import Paragraph, {
+  ParagraphSize,
+  ParagraphWeight
+} from "../../general/Paragraph";
 import { Wrapper } from "../../../util/layout";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
 import RoutePath from "../../../data/RoutePath";
@@ -22,15 +25,19 @@ const FooterContent = styled.div`
   margin-top: 5rem;
 `;
 
-const FooterNavigationLink = styled(Button)`
-  text-decoration: none;
+const FooterNavigationLink = styled(NavigationButton)`
   display: block;
   text-align: right;
 
-  &:hover {
-    text-decoration: underline;
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
   }
 `;
+
+const footerNavigationLinkPreset = {
+  serif: true,
+  paragraphWeight: ParagraphWeight.Bold
+};
 
 const FooterNavigation = styled.div`
   margin-top: auto;
@@ -67,13 +74,22 @@ const Footer: React.FC<FooterProps> = ({
           </Paragraph>
 
           <FooterNavigation>
-            <FooterNavigationLink to={RoutePath.ForBusiness}>
+            <FooterNavigationLink
+              to={RoutePath.ForBusiness}
+              {...footerNavigationLinkPreset}
+            >
               Voor Bedrijven
             </FooterNavigationLink>
-            <FooterNavigationLink to={RoutePath.ForStudents}>
+            <FooterNavigationLink
+              to={RoutePath.ForStudents}
+              {...footerNavigationLinkPreset}
+            >
               Voor Studenten
             </FooterNavigationLink>
-            <FooterNavigationLink to={RoutePath.ForExperts}>
+            <FooterNavigationLink
+              to={RoutePath.ForExperts}
+              {...footerNavigationLinkPreset}
+            >
               Voor Experts
             </FooterNavigationLink>
           </FooterNavigation>
