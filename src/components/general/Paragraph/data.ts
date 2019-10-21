@@ -13,7 +13,7 @@ export enum ParagraphWeight {
 }
 
 export enum ParagraphSize {
-  Large,
-  Normal,
-  Small
+  Large = "Large",
+  Normal = "Normal",
+  Small = "Small"
 }
