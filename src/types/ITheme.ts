@@ -37,14 +37,14 @@ declare module "styled-components" {
       primaryInverted: string;
       primaryAccent: string;
       secondaryAccent: string;
+      warning: string;
+      error: string;
     };
 
     input: {
       backgroundColor: string;
       borderColor: string;
       copyColor: string;
-      errorColor: string;
-      warningColor: string;
     };
 
     font: {

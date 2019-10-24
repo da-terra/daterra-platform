@@ -1,7 +1,6 @@
 import React from "react";
 import { Page, Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
-import PublicHeader from "../../components/blocks/PublicHeader";
 import {
   FormWrapper,
   Form,
@@ -58,8 +57,6 @@ const Signin: React.FC = () => {
           </ButtonWrapper>
         </Form>
       </FormWrapper>
-
-      <PublicHeader />
     </Page>
   );
 };

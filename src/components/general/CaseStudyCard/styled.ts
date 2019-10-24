@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Card } from "../../../util/layout";
 import Paragraph from "../Paragraph";
 import Heading from "../Heading";
+import BaseCollaborator from "../Collaborator";
 
-export { default as Partner } from "../Partner";
-export { default as Collaborator } from "../Collaborator";
+export { default as Owner } from "../User";
 
 /**
  * Card element
@@ -15,15 +15,23 @@ export const CaseStudyCard = styled(Card)`
   flex-direction: column;
 `;
 
+export const Collaborator = styled(BaseCollaborator)`
+  margin-bottom: 1.5rem;
+`
+
 /**
  * Title element
  */
 export const Title = styled(Heading)`
-  margin: 0 0 1rem 0;
+  margin: 0;
 `;
 
+export const Description = styled(Paragraph)`
+  margin-top: 1rem;
+`
+
 export const TitleWrapper = styled.div`
-  margin: 0 0 auto 0;
+  margin-bottom: auto;
 `;
 
 /**
@@ -34,5 +42,6 @@ type PublishedAtProps = {
 };
 
 export const PublishedAt = styled(Paragraph)<PublishedAtProps>`
-  margin: 0;
+  margin: 0 0 1rem 0;
+  display: block;
 `;

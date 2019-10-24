@@ -4,8 +4,9 @@ import { ParagraphWeight, ParagraphSize } from "./data";
 import { ParagraphProps } from "./types";
 
 const large = css`
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 3.2rem;
+  letter-spacing: 1.1px;
 `;
 
 const normal = css`

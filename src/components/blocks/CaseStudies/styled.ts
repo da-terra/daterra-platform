@@ -66,11 +66,7 @@ export const Slide = styled.div`
   padding: 5rem 2.5rem;
   width: 100%;
 
-  @media (min-width: 600px) {
-    width: calc(100% / 2);
-  }
-
   @media (min-width: 1200px) {
-    width: calc(100% / 3);
+    width: calc(100% / 2);
   }
 `;

@@ -10,10 +10,11 @@ import { HeadingType } from "../Heading";
 import { ParagraphSize, ParagraphColor } from "../Paragraph";
 import {
   Title,
+  Description,
   TitleWrapper,
   CaseStudyCard as Card,
   PublishedAt,
-  Partner,
+  Owner,
   Collaborator
 } from "./styled";
 
@@ -29,7 +30,8 @@ enum TimeFormatUnit {
 const CaseStudyCard: React.FC<ICaseStudy> = ({
   team: collaborators,
   title,
-  owner: partner,
+  summary,
+  owner,
   publishedDate
 }) => {
   const date = parseISO(publishedDate);
@@ -57,15 +59,23 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
 
         <PublishedAt
           as="time"
-          paragraphSize={ParagraphSize.Small}
           paragraphColor={ParagraphColor.Muted}
+          paragraphSize={ParagraphSize.Small}
           time={publishedDate}
         >
           {relativeTimeFormat.format(value, unit)}
         </PublishedAt>
+
+        <Description
+          paragraphColor={ParagraphColor.Muted}
+          paragraphSize={ParagraphSize.Small}
+          italic
+        >
+          {summary}
+        </Description>
       </TitleWrapper>
 
-      <Partner {...partner} />
+      <Owner prefix="Geschreven door:" {...owner} />
     </Card>
   );
 };

@@ -7,9 +7,13 @@ import Paragraph, {
 } from "../Paragraph";
 import { Wrapper } from "./styled";
 
+type CollaboratorProps = IUser & {
+  className?: string;
+}
+
 // TODO Discuss if this should be renamed to Author, Author seems more appropiate to me
-const Collaborator: React.FC<IUser> = ({ fullName, tags }) => (
-  <Wrapper>
+const Collaborator: React.FC<CollaboratorProps> = ({ fullName, tags, className }) => (
+  <Wrapper className={className}>
     <Paragraph
       paragraphSize={ParagraphSize.Small}
       paragraphWeight={ParagraphWeight.Bold}

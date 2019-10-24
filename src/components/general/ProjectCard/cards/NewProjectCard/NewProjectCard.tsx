@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
-import { ProjectPartner, ProjectTitle } from "./styled";
+import { ProjectOwner, ProjectTitle } from "./styled";
 
 const NewProjectCard: React.FC<IProject> = ({ title, finishedDate, owner }) => (
   <Fragment>
-    <ProjectPartner {...owner} />
+    <ProjectOwner {...owner} />
 
     <ProjectTitle type={HeadingType.Secondary} serif>
       {title}

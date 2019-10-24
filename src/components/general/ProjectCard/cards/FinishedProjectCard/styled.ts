@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Partner from "../../../Partner";
+import Owner from "../../../User";
 import Paragraph from "../../../Paragraph";
 import Heading from "../../../Heading";
 
@@ -7,7 +7,7 @@ export const ProjectTitle = styled(Heading)`
   margin: 0;
 `;
 
-export const ProjectPartner = styled(Partner)`
+export const ProjectOwner = styled(Owner)`
   margin-top: auto;
 `;
 

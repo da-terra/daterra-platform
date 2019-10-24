@@ -3,7 +3,7 @@ import IProject from "../../../types/IProject";
 import FinishedProjectCard from "./cards/FinishedProjectCard";
 import ActiveProjectCard from "./cards/ActiveProjectCard";
 import NewProjectCard from "./cards/NewProjectCard";
-import { CardWrapper } from "./styled";
+import { CardWrapper, FallbackCardWrapper } from "./styled";
 
 const getContentComponent = (props: IProject) => {
   if (props.finishedDate) {
@@ -26,5 +26,7 @@ const ProjectCard: React.FC<IProject> = props => {
     </CardWrapper>
   );
 };
+
+export const ProjectCardFallback = <FallbackCardWrapper />;
 
 export default ProjectCard;

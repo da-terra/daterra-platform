@@ -1,6 +1,6 @@
 type IImage = {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   fallbackColor: string;
 };
 

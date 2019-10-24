@@ -7,3 +7,8 @@ export const CardWrapper = styled(Card)`
   display: flex;
   flex-direction: column;
 `;
+
+export const FallbackCardWrapper = styled(Card)`
+  min-height: 25rem;
+  opacity: 0.5;
+`;

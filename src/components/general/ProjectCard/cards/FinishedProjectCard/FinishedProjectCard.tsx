@@ -3,7 +3,7 @@ import { formatDistanceToNow } from "date-fns";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
 import { ParagraphSize, ParagraphColor } from "../../../Paragraph";
-import { ProjectTitle, Time, ProjectPartner } from "./styled";
+import { ProjectTitle, Time, ProjectOwner } from "./styled";
 
 const formateDistanceToNowOptions = {
   addSuffix: true,
@@ -32,7 +32,7 @@ const FinishedProject: React.FC<IProject> = ({
       )}
     </Time>
 
-    <ProjectPartner {...owner} />
+    <ProjectOwner {...owner} />
   </Fragment>
 );
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Page, Circle } from "../../util/layout";
-import PublicHeader from "../../components/blocks/PublicHeader";
 import RoutePath from "../../data/RoutePath";
 import { ParagraphSize } from "../../components/general/Paragraph";
 import {
@@ -45,8 +44,6 @@ const ForgotPassword: React.FC = () => {
           </ButtonWrapper>
         </Form>
       </FormWrapper>
-
-      <PublicHeader />
     </Page>
   );
 };

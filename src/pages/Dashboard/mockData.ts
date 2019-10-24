@@ -1,19 +1,18 @@
 import IProject from "../../types/IProject";
+import Roles from "../../data/Roles";
 
 export const finishedProject: IProject = {
   uuid: "e5072e42-dd55-475a-b1b5-b0908b290db5",
+
   owner: {
     image: {
       src: "https://source.unsplash.com/100x100/?avatar",
-      alt: "Foto van Ijsselvliet",
+      alt: "Foto van Lennard Koning",
       fallbackColor: "#eee"
     },
-    link: {
-      href: "https://google.com/",
-      target: "_blank"
-    },
-    title: "Hogeschool Windesheim",
-    location: "Zwolle"
+    email: "lennard.koning@studata.nl",
+    fullName: "Lennard Koning",
+    role: Roles.Expert
   },
 
   team: [
@@ -25,7 +24,32 @@ export const finishedProject: IProject = {
       },
       fullName: "Matthias Verweij",
       email: "matthias.verweij@studata.nl",
-      phone: "+31 06 12 34 56 78"
+      phone: "+31 06 12 34 56 78",
+      role: Roles.Student
+    },
+
+    {
+      image: {
+        src: "https://source.unsplash.com/100x100/?person",
+        alt: "Profiel foto van Alex Damman",
+        fallbackColor: "#eee"
+      },
+      fullName: "Alex Damman",
+      email: "alex.damman@studata.nl",
+      phone: "+31 06 12 34 56 78",
+      role: Roles.Student
+    },
+
+    {
+      image: {
+        src: "https://source.unsplash.com/100x100/?avatar",
+        alt: "Profiel foto van Marien Zwarts",
+        fallbackColor: "#eee"
+      },
+      fullName: "Marien Zwarts",
+      email: "marien.zwarts@studata.nl",
+      phone: "+31 06 12 34 56 78",
+      role: Roles.Expert
     }
   ],
 
@@ -34,7 +58,7 @@ export const finishedProject: IProject = {
 
   duration: {
     startDate: "2019-10-08T14:52:23.474Z",
-    endDate: "2019-10-08T14:52:23.474Z"
+    endDate: "2019-10-31T14:52:23.474Z"
   },
   publishedDate: "2019-10-08T14:52:23.474Z",
   finishedDate: "2019-10-08T14:52:23.474Z",

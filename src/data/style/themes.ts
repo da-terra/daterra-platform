@@ -35,7 +35,9 @@ const themes: DefaultTheme[] = [
       primary: "#434E4D",
       primaryInverted: "#FFFFFF",
       primaryAccent: "#03363E",
-      secondaryAccent: "#50908B"
+      secondaryAccent: "#50908B",
+      warning: "#FFA23C",
+      error: "#E8181E"
     },
 
     shape: {
@@ -50,9 +52,7 @@ const themes: DefaultTheme[] = [
     input: {
       backgroundColor: "#FFFFFF",
       borderColor: "#D9E2E2",
-      copyColor: "#A1A7A6",
-      errorColor: "#FF383E",
-      warningColor: "#FFA23C"
+      copyColor: "#A1A7A6"
     },
 
     tooltip: {

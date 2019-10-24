@@ -3,7 +3,9 @@ export enum ParagraphColor {
   Primary = "primary",
   PrimaryInverted = "primaryInverted",
   PrimaryAccent = "primaryAccent",
-  SecondaryAccent = "secondaryAccent"
+  SecondaryAccent = "secondaryAccent",
+  Error = "error",
+  Warning = "warning"
 }
 
 export enum ParagraphWeight {

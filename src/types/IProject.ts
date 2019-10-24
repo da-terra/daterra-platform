@@ -1,11 +1,10 @@
 import IUser from "./IUser";
-import IOwner from "./IOwner";
 
 type IProject = {
   uuid: string;
 
-  owner: IOwner;
-  team?: IUser[];
+  owner: IUser;
+  team: IUser[];
 
   title: string;
   tags: string[];
@@ -14,6 +13,7 @@ type IProject = {
     startDate: string;
     endDate: string;
   };
+
   publishedDate: string | undefined;
   finishedDate: string | undefined;
 

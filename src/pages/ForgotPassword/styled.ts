@@ -4,11 +4,11 @@ import { SolidButton, LinkButton } from "../../components/general/Button";
 import Input from "../../components/general/Input";
 
 export const WarningIcon = styled(Icon.Warning)`
-  fill: ${props => props.theme.input.warningColor};
+  fill: ${props => props.theme.copy.warning};
 `;
 
 export const ErrorIcon = styled(Icon.Error)`
-  fill: ${props => props.theme.input.errorColor};
+  fill: ${props => props.theme.copy.error};
 `;
 
 export const ForgetPasswordInput = styled(Input)`

@@ -1,10 +1,10 @@
-import IOwner from "./IOwner";
 import IUser from "./IUser";
 
 type ICaseStudy = {
   uuid: string;
   title: string;
-  owner: IOwner;
+  summary: string;
+  owner: IUser;
   team: IUser[];
   createdDate: string;
   publishedDate: string;
