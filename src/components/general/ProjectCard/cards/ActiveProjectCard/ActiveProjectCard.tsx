@@ -3,7 +3,7 @@ import { formatDistanceToNow, isAfter } from "date-fns";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
 import { ParagraphColor } from "../../../Paragraph";
-import { ProjectOwner, ProjectTitle, Times, Paragraph, Team } from "./styled";
+import { ProjectOwner, ProjectTitle, Times, Paragraph, ProjectTeamSummary } from "./styled";
 
 const formateDistanceToNowOptions = {
   addSuffix: true,
@@ -23,7 +23,7 @@ const ActiveProjectCard: React.FC<IProject> = ({
     <Fragment>
       <ProjectOwner {...owner} />
 
-      <ProjectTitle type={HeadingType.Secondary} serif>
+      <ProjectTitle headingType={HeadingType.Secondary} serif>
         {title}
       </ProjectTitle>
 
@@ -56,7 +56,7 @@ const ActiveProjectCard: React.FC<IProject> = ({
         </Paragraph>
       </Times>
 
-      <Team team={team} />
+      <ProjectTeamSummary team={team} />
     </Fragment>
   );
 };

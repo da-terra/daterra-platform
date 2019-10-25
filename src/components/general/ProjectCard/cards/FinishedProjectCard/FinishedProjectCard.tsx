@@ -16,7 +16,7 @@ const FinishedProject: React.FC<IProject> = ({
   owner
 }) => (
   <Fragment>
-    <ProjectTitle type={HeadingType.Secondary} serif>
+    <ProjectTitle headingType={HeadingType.Secondary} serif>
       {title}
     </ProjectTitle>
 

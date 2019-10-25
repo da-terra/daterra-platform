@@ -9,7 +9,7 @@ export enum HeadingType {
 }
 
 export type HeadingProps = {
-  type?: HeadingType;
+  headingType?: HeadingType;
   serif?: boolean;
   italic?: boolean;
 };
@@ -45,7 +45,7 @@ const styleMap = {
 const Heading = styled.h1<HeadingProps>`
   font-weight: ${FontWeight.Bold}
 
-  ${props => styleMap[props.type || HeadingType.Primary]}
+  ${props => styleMap[props.headingType || HeadingType.Primary]}
 
   // Default customization
   font-family: ${props =>

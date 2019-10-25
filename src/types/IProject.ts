@@ -1,8 +1,10 @@
 import IUser from "./IUser";
+import ICompany from "./ICompany";
 
 type IProject = {
   uuid: string;
 
+  company: ICompany;
   owner: IUser;
   team: IUser[];
 

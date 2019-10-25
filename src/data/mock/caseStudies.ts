@@ -18,7 +18,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
     },
     team: [
       {
@@ -30,7 +30,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
       }
     ]
   },
@@ -51,7 +51,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
     },
     team: [
       {
@@ -63,7 +63,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
       }
     ]
   },
@@ -84,7 +84,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
     },
     team: [
       {
@@ -96,7 +96,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
       }
     ]
   },
@@ -117,7 +117,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
     },
     team: [
       {
@@ -129,7 +129,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
       }
     ]
   },
@@ -150,7 +150,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
     },
     team: [
       {
@@ -162,7 +162,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
       }
     ]
   },
@@ -183,7 +183,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
     },
     team: [
       {
@@ -195,7 +195,7 @@ const caseStudies: ICaseStudy[] = [
           fallbackColor: "#0ff"
         },
         tags: ["Student", "Product Owner"],
-        role: Roles.Student
+        role: Roles.Developer
       }
     ]
   }

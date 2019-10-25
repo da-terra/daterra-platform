@@ -15,7 +15,6 @@ import {
   CaseStudyCard as Card,
   PublishedAt,
   Owner,
-  Collaborator
 } from "./styled";
 
 // @ts-ignore
@@ -28,7 +27,6 @@ enum TimeFormatUnit {
 }
 
 const CaseStudyCard: React.FC<ICaseStudy> = ({
-  team: collaborators,
   title,
   summary,
   owner,
@@ -50,10 +48,8 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
 
   return (
     <Card>
-      <Collaborator {...collaborators[0]} />
-
       <TitleWrapper>
-        <Title type={HeadingType.Secondary} serif>
+        <Title headingType={HeadingType.Secondary} serif>
           {title}
         </Title>
 

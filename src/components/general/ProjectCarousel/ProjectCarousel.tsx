@@ -29,7 +29,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
   title
 }) => (
   <ProjectCarouselWrapper className={className}>
-    <ProjectCarouselHeading type={HeadingType.Tertiary}>
+    <ProjectCarouselHeading headingType={HeadingType.Tertiary}>
       {title}
     </ProjectCarouselHeading>
 

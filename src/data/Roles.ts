@@ -1,7 +1,7 @@
 enum Roles {
   External = 1 << 0,
-  Student = 1 << 1,
-  Expert = 1 << 2,
+  Developer = 1 << 1,
+  Lead = 1 << 2,
   Admin = 1 << 3
 }
 

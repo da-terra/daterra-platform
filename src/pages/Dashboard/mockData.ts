@@ -4,6 +4,15 @@ import Roles from "../../data/Roles";
 export const finishedProject: IProject = {
   uuid: "e5072e42-dd55-475a-b1b5-b0908b290db5",
 
+  company: {
+    image: {
+      src: "https://source.unsplash.com/100x100/?logo",
+      alt: "Foto van Lennard Koning",
+      fallbackColor: "#eee"
+    },
+    title: "Hogeschool Windesheim"
+  },
+
   owner: {
     image: {
       src: "https://source.unsplash.com/100x100/?avatar",
@@ -12,7 +21,7 @@ export const finishedProject: IProject = {
     },
     email: "lennard.koning@studata.nl",
     fullName: "Lennard Koning",
-    role: Roles.Expert
+    role: Roles.Lead
   },
 
   team: [
@@ -25,7 +34,7 @@ export const finishedProject: IProject = {
       fullName: "Matthias Verweij",
       email: "matthias.verweij@studata.nl",
       phone: "+31 06 12 34 56 78",
-      role: Roles.Student
+      role: Roles.Developer
     },
 
     {
@@ -37,7 +46,7 @@ export const finishedProject: IProject = {
       fullName: "Alex Damman",
       email: "alex.damman@studata.nl",
       phone: "+31 06 12 34 56 78",
-      role: Roles.Student
+      role: Roles.Developer
     },
 
     {
@@ -49,7 +58,7 @@ export const finishedProject: IProject = {
       fullName: "Marien Zwarts",
       email: "marien.zwarts@studata.nl",
       phone: "+31 06 12 34 56 78",
-      role: Roles.Expert
+      role: Roles.Lead
     }
   ],
 

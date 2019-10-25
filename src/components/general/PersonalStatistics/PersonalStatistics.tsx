@@ -29,7 +29,7 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
 
   return (
     <WrapperCard inverted>
-      <Greeting type={HeadingType.Secondary}>Hey Matthias</Greeting>
+      <Greeting headingType={HeadingType.Secondary}>Hey Matthias</Greeting>
 
       <HorizontalLine />
 
@@ -38,7 +38,7 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
         euro verdient.
       </StatisticsParagraph>
 
-      <CarouselTitle type={HeadingType.Quaternary}>
+      <CarouselTitle headingType={HeadingType.Quaternary}>
         Afgeronde projecten
       </CarouselTitle>
 
