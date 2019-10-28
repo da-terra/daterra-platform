@@ -19,6 +19,7 @@ const Landing: React.FC = () => {
 
       <LandingPartnerHighlight partners={[
         {
+          uuid: "1",
           title: "Ijsselvliet",
           image: {
             src: require('../../components/blocks/PartnerHighlight/partners/ijsselvliet.png'),
@@ -32,6 +33,7 @@ const Landing: React.FC = () => {
           }
         },
         {
+          uuid: "2",
           title: "Wehkamp",
           image: {
             src: require('../../components/blocks/PartnerHighlight/partners/wehkamp.svg'),
