@@ -75,19 +75,19 @@ const Footer: React.FC<FooterProps> = ({
 
           <FooterNavigation>
             <FooterNavigationLink
-              to={RoutePath.ForBusiness}
+              to={RoutePath.Dashboard}
               {...footerNavigationLinkPreset}
             >
               Voor Bedrijven
             </FooterNavigationLink>
             <FooterNavigationLink
-              to={RoutePath.ForStudents}
+              to={RoutePath.Dashboard}
               {...footerNavigationLinkPreset}
             >
               Voor Studenten
             </FooterNavigationLink>
             <FooterNavigationLink
-              to={RoutePath.ForExperts}
+              to={RoutePath.Dashboard}
               {...footerNavigationLinkPreset}
             >
               Voor Experts

@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
         <DashboardProjectCarousel
           title="Actieve projecten"
           link={{
-            to: RoutePath.Home,
+            to: RoutePath.Dashboard,
             children: "Bekijk mijn actieve projecten"
           }}
           projects={[
@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
         <DashboardProjectCarousel
           title="Nieuwe projecten"
           link={{
-            to: RoutePath.Home,
+            to: RoutePath.Dashboard,
             children: "Bekijk nieuwe projecten"
           }}
           projects={[
