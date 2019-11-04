@@ -1,8 +1,9 @@
 enum RoutePath {
-  All = "*",
 
   // Content pages
-  Home = "/",
+  ContentPage = "/:page",
+  All = "*",
+
   ForBusiness = "/business",
   ForStudents = "/students",
   ForExperts = "/data-scientists",

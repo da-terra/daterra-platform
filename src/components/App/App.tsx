@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { FontFamily } from "../../data/style/variables";
 import RoutePath from "../../data/RoutePath";
 import ThemeManager from "../ThemeManager";
+import Gateway from "../Gateway";
 
-const LandingPage = React.lazy(() => import("../../pages/Landing"));
+const ContentPage = React.lazy(() => import("../../pages/ContentPage"));
 const SettingsPage = React.lazy(() => import("../../pages/Settings"));
 const SigninPage = React.lazy(() => import("../../pages/Signin"));
 const ForgetPassword = React.lazy(() => import("../../pages/ForgetPassword"));
-const ErrorPage = React.lazy(() => import("../../pages/Error"));
 
 const GlobalStyle = createGlobalStyle<{ gridSize: number }>`
   html,
@@ -42,20 +42,22 @@ const App: React.FC = () => {
         <GlobalStyle gridSize={10} />
 
         <ThemeManager>
-          <Suspense fallback="Loading...">
-            <Switch>
-              <Route path={RoutePath.Home} exact component={LandingPage} />
-              <Route path={RoutePath.Settings} exact component={SettingsPage} />
-              <Route path={RoutePath.Signin} exact component={SigninPage} />
-              <Route
-                path={RoutePath.ForgetPassword}
-                exact
-                component={ForgetPassword}
-              />
+          <Gateway  fetchUrl={window.location.origin} fetchOptions={{}} graphQlUrl="http://localhost:4000/graphql">
+            <Suspense fallback="Loading...">
+                <Switch>
+                  <Route path={RoutePath.Settings} exact component={SettingsPage} />
+                  <Route path={RoutePath.Signin} exact component={SigninPage} />
+                  <Route
+                    path={RoutePath.ForgetPassword}
+                    exact
+                    component={ForgetPassword}
+                  />
 
-              <Route path={RoutePath.All} status={404} component={ErrorPage} />
-            </Switch>
-          </Suspense>
+                  <Route path={RoutePath.ContentPage} exact component={ContentPage} />
+                  <Route path={RoutePath.All} exact component={ContentPage} />
+                </Switch>
+              </Suspense>
+            </Gateway>
         </ThemeManager>
       </Fragment>
     </Router>

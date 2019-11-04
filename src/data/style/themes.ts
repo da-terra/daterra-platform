@@ -28,7 +28,7 @@ const themes: DefaultTheme[] = [
       invertForeground: "#FFFFFF",
       mutedForeground: "#A1A7A6",
       accentForeground: "#50908B",
-      darkAccent: "#03363E",
+      darkAccent: "#2BB48B",
       lightAccent: "#D1E9E8",
       lighterAccent: "#D5EEED"
     },
