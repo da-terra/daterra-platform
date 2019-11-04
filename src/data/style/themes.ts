@@ -8,9 +8,15 @@ const themes: DefaultTheme[] = [
     button: {
       solid: {
         backgroundColor: "#03363E",
-        hoverBackgroundColor: "#175C66",
         copyColor: "#FFFFFF",
-        hoverCopyColor: "#FFFFFF"
+        shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
+        radius: "12px"
+      },
+      solidInverted: {
+        backgroundColor: "#FFFFFF",
+        copyColor: "#434E4D",
+        shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
+        radius: "12px"
       },
       link: {
         copyColor: "#03363E"
@@ -26,8 +32,7 @@ const themes: DefaultTheme[] = [
     background: {
       primary: "#F8FBFB",
       secondary: "#FFFFFF",
-      primaryAccent: "#03363E",
-      secondaryAccent: "#D5EEED"
+      accent: "#2BB48B"
     },
 
     copy: {

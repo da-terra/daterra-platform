@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-  background: ${props => props.theme.background.primaryAccent};
+  background: ${props => props.theme.background.accent};
   width: calc(50vw - 10rem);
   height: calc(100% + 15rem);
   right: calc(50% + 10rem);

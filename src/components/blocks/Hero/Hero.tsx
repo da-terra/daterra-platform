@@ -1,7 +1,7 @@
 import React from "react";
 import IBlock from "../../../types/IBlock";
 import { Circle } from "../../../util/layout";
-import { Background, Content, Slogan } from "./styled";
+import { Background, Content, Slogan, ButtonWrapper, TargetButton } from "./styled";
 import Header from "../PublicHeader";
 
 const Hero: React.FC<IBlock> = ({ className }) => (
@@ -11,7 +11,13 @@ const Hero: React.FC<IBlock> = ({ className }) => (
     <Header />
 
     <Content>
-      <Slogan>Maakt Data Science {"\n"}Toegankelijk</Slogan>
+      <Slogan>Data in actie</Slogan>
+
+      <ButtonWrapper>
+        <TargetButton inverted>Ik ben hier namens een bedrijf</TargetButton>
+        <TargetButton inverted muted>Ik ben een student</TargetButton>
+        <TargetButton inverted muted>Ik ben een expert</TargetButton>
+      </ButtonWrapper>
     </Content>
   </Background>
 );

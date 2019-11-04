@@ -9,17 +9,22 @@ declare module "styled-components" {
     background: {
       primary: string;
       secondary: string;
-      primaryAccent: string;
-      secondaryAccent: string;
+      accent: string;
     };
 
     button: {
       solid: {
         backgroundColor: string;
-        hoverBackgroundColor: string;
         copyColor: string;
-        hoverCopyColor: string;
+        shadow: string;
+        radius: string;
       };
+      solidInverted: {
+        backgroundColor: string;
+        copyColor: string;
+        shadow: string;
+        radius: string;
+      }
       link: {
         copyColor: string;
       };

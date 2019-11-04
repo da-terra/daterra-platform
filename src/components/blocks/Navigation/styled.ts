@@ -14,4 +14,11 @@ export const NavigationWrapper = styled(Wrapper)`
 
 export const LoginButton = styled(LinkButton)`
   margin-left: auto;
+  opacity: .5;
+  transition: opacity .2s;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 1;
+  }
 `

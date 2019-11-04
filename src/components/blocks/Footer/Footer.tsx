@@ -12,7 +12,7 @@ import { FontFamily, FontWeight } from "../../../data/style/variables";
 import RoutePath from "../../../data/RoutePath";
 
 const FooterContainer = styled.div`
-  border-top: 2px solid ${props => props.theme.background.primaryAccent};
+  border-top: 2px solid ${props => props.theme.background.accent};
 `;
 
 const FooterWrapper = styled(Wrapper)`

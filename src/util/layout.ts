@@ -46,7 +46,7 @@ export const Card = styled.div<CardProps>`
 
   background: ${props =>
     props.inverted
-      ? props.theme.background.primaryAccent
+      ? props.theme.background.accent
       : props.theme.background.primary};
 
   color: ${props =>

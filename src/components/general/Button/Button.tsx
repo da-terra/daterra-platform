@@ -17,7 +17,7 @@ type ButtonProps = {
   type?: "submit" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
-  //
+  // Button can be styled like a paragraph
   paragraphSize?: any;
   paragraphType?: any;
   paragraphWeight?: any;
@@ -63,31 +63,49 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
 
 export default Button;
 
+type SolidButtonProps = ButtonProps & {
+  inverted?: boolean;
+  muted?: boolean;
+};
+
 /**
  * Extend default button with more styling for button variants
  */
-export const SolidButton = styled(Button)`
+export const SolidButton = styled(Button)<SolidButtonProps>`
   display: inline-block;
-  padding: 0 6rem;
+  padding: 1.8rem 3rem
   font-size: 1.6rem;
-  min-height: 6rem;
-  line-height: 5rem;
   text-align: center;
-  border-radius: 100vw;
   font-family: ${FontFamily.RobotoSlab};
   font-weight: ${FontWeight.Bold};
-  background: ${props => props.theme.button.solid.backgroundColor}
-  color: ${props => props.theme.button.solid.copyColor}
+  outline: none;
+
+  ${props =>
+    props.inverted
+      ? `
+    background: ${props.theme.button.solidInverted.backgroundColor}
+    color: ${props.theme.button.solidInverted.copyColor}
+    border-radius: ${props.theme.button.solidInverted.radius}
+    `
+      : `
+    background: ${props.theme.button.solid.backgroundColor}
+    color: ${props.theme.button.solid.copyColor}
+    border-radius: ${props.theme.button.solid.radius}
+    `}
+
+  ${props =>
+    props.muted &&
+    `
+    opacity: .65;
+  `}
 
   &:hover {
-    background: ${props => props.theme.button.solid.hoverBackgroundColor}
-    color: ${props => props.theme.button.solid.hoverCopyColor}
+    opacity: 1;
   }
 `;
 
 export const LinkButton = styled(Button)`
   ${paragraphCss}
-
   text-decoration: underline;
 
   &:hover {

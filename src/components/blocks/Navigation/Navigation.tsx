@@ -1,9 +1,12 @@
 import React from "react";
 import { NavigationWrapper, LoginButton } from "./styled";
+import { ParagraphColor } from "../../general/Paragraph";
 
 const Navigation: React.FC = () => (
   <NavigationWrapper>
-    <LoginButton>Inloggen</LoginButton>
+    <LoginButton paragraphColor={ParagraphColor.PrimaryInverted} serif>
+      Inloggen
+    </LoginButton>
   </NavigationWrapper>
 );
 
