@@ -2,14 +2,21 @@ import React from "react";
 import { LogoWrapper, LogoIcon } from "./styled";
 
 type LogoProps = {
-  children?: React.ReactNode;
+  showName?: boolean;
+  size?: LogoSize;
+  className?: string;
 };
 
-const Logo: React.FC<LogoProps> = ({ children }) => (
-  <LogoWrapper>
+export enum LogoSize {
+  Large,
+  Normal
+}
+
+const Logo: React.FC<LogoProps> = ({ className, showName, size }) => (
+  <LogoWrapper className={className} size={size}>
     <LogoIcon />
 
-    {children && <div>{children}</div>}
+    {showName && <div>Studata</div>}
   </LogoWrapper>
 );
 

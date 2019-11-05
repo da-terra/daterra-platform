@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <FooterContainer className={className}>
       <FooterWrapper>
-        <Logo>Studata</Logo>
+        <Logo showName />
 
         <FooterContent>
           <Paragraph as="address" paragraphSize={ParagraphSize.Small} italic>

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Wrapper } from "../../../util/layout";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
 import { SolidButton } from "../../general/Button";
+import Logo from "../../general/Logo";
+export { Circle } from "../../../util/layout";
 
 export const Background = styled.div`
   background: ${props => props.theme.background.accent};
@@ -10,6 +12,12 @@ export const Background = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+`;
+
+export const HeroLogo = styled(Logo)`
+  margin-top: 5rem;
+  margin-bottom: auto;
+  color: ${props => props.theme.copy.primaryInverted};
 `;
 
 export const Slogan = styled.h2`

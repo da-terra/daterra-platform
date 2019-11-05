@@ -46,7 +46,7 @@ const themes: DefaultTheme[] = [
     },
 
     shape: {
-      background: "rgba(0, 0, 0, 0.02)"
+      background: "rgba(0, 0, 0, 0.05)"
     },
 
     font: {

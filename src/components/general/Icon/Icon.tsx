@@ -6,6 +6,7 @@ import { ReactComponent as GraphicEq } from "./svg/graphic_eq.svg";
 import { ReactComponent as Help } from "./svg/help.svg";
 import { ReactComponent as InvertColor } from "./svg/invert_colors.svg";
 import { ReactComponent as Warning } from "./svg/warning.svg";
+import { ReactComponent as Logo } from "./svg/logo.svg";
 
 export default {
   ArrowBack,
@@ -16,5 +17,6 @@ export default {
   Help,
   Info: Error,
   InvertColor,
+  Logo,
   Warning
 };

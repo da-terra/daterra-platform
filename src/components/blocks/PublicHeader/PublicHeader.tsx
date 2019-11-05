@@ -14,7 +14,7 @@ import {
 
 const Header: React.FC<IBlock> = () => (
   <HeaderWrapper>
-    <Logo>Studata</Logo>
+    <Logo showName />
 
     <CtaContainer>
       <SigninLinkButton
