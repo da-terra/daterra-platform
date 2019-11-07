@@ -2,8 +2,14 @@ import React, { Fragment } from "react";
 import { formatDistanceToNow, isAfter } from "date-fns";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
-import { ParagraphColor } from "../../../Paragraph";
-import { ProjectOwner, ProjectTitle, Times, Paragraph, ProjectTeamSummary } from "./styled";
+import { FontColor } from "../../../../../data/style/variables";
+import {
+  ProjectOwner,
+  ProjectTitle,
+  Times,
+  Paragraph,
+  ProjectTeamSummary
+} from "./styled";
 
 const formateDistanceToNowOptions = {
   addSuffix: true,
@@ -29,9 +35,7 @@ const ActiveProjectCard: React.FC<IProject> = ({
 
       <Times>
         <Paragraph
-          paragraphColor={
-            isPastDeadline ? ParagraphColor.Error : ParagraphColor.Primary
-          }
+          fontColor={isPastDeadline ? FontColor.Error : FontColor.Primary}
           preserveWhitespace
         >
           <strong>Deadline</strong>
@@ -44,7 +48,7 @@ const ActiveProjectCard: React.FC<IProject> = ({
           </time>
         </Paragraph>
 
-        <Paragraph paragraphColor={ParagraphColor.Muted} preserveWhitespace>
+        <Paragraph fontColor={FontColor.Muted} preserveWhitespace>
           <strong>Laatste update</strong>
           {"\n"}
           <time dateTime={updatedDate}>

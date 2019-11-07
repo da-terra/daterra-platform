@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Wrapper } from "../../../util/layout";
+import Wrapper from "../../general/Wrapper";
 import { LinkButton } from "../../general/Button";
 
 export const HeaderWrapper = styled(Wrapper)`

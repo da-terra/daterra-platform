@@ -24,7 +24,7 @@ declare module "styled-components" {
         copyColor: string;
         shadow: string;
         radius: string;
-      }
+      };
       link: {
         copyColor: string;
       };
@@ -38,6 +38,7 @@ declare module "styled-components" {
 
     copy: {
       muted: string;
+      mutedInverted: string;
       primary: string;
       primaryInverted: string;
       primaryAccent: string;

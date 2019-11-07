@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import IProject from "../../../types/IProject";
 import { HeadingType } from "../Heading";
+import { FontSize } from "../../../data/style/variables";
 import {
   CarouselButton,
   CarouselControls,
@@ -15,7 +16,6 @@ import {
   FinishedProjectsCarousel,
   FinishedProject
 } from "./styled";
-import { ParagraphSize } from "../Paragraph";
 
 type PersonalStatisticsProps = {
   finishedProjects: IProject[];
@@ -33,7 +33,7 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
 
       <HorizontalLine />
 
-      <StatisticsParagraph paragraphSize={ParagraphSize.Large}>
+      <StatisticsParagraph fontSize={FontSize.Large}>
         Je score is 622 en je hebt 3 projecten afgerond. Daarmee heb je €1250.00
         euro verdient.
       </StatisticsParagraph>

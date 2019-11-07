@@ -30,13 +30,14 @@ const themes: DefaultTheme[] = [
     },
 
     background: {
-      primary: "#F8FBFB",
+      primary: "#F9F9F9",
       secondary: "#FFFFFF",
       accent: "#2BB48B"
     },
 
     copy: {
-      muted: "#A1A7A6",
+      muted: "rgba(75, 84, 92, .2)",
+      mutedInverted: "rgba(255, 255, 255, .5)",
       primary: "#434E4D",
       primaryInverted: "#FFFFFF",
       primaryAccent: "#03363E",

@@ -1,7 +1,9 @@
 import React from "react";
-import { Page, Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
+import { Circle } from "../../util/layout";
+import { FontSize } from "../../data/style/variables";
 import {
+  Page,
   FormWrapper,
   Form,
   SigninInput,
@@ -11,7 +13,6 @@ import {
   WarningIcon,
   ErrorIcon
 } from "./styled";
-import { ParagraphSize } from "../../components/general/Paragraph";
 
 const mockError = {
   icon: ErrorIcon,
@@ -45,8 +46,8 @@ const Signin: React.FC = () => {
           />
 
           <ForgotPasswordLink
-            to={RoutePath.ForgetPassword}
-            paragraphSize={ParagraphSize.Small}
+            href={RoutePath.ForgetPassword}
+            fontSize={FontSize.Small}
             serif
           >
             wachtwoord vergeten

@@ -7,14 +7,14 @@ import {
 } from "date-fns";
 import ICaseStudy from "../../../types/ICaseStudy";
 import { HeadingType } from "../Heading";
-import { ParagraphSize, ParagraphColor } from "../Paragraph";
+import { FontColor, FontSize } from "../../../data/style/variables";
 import {
   Title,
   Description,
   TitleWrapper,
   CaseStudyCard as Card,
   PublishedAt,
-  Owner,
+  Owner
 } from "./styled";
 
 // @ts-ignore
@@ -55,16 +55,16 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
 
         <PublishedAt
           as="time"
-          paragraphColor={ParagraphColor.Muted}
-          paragraphSize={ParagraphSize.Small}
+          fontColor={FontColor.Muted}
+          fontSize={FontSize.Small}
           time={publishedDate}
         >
           {relativeTimeFormat.format(value, unit)}
         </PublishedAt>
 
         <Description
-          paragraphColor={ParagraphColor.Muted}
-          paragraphSize={ParagraphSize.Small}
+          fontColor={FontColor.Muted}
+          fontSize={FontSize.Small}
           italic
         >
           {summary}

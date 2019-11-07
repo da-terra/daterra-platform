@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import IBlock from "../../../types/IBlock";
 import ICaseStudy from "../../../types/ICaseStudy";
 import Icon from "../../general/Icon";
-import { Wrapper } from "../../../util/layout";
+import Wrapper from "../../general/Wrapper";
 import CaseStudyCard from "../../general/CaseStudyCard";
 import {
   Container,

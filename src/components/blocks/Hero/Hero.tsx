@@ -1,34 +1,46 @@
 import React from "react";
-import IBlock from "../../../types/IBlock";
 import { LogoSize } from "../../general/Logo";
+import { FontWeight } from "../../../data/style/variables";
 import {
   Background,
   Circle,
+  HeroLogoWrapper,
   HeroLogo,
   Content,
+  CtaGroup,
   Slogan,
   ButtonWrapper,
   TargetButton
 } from "./styled";
 
-const Hero: React.FC<IBlock> = ({ className }) => (
-  <Background className={className}>
-    <Circle x={-30} y={-50} />
+type HeroProps = {
+  slogan: string;
+  buttons: {
+    uuid: string;
+    children: string;
+  }[];
+};
+
+const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => (
+  <Background>
+    <Circle x={-33} y={-45} radius={200} />
 
     <Content>
-      <HeroLogo size={LogoSize.Large} showName />
+      <HeroLogoWrapper>
+        <HeroLogo size={LogoSize.Large} showName />
+      </HeroLogoWrapper>
 
-      <Slogan>Data in actie</Slogan>
+      <CtaGroup>
+        <Slogan fontWeight={FontWeight.Black}>{slogan}</Slogan>
 
-      <ButtonWrapper>
-        <TargetButton inverted>Ik ben hier namens een bedrijf</TargetButton>
-        <TargetButton inverted muted>
-          Ik ben een student
-        </TargetButton>
-        <TargetButton inverted muted>
-          Ik ben een expert
-        </TargetButton>
-      </ButtonWrapper>
+        <ButtonWrapper>
+          {buttons.map(({ children, ...props }) => (
+            <TargetButton inverted {...props} key={props.uuid}>
+              {children}
+            </TargetButton>
+          ))}
+        </ButtonWrapper>
+      </CtaGroup>
     </Content>
   </Background>
 );

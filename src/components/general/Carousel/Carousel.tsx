@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Easings from "../../../data/style/easings";
 
 const CarouselWrapper = styled.div`
   position: relative;
@@ -7,7 +8,7 @@ const CarouselWrapper = styled.div`
 
 const ItemWrapper = styled.div`
   display: flex;
-  transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 1.25s ${Easings.easeOutExpo};
 `;
 
 type CarouselProps = {

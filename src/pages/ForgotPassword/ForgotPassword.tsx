@@ -1,8 +1,9 @@
 import React from "react";
-import { Page, Circle } from "../../util/layout";
+import { Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
-import { ParagraphSize } from "../../components/general/Paragraph";
+import { FontSize } from "../../data/style/variables";
 import {
+  Page,
   FormWrapper,
   Form,
   ForgetPasswordInput,
@@ -35,8 +36,8 @@ const ForgotPassword: React.FC = () => {
             <SubmitButton>Reset wachtwoord</SubmitButton>
 
             <BackToSigninButton
-              to={RoutePath.Signin}
-              paragraphSize={ParagraphSize.Small}
+              href={RoutePath.Signin}
+              fontSize={FontSize.Small}
               serif
             >
               Inloggen

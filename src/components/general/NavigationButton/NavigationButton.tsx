@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { LinkButton } from "../Button";
-import { ParagraphWeight } from "../Paragraph";
+import { FontWeight } from "../../../data/style/variables";
 import RoutePath from "../../../data/RoutePath";
 
 type NavigationButtonProps = {
   className?: string;
   children: React.ReactNode;
-  to: RoutePath;
+  href: RoutePath;
 };
 
 const StyledComponent = styled(LinkButton)`
@@ -20,17 +20,17 @@ const StyledComponent = styled(LinkButton)`
   }
 `;
 
-const paragraphPreset = {
-  serif: true,
-  paragraphWeight: ParagraphWeight.Bold
-};
-
 const NavigationButton: React.FC<NavigationButtonProps> = ({
   className,
   children,
-  to
+  href
 }) => (
-  <StyledComponent to={to} className={className} {...paragraphPreset}>
+  <StyledComponent
+    href={href}
+    className={className}
+    fontWeight={FontWeight.Bold}
+    serif
+  >
     {children}
   </StyledComponent>
 );

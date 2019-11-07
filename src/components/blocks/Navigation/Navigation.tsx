@@ -1,11 +1,17 @@
 import React from "react";
+import { FontColor } from "../../../data/style/variables";
 import { NavigationWrapper, LoginButton } from "./styled";
-import { ParagraphColor } from "../../general/Paragraph";
 
-const Navigation: React.FC = () => (
+type NavigationProps = {
+  button: {
+    children: React.ReactNode;
+  };
+};
+
+const Navigation: React.FC<NavigationProps> = ({ button }) => (
   <NavigationWrapper>
-    <LoginButton paragraphColor={ParagraphColor.PrimaryInverted} serif>
-      Inloggen
+    <LoginButton fontColor={FontColor.PrimaryInverted} serif>
+      {button.children}
     </LoginButton>
   </NavigationWrapper>
 );

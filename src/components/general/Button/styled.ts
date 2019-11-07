@@ -9,7 +9,15 @@ export const ButtonElement = styled.button`
   color: ${props => props.theme.copy.primary};
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ${Easings.easeOutExpo};
+  transition: all 1.8s ${Easings.easeOutCubic};
+
+  &:hover,
+  &:disabled,
+  &[disabled],
+  &.muted {
+    transition-duration: 0.6s;
+    transition-timing-function: ${Easings.easeOutExpo};
+  }
 
   &:disabled,
   &[disabled] {

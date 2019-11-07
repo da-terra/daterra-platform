@@ -2,7 +2,7 @@ import React from "react";
 import IProject from "../../../types/IProject";
 import RoutePath from "../../../data/RoutePath";
 import { HeadingType } from "../Heading";
-import { ParagraphSize, ParagraphColor } from "../Paragraph";
+import { FontColor, FontSize } from "../../../data/style/variables";
 import {
   ProjectCarouselWrapper,
   ProjectCarouselHeading,
@@ -15,7 +15,7 @@ import {
 type ProjectCarouselProps = {
   className?: string;
   link: {
-    to: RoutePath;
+    href: RoutePath;
     children: string;
   };
   projects: IProject[];
@@ -42,9 +42,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
     </ProjectCarouselCards>
 
     <ProjectCarouselLinkButton
-      to={link.to}
-      paragraphSize={ParagraphSize.Small}
-      paragraphColor={ParagraphColor.PrimaryAccent}
+      href={link.href}
+      fontSize={FontSize.Small}
+      fontColor={FontColor.PrimaryAccent}
       serif
     >
       {link.children}

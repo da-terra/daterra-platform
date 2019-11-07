@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Input from "../../components/general/Input";
-import { Wrapper } from "../../util/layout";
+import Wrapper from "../../components/general/Wrapper";
 import ProjectCarousel from "../../components/general/ProjectCarousel";
 
-export { Page, Circle, Wrapper } from "../../util/layout";
+export { Circle } from "../../util/layout";
+export { default as Page } from "../../components/general/Page";
+export { default as Wrapper } from "../../components/general/Wrapper";
 export { default as Header } from "../../components/blocks/Header";
 export {
   default as PersonalStatistics

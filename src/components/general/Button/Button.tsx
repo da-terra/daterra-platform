@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import RoutePath from "../../../data/RoutePath";
 import { FontFamily, FontWeight } from "../../../data/style/variables";
 import { paragraphCss } from "../Paragraph";
 import { ButtonElement } from "./styled";
@@ -9,8 +8,8 @@ import { ButtonElement } from "./styled";
 type ButtonProps = {
   className?: string;
   children: React.ReactNode;
-  to?: RoutePath;
   href?: string;
+  to?: string;
   target?: "_blank" | "_self";
   title?: string;
   ref?: any;
@@ -18,33 +17,35 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
   // Button can be styled like a paragraph
-  paragraphSize?: any;
-  paragraphType?: any;
-  paragraphWeight?: any;
-  paragraphColor?: any;
-  serif?: any;
+  fontSize?: any;
+  fontWeight?: any;
+  fontColor?: any;
+  serif?: boolean;
+  inverted?: boolean;
 };
+
+const externalLinkPattern = /^https?:\/\//i;
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
   (
-    {
-      children,
-      paragraphSize,
-      paragraphType,
-      paragraphWeight,
-      paragraphColor,
-      serif,
-      ...props
-    },
+    { children, fontSize, fontWeight, fontColor, serif, inverted, ...props },
     ref: any
   ) => {
     let element: any;
     const attributes = { ...props };
 
-    if (props.to) {
-      element = Link;
-    } else if (props.href) {
+    const isExternalLink = props.href && externalLinkPattern.test(props.href);
+    const isInternalLink = !isExternalLink && props.href;
+
+    if (isExternalLink) {
       element = "a";
+
+      delete attributes.to;
+    } else if (isInternalLink) {
+      element = Link;
+
+      delete attributes.href;
+      attributes.to = props.href;
     } else {
       element = "button";
 
@@ -73,8 +74,8 @@ type SolidButtonProps = ButtonProps & {
  */
 export const SolidButton = styled(Button)<SolidButtonProps>`
   display: inline-block;
-  padding: 1.8rem 3rem
-  font-size: 1.6rem;
+  padding: 2rem 2.5rem
+  font-size: 1.8rem;
   text-align: center;
   font-family: ${FontFamily.RobotoSlab};
   font-weight: ${FontWeight.Bold};
@@ -86,11 +87,13 @@ export const SolidButton = styled(Button)<SolidButtonProps>`
     background: ${props.theme.button.solidInverted.backgroundColor}
     color: ${props.theme.button.solidInverted.copyColor}
     border-radius: ${props.theme.button.solidInverted.radius}
+    box-shadow: ${props.theme.button.solidInverted.shadow}
     `
       : `
     background: ${props.theme.button.solid.backgroundColor}
     color: ${props.theme.button.solid.copyColor}
     border-radius: ${props.theme.button.solid.radius}
+    box-shadow: ${props.theme.button.solid.shadow}
     `}
 
   ${props =>
@@ -106,9 +109,4 @@ export const SolidButton = styled(Button)<SolidButtonProps>`
 
 export const LinkButton = styled(Button)`
   ${paragraphCss}
-  text-decoration: underline;
-
-  &:hover {
-    text-decoration: none;
-  }
 `;

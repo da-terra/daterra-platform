@@ -1,6 +1,6 @@
 import React from "react";
 import IUser from "../../../types/IUser";
-import { ParagraphWeight, ParagraphSize, ParagraphColor } from "../Paragraph";
+import { FontColor, FontSize, FontWeight } from "../../../data/style/variables";
 import { Wrapper, UserAvatar, NameWrapper, FullName, Prefix } from "./styled";
 
 type UserProps = IUser & {
@@ -14,19 +14,12 @@ const User: React.FC<UserProps> = ({ className, image, prefix, fullName }) => (
 
     <NameWrapper>
       {prefix && (
-        <Prefix
-          paragraphSize={ParagraphSize.Small}
-          paragraphColor={ParagraphColor.Muted}
-          italic
-        >
+        <Prefix fontSize={FontSize.Small} fontColor={FontColor.Muted} italic>
           {prefix}
         </Prefix>
       )}
 
-      <FullName
-        paragraphWeight={ParagraphWeight.Bold}
-        serif
-      >
+      <FullName fontWeight={FontWeight.Bold} serif>
         {fullName}
       </FullName>
     </NameWrapper>

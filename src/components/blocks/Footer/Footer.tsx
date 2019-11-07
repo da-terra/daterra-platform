@@ -1,101 +1,124 @@
 import React from "react";
-import styled from "styled-components";
-import IBlock from "../../../types/IBlock";
-import Logo from "../../general/Logo";
-import NavigationButton from "../../general/NavigationButton";
-import Paragraph, {
-  ParagraphSize,
-  ParagraphWeight
-} from "../../general/Paragraph";
-import { Wrapper } from "../../../util/layout";
-import { FontFamily, FontWeight } from "../../../data/style/variables";
-import RoutePath from "../../../data/RoutePath";
+import { HeadingType } from "../../general/Heading";
+import { FontColor, FontWeight, FontSize } from "../../../data/style/variables";
+import {
+  Wrapper,
+  Heading,
+  Background,
+  Top,
+  SocialWrapper,
+  SocialNetworks,
+  SocialNetworkLink,
+  SocialNetworkImage,
+  Sitemap,
+  SitemapGroup,
+  SitemapGroupTag,
+  SitemapGroupLinks,
+  LinkButton,
+  Bottom,
+  Logo,
+  Disclaimer
+} from "./styled";
 
-const FooterContainer = styled.div`
-  border-top: 2px solid ${props => props.theme.background.accent};
-`;
-
-const FooterWrapper = styled(Wrapper)`
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-`;
-
-const FooterContent = styled.div`
-  display: flex;
-  margin-top: 5rem;
-`;
-
-const FooterNavigationLink = styled(NavigationButton)`
-  display: block;
-  text-align: right;
-
-  &:not(:last-child) {
-    margin-bottom: 0.5rem;
-  }
-`;
-
-const footerNavigationLinkPreset = {
-  serif: true,
-  paragraphWeight: ParagraphWeight.Bold
+type Link = {
+  href: string;
+  title: string;
+  target?: "_blank" | "_self";
 };
 
-const FooterNavigation = styled.div`
-  margin-top: auto;
-  margin-left: auto;
-  font-family: ${FontFamily.Roboto};
-  font-weight: ${FontWeight.Bold};
-`;
+type SocialNetwork = {
+  uuid: string;
+  image: {
+    src: string;
+    alt: string;
+    fallbackColor: string;
+  };
+  link: Link;
+};
 
-type FooterProps = IBlock & {
-  address: string;
-  phone: string;
-  email: string;
+type SitemapGroup = {
+  uuid: string;
+  tag: "Blog";
+  links: ({ uuid: string } & Link)[];
+};
+
+type FooterProps = {
+  socialNetworks: SocialNetwork[];
+  sitemap: SitemapGroup[];
+  disclaimer: string;
 };
 
 const Footer: React.FC<FooterProps> = ({
-  className,
-  address,
-  phone,
-  email
+  socialNetworks,
+  sitemap,
+  disclaimer
 }) => {
+  const renderedSocialNetworks = (
+    <SocialNetworks>
+      {socialNetworks.map(socialNetwork => (
+        <SocialNetworkLink {...socialNetwork.link} key={socialNetwork.uuid}>
+          <SocialNetworkImage {...socialNetwork.image} />
+        </SocialNetworkLink>
+      ))}
+    </SocialNetworks>
+  );
+
   return (
-    <FooterContainer className={className}>
-      <FooterWrapper>
-        <Logo showName />
+    <Background>
+      <Wrapper>
+        <Top>
+          <SocialWrapper>
+            <Heading
+              headingType={HeadingType.Secondary}
+              fontWeight={FontWeight.Black}
+            >
+              Vind ons op
+            </Heading>
 
-        <FooterContent>
-          <Paragraph as="address" paragraphSize={ParagraphSize.Small} italic>
-            {address}
-            {"\n"}
-            {"\n"}
-            <a href={`tel:${phone}`}>{phone}</a>
-            {"\n"}
-            <a href={`mailto:${email}`}>{email}</a>
-          </Paragraph>
+            {renderedSocialNetworks}
+          </SocialWrapper>
 
-          <FooterNavigation>
-            <FooterNavigationLink
-              to={RoutePath.Dashboard}
-              {...footerNavigationLinkPreset}
-            >
-              Voor Bedrijven
-            </FooterNavigationLink>
-            <FooterNavigationLink
-              to={RoutePath.Dashboard}
-              {...footerNavigationLinkPreset}
-            >
-              Voor Studenten
-            </FooterNavigationLink>
-            <FooterNavigationLink
-              to={RoutePath.Dashboard}
-              {...footerNavigationLinkPreset}
-            >
-              Voor Experts
-            </FooterNavigationLink>
-          </FooterNavigation>
-        </FooterContent>
-      </FooterWrapper>
-    </FooterContainer>
+          <Sitemap>
+            {sitemap.map(({ uuid, tag, links }) => (
+              <SitemapGroup key={uuid}>
+                <SitemapGroupTag
+                  fontColor={FontColor.MutedInverted}
+                  fontSize={FontSize.Large}
+                  fontWeight={FontWeight.Black}
+                >
+                  {tag}
+                </SitemapGroupTag>
+
+                <SitemapGroupLinks>
+                  {links.map(link => (
+                    <LinkButton
+                      {...link}
+                      key={link.uuid}
+                      fontSize={FontSize.Large}
+                      fontWeight={FontWeight.Bold}
+                    >
+                      {link.title}
+                    </LinkButton>
+                  ))}
+                </SitemapGroupLinks>
+              </SitemapGroup>
+            ))}
+          </Sitemap>
+        </Top>
+
+        <Bottom>
+          <Logo />
+
+          <Disclaimer
+            fontWeight={FontWeight.Bold}
+            fontColor={FontColor.MutedInverted}
+            italic
+          >
+            {disclaimer}
+          </Disclaimer>
+        </Bottom>
+      </Wrapper>
+    </Background>
   );
 };
 

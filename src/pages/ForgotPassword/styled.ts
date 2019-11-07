@@ -3,6 +3,8 @@ import Icon from "../../components/general/Icon";
 import { SolidButton, LinkButton } from "../../components/general/Button";
 import Input from "../../components/general/Input";
 
+export { default as Page } from "../../components/general/Page";
+
 export const WarningIcon = styled(Icon.Warning)`
   fill: ${props => props.theme.copy.warning};
 `;

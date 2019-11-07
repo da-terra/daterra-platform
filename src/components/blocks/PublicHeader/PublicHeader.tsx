@@ -2,7 +2,7 @@ import React from "react";
 import IBlock from "../../../types/IBlock";
 import RoutePath from "../../../data/RoutePath";
 import { Context as ThemeManagerContext } from "../../ThemeManager";
-import { ParagraphColor, ParagraphSize } from "../../general/Paragraph";
+import { FontColor, FontSize } from "../../../data/style/variables";
 import Icon from "../../general/Icon";
 import Logo from "../../general/Logo";
 import {
@@ -18,9 +18,9 @@ const Header: React.FC<IBlock> = () => (
 
     <CtaContainer>
       <SigninLinkButton
-        to={RoutePath.Signin}
-        paragraphColor={ParagraphColor.SecondaryAccent}
-        paragraphSize={ParagraphSize.Small}
+        href={RoutePath.Signin}
+        fontColor={FontColor.SecondaryAccent}
+        fontSize={FontSize.Small}
         serif
       >
         Inloggen
@@ -30,7 +30,7 @@ const Header: React.FC<IBlock> = () => (
         {({ cycleThemes }) => (
           <ToggleThemeLinkButton
             onClick={() => cycleThemes()}
-            paragraphColor={ParagraphColor.SecondaryAccent}
+            fontColor={FontColor.SecondaryAccent}
           >
             <Icon.InvertColor />
           </ToggleThemeLinkButton>

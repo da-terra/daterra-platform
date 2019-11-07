@@ -1,5 +1,21 @@
-import styled, { css } from "styled-components";
-import { FontFamily, FontWeight } from "../../../data/style/variables";
+import styled from "styled-components";
+import {
+  FontFamily,
+  FontWeight,
+  FontColor
+} from "../../../data/style/variables";
+import { primary, secondary, tertiary, quaternary } from "./styled";
+
+export type HeadingProps = {
+  headingType?: HeadingType;
+  fontWeight?: FontWeight;
+  fontColor?: FontColor;
+  serif?: boolean;
+  italic?: boolean;
+  center?: boolean;
+  left?: boolean;
+  right?: boolean;
+};
 
 export enum HeadingType {
   Primary,
@@ -8,33 +24,7 @@ export enum HeadingType {
   Quaternary
 }
 
-export type HeadingProps = {
-  headingType?: HeadingType;
-  serif?: boolean;
-  italic?: boolean;
-};
-
-const primary = css`
-  font-size: 4.8rem;
-  line-height: 5.8rem;
-`;
-
-const secondary = css`
-  font-size: 2.5rem;
-  line-height: 3.8rem;
-`;
-
-const tertiary = css`
-  font-size: 2rem;
-  line-height: 2.8rem;
-`;
-
-const quaternary = css`
-  font-size: 1.6rem;
-  line-height: 2rem;
-`;
-
-// Map to get the right styles for the right type
+// Styles map to get the right styles for the right type
 const styleMap = {
   [HeadingType.Primary]: primary,
   [HeadingType.Secondary]: secondary,
@@ -43,15 +33,22 @@ const styleMap = {
 };
 
 const Heading = styled.h1<HeadingProps>`
-  font-weight: ${FontWeight.Bold}
-
   ${props => styleMap[props.headingType || HeadingType.Primary]}
 
-  // Default customization
+  white-space: pre-line;
+  margin: 0;
+
+  color: ${props =>
+    props.fontColor ? props.theme.copy[props.fontColor] : "currentColor"};
+  font-weight: ${props => props.fontWeight || FontWeight.Bold}
   font-family: ${props =>
     props.serif ? FontFamily.RobotoSlab : FontFamily.Roboto};
 
-  font-style: ${props => (props.italic ? "italic" : "normal")};
+  // Style for alignment and style
+  ${props => props.center && "text-align: center;"}
+  ${props => props.left && "text-align: left;"}
+  ${props => props.right && "text-align: right;"}
+  ${props => props.italic && "font-style: italic;"};
 `;
 
 export default Heading;

@@ -1,5 +1,11 @@
-import React from "react";
-import { LogoWrapper, LogoIcon } from "./styled";
+import React, { Fragment } from "react";
+import {
+  LogoWrapper,
+  NormalLogo,
+  NormalLogoName,
+  LargeLogo,
+  LargeLogoName
+} from "./styled";
 
 type LogoProps = {
   showName?: boolean;
@@ -12,11 +18,29 @@ export enum LogoSize {
   Normal
 }
 
-const Logo: React.FC<LogoProps> = ({ className, showName, size }) => (
-  <LogoWrapper className={className} size={size}>
-    <LogoIcon />
+const Logo: React.FC<LogoProps> = ({
+  className,
+  showName,
+  size = LogoSize.Normal
+}) => (
+  <LogoWrapper
+    className={className}
+    href={window.location.origin}
+    rel="noopener"
+  >
+    {size === LogoSize.Normal && (
+      <Fragment>
+        <NormalLogo />
+        {showName && <NormalLogoName>Studata</NormalLogoName>}
+      </Fragment>
+    )}
 
-    {showName && <div>Studata</div>}
+    {size === LogoSize.Large && (
+      <Fragment>
+        <LargeLogo />
+        {showName && <LargeLogoName>Studata</LargeLogoName>}
+      </Fragment>
+    )}
   </LogoWrapper>
 );
 

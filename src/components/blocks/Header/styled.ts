@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { Wrapper } from "../../../util/layout";
-import Logo from "../../general/Logo";
-import { ParagraphProps } from "../../general/Paragraph/types";
+import Wrapper from "../../general/Wrapper";
 import { LinkButton } from "../../general/Button";
 
-export const HeaderLogo = Logo;
+export { default as HeaderLogo } from "../../general/Logo";
 
 export const HeaderWrapper = styled(Wrapper)`
   display: flex;
@@ -18,7 +16,7 @@ export const NavigationWrapper = styled.ul`
   margin-left: 3rem;
 `;
 
-export const NavigationButton = styled(LinkButton)<ParagraphProps>`
+export const NavigationButton = styled(LinkButton)`
   text-decoration: none;
 
   &:not(:last-child) {

@@ -1,6 +1,6 @@
 import React from "react";
 import IBlock from "../../../types/IBlock";
-import { ParagraphSize, ParagraphWeight } from "../../general/Paragraph";
+import { FontSize, FontWeight } from "../../../data/style/variables";
 import {
   HeaderLogo,
   HeaderWrapper,
@@ -10,8 +10,8 @@ import {
 
 const linkProps = {
   serif: true,
-  paragraphSize: ParagraphSize.Normal,
-  paragraphWeight: ParagraphWeight.Bold
+  paragraphSize: FontSize.Normal,
+  paragraphWeight: FontWeight.Bold
 };
 
 const Header: React.FC<IBlock> = ({ className }) => (

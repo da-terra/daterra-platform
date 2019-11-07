@@ -3,17 +3,17 @@ import { format } from "date-fns";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
 import {
+  FontColor,
+  FontSize,
+  FontWeight
+} from "../../../../../data/style/variables";
+import {
   ProjectOwner,
   ProjectTitle,
   Times,
   Paragraph,
   ProjectDetails
 } from "./styled";
-import {
-  ParagraphColor,
-  ParagraphSize,
-  ParagraphWeight
-} from "../../../Paragraph";
 
 const dateFormat = "dd MMM yyyy";
 
@@ -47,16 +47,13 @@ const NewProjectCard: React.FC<IProject> = ({
 
     <ProjectDetails>
       <Paragraph
-        paragraphColor={ParagraphColor.Muted}
-        paragraphSize={ParagraphSize.Small}
-        paragraphWeight={ParagraphWeight.Bold}
+        fontColor={FontColor.Muted}
+        fontSize={FontSize.Small}
+        fontWeight={FontWeight.Bold}
       >
         5 Aanmeldingen
       </Paragraph>
-      <Paragraph
-        paragraphSize={ParagraphSize.Small}
-        paragraphWeight={ParagraphWeight.Bold}
-      >
+      <Paragraph fontSize={FontSize.Small} fontWeight={FontWeight.Bold}>
         € 250
       </Paragraph>
     </ProjectDetails>
