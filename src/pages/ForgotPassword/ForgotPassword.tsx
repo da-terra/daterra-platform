@@ -1,20 +1,22 @@
 import React from "react";
 import { Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
-import { FontSize } from "../../data/style/variables";
+import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
+import { HeadingType } from "../../components/general/Heading";
 import {
   Page,
+  PageHeading,
   FormWrapper,
   Form,
   ForgetPasswordInput,
   BackToSigninButton,
   SubmitButton,
   ButtonWrapper,
-  ErrorIcon
+  InfoIcon
 } from "./styled";
 
-const mockError = {
-  icon: ErrorIcon,
+const requiredTooltip = {
+  icon: InfoIcon,
   message: "Dit veld is verplicht"
 };
 
@@ -25,11 +27,15 @@ const ForgotPassword: React.FC = () => {
 
       <FormWrapper>
         <Form method="post">
+          <PageHeading headingType={HeadingType.Secondary} serif>
+            Wachtwoord vergeten
+          </PageHeading>
+
           <ForgetPasswordInput
             label="E-mailadres"
             name="email"
             type="email"
-            error={mockError}
+            tooltip={requiredTooltip}
           />
 
           <ButtonWrapper>
@@ -38,6 +44,8 @@ const ForgotPassword: React.FC = () => {
             <BackToSigninButton
               href={RoutePath.Signin}
               fontSize={FontSize.Small}
+              fontWeight={FontWeight.Bold}
+              fontColor={FontColor.Primary}
               serif
             >
               Inloggen

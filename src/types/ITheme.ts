@@ -64,6 +64,7 @@ declare module "styled-components" {
 
     tooltip: {
       backgroundColor: string;
+      borderColor: string;
       shadow: string;
     };
   }

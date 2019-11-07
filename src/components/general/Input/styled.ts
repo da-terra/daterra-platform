@@ -3,14 +3,16 @@ import IconTooltip from "../../general/IconTooltip";
 import { FontWeight } from "../../../data/style/variables";
 import Easings from "../../../data/style/easings";
 
+const offsetLeft = 2;
+
 export const Tooltip = styled(IconTooltip)`
   position: absolute;
-  left: calc(100% + 1.5rem);
+  right: 2rem;
 `;
 
 export const Label = styled.label`
   position: absolute;
-  left: 3rem;
+  left: ${offsetLeft}rem;
   font-weight: ${FontWeight.Black};
   font-size: 1.6rem;
   transition: 0.05s ${Easings.easeOutExpo} all;
@@ -18,7 +20,7 @@ export const Label = styled.label`
 
 export const InputElement = styled.input`
   position: relative;
-  padding: 0 3rem;
+  padding: 0 ${offsetLeft}rem;
   width: 100%;
   min-height: 7rem;
   line-height: 1;
@@ -27,7 +29,7 @@ export const InputElement = styled.input`
   outline: none;
   background: ${props => props.theme.input.backgroundColor};
   transition: 0.2s ${Easings.easeOutExpo} border-color;
-  border-radius: 100vw;
+  border-radius: 1rem;
   font-size: 1.6rem;
 
   &:placeholder-shown {

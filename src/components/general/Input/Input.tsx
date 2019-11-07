@@ -6,20 +6,25 @@ type InputProps = {
   name: string;
   type?: "text" | "number" | "email" | "password" | "search";
   className?: string;
-  error?: {
+  tooltip?: {
     icon: any;
     message: string;
   };
 };
 
-const Input: React.FC<InputProps> = ({ className, error, label, ...props }) => {
+const Input: React.FC<InputProps> = ({
+  className,
+  tooltip,
+  label,
+  ...props
+}) => {
   return (
     <Wrapper className={className} hasError>
       <InputElement {...props} id={props.name} placeholder=" " />
 
       <Label htmlFor={props.name}>{label}</Label>
 
-      {error && <Tooltip icon={error.icon}>{error.message}</Tooltip>}
+      {tooltip && <Tooltip icon={tooltip.icon}>{tooltip.message}</Tooltip>}
     </Wrapper>
   );
 };

@@ -1,27 +1,23 @@
 import React from "react";
 import RoutePath from "../../data/RoutePath";
 import { Circle } from "../../util/layout";
-import { FontSize } from "../../data/style/variables";
+import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
+import { HeadingType } from "../../components/general/Heading";
 import {
   Page,
+  PageHeading,
   FormWrapper,
   Form,
   SigninInput,
   ForgotPasswordLink,
   SigninButton,
   ButtonWrapper,
-  WarningIcon,
-  ErrorIcon
+  InfoIcon
 } from "./styled";
 
-const mockError = {
-  icon: ErrorIcon,
-  message: "Wachtwoord of gebruikersnaam onjuist"
-};
-
-const mockWarning = {
-  icon: WarningIcon,
-  message: "Wachtwoord of gebruikersnaam onjuist"
+const requiredTooltip = {
+  icon: InfoIcon,
+  message: "Dit veld is verplicht"
 };
 
 const Signin: React.FC = () => {
@@ -31,30 +27,36 @@ const Signin: React.FC = () => {
 
       <FormWrapper>
         <Form method="post">
+          <PageHeading headingType={HeadingType.Secondary} serif>
+            Inloggen
+          </PageHeading>
+
           <SigninInput
             label="E-mailadres"
             name="email"
             type="email"
-            error={mockError}
+            tooltip={requiredTooltip}
           />
 
           <SigninInput
             label="Password"
             name="password"
             type="password"
-            error={mockWarning}
+            tooltip={requiredTooltip}
           />
-
-          <ForgotPasswordLink
-            href={RoutePath.ForgetPassword}
-            fontSize={FontSize.Small}
-            serif
-          >
-            wachtwoord vergeten
-          </ForgotPasswordLink>
 
           <ButtonWrapper>
             <SigninButton>Inloggen</SigninButton>
+
+            <ForgotPasswordLink
+              href={RoutePath.ForgetPassword}
+              fontSize={FontSize.Small}
+              fontWeight={FontWeight.Bold}
+              fontColor={FontColor.Primary}
+              serif
+            >
+              Wachtwoord vergeten
+            </ForgotPasswordLink>
           </ButtonWrapper>
         </Form>
       </FormWrapper>

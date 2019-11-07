@@ -2,8 +2,12 @@ import styled from "styled-components";
 import Icon from "../../components/general/Icon";
 import { SolidButton, LinkButton } from "../../components/general/Button";
 import Input from "../../components/general/Input";
-
+import Heading from "../../components/general/Heading";
 export { default as Page } from "../../components/general/Page";
+
+export const InfoIcon = styled(Icon.Info)`
+  fill: ${props => props.theme.copy.muted};
+`;
 
 export const WarningIcon = styled(Icon.Warning)`
   fill: ${props => props.theme.copy.warning};
@@ -11,18 +15,6 @@ export const WarningIcon = styled(Icon.Warning)`
 
 export const ErrorIcon = styled(Icon.Error)`
   fill: ${props => props.theme.copy.error};
-`;
-
-export const ForgetPasswordInput = styled(Input)`
-  display: flex;
-`;
-
-export const Form = styled.form`
-  max-width: 40rem;
-  padding: 2rem;
-  box-sizing: content-box;
-  width: 100%;
-  margin: auto;
 `;
 
 export const FormWrapper = styled.div`
@@ -33,8 +25,25 @@ export const FormWrapper = styled.div`
   width: 100%;
 `;
 
-export const BackToSigninButton = styled(LinkButton)`
-  margin: 1.5rem auto 0;
+export const Form = styled.form`
+  max-width: 40rem;
+  padding: 2rem;
+  box-sizing: content-box;
+  width: 100%;
+  margin: auto;
+`;
+
+export const PageHeading = styled(Heading)`
+  margin-bottom: 2.6rem;
+`;
+
+export const ForgetPasswordInput = styled(Input)`
+  width: 100%;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SubmitButton = styled(SolidButton)`
@@ -42,7 +51,10 @@ export const SubmitButton = styled(SolidButton)`
   margin: 4rem auto 0;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const BackToSigninButton = styled(LinkButton)`
+  margin: 2.6rem auto 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

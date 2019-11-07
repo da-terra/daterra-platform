@@ -7,7 +7,7 @@ const themes: DefaultTheme[] = [
 
     button: {
       solid: {
-        backgroundColor: "#03363E",
+        backgroundColor: "#2BB48B",
         copyColor: "#FFFFFF",
         shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
         radius: "12px"
@@ -63,7 +63,8 @@ const themes: DefaultTheme[] = [
 
     tooltip: {
       backgroundColor: "#FFFFFF",
-      shadow: "rgba(0,0,0,0.1) 2px 2px 30px 0px"
+      borderColor: "#D9E2E2",
+      shadow: "rgba(0, 0, 0, 0.1) 0 0 1rem 0"
     }
   }
 

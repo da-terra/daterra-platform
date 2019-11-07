@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import useEvent from "../../../util/hooks/useEvent";
 import Icon from "../Icon";
-import { Wrapper, Tooltip, Arrow } from "./styled";
+import { Wrapper, Tooltip, IconWrapper } from "./styled";
 
 type IconTooltipProps = {
   children: React.ReactNode;
@@ -27,15 +27,11 @@ const IconTooltip: React.FC<IconTooltipProps> = ({
 
   return (
     <Wrapper className={className} ref={targetRef}>
-      <IconComponent />
+      {isVisible && <Tooltip>{children}</Tooltip>}
 
-      {isVisible && (
-        <Tooltip>
-          <Arrow />
-
-          {children}
-        </Tooltip>
-      )}
+      <IconWrapper>
+        <IconComponent />
+      </IconWrapper>
     </Wrapper>
   );
 };
