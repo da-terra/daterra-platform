@@ -1,16 +1,11 @@
 import React from "react";
+import RoutePath from "../../../data/RoutePath";
 import { NavigationWrapper, LoginButton } from "./styled";
 
-type NavigationProps = {
-  button: {
-    children: React.ReactNode;
-  };
-};
-
-const Navigation: React.FC<NavigationProps> = ({ button }) => (
+const Navigation: React.FC = () => (
   <NavigationWrapper>
-    <LoginButton serif>
-      {button.children}
+    <LoginButton serif href={RoutePath.Signin}>
+      Inloggen
     </LoginButton>
   </NavigationWrapper>
 );
