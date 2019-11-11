@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FontFamily, FontWeight } from "../../../data/style/variables";
+import { FontFamily, FontWeight, Breakpoints } from "../../../data/style/variables";
 import { paragraphCss } from "../Paragraph";
 import { ButtonElement } from "./styled";
 
@@ -104,6 +104,10 @@ export const SolidButton = styled(Button)<SolidButtonProps>`
 
   &:hover {
     opacity: 1;
+  }
+
+  @media (max-width: ${Breakpoints.H500}) {
+    font-size: 1.6rem
   }
 `;
 

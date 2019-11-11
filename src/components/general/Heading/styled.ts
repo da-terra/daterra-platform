@@ -1,8 +1,14 @@
 import { css } from "styled-components";
+import { Breakpoints } from "../../../data/style/variables";
 
 export const primary = css`
   font-size: 6.4rem;
   line-height: 7.4rem;
+
+  @media (max-width: ${Breakpoints.H500}) {
+    font-size: 4.2rem;
+    line-height: 6.4rem;
+  }
 `;
 
 export const secondary = css`

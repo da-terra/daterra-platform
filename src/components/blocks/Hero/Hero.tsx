@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FontWeight, Breakpoints } from "../../../data/style/variables";
+import {
+  StorageManagerContext,
+  StorageKey
+} from "../../context/StorageManager";
+import MediaQuery from "../../util/MediaQuery";
 import { LogoSize } from "../../general/Logo";
-import { FontWeight } from "../../../data/style/variables";
+import { HeadingType } from "../../general/Heading";
 import {
   Background,
   Circle,
@@ -17,32 +23,63 @@ type HeroProps = {
   slogan: string;
   buttons: {
     uuid: string;
+    targetGroup: string;
     children: string;
   }[];
 };
 
-const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => (
-  <Background>
-    <Circle x={-33} y={-45} radius={200} />
+const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
 
-    <Content>
-      <HeroLogoWrapper>
-        <HeroLogo size={LogoSize.Large} showName />
-      </HeroLogoWrapper>
+const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => {
+  const storage = useContext(StorageManagerContext);
 
-      <CtaGroup>
-        <Slogan fontWeight={FontWeight.Black}>{slogan}</Slogan>
+  return (
+    <Background>
+      <Circle x={-33} y={-45} radius={200} />
 
-        <ButtonWrapper>
-          {buttons.map(({ children, ...props }) => (
-            <TargetButton inverted {...props} key={props.uuid}>
-              {children}
-            </TargetButton>
-          ))}
-        </ButtonWrapper>
-      </CtaGroup>
-    </Content>
-  </Background>
-);
+      <Content>
+        <HeroLogoWrapper>
+          <MediaQuery
+            mediaQuery={h750MediaQuery}
+            fallback={<HeroLogo size={LogoSize.Normal} showName />}
+          >
+            <HeroLogo size={LogoSize.Large} showName />
+          </MediaQuery>
+        </HeroLogoWrapper>
+
+        <CtaGroup>
+          <MediaQuery
+            mediaQuery={h750MediaQuery}
+            fallback={
+              <Slogan
+                fontWeight={FontWeight.Black}
+                headingType={HeadingType.Secondary}
+              >
+                {slogan}
+              </Slogan>
+            }
+          >
+            <Slogan fontWeight={FontWeight.Black}>{slogan}</Slogan>
+          </MediaQuery>
+
+          <ButtonWrapper>
+            {buttons.map(({ children, ...props }) => (
+              <TargetButton
+                inverted
+                {...props}
+                onClick={() =>
+                  storage.setValue(StorageKey.TargetAudience, props.targetGroup)
+                }
+                key={props.uuid}
+              >
+                {children}
+              </TargetButton>
+            ))}
+          </ButtonWrapper>
+        </CtaGroup>
+      </Content>
+    </Background>
+  );
+};
 
 export default Hero;

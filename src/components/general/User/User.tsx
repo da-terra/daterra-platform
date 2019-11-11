@@ -14,7 +14,12 @@ const User: React.FC<UserProps> = ({ className, image, prefix, fullName }) => (
 
     <NameWrapper>
       {prefix && (
-        <Prefix fontSize={FontSize.Small} fontColor={FontColor.Muted} italic>
+        <Prefix
+          fontSize={FontSize.Small}
+          fontColor={FontColor.Secondary}
+          fontWeight={FontWeight.Bold}
+          italic
+        >
           {prefix}
         </Prefix>
       )}

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Wrapper from "../../general/Wrapper";
 import { LinkButton } from "../../general/Button";
+import { Breakpoints } from "../../../data/style/variables";
 
 export const NavigationWrapper = styled(Wrapper)`
   display: flex;
@@ -12,15 +13,24 @@ export const NavigationWrapper = styled(Wrapper)`
   padding-bottom: 6.4rem;
   pointer-events: none;
   z-index: 1;
+
+  @media (max-width: ${Breakpoints.H1000}) {
+    padding-top: 4.6rem;
+  }
+
+  @media (max-width: ${Breakpoints.H500}) {
+    padding-top: 2.4rem;
+  }
 `;
 
 export const LoginButton = styled(LinkButton)`
   margin-left: auto;
   text-decoration: none;
   pointer-events: all;
-  color: ${props => props.theme.copy.mutedInverted}
+  color: ${props => props.theme.copy.primaryInverted}
+  opacity: .5;
 
   &:hover {
-    color: ${props => props.theme.copy.primaryInverted}
+    opacity: 1 ;
   }
 `;

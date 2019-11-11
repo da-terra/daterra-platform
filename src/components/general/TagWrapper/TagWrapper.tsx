@@ -1,7 +1,7 @@
 import React from "react";
 import { WrapperWidth } from "../Wrapper";
 import { FontColor, FontWeight } from "../../../data/style/variables";
-import { Wrapper, HeadingWrapper, Content, Tag } from "./styled";
+import { Background, Wrapper, HeadingWrapper, Content, Tag } from "./styled";
 
 type TagWrapperProps = {
   tag: React.ReactNode;
@@ -10,17 +10,19 @@ type TagWrapperProps = {
 };
 
 const TagWrapper: React.FC<TagWrapperProps> = ({ children, tag, heading }) => (
-  <Wrapper width={WrapperWidth.Normal}>
-    <HeadingWrapper width={WrapperWidth.Small}>{heading}</HeadingWrapper>
+  <Background>
+    <Wrapper width={WrapperWidth.Small}>
+      <HeadingWrapper>{heading}</HeadingWrapper>
 
-    <Content>
-      <Tag fontColor={FontColor.Muted} fontWeight={FontWeight.Black}>
-        {tag}
-      </Tag>
+      <Content>
+        <Tag fontColor={FontColor.Tertiary} fontWeight={FontWeight.Black}>
+          {tag}
+        </Tag>
 
-      <Wrapper width={WrapperWidth.Small}>{children}</Wrapper>
-    </Content>
-  </Wrapper>
+        {children}
+      </Content>
+    </Wrapper>
+  </Background>
 );
 
 export default TagWrapper;

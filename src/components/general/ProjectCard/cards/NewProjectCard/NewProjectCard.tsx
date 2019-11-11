@@ -11,6 +11,7 @@ import {
   ProjectOwner,
   ProjectTitle,
   Times,
+  TimeString,
   Paragraph,
   ProjectDetails
 } from "./styled";
@@ -31,10 +32,11 @@ const NewProjectCard: React.FC<IProject> = ({
     </ProjectTitle>
 
     <Times>
-      <Paragraph preserveWhitespace>
-        <strong>Looptijd</strong>
-        {"\n"}
+      <TimeString fontWeight={FontWeight.Bold}>
+        Looptijd
+      </TimeString>
 
+      <TimeString italic>
         <time dateTime={duration!.startDate}>
           {format(new Date(duration!.startDate), dateFormat)}
         </time>
@@ -42,12 +44,12 @@ const NewProjectCard: React.FC<IProject> = ({
         <time dateTime={duration!.endDate}>
           {format(new Date(duration!.endDate), dateFormat)}
         </time>
-      </Paragraph>
+      </TimeString>
     </Times>
 
     <ProjectDetails>
       <Paragraph
-        fontColor={FontColor.Muted}
+        fontColor={FontColor.Secondary}
         fontSize={FontSize.Small}
         fontWeight={FontWeight.Bold}
       >

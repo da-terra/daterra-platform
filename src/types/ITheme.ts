@@ -37,12 +37,13 @@ declare module "styled-components" {
     };
 
     copy: {
-      muted: string;
-      mutedInverted: string;
       primary: string;
       primaryInverted: string;
-      primaryAccent: string;
-      secondaryAccent: string;
+      secondary: string;
+      secondaryInverted: string;
+      tertiary: string;
+      tertiaryInverted: string;
+      accent: string;
       warning: string;
       error: string;
     };

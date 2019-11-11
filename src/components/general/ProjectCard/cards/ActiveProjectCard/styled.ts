@@ -16,21 +16,20 @@ export const ProjectTitle = styled(Heading)`
 export const Times = styled.div`
   display: inline-block;
   margin-top: 1rem;
+`;
 
-  time {
-    display: inline-block;
-    margin-top: .2rem;
-  }
-
-  &::first-letter {
-    text-transform: uppercase;
-  }
-
-  ${Paragraph}:not(:last-child) {
-    margin-bottom: 1rem;
+export const TimeGroup = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
   }
 `;
 
+export const TimeString = styled(Paragraph)`
+  line-height: 1.4;
+  margin: 0;
+`
+
 export const ProjectTeamSummary = styled(TeamSummary)`
   margin-top: 1.5rem;
+  line-height: 1rem;
 `;

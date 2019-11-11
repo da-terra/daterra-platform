@@ -36,14 +36,15 @@ const themes: DefaultTheme[] = [
     },
 
     copy: {
-      muted: "rgba(75, 84, 92, .2)",
-      mutedInverted: "rgba(255, 255, 255, .5)",
       primary: "#434E4D",
       primaryInverted: "#FFFFFF",
-      primaryAccent: "#03363E",
-      secondaryAccent: "#50908B",
+      secondary: "rgba(75, 84, 92, .5)",
+      secondaryInverted: "rgba(255, 255, 255, 0.6)",
+      tertiary: "rgba(75, 84, 92, .2)",
+      tertiaryInverted: "rgba(255, 255, 255, .5)",
+      accent: "#2bb48b",
       warning: "#FFA23C",
-      error: "#E8181E"
+      error: "#e43136"
     },
 
     shape: {

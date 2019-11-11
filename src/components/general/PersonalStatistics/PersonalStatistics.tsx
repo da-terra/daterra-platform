@@ -35,7 +35,7 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
 
       <StatisticsParagraph fontSize={FontSize.Large}>
         Je score is 622 en je hebt 3 projecten afgerond. Daarmee heb je €1250.00
-        euro verdient.
+        euro verdiend.
       </StatisticsParagraph>
 
       <CarouselTitle headingType={HeadingType.Quaternary}>

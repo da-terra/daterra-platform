@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { formatDistanceToNow } from "date-fns";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
-import { FontColor, FontSize } from "../../../../../data/style/variables";
+import { FontColor, FontSize, FontWeight } from "../../../../../data/style/variables";
 import { ProjectTitle, Time, ProjectOwner } from "./styled";
 
 const formateDistanceToNowOptions = {
@@ -23,7 +23,8 @@ const FinishedProject: React.FC<IProject> = ({
     <Time
       as="time"
       fontSize={FontSize.Small}
-      fontColor={FontColor.Muted}
+      fontWeight={FontWeight.Bold}
+      fontColor={FontColor.Secondary}
       italic
     >
       {formatDistanceToNow(

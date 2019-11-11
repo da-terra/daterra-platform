@@ -1,16 +1,21 @@
 import styled from "styled-components";
 import Paragraph from "../../general/Paragraph";
-import Button from "../../general/Button";
+import Button, { LinkButton } from "../../general/Button";
+import { Breakpoints } from "../../../data/style/variables";
 
 export { default as Wrapper } from "../../general/Wrapper";
 export { default as Heading } from "../../general/Heading";
 export { default as Logo } from "../../general/Logo";
-export { LinkButton } from "../../general/Button";
 
 export const Background = styled.div`
   background: ${props => props.theme.background.accent};
   color: ${props => props.theme.copy.primaryInverted};
   padding: 6.4rem 0;
+  overflow: hidden;
+
+  @media (max-width: ${Breakpoints.H500}) {
+    padding-bottom: 2rem;
+  }
 `;
 
 /**
@@ -20,6 +25,10 @@ export const Top = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 7.6rem;
+
+  @media (max-width: ${Breakpoints.H1500}) {
+    display: block;
+  }
 `;
 
 export const SocialWrapper = styled.div`
@@ -43,13 +52,17 @@ export const SocialNetworkImage = styled.img`
 `;
 
 export const Sitemap = styled.div`
-  min-width: 70rem;
   display: flex;
-  margin: 0 -6.4rem;
+  margin: -3.2rem -6.4rem;
+  flex-wrap: wrap;
+
+  @media (max-width: ${Breakpoints.H1500}) {
+    margin-top: 3.2rem;
+  }
 `;
 
 export const SitemapGroup = styled.div`
-  margin: 0 6.4rem;
+  margin: 3.2rem 6.4rem;
 `;
 
 export const SitemapGroupTag = styled(Paragraph)`
@@ -60,6 +73,20 @@ export const SitemapGroupLinks = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 3.8rem;
+
+  @media (max-width: ${Breakpoints.H1500}) {
+    margin-top: 2.4rem;
+  }
+`;
+
+export const SitemapLink = styled(LinkButton)`
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 /**
@@ -67,8 +94,16 @@ export const SitemapGroupLinks = styled.div`
  */
 export const Bottom = styled.div`
   display: flex;
+
+  @media (max-width: ${Breakpoints.H750}) {
+    display: block;
+  }
 `;
 
 export const Disclaimer = styled(Paragraph)`
-  margin: auto 0 auto auto;
+  margin: auto 0 0 auto;
+
+  @media (max-width: ${Breakpoints.H750}) {
+    margin-top: 2.4rem;
+  }
 `;

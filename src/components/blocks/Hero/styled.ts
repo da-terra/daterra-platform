@@ -3,6 +3,7 @@ import Wrapper from "../../general/Wrapper";
 import Logo from "../../general/Logo";
 import { SolidButton } from "../../general/Button";
 import Heading from "../../general/Heading";
+import { Breakpoints } from "../../../data/style/variables";
 export { Circle } from "../../../util/layout";
 
 export const Background = styled.div`
@@ -21,10 +22,24 @@ export const Content = styled(Wrapper)`
   flex: 1 0 auto;
   padding-top: 6.4rem;
   padding-bottom: 6.4rem;
+
+  @media (max-width: ${Breakpoints.H1000}) {
+    padding-top: 4.6rem;
+    padding-bottom: 4.6rem;
+  }
+
+  @media (max-width: ${Breakpoints.H500}) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 `;
 
 export const HeroLogoWrapper = styled.div`
   margin-bottom: 15rem;
+
+  @media (max-width: ${Breakpoints.H750}) {
+    margin-bottom: 5rem;
+  }
 `;
 
 export const HeroLogo = Logo;
@@ -42,7 +57,7 @@ export const Slogan = styled(Heading)`
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 50%;
+  max-width: 70rem;
 `;
 
 export const TargetButton = styled(SolidButton)`

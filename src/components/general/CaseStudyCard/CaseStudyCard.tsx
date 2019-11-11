@@ -55,7 +55,7 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
 
         <PublishedAt
           as="time"
-          fontColor={FontColor.Muted}
+          fontColor={FontColor.Tertiary}
           fontSize={FontSize.Small}
           time={publishedDate}
         >
@@ -63,7 +63,7 @@ const CaseStudyCard: React.FC<ICaseStudy> = ({
         </PublishedAt>
 
         <Description
-          fontColor={FontColor.Muted}
+          fontColor={FontColor.Tertiary}
           fontSize={FontSize.Small}
           italic
         >

@@ -19,12 +19,13 @@ export const NameWrapper = styled.div`
 `
 
 export const FullName = styled(LinkButton)`
-  width: 100%;
+  max-width: 20rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
   text-decoration: none;
+  margin-top: -.5rem;
 
   &:hover {
     text-decoration: underline;
@@ -33,5 +34,6 @@ export const FullName = styled(LinkButton)`
 
 export const Prefix = styled(Paragraph)`
   white-space: nowrap;
+  margin-top: .5rem;
   margin-right: 8px;
 `;

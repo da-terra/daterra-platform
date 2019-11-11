@@ -19,7 +19,7 @@ export const finishedProject: IProject = {
       alt: "Foto van Lennard Koning",
       fallbackColor: "#eee"
     },
-    email: "lennard.koning@studata.nl",
+    email: "lennard.koning@data-science-platform.nl",
     fullName: "Lennard Koning",
     role: Roles.Lead
   },
@@ -32,7 +32,7 @@ export const finishedProject: IProject = {
         fallbackColor: "#eee"
       },
       fullName: "Matthias Verweij",
-      email: "matthias.verweij@studata.nl",
+      email: "matthias.verweij@data-science-platform.nl",
       phone: "+31 06 12 34 56 78",
       role: Roles.Developer
     },
@@ -44,7 +44,7 @@ export const finishedProject: IProject = {
         fallbackColor: "#eee"
       },
       fullName: "Alex Damman",
-      email: "alex.damman@studata.nl",
+      email: "alex.damman@data-science-platform.nl",
       phone: "+31 06 12 34 56 78",
       role: Roles.Developer
     },
@@ -56,7 +56,7 @@ export const finishedProject: IProject = {
         fallbackColor: "#eee"
       },
       fullName: "Marien Zwarts",
-      email: "marien.zwarts@studata.nl",
+      email: "marien.zwarts@data-science-platform.nl",
       phone: "+31 06 12 34 56 78",
       role: Roles.Lead
     }

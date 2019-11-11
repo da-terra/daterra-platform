@@ -13,10 +13,6 @@ export const ProjectOwner = styled(Owner)`
 
 export const Time = styled(Paragraph)`
   display: inline-block;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem
-
-  &::first-letter {
-    text-transform: uppercase;
-  }
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 `;

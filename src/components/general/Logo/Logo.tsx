@@ -18,6 +18,8 @@ export enum LogoSize {
   Normal
 }
 
+const name = "Data Science\nPlatform";
+
 const Logo: React.FC<LogoProps> = ({
   className,
   showName,
@@ -31,14 +33,14 @@ const Logo: React.FC<LogoProps> = ({
     {size === LogoSize.Normal && (
       <Fragment>
         <NormalLogo />
-        {showName && <NormalLogoName>Studata</NormalLogoName>}
+        {showName && <NormalLogoName>{name}</NormalLogoName>}
       </Fragment>
     )}
 
     {size === LogoSize.Large && (
       <Fragment>
         <LargeLogo />
-        {showName && <LargeLogoName>Studata</LargeLogoName>}
+        {showName && <LargeLogoName>{name}</LargeLogoName>}
       </Fragment>
     )}
   </LogoWrapper>

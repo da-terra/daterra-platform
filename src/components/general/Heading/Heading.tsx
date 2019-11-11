@@ -2,7 +2,8 @@ import styled from "styled-components";
 import {
   FontFamily,
   FontWeight,
-  FontColor
+  FontColor,
+  Breakpoints
 } from "../../../data/style/variables";
 import { primary, secondary, tertiary, quaternary } from "./styled";
 
@@ -33,10 +34,9 @@ const styleMap = {
 };
 
 const Heading = styled.h1<HeadingProps>`
-  ${props => styleMap[props.headingType || HeadingType.Primary]}
-
-  white-space: pre-line;
   margin: 0;
+
+  ${props => styleMap[props.headingType || HeadingType.Primary]}
 
   color: ${props =>
     props.fontColor ? props.theme.copy[props.fontColor] : "currentColor"};
@@ -49,6 +49,10 @@ const Heading = styled.h1<HeadingProps>`
   ${props => props.left && "text-align: left;"}
   ${props => props.right && "text-align: right;"}
   ${props => props.italic && "font-style: italic;"};
+
+  @media (min-width: ${Breakpoints.H500}) {
+    white-space: pre-line;
+  }
 `;
 
 export default Heading;

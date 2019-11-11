@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import BaseEventCard from "../../general/EventCard";
 import { LinkButton } from "../../general/Button";
+import { Breakpoints } from "../../../data/style/variables";
 export { default as TagWrapper } from "../../general/TagWrapper";
 export { default as Heading } from "../../general/Heading";
 
-const marginSize = 4;
+const h1500MarginSize = 4;
+const h1000MarginSize = 2;
 
 export const EventsWrapper = styled.div`
   display: flex;
@@ -13,12 +15,28 @@ export const EventsWrapper = styled.div`
 
 export const EventsList = styled.div`
   display: flex;
-  margin: 0 -${marginSize}rem;
+  margin: -${h1500MarginSize}rem;
+
+  @media (max-width: ${Breakpoints.H1000}) {
+    margin: -${h1000MarginSize}rem;
+  }
+
+  @media (max-width: ${Breakpoints.H750}) {
+    display: block;
+  }
 `;
 
 export const EventCard = styled(BaseEventCard)`
-  margin: 0 ${marginSize}rem;
+  margin: ${h1500MarginSize}rem;
   max-width: 45rem;
+
+  @media (max-width: ${Breakpoints.H1000}) {
+    margin: ${h1000MarginSize}rem;
+  }
+
+  @media (max-width: ${Breakpoints.H750}) {
+    max-width: none;
+  }
 `;
 
 export const CtaLink = styled(LinkButton)`
@@ -28,5 +46,9 @@ export const CtaLink = styled(LinkButton)`
 
   &:hover {
     text-decoration: none;
+  }
+
+  @media (max-width: ${Breakpoints.H500}) {
+    margin-top: 2.4rem;
   }
 `;

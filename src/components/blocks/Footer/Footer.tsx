@@ -14,7 +14,7 @@ import {
   SitemapGroup,
   SitemapGroupTag,
   SitemapGroupLinks,
-  LinkButton,
+  SitemapLink,
   Bottom,
   Logo,
   Disclaimer
@@ -82,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({
             {sitemap.map(({ uuid, tag, links }) => (
               <SitemapGroup key={uuid}>
                 <SitemapGroupTag
-                  fontColor={FontColor.MutedInverted}
+                  fontColor={FontColor.TertiaryInverted}
                   fontSize={FontSize.Large}
                   fontWeight={FontWeight.Black}
                 >
@@ -91,14 +91,15 @@ const Footer: React.FC<FooterProps> = ({
 
                 <SitemapGroupLinks>
                   {links.map(link => (
-                    <LinkButton
+                    <SitemapLink
                       {...link}
                       key={link.uuid}
                       fontSize={FontSize.Large}
                       fontWeight={FontWeight.Bold}
+                      serif
                     >
                       {link.title}
-                    </LinkButton>
+                    </SitemapLink>
                   ))}
                 </SitemapGroupLinks>
               </SitemapGroup>
@@ -107,13 +108,9 @@ const Footer: React.FC<FooterProps> = ({
         </Top>
 
         <Bottom>
-          <Logo />
+          <Logo showName />
 
-          <Disclaimer
-            fontWeight={FontWeight.Bold}
-            fontColor={FontColor.MutedInverted}
-            italic
-          >
+          <Disclaimer fontColor={FontColor.TertiaryInverted} serif>
             {disclaimer}
           </Disclaimer>
         </Bottom>

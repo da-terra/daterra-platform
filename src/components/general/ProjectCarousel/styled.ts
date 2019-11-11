@@ -14,7 +14,7 @@ export const ProjectCarouselWrapper = styled.div`
 `;
 
 export const ProjectCarouselHeading = styled(Heading)`
-  color: ${props => props.theme.copy.secondaryAccent};
+  color: ${props => props.theme.copy.accent};
   margin-bottom: 2rem;
 `;
 
@@ -33,4 +33,8 @@ export const ProjectCarouselLinkButton = styled(LinkButton)`
   display: inline-block;
   margin-top: 2rem;
   margin-left: auto;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

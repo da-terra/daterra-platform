@@ -20,7 +20,7 @@ const Collaborator: React.FC<CollaboratorProps> = ({
     </Paragraph>
 
     {tags && (
-      <Paragraph fontSize={FontSize.Small} fontColor={FontColor.Muted}>
+      <Paragraph fontSize={FontSize.Small} fontColor={FontColor.Tertiary}>
         {tags.join(" - ")}
       </Paragraph>
     )}

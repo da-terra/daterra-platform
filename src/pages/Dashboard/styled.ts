@@ -25,7 +25,7 @@ export const SearchInput = styled(Input)`
 
 export const Sidebar = styled.div`
   position: absolute;
-  right: 0;
+  right: 2rem;
   top: 0;
   width: 30%;
   padding-left: 5rem;
@@ -33,4 +33,8 @@ export const Sidebar = styled.div`
 
 export const DashboardProjectCarousel = styled(ProjectCarousel)`
   width: 70%;
+
+  &:last-child {
+    margin-bottom: 10rem;
+  }
 `;

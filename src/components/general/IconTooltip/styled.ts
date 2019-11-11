@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import Icon from "../Icon";
 
 const appearWrapper = keyframes`
   0% {

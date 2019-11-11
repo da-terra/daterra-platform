@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider, DefaultTheme } from "styled-components";
-import LocalStorageKeys from "../../data/LocalStorageKeys";
-import themes from "../../data/style/themes";
+import { StorageKey } from "../StorageManager";
+import themes from "../../../data/style/themes";
 
 type ThemeProps = {
   children: JSX.Element;
@@ -25,7 +25,7 @@ class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
   constructor(props: ThemeProps) {
     super(props);
 
-    const savedThemeUuid = localStorage.getItem(LocalStorageKeys.THEME_UUID);
+    const savedThemeUuid = localStorage.getItem(StorageKey.THEME_UUID);
     const savedTheme = themes.find(theme => theme.uuid === savedThemeUuid);
 
     const [firstTheme] = themes;
@@ -43,7 +43,7 @@ class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
       return;
     }
 
-    localStorage.setItem(LocalStorageKeys.THEME_UUID, theme.uuid);
+    localStorage.setItem(StorageKey.THEME_UUID, theme.uuid);
 
     this.setState({ theme });
   };

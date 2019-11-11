@@ -4,12 +4,12 @@ export enum FontFamily {
 }
 
 export enum FontColor {
-  Muted = "muted",
-  MutedInverted = "mutedInverted",
   Primary = "primary",
   PrimaryInverted = "primaryInverted",
-  PrimaryAccent = "primaryAccent",
-  SecondaryAccent = "secondaryAccent",
+  Secondary = "secondary",
+  SecondaryInverted = "secondaryInverted",
+  Tertiary = "tertiary",
+  TertiaryInverted = "tertiaryInverted",
   Error = "error",
   Warning = "warning"
 }
@@ -24,4 +24,13 @@ export enum FontSize {
   Large = "Large",
   Normal = "Normal",
   Small = "Small"
+}
+
+export enum Breakpoints {
+  H1500 = '1500px',
+  H1250 = '1250px',
+  H1000 = '1000px',
+  H750 = '750px',
+  H500 = '500px',
+  H250 = '250px',
 }

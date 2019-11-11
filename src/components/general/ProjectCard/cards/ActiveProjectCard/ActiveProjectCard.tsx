@@ -2,12 +2,13 @@ import React, { Fragment } from "react";
 import { formatDistanceToNow, isAfter } from "date-fns";
 import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
-import { FontColor } from "../../../../../data/style/variables";
+import { FontColor, FontWeight } from "../../../../../data/style/variables";
 import {
   ProjectOwner,
   ProjectTitle,
   Times,
-  Paragraph,
+  TimeGroup,
+  TimeString,
   ProjectTeamSummary
 } from "./styled";
 
@@ -34,30 +35,51 @@ const ActiveProjectCard: React.FC<IProject> = ({
       </ProjectTitle>
 
       <Times>
-        <Paragraph
-          fontColor={isPastDeadline ? FontColor.Error : FontColor.Primary}
-          preserveWhitespace
-        >
-          <strong>Deadline</strong>
-          {"\n"}
-          <time dateTime={duration!.endDate}>
+        <TimeGroup>
+          <TimeString
+            fontColor={isPastDeadline ? FontColor.Error : FontColor.Primary}
+            preserveWhitespace
+          >
+            <strong>Deadline</strong>
+          </TimeString>
+
+          {/*
+            // @ts-ignore */}
+          <TimeString
+            as="time"
+            fontColor={isPastDeadline ? FontColor.Error : FontColor.Primary}
+            dateTime={updatedDate}
+            italic
+          >
             {formatDistanceToNow(
               new Date(duration!.endDate!),
               formateDistanceToNowOptions
             )}
-          </time>
-        </Paragraph>
+          </TimeString>
+        </TimeGroup>
 
-        <Paragraph fontColor={FontColor.Muted} preserveWhitespace>
-          <strong>Laatste update</strong>
-          {"\n"}
-          <time dateTime={updatedDate}>
+        <TimeGroup>
+          <TimeString
+            fontColor={FontColor.Secondary}
+            fontWeight={FontWeight.Bold}
+          >
+            Laatste update
+          </TimeString>
+
+          {/*
+            // @ts-ignore */}
+          <TimeString
+            as="time"
+            dateTime={updatedDate}
+            fontColor={FontColor.Secondary}
+            italic
+          >
             {formatDistanceToNow(
               new Date(updatedDate!),
               formateDistanceToNowOptions
             )}
-          </time>
-        </Paragraph>
+          </TimeString>
+        </TimeGroup>
       </Times>
 
       <ProjectTeamSummary team={team} />

@@ -6,7 +6,7 @@ import Heading from "../../components/general/Heading";
 export { default as Page } from "../../components/general/Page";
 
 export const InfoIcon = styled(Icon.Info)`
-  fill: ${props => props.theme.copy.muted};
+  fill: ${props => props.theme.copy.tertiary};
 `;
 
 export const WarningIcon = styled(Icon.Warning)`

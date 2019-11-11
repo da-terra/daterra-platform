@@ -1,16 +1,18 @@
-import React, { Suspense, Fragment } from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import ThemeManager from "../ThemeManager";
-import Gateway from "../Gateway";
+import Gateway from "../context/Gateway";
+import ThemeManager from "../context/ThemeManager";
+import StorageManager from "../context/StorageManager";
+import WindowResizeManager from "../context/WindowResizeManager";
 import { GlobalStyle } from "./styled";
 import routes from "./routes";
 
 const App: React.FC = () => {
   return (
     <Router>
-      <Fragment>
+      <StorageManager prefix="dsp">
         <ThemeManager>
-          <Fragment>
+          <WindowResizeManager>
             <GlobalStyle gridSize={10} />
 
             <Gateway
@@ -20,9 +22,9 @@ const App: React.FC = () => {
             >
               <Suspense fallback="Loading...">{routes}</Suspense>
             </Gateway>
-          </Fragment>
+          </WindowResizeManager>
         </ThemeManager>
-      </Fragment>
+      </StorageManager>
     </Router>
   );
 };
