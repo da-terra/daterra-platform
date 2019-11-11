@@ -18,7 +18,6 @@ const contentPageQuery = (name: string, targetGroup: string) => `
 
 const ContentPage: React.FC = () => {
   const { page } = useParams();
-  // const { targetGroup, setGroup } = useContext(LocalStorageContext);
 
   const gateway = useContext(GatewayContext);
   const storage = useContext(StorageManagerContext);
