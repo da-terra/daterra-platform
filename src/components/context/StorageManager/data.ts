@@ -1,4 +1,13 @@
+type StorageDefaultValuesType = {
+  [name in StorageKey]: any;
+};
+
 export enum StorageKey {
-  THEME_UUID = "theme-uuid",
-  TargetAudience = "targetAudience"
+  themeUuid = "themeUuid",
+  TargetGroup = "targetGroup"
 }
+
+export const StorageDefaultValues: StorageDefaultValuesType = {
+  [StorageKey.themeUuid]: undefined,
+  [StorageKey.TargetGroup]: 1 << 0
+};

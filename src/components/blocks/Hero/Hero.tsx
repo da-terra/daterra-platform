@@ -63,13 +63,11 @@ const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => {
           </MediaQuery>
 
           <ButtonWrapper>
-            {buttons.map(({ children, ...props }) => (
+            {buttons.map(({ children, targetGroup, ...props }) => (
               <TargetButton
                 inverted
-                {...props}
-                onClick={() =>
-                  storage.setValue(StorageKey.TargetAudience, props.targetGroup)
-                }
+                muted={storage.getValue(StorageKey.TargetGroup) !== targetGroup}
+                onClick={() => storage.setValue(StorageKey.TargetGroup, targetGroup)}
                 key={props.uuid}
               >
                 {children}

@@ -26,9 +26,7 @@ const ContentPage: React.FC = () => {
 
   useEffect(() => {
     const pageName = page || "homepage";
-    const targetGroup = storage.getValue(StorageKey.TargetAudience);
-
-    console.log(targetGroup);
+    const targetGroup = storage.getValue(StorageKey.TargetGroup);
 
     gateway
       .query(contentPageQuery(pageName, targetGroup), undefined, "POST")

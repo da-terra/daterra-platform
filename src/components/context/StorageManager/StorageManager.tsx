@@ -1,5 +1,5 @@
 import React from "react";
-import { StorageKey } from "./data";
+import { StorageKey, StorageDefaultValues } from "./data";
 
 type StorageManagerProps = {
   prefix: string;
@@ -40,9 +40,13 @@ class StorageManagerManager extends React.Component<
   }
 
   getValue = (key: StorageKey) => {
-    const value = localStorage.getItem(key) || sessionStorage.getItem(key);
+    const applicationKey = `${this.props.prefix}-${key}`;
 
-    return value && JSON.parse(value);
+    const value =
+      localStorage.getItem(applicationKey) ||
+      sessionStorage.getItem(applicationKey);
+
+    return (value && JSON.parse(value)) || StorageDefaultValues[key];
   };
 
   setValue = (key: StorageKey, value: any, persist?: boolean) => {

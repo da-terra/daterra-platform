@@ -25,7 +25,7 @@ class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
   constructor(props: ThemeProps) {
     super(props);
 
-    const savedThemeUuid = localStorage.getItem(StorageKey.THEME_UUID);
+    const savedThemeUuid = localStorage.getItem(StorageKey.themeUuid);
     const savedTheme = themes.find(theme => theme.uuid === savedThemeUuid);
 
     const [firstTheme] = themes;
@@ -43,7 +43,7 @@ class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
       return;
     }
 
-    localStorage.setItem(StorageKey.THEME_UUID, theme.uuid);
+    localStorage.setItem(StorageKey.themeUuid, theme.uuid);
 
     this.setState({ theme });
   };
