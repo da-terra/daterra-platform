@@ -64,7 +64,6 @@ const themes: DefaultTheme[] = [
 
     tooltip: {
       backgroundColor: "#FFFFFF",
-      borderColor: "#D9E2E2",
       shadow: "rgba(0, 0, 0, 0.1) 0 0 1rem 0"
     }
   }

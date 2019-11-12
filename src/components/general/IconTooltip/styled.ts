@@ -45,7 +45,6 @@ export const Tooltip = styled.div`
   border-radius: 0.8rem;
   white-space: nowrap;
   background: ${props => props.theme.tooltip.backgroundColor};
-  border: 1px solid ${props => props.theme.tooltip.borderColor};
   box-shadow: ${props => props.theme.tooltip.shadow};
   animation: 0.4s ${appearTooltip} forwards;
 `;
