@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Wrapper from "../../general/Wrapper";
-import Logo from "../../general/Logo";
 import { SolidButton } from "../../general/Button";
 import Heading from "../../general/Heading";
 import { Breakpoints } from "../../../data/style/variables";
+
+export { default as Logo } from "../../general/Logo";
 export { Circle } from "../../../util/layout";
 
 export const Background = styled.div`
@@ -41,8 +42,6 @@ export const HeroLogoWrapper = styled.div`
     margin-bottom: 5rem;
   }
 `;
-
-export const HeroLogo = Logo;
 
 export const CtaGroup = styled.div`
   margin: auto 0;

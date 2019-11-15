@@ -9,7 +9,6 @@ type ButtonProps = {
   className?: string;
   children: React.ReactNode;
   href?: string;
-  to?: string;
   target?: "_blank" | "_self";
   title?: string;
   ref?: any;
@@ -32,7 +31,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
     ref: any
   ) => {
     let element: any;
-    const attributes = { ...props };
+    const attributes: any = { ...props };
 
     const isExternalLink = props.href && externalLinkPattern.test(props.href);
     const isInternalLink = !isExternalLink && props.href;

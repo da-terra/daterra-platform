@@ -15,6 +15,7 @@ export const Circle = styled.div<CircleProps>`
   top: 0;
   left: 50%;
   transform: ${props => `translate(${-50 + props.x}%, ${props.y}%)`};
+  pointer-events: none;
 `;
 
 type CardProps = {

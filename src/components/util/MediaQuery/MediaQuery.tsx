@@ -4,9 +4,8 @@ import { WindowResizeContext } from "../../context/WindowResizeManager";
 type MediaQueryProps = {
   mediaQuery: string;
   children: React.ReactNode;
-  fallback?: React.ReactNode;
+  fallback?: () => React.ReactNode;
 };
-
 
 // @ts-ignore
 const MediaQuery: React.FC<MediaQueryProps> = ({
@@ -21,7 +20,7 @@ const MediaQuery: React.FC<MediaQueryProps> = ({
   // - window is not available
   // - media query does not match current window state
   if (!window || !window.matchMedia(mediaQuery).matches) {
-    return fallback || null;
+    return fallback && fallback();
   }
 
   return children;

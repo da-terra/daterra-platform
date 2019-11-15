@@ -1,7 +1,7 @@
 enum RoutePath {
-
   // Content pages
-  ContentPage = "/:page",
+  Home = "/",
+  Content = "/:page",
   All = "*",
 
   // Account

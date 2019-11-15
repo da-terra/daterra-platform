@@ -9,10 +9,6 @@ type GatewayProps = {
 
 type Method = "GET" | "HEAD" | "POST" | "PUT" | "UPDATE" | "DELETE";
 
-type GraphQlResponse = {
-  data: object;
-};
-
 export const Context = React.createContext({
   fetch: (path: string, options: RequestInit): Promise<object> =>
     Promise.reject(),
@@ -20,7 +16,7 @@ export const Context = React.createContext({
     query: string,
     variables?: object,
     method?: Method
-  ): Promise<GraphQlResponse> => Promise.reject()
+  ): Promise<Response> => Promise.reject()
 });
 
 class Gateway extends React.Component<GatewayProps> {
@@ -56,7 +52,7 @@ class Gateway extends React.Component<GatewayProps> {
     query: string,
     variables: object | undefined | null,
     method: Method = "GET"
-  ): Promise<GraphQlResponse> => {
+  ): Promise<Response> => {
     const url = new URL(this.graphQlUrl.href);
 
     const requestConfig = {
@@ -96,7 +92,11 @@ class Gateway extends React.Component<GatewayProps> {
 
     const response = await fetch(url.href, requestConfig);
 
-    return await response.json();
+    if (response.status >= 400) {
+      throw response;
+    }
+
+    return response;
   };
 
   render() {

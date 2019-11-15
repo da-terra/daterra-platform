@@ -7,6 +7,8 @@ import {
 } from "../../components/context/StorageManager";
 import { BlockRenderer } from "./styled";
 
+const ErrorPage = React.lazy(() => import("../Error"));
+
 const contentPageQuery = (name: string, targetGroup: string) => `
 {
   page(name: "${name}") {
@@ -22,24 +24,39 @@ const ContentPage: React.FC = () => {
   const gateway = useContext(GatewayContext);
   const storage = useContext(StorageManagerContext);
 
-  const [response, setResponse] = useState<any>(undefined);
+  const [data, setData] = useState<any>(undefined);
+  const [error, setError] = useState<any>(undefined);
 
   useEffect(() => {
     const pageName = page || "homepage";
     const targetGroup = storage.getValue(StorageKey.TargetGroup);
 
+    setError(undefined);
+
     gateway
       .query(contentPageQuery(pageName, targetGroup), undefined, "POST")
-      .then(setResponse);
+      .then(async response => {
+        setData(await response.json());
+      })
+      .catch(async errorResponse =>
+        setError({
+          status: errorResponse.status,
+          errors: await errorResponse.json()
+        })
+      );
   }, [gateway, storage, page]);
 
-  if (!response) {
-    return null;
+  if (error) {
+    return <ErrorPage {...error} />;
   }
 
-  const blocks = response.data.page.blocks.map(JSON.parse);
+  if (data) {
+    const blocks = data.data.page.blocks.map(JSON.parse);
 
-  return <BlockRenderer blocks={blocks} />;
+    return <BlockRenderer blocks={blocks} />;
+  }
+
+  return <p>"Loading..."</p>;
 };
 
 export default ContentPage;

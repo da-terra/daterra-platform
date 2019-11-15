@@ -11,7 +11,7 @@ import {
   Background,
   Circle,
   HeroLogoWrapper,
-  HeroLogo,
+  Logo,
   Content,
   CtaGroup,
   Slogan,
@@ -41,23 +41,23 @@ const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => {
         <HeroLogoWrapper>
           <MediaQuery
             mediaQuery={h750MediaQuery}
-            fallback={<HeroLogo size={LogoSize.Normal} showName />}
+            fallback={() => <Logo size={LogoSize.Normal} showName />}
           >
-            <HeroLogo size={LogoSize.Large} showName />
+            <Logo size={LogoSize.Large} showName />
           </MediaQuery>
         </HeroLogoWrapper>
 
         <CtaGroup>
           <MediaQuery
             mediaQuery={h750MediaQuery}
-            fallback={
+            fallback={() => (
               <Slogan
                 fontWeight={FontWeight.Black}
                 headingType={HeadingType.Secondary}
               >
                 {slogan}
               </Slogan>
-            }
+            )}
           >
             <Slogan fontWeight={FontWeight.Black}>{slogan}</Slogan>
           </MediaQuery>
@@ -67,7 +67,9 @@ const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => {
               <TargetButton
                 inverted
                 muted={storage.getValue(StorageKey.TargetGroup) !== targetGroup}
-                onClick={() => storage.setValue(StorageKey.TargetGroup, targetGroup)}
+                onClick={() =>
+                  storage.setValue(StorageKey.TargetGroup, targetGroup)
+                }
                 key={props.uuid}
               >
                 {children}
