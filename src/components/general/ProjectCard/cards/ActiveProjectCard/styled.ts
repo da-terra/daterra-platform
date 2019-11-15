@@ -27,7 +27,7 @@ export const TimeGroup = styled.div`
 export const TimeString = styled(Paragraph)`
   line-height: 1.4;
   margin: 0;
-`
+`;
 
 export const ProjectTeamSummary = styled(TeamSummary)`
   margin-top: 1.5rem;

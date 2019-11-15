@@ -1,1 +1,1 @@
-export { default, WrapperWidth } from './Wrapper';
+export { default, WrapperWidth } from "./Wrapper";

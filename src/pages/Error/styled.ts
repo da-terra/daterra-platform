@@ -21,7 +21,7 @@ export const ContentWrapper = styled(Wrapper)`
 
 export const LogoWrapper = styled.div`
   margin-top: 6.4rem;
-`
+`;
 
 export const ErrorWrapper = styled.div`
   margin: auto 0;

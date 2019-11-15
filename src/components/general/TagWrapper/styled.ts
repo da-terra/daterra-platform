@@ -6,7 +6,7 @@ export { default as Wrapper } from "../Wrapper";
 export const Background = styled.div`
   position: relative;
   overflow: hidden;
-`
+`;
 
 export const HeadingWrapper = styled.div`
   padding-top: 10.2rem;

@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { FontFamily, FontWeight, Breakpoints } from "../../../data/style/variables";
+import {
+  FontFamily,
+  FontWeight,
+  Breakpoints
+} from "../../../data/style/variables";
 import Icon from "../Icon";
 
 type LogoWrapperProps = {

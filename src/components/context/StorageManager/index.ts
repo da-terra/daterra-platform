@@ -1,2 +1,2 @@
-export { StorageKey } from './data';
-export { default, StorageManagerContext } from './StorageManager'
+export { StorageKey } from "./data";
+export { default, StorageManagerContext } from "./StorageManager";

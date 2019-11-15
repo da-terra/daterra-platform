@@ -27,10 +27,10 @@ export enum FontSize {
 }
 
 export enum Breakpoints {
-  H1500 = '1500px',
-  H1250 = '1250px',
-  H1000 = '1000px',
-  H750 = '750px',
-  H500 = '500px',
-  H250 = '250px',
+  H1500 = "1500px",
+  H1250 = "1250px",
+  H1000 = "1000px",
+  H750 = "750px",
+  H500 = "500px",
+  H250 = "250px"
 }

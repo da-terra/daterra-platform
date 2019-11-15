@@ -16,7 +16,7 @@ export const UserAvatar = styled(Avatar)`
 export const NameWrapper = styled.div`
   flex: 1 0 auto;
   width: 100%;
-`
+`;
 
 export const FullName = styled(LinkButton)`
   max-width: 20rem;
@@ -25,7 +25,7 @@ export const FullName = styled(LinkButton)`
   white-space: nowrap;
   text-align: left;
   text-decoration: none;
-  margin-top: -.5rem;
+  margin-top: -0.5rem;
 
   &:hover {
     text-decoration: underline;
@@ -34,6 +34,6 @@ export const FullName = styled(LinkButton)`
 
 export const Prefix = styled(Paragraph)`
   white-space: nowrap;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-right: 8px;
 `;

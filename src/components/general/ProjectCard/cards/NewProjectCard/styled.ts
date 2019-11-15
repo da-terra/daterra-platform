@@ -22,9 +22,9 @@ export const TimeGroup = styled.div`
 export const TimeString = styled(Paragraph)`
   line-height: 1.4;
   margin: 0;
-`
+`;
 
 export const ProjectDetails = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;

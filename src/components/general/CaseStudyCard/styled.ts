@@ -17,7 +17,7 @@ export const CaseStudyCard = styled(Card)`
 
 export const Collaborator = styled(BaseCollaborator)`
   margin-bottom: 1.5rem;
-`
+`;
 
 /**
  * Title element
@@ -28,7 +28,7 @@ export const Title = styled(Heading)`
 
 export const Description = styled(Paragraph)`
   margin-top: 1rem;
-`
+`;
 
 export const TitleWrapper = styled.div`
   margin-bottom: auto;

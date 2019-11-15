@@ -14,7 +14,7 @@ const wrapperCss = css`
   @media (max-width: ${Breakpoints.H500}) {
     padding: 0 2rem;
   }
-`
+`;
 
 export const NormalWrapper = styled.div`
   ${wrapperCss}

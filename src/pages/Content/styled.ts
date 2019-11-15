@@ -1,1 +1,1 @@
-export { default as BlockRenderer } from '../../components/blocks';
+export { default as BlockRenderer } from "../../components/blocks";

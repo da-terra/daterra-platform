@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const TeamSummaryWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export const TeamGroup = styled.div`
-display: flex;
+  display: flex;
 `;
 
 export const SummaryAvatar = styled.img`
@@ -18,4 +18,4 @@ export const SummaryAvatar = styled.img`
   &:not(:first-child) {
     margin-left: -10px;
   }
-`
+`;

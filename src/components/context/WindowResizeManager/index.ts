@@ -1,1 +1,1 @@
-export { default, WindowResizeContext } from './WindowResizeManager';
+export { default, WindowResizeContext } from "./WindowResizeManager";
