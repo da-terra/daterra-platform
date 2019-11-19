@@ -4,8 +4,8 @@ import Gateway from "../context/Gateway";
 import ThemeManager from "../context/ThemeManager";
 import StorageManager from "../context/StorageManager";
 import WindowResizeManager from "../context/WindowResizeManager";
-import { GlobalStyle } from "./styled";
 import routes from "./routes";
+import { SplashScreen, GlobalStyle } from "./styled";
 
 const App: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const App: React.FC = () => {
               fetchOptions={{}}
               graphQlUrl="https://studata-api.azurewebsites.net/graphql"
             >
-              <Suspense fallback="Loading...">{routes}</Suspense>
+              <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
             </Gateway>
           </WindowResizeManager>
         </ThemeManager>

@@ -25,11 +25,11 @@ export const LogoWrapper = styled.div`
 
 export const ErrorWrapper = styled.div`
   margin: auto 0;
-  padding: 3.2rem 0 10rem;
+  padding: 10rem 0;
 `;
 
 export const Status = styled(Heading)`
-  font-size: 20vw;
+  font-size: 10vw;
   line-height: 1;
 `;
 

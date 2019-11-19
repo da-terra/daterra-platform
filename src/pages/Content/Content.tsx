@@ -5,7 +5,7 @@ import {
   StorageManagerContext,
   StorageKey
 } from "../../components/context/StorageManager";
-import { BlockRenderer } from "./styled";
+import { BlockRenderer, SplashScreen } from "./styled";
 
 const ErrorPage = React.lazy(() => import("../Error"));
 
@@ -56,7 +56,7 @@ const ContentPage: React.FC = () => {
     return <BlockRenderer blocks={blocks} />;
   }
 
-  return <p>"Loading..."</p>;
+  return <SplashScreen />;
 };
 
 export default ContentPage;

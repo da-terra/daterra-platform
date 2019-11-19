@@ -18,6 +18,10 @@ export default (
     <Route path={RoutePath.Dashboard} exact component={DashboardPage} />
 
     {/* Catch all routes for  */}
-    <Route path={[RoutePath.Content, RoutePath.All]} exact component={ContentPage} />
+    <Route
+      path={[RoutePath.Content, RoutePath.All]}
+      exact
+      component={ContentPage}
+    />
   </Switch>
 );
