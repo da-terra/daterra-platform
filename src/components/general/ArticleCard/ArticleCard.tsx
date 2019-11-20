@@ -16,11 +16,7 @@ import {
 
 type ArticleCardProps = {
   className?: string;
-  image: {
-    src: string;
-    alt: string;
-    fallbackColor: string;
-  };
+  image: IImage;
   color: string;
   publishedDate: string;
   tag: string;

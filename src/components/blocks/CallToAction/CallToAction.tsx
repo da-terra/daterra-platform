@@ -10,11 +10,7 @@ import { FontColor, FontWeight } from "../../../data/style/variables";
 
 type CallToActionProps = {
   title: string;
-  link: {
-    href: string;
-    target?: "_self" | "_blank";
-    title: string;
-  };
+  link: ILink;
   shape: {
     src: string;
     alt: string;

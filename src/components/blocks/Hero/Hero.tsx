@@ -10,8 +10,10 @@ import { HeadingType } from "../../general/Heading";
 import {
   Background,
   Circle,
-  HeroLogoWrapper,
+  HeroHeader,
   Logo,
+  NavigationLinks,
+  NavigationLink,
   Content,
   CtaGroup,
   Slogan,
@@ -20,6 +22,7 @@ import {
 } from "./styled";
 
 type HeroProps = {
+  navigationLinks: (ILink & { uuid: string })[];
   slogan: string;
   buttons: {
     uuid: string;
@@ -30,7 +33,7 @@ type HeroProps = {
 
 const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
 
-const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => {
+const Hero: React.FC<HeroProps> = ({ navigationLinks, slogan, buttons }) => {
   const storage = useContext(StorageManagerContext);
 
   return (
@@ -38,14 +41,24 @@ const Hero: React.FC<HeroProps> = ({ slogan, buttons }) => {
       <Circle x={-33} y={-45} radius={200} />
 
       <Content>
-        <HeroLogoWrapper>
+        <HeroHeader>
           <MediaQuery
             mediaQuery={h750MediaQuery}
             fallback={() => <Logo size={LogoSize.Normal} showName />}
           >
             <Logo size={LogoSize.Large} showName />
           </MediaQuery>
-        </HeroLogoWrapper>
+
+          {navigationLinks && (
+            <NavigationLinks>
+              {navigationLinks.map(({ children, uuid, ...link }) => (
+                <NavigationLink {...link} key={uuid} serif>
+                  {children}
+                </NavigationLink>
+              ))}
+            </NavigationLinks>
+          )}
+        </HeroHeader>
 
         <CtaGroup>
           <MediaQuery

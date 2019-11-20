@@ -1,8 +1,8 @@
-import IImage from "./IImage";
+declare global {
+  type ICompany = {
+    image?: IImage;
+    title: string;
+  };
+}
 
-type ICompany = {
-  image?: IImage;
-  title: string;
-};
-
-export default ICompany;
+export {};

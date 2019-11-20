@@ -1,27 +1,38 @@
 import React from "react";
-import IBlock from "../../../types/IBlock";
-import { FontSize, FontWeight } from "../../../data/style/variables";
+import { FontWeight } from "../../../data/style/variables";
 import {
-  HeaderLogo,
   HeaderWrapper,
-  NavigationWrapper,
-  NavigationButton
+  Logo,
+  NavigationLinks,
+  NavigationLink,
+  ChildrenWrapper
 } from "./styled";
 
-const linkProps = {
-  serif: true,
-  paragraphSize: FontSize.Normal,
-  paragraphWeight: FontWeight.Bold
+type HeaderProps = {
+  inverted?: boolean;
+  navigationLinks?: (ILink & { uuid: string })[];
+  children?: React.ReactNode;
 };
 
-const Header: React.FC<IBlock> = ({ className }) => (
-  <HeaderWrapper className={className}>
-    <HeaderLogo />
+const Header: React.FC<HeaderProps> = ({
+  inverted,
+  navigationLinks,
+  children
+}) => (
+  <HeaderWrapper inverted={inverted}>
+    <Logo showName={!navigationLinks} />
 
-    <NavigationWrapper>
-      <NavigationButton {...linkProps}>Projecten</NavigationButton>
-      <NavigationButton {...linkProps}>Forum</NavigationButton>
-    </NavigationWrapper>
+    {navigationLinks && (
+      <NavigationLinks>
+        {navigationLinks.map(({ children, ...link }) => (
+          <NavigationLink {...link} fontWeight={FontWeight.Bold} serif>
+            {children}
+          </NavigationLink>
+        ))}
+      </NavigationLinks>
+    )}
+
+    {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
   </HeaderWrapper>
 );
 

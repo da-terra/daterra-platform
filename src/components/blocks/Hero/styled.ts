@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Wrapper from "../../general/Wrapper";
-import { SolidButton } from "../../general/Button";
+import { SolidButton, LinkButton } from "../../general/Button";
 import Heading from "../../general/Heading";
 import { Breakpoints } from "../../../data/style/variables";
 
@@ -35,11 +35,32 @@ export const Content = styled(Wrapper)`
   }
 `;
 
-export const HeroLogoWrapper = styled.div`
+export const HeroHeader = styled.div`
+  display: flex;
   margin-bottom: 15rem;
 
   @media (max-width: ${Breakpoints.H750}) {
     margin-bottom: 5rem;
+  }
+`;
+
+export const NavigationLinks = styled.div`
+  display: flex;
+  margin-left: auto;
+  margin-bottom: auto;
+`;
+
+export const NavigationLink = styled(LinkButton)`
+  text-decoration: none;
+  pointer-events: all;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:not(:first-child) {
+    margin-left: 6.2rem;
   }
 `;
 

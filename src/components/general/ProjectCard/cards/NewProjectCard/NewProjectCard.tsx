@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { format } from "date-fns";
-import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
 import {
   FontColor,
@@ -32,9 +31,7 @@ const NewProjectCard: React.FC<IProject> = ({
     </ProjectTitle>
 
     <Times>
-      <TimeString fontWeight={FontWeight.Bold}>
-        Looptijd
-      </TimeString>
+      <TimeString fontWeight={FontWeight.Bold}>Looptijd</TimeString>
 
       <TimeString italic>
         <time dateTime={duration!.startDate}>

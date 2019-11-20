@@ -12,16 +12,8 @@ import { FontWeight } from "../../../data/style/variables";
 type Partner = {
   uuid: string;
   title: string;
-  image: {
-    src: string;
-    alt: string;
-    fallbackColor: string;
-  };
-  link: {
-    href: string;
-    title: string;
-    target?: "_blank" | "_self";
-  };
+  image: IImage;
+  link: ILink;
 };
 
 type PartnersProps = {

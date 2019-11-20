@@ -4,13 +4,13 @@ const blocksMap: Record<
   string,
   React.LazyExoticComponent<React.FunctionComponent<any>>
 > = {
-  "c0-navigation": React.lazy(() => import("./Navigation")),
   "c1-footer": React.lazy(() => import("./Footer")),
   "c2-hero": React.lazy(() => import("./Hero")),
   "c3-featured-articles": React.lazy(() => import("./FeaturedArticles")),
   "c4-call-to-action": React.lazy(() => import("./CallToAction")),
   "c5-featured-events": React.lazy(() => import("./FeaturedEvents")),
-  "c6-partners": React.lazy(() => import("./Partners"))
+  "c6-partners": React.lazy(() => import("./Partners")),
+  "c7-header": React.lazy(() => import("./Header"))
 };
 
 type BlockRendererProps = {

@@ -1,11 +1,12 @@
 import React from "react";
 import RoutePath from "../../data/RoutePath";
-import { Circle } from "../../util/layout";
 import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
 import { HeadingType } from "../../components/general/Heading";
 import {
   Page,
-  PageHeading,
+  Circle,
+  Header,
+  FormHeading,
   FormWrapper,
   Form,
   SigninInput,
@@ -25,11 +26,13 @@ const Signin: React.FC = () => {
     <Page>
       <Circle x={25} y={-20} />
 
+      <Header />
+
       <FormWrapper>
         <Form method="post">
-          <PageHeading headingType={HeadingType.Secondary} serif>
+          <FormHeading headingType={HeadingType.Secondary} serif>
             Inloggen
-          </PageHeading>
+          </FormHeading>
 
           <SigninInput
             label="E-mailadres"

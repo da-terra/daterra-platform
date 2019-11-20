@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { formatDistanceToNow, isAfter } from "date-fns";
-import IProject from "../../../../../types/IProject";
 import { HeadingType } from "../../../Heading";
 import { FontColor, FontWeight } from "../../../../../data/style/variables";
 import {

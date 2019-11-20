@@ -1,5 +1,4 @@
 import React from "react";
-import IProject from "../../../types/IProject";
 import FinishedProjectCard from "./cards/FinishedProjectCard";
 import ActiveProjectCard from "./cards/ActiveProjectCard";
 import NewProjectCard from "./cards/NewProjectCard";

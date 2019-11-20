@@ -1,5 +1,4 @@
 import React from "react";
-import IUser from "../../../types/IUser";
 import { FontColor, FontSize, FontWeight } from "../../../data/style/variables";
 import { Wrapper, UserAvatar, NameWrapper, FullName, Prefix } from "./styled";
 

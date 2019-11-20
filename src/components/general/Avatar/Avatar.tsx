@@ -1,5 +1,4 @@
 import React from "react";
-import IImage from "../../../types/IImage";
 import { AvatarWrapper } from "./styled";
 
 type AvatarProps = IImage & {

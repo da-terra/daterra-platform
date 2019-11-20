@@ -4,16 +4,8 @@ import { PartnerCard, PartnerImage } from "./styled";
 type PartnerProps = {
   className?: string;
   title: string;
-  image: {
-    src: string;
-    alt: string;
-    fallbackColor: string;
-  };
-  link: {
-    href: string;
-    title: string;
-    target?: "_blank" | "_self";
-  };
+  image: IImage;
+  link: ILink;
 };
 
 const Partner: React.FC<PartnerProps> = ({ className, link, image }) => (

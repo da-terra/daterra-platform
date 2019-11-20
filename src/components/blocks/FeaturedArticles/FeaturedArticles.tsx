@@ -16,11 +16,7 @@ type Article = {
   publishedDate: string;
   tag: string;
   title: string;
-  image: {
-    src: string;
-    alt: string;
-    fallbackColor: string;
-  };
+  image: IImage;
   author: {
     name: string;
   };
@@ -30,12 +26,7 @@ type FeaturedArticlesProps = {
   title: string;
   tag: React.ReactNode;
   articles: Article[];
-
-  link: {
-    href: string;
-    target: "_self" | "_blank";
-    title: string;
-  };
+  link: ILink;
 };
 
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({

@@ -20,26 +20,16 @@ import {
   Disclaimer
 } from "./styled";
 
-type Link = {
-  href: string;
-  title: string;
-  target?: "_blank" | "_self";
-};
-
 type SocialNetwork = {
   uuid: string;
-  image: {
-    src: string;
-    alt: string;
-    fallbackColor: string;
-  };
-  link: Link;
+  image: IImage;
+  link: ILink;
 };
 
 type SitemapGroup = {
   uuid: string;
   tag: "Blog";
-  links: ({ uuid: string } & Link)[];
+  links: (ILink & { uuid: string })[];
 };
 
 type FooterProps = {

@@ -1,5 +1,4 @@
 import React from "react";
-import IUser from "../../../types/IUser";
 import Roles from "../../../data/Roles";
 import { TeamSummaryWrapper, TeamGroup, SummaryAvatar } from "./styled";
 
@@ -21,13 +20,21 @@ const TeamSummary: React.FC<TeamSummaryProps> = ({ className, team }) => {
     <TeamSummaryWrapper className={className}>
       <TeamGroup>
         {developmentTeam.map(user => (
-          <SummaryAvatar src={user.image!.src} alt={user.image!.alt} title={user.image!.alt} />
+          <SummaryAvatar
+            src={user.image!.src}
+            alt={user.image!.alt}
+            title={user.image!.alt}
+          />
         ))}
       </TeamGroup>
 
       <TeamGroup>
         {managementTeam.map(user => (
-          <SummaryAvatar src={user.image!.src} alt={user.image!.alt} title={user.image!.alt} />
+          <SummaryAvatar
+            src={user.image!.src}
+            alt={user.image!.alt}
+            title={user.image!.alt}
+          />
         ))}
       </TeamGroup>
     </TeamSummaryWrapper>

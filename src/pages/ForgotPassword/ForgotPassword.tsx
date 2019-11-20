@@ -5,7 +5,8 @@ import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
 import { HeadingType } from "../../components/general/Heading";
 import {
   Page,
-  PageHeading,
+  Header,
+  FormHeading,
   FormWrapper,
   Form,
   ForgetPasswordInput,
@@ -25,11 +26,28 @@ const ForgotPassword: React.FC = () => {
     <Page>
       <Circle x={25} y={-20} />
 
+      <Header
+        navigationLinks={[
+          {
+            uuid: "1",
+            href: "/quick-scan",
+            title: "Doe de Quickscan in minder dan 5 minuten",
+            children: "Doe de Quickscan"
+          },
+          {
+            uuid: "2",
+            href: "/blog",
+            title: "Vind informatie over onze producten en diensten",
+            children: "Blog"
+          }
+        ]}
+      />
+
       <FormWrapper>
         <Form method="post">
-          <PageHeading headingType={HeadingType.Secondary} serif>
+          <FormHeading headingType={HeadingType.Secondary} serif>
             Wachtwoord vergeten
-          </PageHeading>
+          </FormHeading>
 
           <ForgetPasswordInput
             label="E-mailadres"

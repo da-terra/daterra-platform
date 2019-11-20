@@ -1,7 +1,9 @@
-type IImage = {
-  src?: string;
-  alt?: string;
-  fallbackColor: string;
-};
+declare global {
+  type IImage = {
+    src?: string;
+    alt?: string;
+    fallbackColor: string;
+  };
+}
 
-export default IImage;
+export {};

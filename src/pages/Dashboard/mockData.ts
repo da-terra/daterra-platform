@@ -1,4 +1,3 @@
-import IProject from "../../types/IProject";
 import Roles from "../../data/Roles";
 
 export const finishedProject: IProject = {

@@ -23,11 +23,7 @@ type FeaturedArticlesProps = {
   tag: React.ReactNode;
   events: Event[];
 
-  link: {
-    href: string;
-    target: "_self" | "_blank";
-    title: string;
-  };
+  link: ILink;
 };
 
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({

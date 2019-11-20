@@ -3,6 +3,8 @@ import Icon from "../../components/general/Icon";
 import { SolidButton, LinkButton } from "../../components/general/Button";
 import Input from "../../components/general/Input";
 import Heading from "../../components/general/Heading";
+
+export { default as Header } from "../../components/blocks/Header";
 export { default as Page } from "../../components/general/Page";
 
 export const InfoIcon = styled(Icon.Info)`
@@ -23,6 +25,7 @@ export const FormWrapper = styled.div`
   top: 0;
   min-height: 100vh;
   width: 100%;
+  pointer-events: none;
 `;
 
 export const Form = styled.form`
@@ -31,9 +34,10 @@ export const Form = styled.form`
   box-sizing: content-box;
   width: 100%;
   margin: auto;
+  pointer-events: all;
 `;
 
-export const PageHeading = styled(Heading)`
+export const FormHeading = styled(Heading)`
   margin-bottom: 2.6rem;
 `;
 

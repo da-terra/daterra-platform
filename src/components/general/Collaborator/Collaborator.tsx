@@ -1,5 +1,4 @@
 import React from "react";
-import IUser from "../../../types/IUser";
 import { FontColor, FontSize, FontWeight } from "../../../data/style/variables";
 import Paragraph from "../Paragraph";
 import { Wrapper } from "./styled";

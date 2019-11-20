@@ -1,26 +1,24 @@
-import IUser from "./IUser";
-import ICompany from "./ICompany";
+declare global {
+  type IProject = {
+    uuid: string;
 
-type IProject = {
-  uuid: string;
+    company: ICompany;
+    owner: IUser;
+    team: IUser[];
 
-  company: ICompany;
-  owner: IUser;
-  team: IUser[];
+    title: string;
+    tags: string[];
 
-  title: string;
-  tags: string[];
+    duration?: {
+      startDate: string;
+      endDate: string;
+    };
 
-  duration?: {
-    startDate: string;
-    endDate: string;
+    publishedDate: string | undefined;
+    finishedDate: string | undefined;
+
+    createdDate: string;
+    updatedDate: string;
   };
-
-  publishedDate: string | undefined;
-  finishedDate: string | undefined;
-
-  createdDate: string;
-  updatedDate: string;
-};
-
-export default IProject;
+}
+export {};

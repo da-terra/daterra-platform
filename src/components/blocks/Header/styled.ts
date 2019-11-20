@@ -1,29 +1,39 @@
-import styled from "styled-components";
-import Wrapper from "../../general/Wrapper";
+import styled, { DefaultTheme } from "styled-components";
 import { LinkButton } from "../../general/Button";
+import Wrapper from "../../general/Wrapper";
 
-export { default as HeaderLogo } from "../../general/Logo";
+export { default as Button } from "../../general/Button";
+export { default as Logo } from "../../general/Logo";
+
+type HeaderWrapperProps = {
+  inverted?: boolean;
+  theme: DefaultTheme;
+};
 
 export const HeaderWrapper = styled(Wrapper)`
+  margin-top: 6.4rem;
   display: flex;
-  margin-top: 5rem;
-  margin-bottom: 4rem;
+  color: ${(props: HeaderWrapperProps) =>
+    props.inverted
+      ? props.theme.copy.primaryInverted
+      : props.theme.copy.primary};
 `;
 
-export const NavigationWrapper = styled.ul`
+export const NavigationLinks = styled.div`
   display: flex;
-  margin-right: auto;
-  margin-left: 3rem;
+  margin: auto 0 auto 6.2rem;
 `;
 
-export const NavigationButton = styled(LinkButton)`
-  text-decoration: none;
-
-  &:not(:last-child) {
-    margin-right: 3rem;
-  }
-
+export const NavigationLink = styled(LinkButton)`
   &:hover {
     text-decoration: underline;
   }
+
+  &:not(:first-child) {
+    margin-left: 6.2rem;
+  }
+`;
+
+export const ChildrenWrapper = styled.div`
+  margin-left: auto;
 `;
