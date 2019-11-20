@@ -3,8 +3,6 @@ import IconTooltip from "../../general/IconTooltip";
 import { FontWeight } from "../../../data/style/variables";
 import Easings from "../../../data/style/easings";
 
-const offsetLeft = 2;
-
 export const Tooltip = styled(IconTooltip)`
   position: absolute;
   right: 2rem;
@@ -12,29 +10,34 @@ export const Tooltip = styled(IconTooltip)`
 
 export const Label = styled.label`
   position: absolute;
-  left: ${offsetLeft}rem;
+  left: ${props => props.theme.input.padding}rem;
   font-weight: ${FontWeight.Black};
   font-size: 1.6rem;
+  pointer-events: none;
   transition: 0.05s ${Easings.easeOutExpo} all;
 `;
 
 export const InputElement = styled.input`
-  position: relative;
-  padding: 0 ${offsetLeft}rem;
-  width: 100%;
-  min-height: 7rem;
-  line-height: 1;
-  border: 1px solid ${props => props.theme.input.borderColor};
-  color: ${props => props.theme.input.copyColor};
-  outline: none;
   background: ${props => props.theme.input.backgroundColor};
-  transition: 0.2s ${Easings.easeOutExpo} border-color;
-  border-radius: 1rem;
+  border: 1px solid ${props => props.theme.input.borderColor};
+  border-radius: ${props => props.theme.input.borderRadius}rem;
+  color: ${props => props.theme.input.copyColor};
   font-size: 1.6rem;
+  line-height: 1;
+  min-height: 7rem;
+  outline: none;
+  padding: 0 ${props => props.theme.input.padding}rem;
+  position: relative;
+  transition: 0.2s ${Easings.easeOutExpo} border-color;
+  width: 100%;
 
   &:placeholder-shown {
     padding-top: 1rem;
     padding-bottom: 1rem;
+
+    &:focus + ${Label} {
+      opacity: 0.5;
+    }
   }
 
   &:not(:placeholder-shown) {
@@ -52,7 +55,7 @@ type WrapperProps = {
   hasError?: boolean;
 };
 
-export const Wrapper = styled.div<WrapperProps>`
+export const InputWrapper = styled.div<WrapperProps>`
   display: inline-flex;
   position: relative;
   font-size: 1.4rem;

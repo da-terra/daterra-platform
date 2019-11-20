@@ -13,7 +13,7 @@ type StorageManagerState = {
   removeValue: (key: StorageKey) => void;
 };
 
-export const StorageManagerContext = React.createContext<StorageManagerState>({
+export const Context = React.createContext<StorageManagerState>({
   updatedAt: Date.now(),
   getValue: () => undefined,
   setValue: () => {
@@ -89,9 +89,9 @@ class StorageManagerManager extends React.Component<
 
   render() {
     return (
-      <StorageManagerContext.Provider value={this.state}>
+      <Context.Provider value={this.state}>
         {this.props.children}
-      </StorageManagerContext.Provider>
+      </Context.Provider>
     );
   }
 }

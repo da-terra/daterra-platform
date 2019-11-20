@@ -10,6 +10,7 @@ export enum FontColor {
   SecondaryInverted = "secondaryInverted",
   Tertiary = "tertiary",
   TertiaryInverted = "tertiaryInverted",
+  Accent = "accent",
   Error = "error",
   Warning = "warning"
 }

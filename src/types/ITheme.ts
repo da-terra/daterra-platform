@@ -52,6 +52,8 @@ declare module "styled-components" {
       backgroundColor: string;
       borderColor: string;
       copyColor: string;
+      borderRadius: number;
+      padding: number;
     };
 
     font: {

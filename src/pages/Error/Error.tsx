@@ -17,6 +17,7 @@ import {
   ErrorMessage,
   CtaButton
 } from "./styled";
+import { useHistory } from "react-router";
 
 const errorMessages = {
   [StatusCode.NotFound]: "Whoops! We konden de pagina die je zoekt niet vinden."
@@ -29,10 +30,12 @@ type ErrorPageProps = {
 const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
 
 const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
-  const showGoBack = window.history.length > 1;
+  const history = useHistory();
+
+  const showGoBack = history.length > 1;
 
   const backButton = () => (
-    <CtaButton inverted onClick={() => window.history.go(-1)}>
+    <CtaButton inverted onClick={() => history.go(-1)}>
       Terug naar vorige pagina
     </CtaButton>
   );

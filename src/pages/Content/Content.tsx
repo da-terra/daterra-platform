@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context as GatewayContext } from "../../components/context/Gateway";
-import {
-  StorageManagerContext,
-  StorageKey
-} from "../../components/context/StorageManager";
+import { Context, StorageKey } from "../../components/context/StorageManager";
 import { BlockRenderer, SplashScreen } from "./styled";
 
 const ErrorPage = React.lazy(() => import("../Error"));
@@ -22,7 +19,7 @@ const ContentPage: React.FC = () => {
   const { page } = useParams();
 
   const gateway = useContext(GatewayContext);
-  const storage = useContext(StorageManagerContext);
+  const storage = useContext(Context);
 
   const [data, setData] = useState<any>(undefined);
   const [error, setError] = useState<any>(undefined);

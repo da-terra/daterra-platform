@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
 import { FontWeight } from "../../../data/style/variables";
+import { LayoutContext, LayoutStateVariable } from "../../context/Layout";
 import {
   HeaderWrapper,
   Logo,
@@ -18,22 +19,32 @@ const Header: React.FC<HeaderProps> = ({
   inverted,
   navigationLinks,
   children
-}) => (
-  <HeaderWrapper inverted={inverted}>
-    <Logo showName={!navigationLinks} />
+}) => {
+  const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const layoutContext = useContext(LayoutContext);
 
-    {navigationLinks && (
-      <NavigationLinks>
-        {navigationLinks.map(({ children, ...link }) => (
-          <NavigationLink {...link} fontWeight={FontWeight.Bold} serif>
-            {children}
-          </NavigationLink>
-        ))}
-      </NavigationLinks>
-    )}
+  if (headerRef.current) {
+    const height = (headerRef.current! as HTMLElement).clientHeight;
+    layoutContext.setValue(LayoutStateVariable.HeaderHeight, height);
+  }
 
-    {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
-  </HeaderWrapper>
-);
+  return (
+    <HeaderWrapper inverted={inverted} ref={headerRef}>
+      <Logo showName={!navigationLinks} />
+
+      {navigationLinks && (
+        <NavigationLinks>
+          {navigationLinks.map(({ children, ...link }) => (
+            <NavigationLink {...link} fontWeight={FontWeight.Bold} serif>
+              {children}
+            </NavigationLink>
+          ))}
+        </NavigationLinks>
+      )}
+
+      {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
+    </HeaderWrapper>
+  );
+};
 
 export default Header;

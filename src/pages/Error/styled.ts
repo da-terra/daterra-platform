@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Page from "../../components/general/Page";
 import Heading from "../../components/general/Heading";
 import Wrapper from "../../components/general/Wrapper";
 import { SolidButton } from "../../components/general/Button";
@@ -7,7 +6,8 @@ import { SolidButton } from "../../components/general/Button";
 export { default as Logo } from "../../components/general/Logo";
 export { Circle } from "../../util/layout";
 
-export const PageWithBackgroundColor = styled(Page)`
+export const PageWithBackgroundColor = styled.div`
+  height: 100vh;
   background: ${props => props.theme.background.accent};
   color: ${props => props.theme.copy.primaryInverted};
 `;

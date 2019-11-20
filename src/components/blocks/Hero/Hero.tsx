@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { FontWeight, Breakpoints } from "../../../data/style/variables";
-import {
-  StorageManagerContext,
-  StorageKey
-} from "../../context/StorageManager";
+import { Context, StorageKey } from "../../context/StorageManager";
 import MediaQuery from "../../util/MediaQuery";
 import { LogoSize } from "../../general/Logo";
 import { HeadingType } from "../../general/Heading";
@@ -34,7 +31,7 @@ type HeroProps = {
 const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
 
 const Hero: React.FC<HeroProps> = ({ navigationLinks, slogan, buttons }) => {
-  const storage = useContext(StorageManagerContext);
+  const storage = useContext(Context);
 
   return (
     <Background>

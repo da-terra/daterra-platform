@@ -1,17 +1,8 @@
 import styled from "styled-components";
 import Heading from "../../../../components/general/Heading";
 import { SolidButton } from "../../../../components/general/Button";
-import Icon from "../../../../components/general/Icon";
 
 export { Circle } from "../../../../util/layout";
-export { default as Input } from "../../../../components/general/Input";
-export {
-  default as InputGroup
-} from "../../../../components/general/InputGroup";
-
-export const InfoIcon = styled(Icon.Info)`
-  fill: ${props => props.theme.copy.tertiary};
-`;
 
 export const Content = styled.div`
   position: absolute;

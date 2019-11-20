@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import RoutePath from "../../data/RoutePath";
 import {
-  Page,
   Circle,
   Header,
   SearchForm,
@@ -18,7 +17,7 @@ import { activeProject, newProject, personalStatistics } from "./mockData";
 
 const Dashboard: React.FC = () => {
   return (
-    <Page>
+    <Fragment>
       <Circle x={20} y={-30} />
 
       <Header />
@@ -58,7 +57,7 @@ const Dashboard: React.FC = () => {
           ]}
         />
       </Wrapper>
-    </Page>
+    </Fragment>
   );
 };
 

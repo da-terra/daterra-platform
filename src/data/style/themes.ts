@@ -59,7 +59,9 @@ const themes: DefaultTheme[] = [
     input: {
       backgroundColor: "#FFFFFF",
       borderColor: "#D9E2E2",
-      copyColor: "#A1A7A6"
+      copyColor: "#A1A7A6",
+      borderRadius: 1,
+      padding: 2
     },
 
     tooltip: {

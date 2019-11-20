@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
 import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
 import { HeadingType } from "../../components/general/Heading";
 import {
-  Page,
   Header,
   FormHeading,
   FormWrapper,
@@ -23,7 +22,7 @@ const requiredTooltip = {
 
 const ForgotPassword: React.FC = () => {
   return (
-    <Page>
+    <Fragment>
       <Circle x={25} y={-20} />
 
       <Header
@@ -71,7 +70,7 @@ const ForgotPassword: React.FC = () => {
           </ButtonWrapper>
         </Form>
       </FormWrapper>
-    </Page>
+    </Fragment>
   );
 };
 

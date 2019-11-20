@@ -12,16 +12,22 @@ type WrapperProps = {
   width?: WrapperWidth;
 };
 
-const Wrapper: React.FC<WrapperProps> = ({
-  children,
-  width = WrapperWidth.Normal,
-  ...props
-}) => {
-  if (width === WrapperWidth.Small) {
-    return <SmallWrapper {...props}>{children}</SmallWrapper>;
-  }
+const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
+  ({ children, width = WrapperWidth.Normal, ...props }, ref) => {
+    if (width === WrapperWidth.Small) {
+      return (
+        <SmallWrapper {...props} ref={ref}>
+          {children}
+        </SmallWrapper>
+      );
+    }
 
-  return <NormalWrapper {...props}>{children}</NormalWrapper>;
-};
+    return (
+      <NormalWrapper {...props} ref={ref}>
+        {children}
+      </NormalWrapper>
+    );
+  }
+);
 
 export default Wrapper;

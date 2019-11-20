@@ -1,9 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import RoutePath from "../../data/RoutePath";
 import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
 import { HeadingType } from "../../components/general/Heading";
 import {
-  Page,
   Circle,
   Header,
   FormHeading,
@@ -23,7 +22,7 @@ const requiredTooltip = {
 
 const Signin: React.FC = () => {
   return (
-    <Page>
+    <Fragment>
       <Circle x={25} y={-20} />
 
       <Header />
@@ -63,7 +62,7 @@ const Signin: React.FC = () => {
           </ButtonWrapper>
         </Form>
       </FormWrapper>
-    </Page>
+    </Fragment>
   );
 };
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Page = styled.div`
+export const AppWrapper = styled.div`
+  overflow: hidden;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
 `;

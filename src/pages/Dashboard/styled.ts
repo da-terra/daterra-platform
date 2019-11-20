@@ -4,7 +4,6 @@ import Wrapper from "../../components/general/Wrapper";
 import ProjectCarousel from "../../components/general/ProjectCarousel";
 
 export { Circle } from "../../util/layout";
-export { default as Page } from "../../components/general/Page";
 export { default as Wrapper } from "../../components/general/Wrapper";
 export { default as Header } from "../../components/blocks/Header";
 export {

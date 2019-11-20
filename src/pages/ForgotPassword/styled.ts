@@ -5,7 +5,6 @@ import Input from "../../components/general/Input";
 import Heading from "../../components/general/Heading";
 
 export { default as Header } from "../../components/blocks/Header";
-export { default as Page } from "../../components/general/Page";
 
 export const InfoIcon = styled(Icon.Info)`
   fill: ${props => props.theme.copy.tertiary};

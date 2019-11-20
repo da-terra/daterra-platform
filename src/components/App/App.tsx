@@ -6,6 +6,7 @@ import StorageManager from "../context/StorageManager";
 import WindowResizeManager from "../context/WindowResizeManager";
 import routes from "./routes";
 import { SplashScreen, GlobalStyle } from "./styled";
+import Layout from "../context/Layout";
 
 const App: React.FC = () => {
   return (
@@ -13,15 +14,17 @@ const App: React.FC = () => {
       <StorageManager prefix="dsp">
         <ThemeManager>
           <WindowResizeManager>
-            <GlobalStyle gridSize={10} />
+            <Layout>
+              <GlobalStyle gridSize={10} />
 
-            <Gateway
-              fetchUrl={window.location.origin}
-              fetchOptions={{}}
-              graphQlUrl="https://studata-api.azurewebsites.net/graphql"
-            >
-              <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
-            </Gateway>
+              <Gateway
+                fetchUrl={window.location.origin}
+                fetchOptions={{}}
+                graphQlUrl="https://studata-api.azurewebsites.net/graphql"
+              >
+                <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
+              </Gateway>
+            </Layout>
           </WindowResizeManager>
         </ThemeManager>
       </StorageManager>
