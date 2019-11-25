@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import Heading from "../../../../components/general/Heading";
 import { SolidButton } from "../../../../components/general/Button";
+import Paragraph from "../../../../components/general/Paragraph";
 
 export { Circle } from "../../../../util/layout";
+export {
+  default as QuickScanQuestion
+} from "../../../../components/general/Question";
 
 export const Content = styled.div`
   position: absolute;
@@ -23,9 +27,18 @@ export const FormWrapper = styled.form`
   pointer-events: all;
 `;
 
+export const FormHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 5.2rem;
+`
+
 export const FormHeading = styled(Heading)`
-  margin-bottom: 3.2rem;
 `;
+
+export const QuestionIndex = styled(Paragraph)`
+  margin-left: auto;
+`
 
 export const SubmitButton = styled(SolidButton)`
   margin: 6.2rem auto 0;

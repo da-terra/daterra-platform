@@ -22,10 +22,14 @@ type QuickScanProps = {
   children: React.ReactNode;
 };
 
+type QueryResponse = {
+  quickScanQuestions: IQuickScanQuestions;
+};
+
 export type QuickScanContextType = {
   progress: number;
   formData?: FormData;
-  quickScan?: IQuickScan;
+  response?: QueryResponse;
   setProgress: (value: number) => void;
   setFormData: (formData: FormData) => void;
 };
@@ -38,13 +42,15 @@ export const QuickScanContext = React.createContext<QuickScanContextType>({
 
 const quickScanQuery = (targetGroup: TargetGroup) => `
   {
-    quickScan {
-      questions {
-        question,
-        options {
-          label,
-          value
-        }
+    quickScanQuestions(target: ${targetGroup}) {
+      _id,
+      question,
+      body,
+      minScore,
+      maxScore,
+      options {
+        label,
+        score
       }
     }
   }
@@ -59,14 +65,14 @@ const QuickScan: React.FC<QuickScanProps> = ({ children }) => {
   const [error, setError] = useState();
   const [formData, setFormData] = useState<FormData>(new FormData());
   const [progress, setProgress] = useState<number>(0);
-  const [quickScan, setQuickScan] = useState<IQuickScan>();
+  const [response, setResponse] = useState<QueryResponse>();
 
   const context = {
     progress,
     setProgress,
     formData,
     setFormData,
-    quickScan
+    response
   };
 
   useEffect(() => {
@@ -79,7 +85,7 @@ const QuickScan: React.FC<QuickScanProps> = ({ children }) => {
       .then(async response => {
         const data = await response.json();
 
-        setQuickScan(data.data.quickScan);
+        setResponse(data.data);
       })
       .catch(async errorResponse =>
         setError({
@@ -113,7 +119,7 @@ const QuickScan: React.FC<QuickScanProps> = ({ children }) => {
   /**
    * Show loading screen when fetching data
    */
-  if (!quickScan) {
+  if (!response) {
     return <SplashScreen />;
   }
 

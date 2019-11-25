@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useReducer } from "react";
 import { Redirect } from "react-router";
 import { HeadingType } from "../../../../components/general/Heading";
-import { FontColor } from "../../../../data/style/variables";
+import { FontColor, FontWeight } from "../../../../data/style/variables";
 import { QuickScanContext } from "../../QuickScan";
 import RoutePath from "../../../../data/RoutePath";
 import reducer, { initialReducerState, Action } from "./reducer";
@@ -9,28 +9,28 @@ import {
   Circle,
   Content,
   FormWrapper,
+  FormHeader,
   FormHeading,
+  QuestionIndex,
+  QuickScanQuestion,
   SubmitButton
 } from "./styled";
-
-// Move
-import Paragraph from "../../../../components/general/Paragraph";
 
 const QuickScanQuestions = () => {
   const quickScanContext = useContext(QuickScanContext);
 
   const [state, dispatch] = useReducer(reducer, initialReducerState);
 
-  const questionCount = quickScanContext.quickScan!.questions.length;
+  const questions = quickScanContext.response!.quickScanQuestions;
+  const questionCount = questions.length;
+
   const currentIndex = state.currentIndex;
 
-  if (quickScanContext.quickScan && currentIndex >= questionCount) {
-    debugger;
+  if (currentIndex >= questionCount) {
     return <Redirect to={RoutePath.QuickScanResult} />;
   }
 
-  const currentQuestion = quickScanContext.quickScan!.questions[currentIndex];
-  const isLastQuestion = currentIndex + 1 === questionCount;
+  const nextQuestion = questions[currentIndex + 1];
 
   return (
     <Fragment>
@@ -38,18 +38,28 @@ const QuickScanQuestions = () => {
 
       <Content>
         <FormWrapper>
-          <FormHeading
-            headingType={HeadingType.Secondary}
-            fontColor={FontColor.Accent}
-          >
-            Quick Scan (Vraag {currentIndex + 1} van de {questionCount})
-          </FormHeading>
+          <FormHeader>
+            <FormHeading
+              headingType={HeadingType.Secondary}
+              fontColor={FontColor.Accent}
+            >
+              Quick Scan
+            </FormHeading>
 
-          <Paragraph>{currentQuestion.question}</Paragraph>
-          {JSON.stringify(currentQuestion)}
+            <QuestionIndex
+              fontColor={FontColor.Secondary}
+              fontWeight={FontWeight.Bold}
+            >
+              Vraag {currentIndex + 1} van {questionCount}
+            </QuestionIndex>
+          </FormHeader>
+
+          <QuickScanQuestion {...questions[currentIndex]} />
 
           <SubmitButton onClick={() => dispatch({ type: Action.Increment })}>
-            {isLastQuestion ? "Naar volgende stap" : "Naar volgende vraag"}
+            {!nextQuestion
+              ? "Naar volgende stap"
+              : nextQuestion.salutation || "Naar volgende vraag"}
           </SubmitButton>
         </FormWrapper>
       </Content>
