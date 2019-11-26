@@ -28,49 +28,55 @@ const Range: React.FC<RangeProps> = function({
   const eventRaf = useRef(0);
 
   // Update the value for the range slider
-  const mouseEventRaf = (event: MouseEvent) => () => {
+  const mouseEventRaf = (event: MouseEvent | TouchEvent) => () => {
     const sliderBounds = sliderRef.current!.getBoundingClientRect();
+
+    // Get pageX from MouseEvent or first item in TouchList
+    // @ts-ignore
+    let pageX = event.touches ? event.touches[0].pageX : event.pageX;
 
     const maxRawValue = sliderBounds.width;
     const minRawValue = 0;
-    const rawValue = event.screenX - sliderBounds.left;
+    const rawValue = pageX - sliderBounds.left;
 
     const value = Math.max(minRawValue, Math.min(rawValue, maxRawValue));
 
     setValue((1 / maxRawValue) * value);
   };
 
-  const mouseEventHandler = (event: MouseEvent) => {
+  const mouseEventHandler = (event: MouseEvent | TouchEvent) => {
     // Update value to initial position
     cancelAnimationFrame(eventRaf.current);
     eventRaf.current = requestAnimationFrame(mouseEventRaf(event));
-
-    // Ignore all but left mouse button
-    if (event.button !== 0) {
-      return;
-    }
 
     // Disable user select when dragging along the slider
     document.body.style.userSelect = "none";
 
     // Use animation frame to make sure that the UI stays smooth
-    const handleMouseMove = (event: MouseEvent) => {
+    const handleMouseMove = (event: MouseEvent | TouchEvent) => {
       cancelAnimationFrame(eventRaf.current);
       eventRaf.current = requestAnimationFrame(mouseEventRaf(event));
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", () => {
+    const handleMouseUp = () => {
       document.body.style.userSelect = "";
       document.removeEventListener("mousemove", handleMouseMove);
-    });
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("touchmove", handleMouseMove);
+
+    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchend", handleMouseUp);
   };
 
   // Event handler for thumb drag behavior
   useEvent<MouseEvent>(thumbRef, "mousedown", mouseEventHandler);
+  useEvent<MouseEvent>(sliderRef, "mousedown", mouseEventHandler);
 
   // Event handler for slider click behavior
-  useEvent<MouseEvent>(sliderRef, "mousedown", mouseEventHandler);
+  useEvent<TouchEvent>(thumbRef, "touchstart", mouseEventHandler);
+  useEvent<TouchEvent>(sliderRef, "touchstart", mouseEventHandler);
 
   return (
     <Wrapper>

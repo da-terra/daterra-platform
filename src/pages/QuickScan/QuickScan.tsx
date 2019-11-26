@@ -28,7 +28,7 @@ type QueryResponse = {
 
 export type QuickScanContextType = {
   progress: number;
-  formData?: FormData;
+  formData: FormData;
   response?: QueryResponse;
   setProgress: (value: number) => void;
   setFormData: (formData: FormData) => void;
@@ -36,6 +36,7 @@ export type QuickScanContextType = {
 
 export const QuickScanContext = React.createContext<QuickScanContextType>({
   progress: 0,
+  formData: new FormData(),
   setProgress: () => {},
   setFormData: () => {}
 });

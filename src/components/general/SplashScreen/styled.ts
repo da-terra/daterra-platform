@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components';
-import Logo from '../Logo';
-import Easings from '../../../data/style/easings';
+import styled, { keyframes } from "styled-components";
+import Logo from "../Logo";
+import Easings from "../../../data/style/easings";
 
 export { Circle } from "../../../util/layout";
 
@@ -11,7 +11,7 @@ export const Background = styled.div`
   height: 100vh;
   overflow: hidden;
   position: relative;
-`
+`;
 
 const fadeInOut = keyframes`
   0% {
@@ -27,8 +27,7 @@ const fadeInOut = keyframes`
   }
 `;
 
-
 export const LogoWithAnimation = styled(Logo)`
   margin: auto;
-  animation: ${fadeInOut} 1s ${Easings.easeInOutSine} infinite
+  animation: ${fadeInOut} 1s ${Easings.easeInOutSine} infinite;
 `;

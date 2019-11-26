@@ -1,9 +1,10 @@
 import React from "react";
-import { NormalWrapper, SmallWrapper } from "./styled";
+import { NormalWrapper, SmallWrapper, SmallerWrapper } from "./styled";
 
 export enum WrapperWidth {
   Normal,
-  Small
+  Small,
+  Smaller
 }
 
 type WrapperProps = {
@@ -14,6 +15,14 @@ type WrapperProps = {
 
 const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
   ({ children, width = WrapperWidth.Normal, ...props }, ref) => {
+    if (width === WrapperWidth.Smaller) {
+      return (
+        <SmallerWrapper {...props} ref={ref}>
+          {children}
+        </SmallerWrapper>
+      );
+    }
+
     if (width === WrapperWidth.Small) {
       return (
         <SmallWrapper {...props} ref={ref}>

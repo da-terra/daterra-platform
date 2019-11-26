@@ -18,6 +18,7 @@ export const Slider = styled.div`
   height: 1.5rem;
   background: ${props => props.theme.background.accent};
   border-radius: 1.5rem;
+  cursor: pointer;
 `;
 
 export const Thumb = styled.div`
@@ -29,7 +30,10 @@ export const Thumb = styled.div`
   border-radius: 1.5rem;
   background: ${props => props.theme.copy.primary};
   box-shadow: ${props => props.theme.button.solid.shadow}
-  transition: left 1s ${Easings.easeOutExpo};
+  transition: left .1s ${Easings.easeOutExpo};
+  cursor: pointer;
+  border: none;
+  outline: none;
 `;
 
 export const LabelWrapper = styled.div`

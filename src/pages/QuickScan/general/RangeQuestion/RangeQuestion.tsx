@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Question, Range } from "./styled";
-import { HeadingType } from "../Heading";
+import { HeadingType } from "../../../../components/general/Heading";
 
 type RangeQuestionProps = IQuickScanQuestion;
 

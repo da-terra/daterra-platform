@@ -25,3 +25,8 @@ export const SmallWrapper = styled.div`
   ${wrapperCss}
   max-width: 1200px;
 `;
+
+export const SmallerWrapper = styled.div`
+  ${wrapperCss}
+  max-width: 612px;
+`;

@@ -1,1 +1,1 @@
-export { default } from './QuickScan';
+export { default } from "./QuickScan";

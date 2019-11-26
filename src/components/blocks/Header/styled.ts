@@ -1,6 +1,7 @@
 import styled, { DefaultTheme } from "styled-components";
 import { LinkButton } from "../../general/Button";
 import Wrapper from "../../general/Wrapper";
+import { Breakpoints } from "../../../data/style/variables";
 
 export { default as Button } from "../../general/Button";
 export { default as Logo } from "../../general/Logo";
@@ -17,6 +18,10 @@ export const HeaderWrapper = styled(Wrapper)`
     props.inverted
       ? props.theme.copy.primaryInverted
       : props.theme.copy.primary};
+
+  @media (max-width: ${Breakpoints.H750}) {
+    margin-top: 2.4rem;
+  }
 `;
 
 export const NavigationLinks = styled.div`
