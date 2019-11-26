@@ -10,6 +10,7 @@ enum RoutePath {
   QuickScanQuestions = "/quick-scan/questions",
   QuickScanContactDetails = "/quick-scan/contact-details",
   QuickScanResult = "/quick-scan/result",
+  QuickScanProfile = "/quick-scan-profile/:uuid",
 
   // Account
   Signin = "/signin",

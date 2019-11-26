@@ -5,6 +5,7 @@ import RoutePath from "../../../../data/RoutePath";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Context as QuickScanContext } from "../../QuickScan";
 import {
+  Header,
   InfoIcon,
   Circle,
   Content,
@@ -54,6 +55,8 @@ const QuickScanOnboarding = () => {
 
   return (
     <Fragment>
+      <Header />
+
       <Circle x={25} y={-20} />
 
       <Content>

@@ -7,6 +7,7 @@ import { WrapperWidth } from "../../../../components/general/Wrapper";
 import { Context as QuickScanContext } from "../../QuickScan";
 import reducer, { initialReducerState, Action } from "./reducer";
 import {
+  Header,
   Circle,
   Content,
   FormWrapper,
@@ -35,6 +36,8 @@ const QuickScanQuestions = () => {
 
   return (
     <Fragment>
+      <Header />
+
       <Circle x={25} y={-20} />
 
       <Content>

@@ -7,15 +7,13 @@ type GatewayProps = {
   children: React.ReactNode;
 };
 
-type Method = "GET" | "HEAD" | "POST" | "PUT" | "UPDATE" | "DELETE";
-
 export const Context = React.createContext({
   fetch: (path: string, options: RequestInit): Promise<object> =>
     Promise.reject(),
   query: (
     query: string,
     variables?: object,
-    method?: Method
+    method?: IMethod
   ): Promise<Response> => Promise.reject()
 });
 
@@ -51,7 +49,7 @@ class Gateway extends React.Component<GatewayProps> {
   private query = async (
     query: string,
     variables: object | undefined | null,
-    method: Method = "GET"
+    method: IMethod = "POST"
   ): Promise<Response> => {
     const url = new URL(this.graphQlUrl.href);
 

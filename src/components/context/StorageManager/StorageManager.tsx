@@ -80,8 +80,10 @@ class StorageManagerManager extends React.Component<
   };
 
   removeValue = (key: StorageKey) => {
-    localStorage.removeItem(key);
-    sessionStorage.removeItem(key);
+    const applicationKey = `${this.props.prefix}-${key}`;
+
+    localStorage.removeItem(applicationKey);
+    sessionStorage.removeItem(applicationKey);
 
     // Update context to make sure that the new value is propagated throughout the application
     this.setState({ updatedAt: Date.now() });

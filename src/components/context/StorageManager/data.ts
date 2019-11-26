@@ -4,10 +4,12 @@ type StorageDefaultValuesType = {
 
 export enum StorageKey {
   themeUuid = "themeUuid",
-  TargetGroup = "targetGroup"
+  TargetGroup = "targetGroup",
+  QuickScanResultUuid = "quickScanResultUuid"
 }
 
 export const StorageDefaultValues: StorageDefaultValuesType = {
   [StorageKey.themeUuid]: undefined,
-  [StorageKey.TargetGroup]: 1 << 0
+  [StorageKey.TargetGroup]: 1 << 0,
+  [StorageKey.QuickScanResultUuid]: undefined
 };

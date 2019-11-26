@@ -6,6 +6,7 @@ import { HeadingType } from "../../../../components/general/Heading";
 import { Context as QuickScanContext } from "../../QuickScan";
 import {
   InfoIcon,
+  Header,
   Circle,
   Content,
   FormWrapper,
@@ -48,7 +49,8 @@ const QuickScanContactDetails = () => {
 
       quickScanContext.setResult({
         ...quickScanContext.result,
-        person
+        person,
+        comment: formData.get("comment") as string
       });
 
       history.push(RoutePath.QuickScanResult);
@@ -56,12 +58,21 @@ const QuickScanContactDetails = () => {
     [quickScanContext, history]
   );
 
-  if (quickScanContext.result.person == null) {
+  // Check if all questions have been answered
+  const guard =
+    quickScanContext.response &&
+    quickScanContext.response.quickScanQuestions.some(
+      question => quickScanContext.result.answers[question._id] == null
+    );
+
+  if (guard) {
     return <Redirect to={RoutePath.QuickScanQuestions} />;
   }
 
   return (
     <Fragment>
+      <Header />
+
       <Circle x={25} y={-20} />
 
       <Content>
@@ -82,6 +93,7 @@ const QuickScanContactDetails = () => {
             <Input label="Functie" name="role" tooltip={requiredTooltip} />
             <Input label="E-mailadres" name="email" tooltip={requiredTooltip} />
             <Input label="Telefoonnummer" name="phone" />
+            <Input label="Opmerking" name="comment" />
           </InputGroup>
 
           <SubmitButton type="submit">Bekijk mijn bedrijfsprofiel</SubmitButton>

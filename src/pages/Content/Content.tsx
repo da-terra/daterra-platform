@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Context as GatewayContext } from "../../components/context/Gateway";
 import { Context, StorageKey } from "../../components/context/StorageManager";
 import { BlockRenderer, SplashScreen } from "./styled";
+import useGraphql from "../../util/hooks/useGraphql";
 
 const ErrorPage = React.lazy(() => import("../Error"));
 
-const contentPageQuery = (name: string, targetGroup: string) => `
+const graphqlQuery = (name: string, targetGroup: string) => `
 {
   page(name: "${name}") {
     name
@@ -16,39 +16,20 @@ const contentPageQuery = (name: string, targetGroup: string) => `
 `;
 
 const ContentPage: React.FC = () => {
-  const { page } = useParams();
-
-  const gateway = useContext(GatewayContext);
+  const { page = "homepage" } = useParams();
   const storage = useContext(Context);
 
-  const [data, setData] = useState<any>(undefined);
-  const [error, setError] = useState<any>(undefined);
+  const targetGroup = storage.getValue(StorageKey.TargetGroup);
+  const query = graphqlQuery(page, targetGroup);
 
-  useEffect(() => {
-    const pageName = page || "homepage";
-    const targetGroup = storage.getValue(StorageKey.TargetGroup);
-
-    setError(undefined);
-
-    gateway
-      .query(contentPageQuery(pageName, targetGroup), undefined, "POST")
-      .then(async response => {
-        setData(await response.json());
-      })
-      .catch(async errorResponse =>
-        setError({
-          status: errorResponse.status,
-          errors: await errorResponse.json()
-        })
-      );
-  }, [gateway, storage, page]);
+  const [data, error] = useGraphql(query);
 
   if (error) {
     return <ErrorPage {...error} />;
   }
 
   if (data) {
-    const blocks = data.data.page.blocks.map(JSON.parse);
+    const blocks = data.page.blocks.map(JSON.parse);
 
     return <BlockRenderer blocks={blocks} />;
   }

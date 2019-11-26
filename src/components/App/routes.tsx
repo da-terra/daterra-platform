@@ -4,6 +4,9 @@ import RoutePath from "../../data/RoutePath";
 
 const ContentPage = React.lazy(() => import("../../pages/Content"));
 const QuickScanPage = React.lazy(() => import("../../pages/QuickScan"));
+const QuickScanResultDetail = React.lazy(() =>
+  import("../../pages/QuickScanProfile")
+);
 const SettingsPage = React.lazy(() => import("../../pages/Settings"));
 const SigninPage = React.lazy(() => import("../../pages/Signin"));
 const DashboardPage = React.lazy(() => import("../../pages/Dashboard"));
@@ -21,6 +24,11 @@ export default (
 
     {/* QuickScan */}
     <Route path={RoutePath.QuickScan} component={QuickScanPage} />
+
+    <Route
+      path={RoutePath.QuickScanProfile}
+      component={QuickScanResultDetail}
+    />
 
     {/* Catch all routes for  */}
     <Route

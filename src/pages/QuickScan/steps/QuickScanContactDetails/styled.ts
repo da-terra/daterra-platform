@@ -4,6 +4,7 @@ import { SolidButton } from "../../../../components/general/Button";
 import Icon from "../../../../components/general/Icon";
 
 export { Circle } from "../../../../util/layout";
+export { default as Header } from "../../../../components/blocks/Header";
 export { default as Input } from "../../../../components/general/Input";
 export {
   default as InputGroup

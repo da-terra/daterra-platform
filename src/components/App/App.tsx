@@ -1,12 +1,13 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import ErrorManager from "../context/ErrorManager";
 import Gateway from "../context/Gateway";
-import ThemeManager from "../context/ThemeManager";
-import StorageManager from "../context/StorageManager";
-import WindowResizeManager from "../context/WindowResizeManager";
-import routes from "./routes";
-import { SplashScreen, GlobalStyle } from "./styled";
 import Layout from "../context/Layout";
+import StorageManager from "../context/StorageManager";
+import ThemeManager from "../context/ThemeManager";
+import WindowResizeManager from "../context/WindowResizeManager";
+import { SplashScreen, GlobalStyle } from "./styled";
+import routes from "./routes";
 
 const App: React.FC = () => {
   return (
@@ -17,13 +18,15 @@ const App: React.FC = () => {
             <Layout>
               <GlobalStyle gridSize={10} />
 
-              <Gateway
-                fetchUrl={window.location.origin}
-                fetchOptions={{}}
-                graphQlUrl="https://studata-api.azurewebsites.net/graphql"
-              >
-                <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
-              </Gateway>
+              <ErrorManager>
+                <Gateway
+                  fetchUrl={window.location.origin}
+                  fetchOptions={{}}
+                  graphQlUrl="http://localhost:4000/graphql"
+                >
+                  <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
+                </Gateway>
+              </ErrorManager>
             </Layout>
           </WindowResizeManager>
         </ThemeManager>

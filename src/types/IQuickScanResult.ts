@@ -1,5 +1,7 @@
 declare global {
   type IQuickScanResult = {
+    uuid?: string;
+    target?: number;
     person?: {
       name: string;
       email: string;

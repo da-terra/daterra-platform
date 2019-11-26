@@ -6,6 +6,7 @@ import Wrapper from "../../../../components/general/Wrapper";
 import { Breakpoints } from "../../../../data/style/variables";
 
 export { Circle } from "../../../../util/layout";
+export { default as Header } from "../../../../components/blocks/Header";
 export { default as QuickScanQuestion } from "../../general/QuickScanQuestion";
 
 export const Content = styled.div`
