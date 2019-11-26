@@ -1,5 +1,11 @@
-import React from "react";
-import { MultipleChoiceQuestion, RangeQuestion, SubmitButton } from "./styled";
+import React, { useCallback, useContext } from "react";
+import { Context as QuickScanContext } from "../../QuickScan";
+import {
+  FormWrapper,
+  MultipleChoiceQuestion,
+  RangeQuestion,
+  SubmitButton
+} from "./styled";
 
 type QuestionProps = {
   question: IQuickScanQuestion;
@@ -7,25 +13,51 @@ type QuestionProps = {
   next: () => void;
 };
 
-const Question: React.FC<QuestionProps> = props => {
-  const { question, nextQuestion, next } = props;
+const Question: React.FC<QuestionProps> = ({
+  question,
+  nextQuestion,
+  next
+}) => {
+  const Component = question.options && question.options.length //
+    ? MultipleChoiceQuestion
+    : RangeQuestion;
 
-  const Component = question.options ? MultipleChoiceQuestion : RangeQuestion;
+  const quickScanContext = useContext(QuickScanContext);
 
-  console.log(question);
+  const onSubmitHandler = useCallback(
+    (submitEvent: React.FormEvent<HTMLFormElement>) => {
+      submitEvent.preventDefault();
+
+      const formData = new FormData(submitEvent.currentTarget);
+
+      const questionId = question._id;
+      const value = parseFloat(formData.get(questionId) as string);
+
+      // Validate answer
+      if (!(value >= 0)) {
+        return;
+      }
+
+      // Save question to results object
+      quickScanContext.setResult({
+        ...quickScanContext.result,
+        answers: {
+          ...quickScanContext.result.answers,
+          [questionId]: value
+        }
+      });
+
+      next();
+    },
+    [next, question, quickScanContext]
+  );
 
   return (
-    <form
-      onSubmit={e => {
-        e.preventDefault();
-        console.log(Array.from(new FormData(e.currentTarget).entries()));
-        next();
-      }}
-    >
-      <Component {...question} />
+    <FormWrapper onSubmit={onSubmitHandler}>
+      <Component {...question} key={question._id} />
 
-      {!question.options && <SubmitButton question={nextQuestion} />}
-    </form>
+      <SubmitButton question={nextQuestion} />
+    </FormWrapper>
   );
 };
 

@@ -18,7 +18,6 @@ import {
 
 const QuickScanQuestions = () => {
   const quickScanContext = useContext(QuickScanContext);
-
   const [state, dispatch] = useReducer(reducer, initialReducerState);
 
   const questions = quickScanContext.response!.quickScanQuestions;
@@ -31,7 +30,7 @@ const QuickScanQuestions = () => {
   }
 
   if (currentIndex >= questionCount) {
-    return <Redirect to={RoutePath.QuickScanResult} />;
+    return <Redirect to={RoutePath.QuickScanContactDetails} />;
   }
 
   return (

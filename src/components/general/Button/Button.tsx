@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   FontFamily,
   FontWeight,
@@ -33,11 +33,11 @@ const externalLinkPattern = /^https?:\/\//i;
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
   (
-    { children, fontSize, fontWeight, fontColor, serif, inverted, ...props },
+    { children, onClick, fontSize, fontWeight, fontColor, serif, inverted, ...props },
     ref: any
   ) => {
     let element: any;
-    const attributes: any = { ...props };
+    const attributes: any = { onClick, ...props };
 
     const isExternalLink = props.href && externalLinkPattern.test(props.href);
     const isInternalLink = !isExternalLink && props.href;
@@ -59,6 +59,14 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
       }
     }
 
+    useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+      // Remove focus after click
+      event.currentTarget.blur();
+
+      // Propagate click event to onClick prop
+      onClick && onClick(event)
+    }, [onClick])
+
     return (
       <ButtonElement {...attributes} as={element} ref={ref}>
         {children}
@@ -71,41 +79,55 @@ export default Button;
 
 type SolidButtonProps = ButtonProps & {
   inverted?: boolean;
+  focussed?: boolean;
   muted?: boolean;
 };
+
+const normalCss = css`
+  border-color: ${props => props.theme.button.solid.backgroundColor};
+  background: ${props => props.theme.button.solid.backgroundColor}
+  color: ${props => props.theme.button.solid.copyColor}
+  border-radius: ${props => props.theme.button.solid.radius}
+  box-shadow: ${props => props.theme.button.solid.shadow}
+`;
+
+const invertedCss = css`
+  border-color: ${props => props.theme.button.solidInverted.backgroundColor};
+  background: ${props => props.theme.button.solidInverted.backgroundColor}
+  color: ${props => props.theme.button.solidInverted.copyColor}
+  border-radius: ${props => props.theme.button.solidInverted.radius}
+  box-shadow: ${props => props.theme.button.solidInverted.shadow}
+`;
+
+const mutedCss = css`
+  opacity: 0.65;
+`;
+
+const focussedCss = css<SolidButtonProps>`
+  box-sizing: border-box;
+  border: 0.2rem solid;
+  border-color: ${props =>
+    props.inverted
+      ? props.theme.button.solidInverted.copyColor
+      : props.theme.button.solid.copyColor};
+`;
 
 /**
  * Extend default button with more styling for button variants
  */
 export const SolidButton = styled(Button)<SolidButtonProps>`
   display: inline-block;
-  padding: 2rem 2.5rem
+  padding: 1.8rem 2.3rem;
+  border: 0.2rem solid;
   font-size: 1.8rem;
   text-align: center;
   font-family: ${FontFamily.RobotoSlab};
   font-weight: ${FontWeight.Bold};
   outline: none;
 
-  ${props =>
-    props.inverted
-      ? `
-    background: ${props.theme.button.solidInverted.backgroundColor}
-    color: ${props.theme.button.solidInverted.copyColor}
-    border-radius: ${props.theme.button.solidInverted.radius}
-    box-shadow: ${props.theme.button.solidInverted.shadow}
-    `
-      : `
-    background: ${props.theme.button.solid.backgroundColor}
-    color: ${props.theme.button.solid.copyColor}
-    border-radius: ${props.theme.button.solid.radius}
-    box-shadow: ${props.theme.button.solid.shadow}
-    `}
-
-  ${props =>
-    props.muted &&
-    `
-    opacity: .65;
-  `}
+  ${props => (props.inverted ? invertedCss : normalCss)}
+  ${props => (props.muted ? mutedCss : "")}
+  ${props => (props.focussed ? focussedCss : "")}
 
   &:hover {
     opacity: 1;

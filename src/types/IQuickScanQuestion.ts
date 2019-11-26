@@ -11,8 +11,8 @@ declare global {
     target: number;
     body: string;
     salutation: string;
-    minScore: number;
-    maxScore: number;
+    min: number;
+    max: number;
     options?: IQuickScanQuestionOption[];
   };
 

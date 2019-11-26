@@ -5,6 +5,8 @@ import { FontWeight, FontSize, FontColor } from "../../../data/style/variables";
 
 type RangeProps = {
   name: string;
+  min?: number;
+  max?: number;
   labels: [React.ReactNode, React.ReactNode];
 };
 
@@ -18,6 +20,8 @@ const labelProps = {
 
 const Range: React.FC<RangeProps> = function({
   name,
+  min = 0,
+  max = 1,
   labels: [leftLabel, rightLabel]
 }) {
   const [value, setValue] = useState<number>(0);
@@ -91,7 +95,7 @@ const Range: React.FC<RangeProps> = function({
         <Label {...labelProps}>{rightLabel}</Label>
       </LabelWrapper>
 
-      <input type="hidden" name={name} value={value} />
+      <input type="hidden" name={name} value={(max - min) * value + min} />
     </Wrapper>
   );
 };

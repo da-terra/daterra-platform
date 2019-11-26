@@ -19,10 +19,14 @@ const QuickScanQuestions = React.lazy(() =>
   import("./steps/QuickScanQuestions")
 );
 
+const QuickScanContactDetails = React.lazy(() =>
+  import("./steps/QuickScanContactDetails")
+);
+
 export const Context = React.createContext<QuickScanContextType>({
   progress: 0,
   result: {
-    answers: []
+    answers: {}
   },
 
   setProgress: () => {},
@@ -35,8 +39,8 @@ const quickScanQuery = (targetGroup: TargetGroup) => `
       _id,
       question,
       body,
-      minScore,
-      maxScore,
+      min,
+      max,
       options {
         label,
         score
@@ -56,7 +60,7 @@ const QuickScan: React.FC<QuickScanProps> = () => {
   const [response, setResponse] = useState<QueryResponse>();
 
   const [result, setResult] = useState<IQuickScanResult>({
-    answers: []
+    answers: {}
   });
 
   const context: QuickScanContextType = {
@@ -133,7 +137,7 @@ const QuickScan: React.FC<QuickScanProps> = () => {
           />
           <Route
             path={RoutePath.QuickScanContactDetails}
-            component={() => <div>QuickScanContactDetails</div>}
+            component={QuickScanContactDetails}
           />
           <Route
             path={RoutePath.QuickScanResult}

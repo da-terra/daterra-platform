@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Wrapper, Question, OptionList, OptionItem, Option } from "./styled";
 
@@ -13,6 +13,15 @@ const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
     throw new Error("Cannot render multiple choice question without options");
   }
 
+  const [value, setValue] = useState<string>("");
+
+  const handleOptionClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      setValue(event.currentTarget.value);
+    },
+    []
+  );
+
   return (
     <Wrapper>
       <Question headingType={HeadingType.Secondary}>{question}</Question>
@@ -20,14 +29,19 @@ const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
       <OptionList>
         {options.map(({ label, ...option }) => (
           <OptionItem key={option.score}>
-            <Option type="button" name={_id} value={option.score} inverted>
+            <Option
+              onClick={handleOptionClick}
+              value={option.score}
+              focussed={value === option.score.toString()}
+              inverted
+            >
               {label}
             </Option>
           </OptionItem>
         ))}
       </OptionList>
 
-      <button type="submit">submit</button>
+      <input type="hidden" name={_id} value={value} />
     </Wrapper>
   );
 };

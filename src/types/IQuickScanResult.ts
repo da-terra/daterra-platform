@@ -14,9 +14,8 @@ declare global {
       employeeCount: number;
     };
     answers: {
-      questionId: string;
-      score: number;
-    }[];
+      [name: string]: number;
+    };
     comment?: string;
   };
 }
