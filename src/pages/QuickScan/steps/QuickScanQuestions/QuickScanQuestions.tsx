@@ -1,10 +1,10 @@
-import React, { useContext, useReducer, FormEvent } from "react";
+import React, { Fragment, useContext, useReducer } from "react";
 import { Redirect } from "react-router";
 import RoutePath from "../../../../data/RoutePath";
 import { FontColor, FontWeight } from "../../../../data/style/variables";
 import { HeadingType } from "../../../../components/general/Heading";
 import { WrapperWidth } from "../../../../components/general/Wrapper";
-import { QuickScanContext } from "../../QuickScan";
+import { Context as QuickScanContext } from "../../QuickScan";
 import reducer, { initialReducerState, Action } from "./reducer";
 import {
   Circle,
@@ -26,28 +26,16 @@ const QuickScanQuestions = () => {
 
   const currentIndex = state.currentIndex;
 
+  if (quickScanContext.result.company == null) {
+    return <Redirect to={RoutePath.QuickScanOnboarding} />;
+  }
+
   if (currentIndex >= questionCount) {
     return <Redirect to={RoutePath.QuickScanResult} />;
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    // Merge form data from current form with form context
-    const formData = new FormData(event.currentTarget);
-
-    Array.from(quickScanContext.formData.entries()).forEach(keyValuePair => {
-      formData.append(...keyValuePair);
-    });
-
-    quickScanContext.setFormData(formData);
-
-    // Go to next step;
-    dispatch({ type: Action.Increment });
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <Fragment>
       <Circle x={25} y={-20} />
 
       <Content>
@@ -71,10 +59,11 @@ const QuickScanQuestions = () => {
           <QuickScanQuestion
             question={questions[currentIndex]}
             nextQuestion={questions[currentIndex + 1]}
+            next={() => dispatch({ type: Action.Increment })}
           />
         </FormWrapper>
       </Content>
-    </form>
+    </Fragment>
   );
 };
 

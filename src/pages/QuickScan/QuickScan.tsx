@@ -9,6 +9,7 @@ import RoutePath from "../../data/RoutePath";
 import TargetGroup from "../../data/TargetGroup";
 import ErrorPage from "../Error";
 import { Header, SplashScreen } from "./styled";
+import { QuickScanContextType, QueryResponse, QuickScanProps } from "./types";
 
 // Steps
 const QuickScanOnboarding = React.lazy(() =>
@@ -18,27 +19,14 @@ const QuickScanQuestions = React.lazy(() =>
   import("./steps/QuickScanQuestions")
 );
 
-type QuickScanProps = {
-  children: React.ReactNode;
-};
-
-type QueryResponse = {
-  quickScanQuestions: IQuickScanQuestions;
-};
-
-export type QuickScanContextType = {
-  progress: number;
-  formData: FormData;
-  response?: QueryResponse;
-  setProgress: (value: number) => void;
-  setFormData: (formData: FormData) => void;
-};
-
-export const QuickScanContext = React.createContext<QuickScanContextType>({
+export const Context = React.createContext<QuickScanContextType>({
   progress: 0,
-  formData: new FormData(),
+  result: {
+    answers: []
+  },
+
   setProgress: () => {},
-  setFormData: () => {}
+  setResult: () => {}
 });
 
 const quickScanQuery = (targetGroup: TargetGroup) => `
@@ -57,23 +45,28 @@ const quickScanQuery = (targetGroup: TargetGroup) => `
   }
 `;
 
-const QuickScan: React.FC<QuickScanProps> = ({ children }) => {
+const QuickScan: React.FC<QuickScanProps> = () => {
   const location = useLocation();
 
   const gateway = useContext(GatewayContext);
   const storage = useContext(StorageContext);
 
   const [error, setError] = useState();
-  const [formData, setFormData] = useState<FormData>(new FormData());
   const [progress, setProgress] = useState<number>(0);
   const [response, setResponse] = useState<QueryResponse>();
 
-  const context = {
+  const [result, setResult] = useState<IQuickScanResult>({
+    answers: []
+  });
+
+  const context: QuickScanContextType = {
+    response,
+
     progress,
     setProgress,
-    formData,
-    setFormData,
-    response
+
+    result,
+    setResult
   };
 
   useEffect(() => {
@@ -128,7 +121,7 @@ const QuickScan: React.FC<QuickScanProps> = ({ children }) => {
     <Fragment>
       <Header />
 
-      <QuickScanContext.Provider value={context}>
+      <Context.Provider value={context}>
         <Switch>
           <Route
             path={RoutePath.QuickScanOnboarding}
@@ -147,7 +140,7 @@ const QuickScan: React.FC<QuickScanProps> = ({ children }) => {
             component={() => <div>QuickScanResult</div>}
           />
         </Switch>
-      </QuickScanContext.Provider>
+      </Context.Provider>
     </Fragment>
   );
 };

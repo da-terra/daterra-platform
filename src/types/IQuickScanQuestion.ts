@@ -6,6 +6,7 @@ declare global {
   };
 
   type IQuickScanQuestion = {
+    _id: string;
     question: string;
     target: number;
     body: string;

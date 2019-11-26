@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FontFamily, FontWeight, Breakpoints } from "../../../data/style/variables";
+import {
+  FontFamily,
+  FontWeight,
+  Breakpoints
+} from "../../../data/style/variables";
 import { paragraphCss } from "../Paragraph";
 import { ButtonElement } from "./styled";
 
@@ -12,6 +16,8 @@ type ButtonProps = {
   target?: "_blank" | "_self";
   title?: string;
   ref?: any;
+  name?: string;
+  value?: any;
   type?: "submit" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 

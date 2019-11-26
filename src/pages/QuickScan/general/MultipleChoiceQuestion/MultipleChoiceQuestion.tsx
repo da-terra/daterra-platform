@@ -1,9 +1,11 @@
 import React from "react";
-import { Wrapper, Question, OptionWrapper, Option } from "./styled";
+import { HeadingType } from "../../../../components/general/Heading";
+import { Wrapper, Question, OptionList, OptionItem, Option } from "./styled";
 
 type MultipleChoiceQuestionProps = IQuickScanQuestion;
 
 const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
+  _id,
   question,
   options
 }) => {
@@ -13,13 +15,19 @@ const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
 
   return (
     <Wrapper>
-      <Question>{question}</Question>
+      <Question headingType={HeadingType.Secondary}>{question}</Question>
 
-      <OptionWrapper>
+      <OptionList>
         {options.map(({ label, ...option }) => (
-          <Option {...option}>{label}</Option>
+          <OptionItem key={option.score}>
+            <Option type="button" name={_id} value={option.score} inverted>
+              {label}
+            </Option>
+          </OptionItem>
         ))}
-      </OptionWrapper>
+      </OptionList>
+
+      <button type="submit">submit</button>
     </Wrapper>
   );
 };

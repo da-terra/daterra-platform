@@ -1,8 +1,9 @@
 import React, { Fragment, useContext, useCallback } from "react";
 import { useHistory } from "react-router";
-import mergeFormData from "../../../../util/forms/mergeFormData";
+import { FontColor } from "../../../../data/style/variables";
+import RoutePath from "../../../../data/RoutePath";
 import { HeadingType } from "../../../../components/general/Heading";
-import { QuickScanContext } from "../../QuickScan";
+import { Context as QuickScanContext } from "../../QuickScan";
 import {
   InfoIcon,
   Circle,
@@ -13,8 +14,6 @@ import {
   Input,
   SubmitButton
 } from "./styled";
-import { FontColor } from "../../../../data/style/variables";
-import RoutePath from "../../../../data/RoutePath";
 
 const requiredTooltip = {
   icon: InfoIcon,
@@ -31,9 +30,22 @@ const QuickScanOnboarding = () => {
 
       const formData = new FormData(event.target as HTMLFormElement);
 
-      quickScanContext.setFormData(
-        mergeFormData(quickScanContext.formData!, formData)
-      );
+      const company = {
+        companyName: formData.get("companyName") as string,
+        website: formData.get("website") as string,
+        sector: formData.get("sector") as string,
+        region: formData.get("region") as string,
+        employeeCount: parseInt(formData.get("employeeCount") as string, 10)
+      };
+
+      if (company.companyName === "") {
+        return;
+      }
+
+      quickScanContext.setResult({
+        ...quickScanContext.result,
+        company
+      });
 
       history.push(RoutePath.QuickScanQuestions);
     },
@@ -56,11 +68,13 @@ const QuickScanOnboarding = () => {
           <InputGroup>
             <Input
               label="Bedrijfsnaam"
-              name="company"
+              name="companyName"
               tooltip={requiredTooltip}
             />
             <Input label="Website" name="website" />
             <Input label="Sector" name="sector" />
+            <Input label="Regio" name="region" />
+            <Input label="Aantal werknemers" name="employeeCount" />
           </InputGroup>
 
           <SubmitButton type="submit">Start de Quickscan</SubmitButton>
