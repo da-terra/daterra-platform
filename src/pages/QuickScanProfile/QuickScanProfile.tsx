@@ -11,6 +11,7 @@ import { Redirect } from "react-router";
 const graphqlQuery = `
   query quickScanResult($uuid: String) {
     quickScanResult(uuid: $uuid) {
+      target
       company {
         companyName
         website

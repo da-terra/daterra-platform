@@ -32,12 +32,13 @@ const QuickScanResult: React.FC = () => {
   const graphqlVariables = useMemo(
     () => ({
       ...quickScan.result,
+      target: storage.getValue(StorageKey.TargetGroup),
       answers: Object.keys(quickScan.result.answers).map(key => ({
         questionId: key,
         value: quickScan.result.answers[key]
       }))
     }),
-    [quickScan]
+    [storage, quickScan]
   );
 
   const [data, error] = useGraphql(graphqlQuery, graphqlVariables);

@@ -22,7 +22,7 @@ const App: React.FC = () => {
                 <Gateway
                   fetchUrl={window.location.origin}
                   fetchOptions={{}}
-                  graphQlUrl="http://localhost:4000/graphql"
+                  graphQlUrl="https://studata-api.azurewebsites.net/graphql"
                 >
                   <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
                 </Gateway>
