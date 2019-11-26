@@ -1,4 +1,5 @@
 import React, { useContext, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import useGraphql from "../../util/hooks/useGraphql";
 import {
   Context as StorageContext,
@@ -37,13 +38,11 @@ const graphqlQuery = `
 const QuickScanProfile = () => {
   const storage = useContext(StorageContext);
 
-  const graphqlVariables = useMemo(
-    () => ({
-      uuid: storage.getValue(StorageKey.QuickScanResultUuid)
-    }),
-    [storage]
-  );
+  // Create variables for graphql query
+  const { uuid } = useParams();
+  const graphqlVariables = useMemo(() => ({ uuid }), [uuid]);
 
+  // Process query
   const [data, error] = useGraphql<IQuickScanResult>(
     graphqlQuery,
     graphqlVariables
