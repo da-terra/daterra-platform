@@ -27,6 +27,8 @@ export const Content = styled.div`
 export const FormWrapper = styled(Wrapper)`
   margin: auto;
   pointer-events: all;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const FormHeader = styled.div`
