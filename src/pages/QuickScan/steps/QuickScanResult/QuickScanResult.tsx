@@ -9,15 +9,17 @@ import useGraphql from "../../../../util/hooks/useGraphql";
 
 const graphqlQuery = `
   mutation createQuickScanResult(
+    $target: Int!
     $company: QuickScanResultCompanyInput!
     $person: QuickScanResultPersonInput!
     $answers: [QuickScanResultAnswerInput!]!
     $comment: String
   ) {
     createQuickScanResult(
-      company: $company,
-      person: $person,
-      answers: $answers,
+      target: $target
+      company: $company
+      person: $person
+      answers: $answers
       comment: $comment
     ) {
       uuid
