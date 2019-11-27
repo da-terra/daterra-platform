@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useEvent from "../../../util/hooks/useEvent";
 import { Wrapper, Value, Slider, Thumb, LabelWrapper, Label } from "./styled";
 import { FontWeight, FontSize, FontColor } from "../../../data/style/variables";
@@ -81,6 +81,8 @@ const Range: React.FC<RangeProps> = function({
   // Event handler for slider click behavior
   useEvent<TouchEvent>(thumbRef, "touchstart", mouseEventHandler);
   useEvent<TouchEvent>(sliderRef, "touchstart", mouseEventHandler);
+
+  useEffect(() => () => cancelAnimationFrame(eventRaf.current), []);
 
   return (
     <Wrapper>
