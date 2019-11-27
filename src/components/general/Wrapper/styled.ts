@@ -28,5 +28,5 @@ export const SmallWrapper = styled.div`
 
 export const SmallerWrapper = styled.div`
   ${wrapperCss}
-  max-width: 612px;
+  max-width: 900px;
 `;

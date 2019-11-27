@@ -9,8 +9,7 @@ import reducer, { initialReducerState, Action } from "./reducer";
 import {
   Header,
   Circle,
-  Content,
-  FormWrapper,
+  Form,
   FormHeader,
   FormHeading,
   QuestionIndex,
@@ -40,31 +39,29 @@ const QuickScanQuestions = () => {
 
       <Circle x={25} y={-20} />
 
-      <Content>
-        <FormWrapper width={WrapperWidth.Smaller}>
-          <FormHeader>
-            <FormHeading
-              headingType={HeadingType.Secondary}
-              fontColor={FontColor.Accent}
-            >
-              Quick Scan
-            </FormHeading>
+      <Form width={WrapperWidth.Smaller}>
+        <FormHeader>
+          <FormHeading
+            headingType={HeadingType.Secondary}
+            fontColor={FontColor.Accent}
+          >
+            Quick Scan
+          </FormHeading>
 
-            <QuestionIndex
-              fontColor={FontColor.Secondary}
-              fontWeight={FontWeight.Bold}
-            >
-              Vraag {currentIndex + 1} van {questionCount}
-            </QuestionIndex>
-          </FormHeader>
+          <QuestionIndex
+            fontColor={FontColor.Secondary}
+            fontWeight={FontWeight.Bold}
+          >
+            Vraag {currentIndex + 1} van {questionCount}
+          </QuestionIndex>
+        </FormHeader>
 
-          <QuickScanQuestion
-            question={questions[currentIndex]}
-            nextQuestion={questions[currentIndex + 1]}
-            next={() => dispatch({ type: Action.Increment })}
-          />
-        </FormWrapper>
-      </Content>
+        <QuickScanQuestion
+          question={questions[currentIndex]}
+          nextQuestion={questions[currentIndex + 1]}
+          next={() => dispatch({ type: Action.Increment })}
+        />
+      </Form>
     </Fragment>
   );
 };

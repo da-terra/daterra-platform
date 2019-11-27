@@ -1,14 +1,17 @@
 import React, { Fragment } from "react";
-import { Question, Range } from "./styled";
+import { Question, Range, SubmitButton } from "./styled";
 import { HeadingType } from "../../../../components/general/Heading";
 
-type RangeQuestionProps = IQuickScanQuestion;
+type RangeQuestionProps = {
+  nextQuestion?: IQuickScanQuestion;
+} & IQuickScanQuestion;
 
 const RangeQuestion: React.FC<RangeQuestionProps> = ({
   _id,
   question,
   min,
-  max
+  max,
+  nextQuestion
 }) => (
   <Fragment>
     <Question headingType={HeadingType.Secondary}>{question}</Question>
@@ -19,6 +22,10 @@ const RangeQuestion: React.FC<RangeQuestionProps> = ({
       max={max}
       labels={["Niet mee eens", "Mee eens"]}
     />
+
+    <SubmitButton type="submit">
+      {(nextQuestion && nextQuestion.salutation) || "Naar volgende vraag"}
+    </SubmitButton>
   </Fragment>
 );
 

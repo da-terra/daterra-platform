@@ -2,7 +2,9 @@ import React, { useCallback, useState } from "react";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Wrapper, Question, OptionList, OptionItem, Option } from "./styled";
 
-type MultipleChoiceQuestionProps = IQuickScanQuestion;
+type MultipleChoiceQuestionProps = {
+  nextQuestion?: IQuickScanQuestion;
+} & IQuickScanQuestion;
 
 const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
   _id,

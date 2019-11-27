@@ -4,7 +4,6 @@ import {
   FormWrapper,
   MultipleChoiceQuestion,
   RangeQuestion,
-  SubmitButton
 } from "./styled";
 
 type QuestionProps = {
@@ -54,9 +53,7 @@ const Question: React.FC<QuestionProps> = ({
 
   return (
     <FormWrapper onSubmit={onSubmitHandler}>
-      <Component {...question} key={question._id} />
-
-      <SubmitButton question={nextQuestion} />
+      <Component {...question} key={question._id} nextQuestion={nextQuestion} />
     </FormWrapper>
   );
 };

@@ -16,4 +16,6 @@ export const OptionItem = styled.li`
   }
 `;
 
-export const Option = styled(SolidButton)``;
+export const Option = styled(SolidButton)`
+  text-align: left;
+`;

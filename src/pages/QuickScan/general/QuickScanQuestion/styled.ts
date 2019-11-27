@@ -10,5 +10,5 @@ export const FormWrapper = styled.form`
 `
 
 export const SubmitButton = styled(QuickScanQuestionButton)`
-  margin: 10rem auto 0;
+  margin: 4rem auto 0;
 `;

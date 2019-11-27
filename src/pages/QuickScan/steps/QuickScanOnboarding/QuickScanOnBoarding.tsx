@@ -2,14 +2,15 @@ import React, { Fragment, useContext, useCallback } from "react";
 import { useHistory } from "react-router";
 import { FontColor } from "../../../../data/style/variables";
 import RoutePath from "../../../../data/RoutePath";
+import { WrapperWidth } from "../../../../components/general/Wrapper";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Context as QuickScanContext } from "../../QuickScan";
 import {
-  Header,
   InfoIcon,
   Circle,
-  Content,
-  FormWrapper,
+  Header,
+  Form,
+  Wrapper,
   FormHeading,
   InputGroup,
   Input,
@@ -55,19 +56,18 @@ const QuickScanOnboarding = () => {
 
   return (
     <Fragment>
-      <Header />
-
       <Circle x={25} y={-20} />
 
-      <Content>
-        <FormWrapper onSubmit={submitHandler}>
+      <Header />
+
+      <Wrapper width={WrapperWidth.Smaller}>
+        <Form onSubmit={submitHandler}>
           <FormHeading
             headingType={HeadingType.Secondary}
             fontColor={FontColor.Accent}
           >
             Bedrijfsgegevens
           </FormHeading>
-
           <InputGroup>
             <Input
               label="Bedrijfsnaam"
@@ -79,10 +79,9 @@ const QuickScanOnboarding = () => {
             <Input label="Regio" name="region" />
             <Input label="Aantal werknemers" name="employeeCount" />
           </InputGroup>
-
-          <SubmitButton type="submit">Start de Quickscan</SubmitButton>
-        </FormWrapper>
-      </Content>
+          <SubmitButton type="submit">Start de Quickscan</SubmitButton>{" "}
+        </Form>
+      </Wrapper>
     </Fragment>
   );
 };
