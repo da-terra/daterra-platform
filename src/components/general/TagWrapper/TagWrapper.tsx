@@ -1,18 +1,33 @@
 import React from "react";
 import { WrapperWidth } from "../Wrapper";
 import { FontColor, FontWeight } from "../../../data/style/variables";
-import { Background, Wrapper, HeadingWrapper, Content, Tag } from "./styled";
+import {
+  Background,
+  Wrapper,
+  HeadingWrapper,
+  Description,
+  Content,
+  Tag
+} from "./styled";
 
 type TagWrapperProps = {
   tag: React.ReactNode;
   heading: React.ReactNode;
+  description?: React.ReactNode;
   children: React.ReactNode;
 };
 
-const TagWrapper: React.FC<TagWrapperProps> = ({ children, tag, heading }) => (
+const TagWrapper: React.FC<TagWrapperProps> = ({
+  children,
+  tag,
+  heading,
+  description
+}) => (
   <Background>
     <Wrapper width={WrapperWidth.Small}>
       <HeadingWrapper>{heading}</HeadingWrapper>
+
+      {description && <Description>{description}</Description>}
 
       <Content>
         <Tag fontColor={FontColor.Tertiary} fontWeight={FontWeight.Black}>

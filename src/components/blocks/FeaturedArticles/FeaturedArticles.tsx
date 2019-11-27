@@ -24,6 +24,7 @@ type Article = {
 
 type FeaturedArticlesProps = {
   title: string;
+  body: string;
   tag: React.ReactNode;
   articles: Article[];
   link: ILink;
@@ -31,6 +32,7 @@ type FeaturedArticlesProps = {
 
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
   title,
+  body,
   tag,
   articles,
   link
@@ -42,7 +44,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
   );
 
   return (
-    <TagWrapper heading={heading} tag={tag}>
+    <TagWrapper heading={heading} description={body} tag={tag}>
       <ArticlesWrapper>
         <ArticlesList>
           {articles.map(article => (

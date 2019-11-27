@@ -10,13 +10,17 @@ export const Background = styled.div`
 
 export const HeadingWrapper = styled.div`
   padding-top: 10.2rem;
-  padding-bottom: 5.2rem;
+  padding-bottom: 2.4rem;
 
   @media (max-width: ${Breakpoints.H750}) {
     padding-top: 6.4rem;
-    padding-bottom: 4rem;
   }
 `;
+
+export const Description = styled(Paragraph)`
+  margin-bottom: 4.2rem;
+  max-width: 75%;
+`
 
 export const Content = styled.div`
   position: relative;
