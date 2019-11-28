@@ -2,7 +2,8 @@ declare global {
   type IQuickScanQuestionOption = {
     _id: string;
     label: string;
-    score: number;
+    value: number;
+    info: string;
   };
 
   type IQuickScanQuestion = {

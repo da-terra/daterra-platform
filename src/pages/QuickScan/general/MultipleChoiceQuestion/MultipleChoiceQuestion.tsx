@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { HeadingType } from "../../../../components/general/Heading";
-import { Wrapper, Question, OptionList, OptionItem, Option } from "./styled";
+import { Wrapper, Question, MultipleChoice } from "./styled";
 
 type MultipleChoiceQuestionProps = {
   nextQuestion?: IQuickScanQuestion;
@@ -11,39 +11,17 @@ const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
   question,
   options
 }) => {
-  if (!options) {
-    throw new Error("Cannot render multiple choice question without options");
-  }
-
-  const [value, setValue] = useState<string>("");
-
-  const handleOptionClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      setValue(event.currentTarget.value);
-    },
-    []
-  );
+  const submitButtonRef = React.createRef<HTMLButtonElement>();
 
   return (
     <Wrapper>
       <Question headingType={HeadingType.Secondary}>{question}</Question>
 
-      <OptionList>
-        {options.map(({ label, ...option }) => (
-          <OptionItem key={option.score}>
-            <Option
-              onClick={handleOptionClick}
-              value={option.score}
-              focussed={value === option.score.toString()}
-              inverted
-            >
-              {label}
-            </Option>
-          </OptionItem>
-        ))}
-      </OptionList>
+      <MultipleChoice name={_id} options={options!} />
 
-      <input type="hidden" name={_id} value={value} />
+      <button type="submit" ref={submitButtonRef}>
+        Naar volgende vraag
+      </button>
     </Wrapper>
   );
 };
