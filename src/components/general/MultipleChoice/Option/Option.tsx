@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useCallback } from "react";
 import {
-  Option,
+  Wrapper,
   InfoWrapper,
   InfoToggleButton,
   InfoToggleIcon,
@@ -8,32 +8,27 @@ import {
   SelectButtonIcon
 } from "./styled";
 
-export type MultipleChoiceOptionProps = {
-  _id: any;
+export type OptionProps = {
   label: React.ReactNode;
   value: any;
   info: React.ReactNode;
   onSelect?: (value: any) => void;
 };
 
-const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = ({
-  label,
-  value,
-  info,
-  onSelect
-}) => {
+const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
   const [showInfo, setShowInfo] = useState<boolean>(false);
 
   const handleToggleInfo = useCallback(() => {
     setShowInfo(!showInfo);
-  }, []);
+  }, [setShowInfo, showInfo]);
 
-  const handleSelect = useCallback(() => onSelect && onSelect(value), [
-    onSelect
-  ]);
+  const handleSelect = useCallback(() => {
+    console.log(onSelect, value);
+    onSelect && onSelect(value);
+  }, [onSelect, value]);
 
   return (
-    <Option>
+    <Wrapper>
       {label}
 
       {info && (
@@ -49,8 +44,8 @@ const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = ({
       <OptionSelectButton onClick={handleSelect}>
         <SelectButtonIcon />
       </OptionSelectButton>
-    </Option>
+    </Wrapper>
   );
 };
 
-export default MultipleChoiceOption;
+export default Option;

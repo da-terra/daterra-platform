@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router";
 import useGraphql from "../../util/hooks/useGraphql";
 import {
   Context as StorageContext,
@@ -7,7 +7,10 @@ import {
 } from "../../components/context/StorageManager";
 import StatusCode from "../../data/StatusCode";
 import RoutePath from "../../data/RoutePath";
-import { Redirect } from "react-router";
+import { SplashScreen, BlockRenderer } from "./styled";
+
+// Static data
+import profiles from "./profiles";
 
 const graphqlQuery = `
   query quickScanResult($uuid: String) {
@@ -35,6 +38,10 @@ const graphqlQuery = `
   }
 `;
 
+type GraphQLResponse = {
+  quickScanResult: IQuickScanResult;
+};
+
 const QuickScanProfile = () => {
   const storage = useContext(StorageContext);
 
@@ -43,10 +50,25 @@ const QuickScanProfile = () => {
   const graphqlVariables = useMemo(() => ({ uuid }), [uuid]);
 
   // Process query
-  const [data, error] = useGraphql<IQuickScanResult>(
+  const [data, error] = useGraphql<GraphQLResponse>(
     graphqlQuery,
     graphqlVariables
   );
+
+  const profile = useMemo(() => {
+    if (!data) {
+      return undefined;
+    }
+
+    const score = data.quickScanResult.answers.reduce(
+      (accumulator, current) => accumulator + current.value,
+      0
+    );
+
+    return profiles
+      .sort((a, b) => a.scoreRange[1] - b.scoreRange[1])
+      .find(profile => profile.scoreRange[1] > score);
+  }, [data]);
 
   if (error) {
     // Clear key and redirect to quick scan if profile does not exist
@@ -59,7 +81,11 @@ const QuickScanProfile = () => {
     throw error;
   }
 
-  return <div>{JSON.stringify(data)}</div>;
+  if (!profile) {
+    return <SplashScreen />;
+  }
+
+  return <BlockRenderer {...profile} context={profile} />;
 };
 
 export default QuickScanProfile;

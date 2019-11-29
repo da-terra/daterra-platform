@@ -1,18 +1,11 @@
 import styled, { css } from "styled-components";
-import Icon from "../../../components/general/Icon";
-import Button from "../Button";
+import Icon from "../../../../components/general/Icon";
+import Button from "../../Button";
 
-export { default as Option } from './Option';
-
-export const OptionList = styled.ul`
-  padding: 0;
-  list-style: none;
-`;
-
-export const OptionItem = styled.li`
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
+export const Wrapper = styled.div`
+  padding: 1.5rem;
+  background: ${props => props.theme.card.background}
+  box-shadow: ${props => props.theme.card.shadow}
 `;
 
 export const InfoWrapper = styled.div<{ show: boolean }>`

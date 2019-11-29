@@ -10,14 +10,18 @@ const blocksMap: Record<
   "c4-call-to-action": React.lazy(() => import("./CallToAction")),
   "c5-featured-events": React.lazy(() => import("./FeaturedEvents")),
   "c6-partners": React.lazy(() => import("./Partners")),
-  "c7-header": React.lazy(() => import("./Header"))
+  "c7-header": React.lazy(() => import("./Header")),
+  "c8-quickscan-profile-hero": React.lazy(() => import("./QuickscanProfileHero")),
+  "c9-quickscan-profile-sidebar": React.lazy(() => import("./QuickscanProfileSidebar")),
+  "c10-quickscan-profile-body": React.lazy(() => import("./QuickscanProfileBody"))
 };
 
 type BlockRendererProps = {
   blocks: { type: string; data: any }[];
+  context?: any;
 };
 
-const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => (
+const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks, context }) => (
   <Fragment>
     {blocks.map(block => {
       const Component = blocksMap[block.type];
@@ -26,7 +30,7 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ blocks }) => (
         throw new Error(`Block ${block.type} does not exist`);
       }
 
-      return <Component {...block.data} key={block.type} />;
+      return <Component {...context} {...block.data} key={block.type} />;
     })}
   </Fragment>
 );

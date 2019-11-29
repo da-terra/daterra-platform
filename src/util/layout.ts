@@ -27,7 +27,7 @@ export const Card = styled.div<CardProps>`
   border-radius: ${props => props.theme.card.borderRadius}px;
 
   box-shadow: ${props =>
-    props.inverted ? props.theme.card.invertedShadow : props.theme.card.shadow};
+    props.inverted ? props.theme.card.shadowInverted : props.theme.card.shadow};
 
   background: ${props =>
     props.inverted

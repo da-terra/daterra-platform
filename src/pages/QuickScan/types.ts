@@ -12,6 +12,6 @@ export type QuickScanContextType = {
   progress: number;
   setProgress: (value: number) => void;
 
-  result: IQuickScanResult;
-  setResult: (value: IQuickScanResult) => void;
+  result: IQuickScanResultInput;
+  setResult: (value: IQuickScanResultInput) => void;
 };

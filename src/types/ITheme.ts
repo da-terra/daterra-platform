@@ -32,8 +32,10 @@ declare module "styled-components" {
 
     card: {
       borderRadius: number;
+      background: string;
+      backgroundInverted: string;
       shadow: string;
-      invertedShadow: string;
+      shadowInverted: string;
     };
 
     copy: {

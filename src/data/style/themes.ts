@@ -25,8 +25,10 @@ const themes: DefaultTheme[] = [
 
     card: {
       borderRadius: 10,
+      background: "#FFFFFF",
+      backgroundInverted: "#2bb48b",
       shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
-      invertedShadow: "rgba(0, 0, 0, 0.15) 3px -3px 15px 2px"
+      shadowInverted: "rgba(0, 0, 0, 0.15) 3px -3px 15px 2px"
     },
 
     background: {

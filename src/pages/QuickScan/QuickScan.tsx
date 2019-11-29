@@ -35,7 +35,7 @@ const quickScanQuery = (targetGroup: TargetGroup) => `
       max,
       options {
         label,
-        score
+        value
       }
     }
   }
@@ -43,7 +43,7 @@ const quickScanQuery = (targetGroup: TargetGroup) => `
 
 const QuickScan: React.FC<QuickScanProps> = () => {
   const [progress, setProgress] = useState<number>(0);
-  const [result, setResult] = useState<IQuickScanResult>({
+  const [result, setResult] = useState<IQuickScanResultInput>({
     answers: {}
   });
 
