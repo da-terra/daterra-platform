@@ -12,7 +12,7 @@ export type OptionProps = {
   label: React.ReactNode;
   value: any;
   info: React.ReactNode;
-  onSelect?: (value: any) => void;
+  onSelect?: (value: any, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
@@ -22,10 +22,13 @@ const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
     setShowInfo(!showInfo);
   }, [setShowInfo, showInfo]);
 
-  const handleSelect = useCallback(() => {
-    console.log(onSelect, value);
-    onSelect && onSelect(value);
-  }, [onSelect, value]);
+  const handleSelect = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      console.log(onSelect, value);
+      onSelect && onSelect(value, event);
+    },
+    [onSelect, value]
+  );
 
   return (
     <Wrapper>
