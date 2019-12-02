@@ -3,6 +3,7 @@ import Heading from "../../../../components/general/Heading";
 import { SolidButton } from "../../../../components/general/Button";
 import Icon from "../../../../components/general/Icon";
 import Logo from "../../../../components/general/Logo";
+import Paragraph from "../../../../components/general/Paragraph";
 
 export { Circle } from "../../../../util/layout";
 export { default as Header } from "../../../../components/blocks/Header";
@@ -36,7 +37,11 @@ export const FormLogo = styled(Logo)`
 `
 
 export const FormHeading = styled(Heading)`
-  margin-bottom: 3.2rem;
+  margin-bottom: 1.2rem;
+`;
+
+export const FormParagraph = styled(Paragraph)`
+  margin-bottom: 3.4rem;
 `;
 
 export const SubmitButton = styled(SolidButton)`
