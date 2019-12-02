@@ -1,32 +1,41 @@
-import styled, { css } from "styled-components";
-import Icon from "../../../../components/general/Icon";
-import Button from "../../Button";
+import styled from "styled-components";
+import Paragraph from "../../Paragraph";
+import { IconButton } from "../../Button";
+
+export { default as Icon } from "../../Icon";
+export { default as Line } from "../../Line";
 
 export const Wrapper = styled.div`
-  padding: 1.5rem;
-  background: ${props => props.theme.card.background}
-  box-shadow: ${props => props.theme.card.shadow}
-`;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 1.6rem 2.4rem;
+  background: ${props => props.theme.card.background};
+  box-shadow: ${props => props.theme.card.shadow};
+  border-radius: ${props => props.theme.card.borderRadius}px;
 
-export const InfoWrapper = styled.div<{ show: boolean }>`
-  display: ${props => (props.show ? "block" : "none")};
-`;
-
-const iconButtonCss = css`
-  opacity: 0.5;
-
-  &:hover {
-    opacity: 1;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
   }
 `;
 
-export const InfoToggleButton = styled(Button)`
-  ${iconButtonCss}
+export const Label = styled(Paragraph)`
+  margin-bottom: 2rem;
 `;
 
-export const OptionSelectButton = styled(Button)`
-  ${iconButtonCss}
+export const InfoWrapper = styled(Paragraph)<{ isVisible: boolean }>`
+  display: ${props => (props.isVisible ? "block" : "none")};
+  margin: 0 0 1.6rem;
 `;
 
-export const InfoToggleIcon = styled(Icon.ArrowForward)``;
-export const SelectButtonIcon = styled(Icon.ArrowForward)``;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+`;
+
+export const OptionButton = styled(IconButton)`
+  &:not(:first-child) {
+    margin-left: 1rem;
+  }
+`;

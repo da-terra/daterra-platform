@@ -13,20 +13,35 @@ declare module "styled-components" {
     };
 
     button: {
-      solid: {
-        backgroundColor: string;
-        copyColor: string;
-        shadow: string;
-        radius: string;
-      };
-      solidInverted: {
-        backgroundColor: string;
-        copyColor: string;
-        shadow: string;
+      icon: {
+        color: string;
+        background: string;
+        hoverColor: string;
+        hoverBackground: string;
+        activeColor: string;
+        activeBackground: string;
+        activeHoverColor: string;
+        activeHoverBackground: string;
         radius: string;
       };
       link: {
         copyColor: string;
+      };
+      solid: {
+        background: string;
+        hoverBackground: string;
+        color: string;
+        hoverColor: string;
+        shadow: string;
+        radius: string;
+      };
+      invertedSolid: {
+        background: string;
+        hoverBackground: string;
+        color: string;
+        hoverColor: string;
+        shadow: string;
+        radius: string;
       };
     };
 

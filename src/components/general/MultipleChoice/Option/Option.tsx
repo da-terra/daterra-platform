@@ -1,26 +1,31 @@
-import React, { Fragment, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
+import { FontColor, FontSize } from "../../../../data/style/variables";
 import {
   Wrapper,
+  Label,
   InfoWrapper,
-  InfoToggleButton,
-  InfoToggleIcon,
-  OptionSelectButton,
-  SelectButtonIcon
+  Line,
+  ButtonWrapper,
+  OptionButton,
+  Icon
 } from "./styled";
 
 export type OptionProps = {
   label: React.ReactNode;
   value: any;
   info: React.ReactNode;
-  onSelect?: (value: any, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onSelect?: (
+    value: any,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 };
 
 const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
-  const [showInfo, setShowInfo] = useState<boolean>(false);
+  const [isInfoVisible, setShowInfo] = useState<boolean>(false);
 
   const handleToggleInfo = useCallback(() => {
-    setShowInfo(!showInfo);
-  }, [setShowInfo, showInfo]);
+    setShowInfo(!isInfoVisible);
+  }, [setShowInfo, isInfoVisible]);
 
   const handleSelect = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -32,21 +37,31 @@ const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
 
   return (
     <Wrapper>
-      {label}
+      <Label serif>{label}</Label>
 
       {info && (
-        <Fragment>
-          <InfoWrapper show={showInfo}>info</InfoWrapper>
-
-          <InfoToggleButton onClick={handleToggleInfo}>
-            <InfoToggleIcon />
-          </InfoToggleButton>
-        </Fragment>
+        <InfoWrapper
+          fontColor={FontColor.Secondary}
+          fontSize={FontSize.Small}
+          isVisible={isInfoVisible}
+        >
+          {info}
+        </InfoWrapper>
       )}
 
-      <OptionSelectButton onClick={handleSelect}>
-        <SelectButtonIcon />
-      </OptionSelectButton>
+      <Line />
+
+      <ButtonWrapper>
+        {info && (
+          <OptionButton onClick={handleToggleInfo} active={isInfoVisible}>
+            <Icon.Info />
+          </OptionButton>
+        )}
+
+        <OptionButton onClick={handleSelect} inverted>
+          <Icon.Forward />
+        </OptionButton>
+      </ButtonWrapper>
     </Wrapper>
   );
 };

@@ -4,6 +4,7 @@ import Easings from "../../../data/style/easings";
 export const ButtonElement = styled.button`
   background: none;
   border: none;
+  outline: none;
   display: inline;
   padding: 0;
   color: ${props => props.theme.copy.primary};

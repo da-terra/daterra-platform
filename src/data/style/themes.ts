@@ -6,20 +6,35 @@ const themes: DefaultTheme[] = [
     uuid: "15b7e36c-d595-11e9-bb65-2a2ae2dbcce4",
 
     button: {
-      solid: {
-        backgroundColor: "#2BB48B",
-        copyColor: "#FFFFFF",
-        shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
-        radius: "12px"
-      },
-      solidInverted: {
-        backgroundColor: "#FFFFFF",
-        copyColor: "#434E4D",
-        shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
+      icon: {
+        color: "#434E4D",
+        hoverColor: "#434E4D",
+        background: "rgba(67, 78, 77, 0.08)",
+        hoverBackground: "rgba(67, 78, 77, 0.18)",
+        activeColor: "#434E4D",
+        activeHoverColor: "#434E4D",
+        activeBackground: "rgba(67, 78, 77, 0.28)",
+        activeHoverBackground: "rgba(67, 78, 77, 0.18)",
         radius: "12px"
       },
       link: {
         copyColor: "#03363E"
+      },
+      solid: {
+        background: "#2BB48B",
+        hoverBackground: "#259976",
+        color: "#FFFFFF",
+        hoverColor: "#FFFFFF",
+        shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
+        radius: "12px"
+      },
+      invertedSolid: {
+        background: "#FFFFFF",
+        hoverBackground: "#FFFFFF",
+        color: "#434E4D",
+        hoverColor: "#434E4D",
+        shadow: "rgba(3, 54, 62, 0.1) 3px 3px 10px 0",
+        radius: "12px"
       }
     },
 
