@@ -1,6 +1,6 @@
 import React from "react";
 import { Node } from "slate";
-import RichTextEditor from "../../general/RichTextEditor";
+import { Wrapper, RichTextEditor } from './styled';
 
 type RichTextProps = {
   nodes: Node[];
@@ -10,7 +10,9 @@ type RichTextProps = {
  * Read-only Slate editor
  */
 const RichText: React.FC<RichTextProps> = ({ nodes }) => (
-  <RichTextEditor value={nodes} readOnly />
+  <Wrapper>
+    <RichTextEditor value={nodes} readOnly />
+  </Wrapper>
 );
 
 export default RichText;

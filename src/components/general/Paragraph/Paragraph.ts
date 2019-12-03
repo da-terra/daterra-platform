@@ -27,7 +27,6 @@ const paragraphSizes = {
 };
 
 export const paragraphCss = css<ParagraphProps>`
-  white-space: pre-line;
   margin: 0;
 
   ${props => paragraphSizes[props.fontSize || FontSize.Normal]}
