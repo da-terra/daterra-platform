@@ -17,7 +17,6 @@ import {
   Input,
   SubmitButton
 } from "./styled";
-import { MultipleChoice } from "../../general/MultipleChoiceQuestion/styled";
 
 const requiredTooltip = {
   icon: InfoIcon,
@@ -61,42 +60,6 @@ const QuickScanOnboarding = () => {
       <Circle x={25} y={-20} />
 
       <Header />
-
-      <MultipleChoice
-        name="test"
-        options={[
-          {
-            label: "Option1",
-            info: "Option1 info",
-            value: "Option1"
-          },
-
-          {
-            label: "Option2",
-            info: "Option2 info",
-            value: "Option2"
-          },
-
-          {
-            label: "Option3",
-            info: "Option3 info",
-            value: "Option3"
-          },
-
-          {
-            label: "Option4",
-            info: "Option4 info",
-            value: "Option4"
-          },
-
-          {
-            label: "Option5",
-            info: "Option5 info",
-            value: "Option5"
-          }
-        ]}
-      />
-
       <Wrapper width={WrapperWidth.Smaller}>
         <Form onSubmit={submitHandler}>
           <FormHeading
