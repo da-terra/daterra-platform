@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import Heading from "../../general/Heading";
 import Paragraph from "../../general/Paragraph";
 import Wrapper from "../../general/Wrapper";
 import { LinkButton } from "../../general/Button";
 
-export { default as Heading } from "../../general/Heading";
-
 export const ArticleHeadingWrapper = styled(Wrapper)`
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;
+`;
+
+export const Title = styled(Heading)`
+  white-space: pre-line;
 `;
 
 export const ArticleProperties = styled.aside`

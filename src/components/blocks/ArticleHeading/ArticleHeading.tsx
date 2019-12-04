@@ -1,21 +1,25 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
+import { FontWeight, FontColor, FontSize } from "../../../data/style/variables";
+import { WrapperWidth } from "../../general/Wrapper";
 import {
   ArticleHeadingWrapper,
-  Heading,
+  Title,
   ArticleProperties,
   ArticleProperty,
   PublishedDate,
   AuthorLink
 } from "./styled";
-import { WrapperWidth } from "../../general/Wrapper";
-import { FontWeight, FontColor, FontSize } from "../../../data/style/variables";
 
 type ArticleHeadingProps = {
   title: React.ReactNode;
   publishedDate: string;
   category: string;
   author: IUser;
+
+  // Props used in FeaturedArticleHero
+  className?: string;
+  width?: WrapperWidth;
 };
 
 const formateDistanceToNowOptions = {
@@ -27,7 +31,9 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
   title,
   category,
   publishedDate,
-  author: { fullName, email }
+  author: { fullName, email },
+  className,
+  width = WrapperWidth.Smaller
 }) => {
   const timeDistance = formatDistanceToNow(
     new Date(publishedDate!),
@@ -37,8 +43,8 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
   const mailToHref = `mailto:${email}`;
 
   return (
-    <ArticleHeadingWrapper width={WrapperWidth.Smaller}>
-      <Heading>{title}</Heading>
+    <ArticleHeadingWrapper width={width} className={className}>
+      <Title>{title}</Title>
 
       <ArticleProperties>
         <ArticleProperty

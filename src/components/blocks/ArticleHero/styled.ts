@@ -16,11 +16,10 @@ export const BackgroundWrapper = styled.div<BackgroundWrapperProps>`
       : props.theme.copy.primary};
   background: url('${props => props.image.src}') center center / cover;
   background-color: ${props => props.image.fallbackColor};
-  max-height: 57.5rem;
-  height: 70vh;
+  min-height: 50vh;
+  max-height: 60rem;
   padding-top: 6rem;
   padding-bottom: 6rem;
-  border-bottom: .5rem solid ${props => props.image.fallbackColor};
 
   @media (max-width: ${Breakpoints.H750}) {
     padding-top: 3rem;
