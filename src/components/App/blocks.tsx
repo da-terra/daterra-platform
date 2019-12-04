@@ -28,7 +28,7 @@ export default () => (
       image={{
         alt: "Background",
         fallbackColor: "#FD4444",
-        src: "https://source.unsplash.com/1920x1080/?white"
+        src: "https://source.unsplash.com/1920x1080/?dark"
       }}
       author={{
         fullName: "Leroy Korterink",
@@ -37,6 +37,7 @@ export default () => (
       category="Case study"
       publishedDate="2019-12-03T23:54:13.887Z"
       title={"The Expertise of\nConcise Environment"}
+      inverted
     />
 
     <ArticleHeading

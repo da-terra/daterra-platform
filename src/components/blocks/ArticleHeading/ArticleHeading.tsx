@@ -1,6 +1,6 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
-import { FontWeight, FontColor, FontSize } from "../../../data/style/variables";
+import { FontWeight, FontSize } from "../../../data/style/variables";
 import { WrapperWidth } from "../../general/Wrapper";
 import {
   ArticleHeadingWrapper,
@@ -50,7 +50,6 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
         <ArticleProperty
           as="span"
           fontWeight={FontWeight.Black}
-          fontColor={FontColor.Secondary}
           fontSize={FontSize.Small}
         >
           {category}
@@ -61,7 +60,6 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
             as="time"
             dateTime={publishedDate}
             fontWeight={FontWeight.Bold}
-            fontColor={FontColor.Secondary}
             fontSize={FontSize.Small}
           >
             {timeDistance}
@@ -70,7 +68,6 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
           <AuthorLink
             href={mailToHref}
             fontWeight={FontWeight.Bold}
-            fontColor={FontColor.Secondary}
             fontSize={FontSize.Small}
           >
             {fullName}
