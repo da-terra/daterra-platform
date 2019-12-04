@@ -2,6 +2,10 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import RoutePath from "../../data/RoutePath";
 
+// Demo page
+const Blocks = React.lazy(() => import("./blocks"));
+
+// Pages
 const ContentPage = React.lazy(() => import("../../pages/Content"));
 const QuickScanPage = React.lazy(() => import("../../pages/QuickScan"));
 const QuickScanResultDetail = React.lazy(() =>
@@ -21,6 +25,8 @@ export default (
     {/* Account */}
     <Route path={RoutePath.Signin} exact component={SigninPage} />
     <Route path={RoutePath.ForgetPassword} exact component={ForgotPassword} />
+
+    <Route path="/test" component={Blocks} />
 
     {/* QuickScan */}
     <Route path={RoutePath.QuickScan} component={QuickScanPage} />

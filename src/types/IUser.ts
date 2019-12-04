@@ -12,7 +12,7 @@ declare global {
      * 1 << 2 - Expert
      * 1 << 3 - Admin
      */
-    role: number;
+    role?: number;
   };
 }
 
