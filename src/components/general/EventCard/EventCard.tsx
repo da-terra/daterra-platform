@@ -2,14 +2,7 @@ import React from "react";
 import { parseISO, format } from "date-fns";
 import { HeadingType } from "../Heading";
 import { FontSize, FontWeight } from "../../../data/style/variables";
-import {
-  Card,
-  Month,
-  Day,
-  Title,
-  Description,
-  SubscribeButton
-} from "./styled";
+import { Card, Month, Day, Title, Description, CtaButton } from "./styled";
 
 type EventCardProps = {
   className?: string;
@@ -46,9 +39,9 @@ const EventCard: React.FC<EventCardProps> = ({
       </Description>
 
       {link && (
-        <SubscribeButton fontWeight={FontWeight.Bold} serif>
+        <CtaButton {...link} fontWeight={FontWeight.Bold} serif>
           {link.children}
-        </SubscribeButton>
+        </CtaButton>
       )}
     </Card>
   );

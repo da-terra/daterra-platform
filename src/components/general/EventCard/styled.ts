@@ -42,7 +42,7 @@ export const Description = styled(Paragraph)`
   margin-bottom: 4rem;
 `;
 
-export const SubscribeButton = styled(LinkButton)`
+export const CtaButton = styled(LinkButton)`
   margin-left: auto;
 
   &:hover {
