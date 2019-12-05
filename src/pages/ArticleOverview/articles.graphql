@@ -1,0 +1,29 @@
+query articles(
+  $target: Int!
+  $tags: [String!]
+  $minScore: Float
+  $maxScore: Float
+) {
+  featuredArticle(target: $target) {
+    slug
+    author {
+      fullName
+      email
+    }
+    title
+    publishedDate
+  }
+
+  articles(
+    target: $target
+    tags: $tags
+    minScore: $minScore
+    maxScore: $maxScore
+  ) {
+    slug
+    author {
+      fullName
+      email
+    }
+  }
+}

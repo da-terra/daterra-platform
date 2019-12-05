@@ -12,7 +12,7 @@ import {
 
 type TagWrapperProps = {
   tag: React.ReactNode;
-  heading: React.ReactNode;
+  heading?: React.ReactNode;
   description?: React.ReactNode;
   children: React.ReactNode;
 };
@@ -25,8 +25,7 @@ const TagWrapper: React.FC<TagWrapperProps> = ({
 }) => (
   <Background>
     <Wrapper width={WrapperWidth.Small}>
-      <HeadingWrapper>{heading}</HeadingWrapper>
-
+      {heading && <HeadingWrapper>{heading}</HeadingWrapper>}
       {description && <Description>{description}</Description>}
 
       <Content>

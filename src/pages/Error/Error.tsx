@@ -1,6 +1,7 @@
 import React from "react";
+import { useHistory } from "react-router";
+import { ApolloError } from "apollo-boost";
 import RoutePath from "../../data/RoutePath";
-import StatusCode from "../../data/StatusCode";
 import { FontWeight, Breakpoints } from "../../data/style/variables";
 import MediaQuery from "../../components/util/MediaQuery";
 import { LogoSize } from "../../components/general/Logo";
@@ -13,23 +14,19 @@ import {
   LogoWrapper,
   ErrorWrapper,
   Logo,
-  Status,
+  Status as Code,
   ErrorMessage,
   CtaButton
 } from "./styled";
-import { useHistory } from "react-router";
-
-const errorMessages = {
-  [StatusCode.NotFound]: "Whoops! We konden de pagina die je zoekt niet vinden."
-};
 
 type ErrorPageProps = {
-  status: StatusCode;
+  code?: string;
+  apolloError?: ApolloError;
 };
 
 const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
 
-const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
+const ErrorPage: React.FC<ErrorPageProps> = ({ code, apolloError }) => {
   const history = useHistory();
 
   const showGoBack = history.length > 1;
@@ -46,9 +43,6 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
     </CtaButton>
   );
 
-  const message =
-    errorMessages[status] || "Whoops! er ging iets niet helemaal goed.";
-
   return (
     <PageWithBackgroundColor>
       <Circle x={33} y={-45} radius={200} />
@@ -64,16 +58,18 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
         </LogoWrapper>
 
         <ErrorWrapper>
-          <Status fontWeight={FontWeight.Bold} serif>
-            {status}
-          </Status>
+          {code && (
+            <Code fontWeight={FontWeight.Bold} serif>
+              {(apolloError && apolloError.name) || code}
+            </Code>
+          )}
 
           <ErrorMessage
             headingType={HeadingType.Secondary}
             fontWeight={FontWeight.Bold}
             serif
           >
-            {message}
+            Whoops! er ging iets niet helemaal goed.
           </ErrorMessage>
 
           {showGoBack ? backButton() : homeButton()}

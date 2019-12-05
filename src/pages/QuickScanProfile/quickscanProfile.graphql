@@ -1,0 +1,23 @@
+query quickScanResult($uuid: String) {
+  quickScanResult(uuid: $uuid) {
+    target
+    company {
+      companyName
+      website
+      sector
+      region
+      employeeCount
+    }
+    person {
+      name
+      role
+      email
+      phone
+    }
+    answers {
+      questionId
+      value
+    }
+    comment
+  }
+}

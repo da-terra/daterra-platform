@@ -13,7 +13,7 @@ export const ArticlesWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const ArticlesList = styled.div`
+export const List = styled.div`
   display: flex;
   justify-content: space-between;
   margin: -${marginSize}rem;

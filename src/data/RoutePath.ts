@@ -1,8 +1,11 @@
 enum RoutePath {
   // Content pages
   Home = "/",
-  Content = "/:page",
+  Content = "/:slug",
   All = "*",
+
+  ArticleOverview = "/article",
+  ArticleDetail = "/article/:slug",
 
   // QuickScan
   QuickScan = "/quick-scan",

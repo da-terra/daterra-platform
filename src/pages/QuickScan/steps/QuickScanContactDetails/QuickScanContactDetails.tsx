@@ -60,8 +60,8 @@ const QuickScanContactDetails = () => {
 
   // Check if all questions have been answered
   const guard =
-    quickScanContext.response &&
-    quickScanContext.response.quickScanQuestions.some(
+    quickScanContext.data &&
+    quickScanContext.data.quickScanQuestions.some(
       question => quickScanContext.result.answers[question._id] == null
     );
 
