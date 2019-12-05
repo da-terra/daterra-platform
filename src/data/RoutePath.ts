@@ -8,12 +8,12 @@ enum RoutePath {
   ArticleDetail = "/article/:slug",
 
   // QuickScan
-  QuickScan = "/quick-scan",
-  QuickScanOnboarding = "/quick-scan/onboarding",
-  QuickScanQuestions = "/quick-scan/questions",
-  QuickScanContactDetails = "/quick-scan/contact-details",
-  QuickScanResult = "/quick-scan/result",
-  QuickScanProfile = "/quick-scan-profile/:uuid",
+  QuickScan = "/quickscan",
+  QuickScanOnboarding = "/quickscan/onboarding",
+  QuickScanQuestions = "/quickscan/questions",
+  QuickScanContactDetails = "/quickscan/contact-details",
+  QuickScanResult = "/quickscan/result",
+  QuickScanProfile = "/quickscan-profile/:uuid",
 
   // Account
   Signin = "/signin",
