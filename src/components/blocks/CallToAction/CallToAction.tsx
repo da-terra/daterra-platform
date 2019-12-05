@@ -31,7 +31,7 @@ const CallToAction: React.FC<CallToActionProps> = ({ title, link, shape }) => (
       </Heading>
 
       <CtaButton {...link} inverted>
-        {link.title}
+        {link.children}
       </CtaButton>
     </Content>
   </Background>

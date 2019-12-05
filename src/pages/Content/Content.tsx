@@ -1,40 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
+import { loader } from "graphql.macro";
 import { Context, StorageKey } from "../../components/context/StorageManager";
 import { BlockRenderer, SplashScreen } from "./styled";
-import useGraphql from "../../util/hooks/useGraphql";
+
+const contentQuery = loader("./content.graphql");
 
 const ErrorPage = React.lazy(() => import("../Error"));
 
-const graphqlQuery = (name: string, targetGroup: string) => `
-{
-  page(name: "${name}") {
-    name
-    blocks
-  }
-}
-`;
-
 const ContentPage: React.FC = () => {
-  const { page = "homepage" } = useParams();
+  const { slug = "homepage" } = useParams();
   const storage = useContext(Context);
 
-  const targetGroup = storage.getValue(StorageKey.TargetGroup);
-  const query = graphqlQuery(page, targetGroup);
+  const target = storage.getValue(StorageKey.TargetGroup);
 
-  const [data, error] = useGraphql(query);
+  const variables = useMemo(
+    () => ({
+      slug,
+      target
+    }),
+    [slug, target]
+  );
+
+  const { loading, data, error } = useQuery(contentQuery, { variables });
 
   if (error) {
-    return <ErrorPage {...error} />;
+    return <ErrorPage apolloError={error} />;
   }
 
-  if (data) {
-    const blocks = data.page.blocks.map(JSON.parse);
-
-    return <BlockRenderer blocks={blocks} />;
+  if (loading) {
+    return <SplashScreen />;
   }
 
-  return <SplashScreen />;
+  const blocks = data.page.blocks.map(JSON.parse);
+
+  return <BlockRenderer blocks={blocks} />;
 };
 
 export default ContentPage;

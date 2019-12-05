@@ -1,13 +1,18 @@
 import React, { Suspense } from "react";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
 import { BrowserRouter as Router } from "react-router-dom";
 import ErrorManager from "../context/ErrorManager";
-import Gateway from "../context/Gateway";
 import Layout from "../context/Layout";
 import StorageManager from "../context/StorageManager";
 import ThemeManager from "../context/ThemeManager";
 import WindowResizeManager from "../context/WindowResizeManager";
 import { SplashScreen, GlobalStyle } from "./styled";
 import routes from "./routes";
+
+const client = new ApolloClient({
+  uri: "https://studata-api.azurewebsites.net/graphql"
+});
 
 const App: React.FC = () => {
   return (
@@ -19,13 +24,9 @@ const App: React.FC = () => {
               <GlobalStyle gridSize={10} />
 
               <ErrorManager>
-                <Gateway
-                  fetchUrl={window.location.origin}
-                  fetchOptions={{}}
-                  graphQlUrl="https://studata-api.azurewebsites.net/graphql"
-                >
+                <ApolloProvider client={client}>
                   <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
-                </Gateway>
+                </ApolloProvider>
               </ErrorManager>
             </Layout>
           </WindowResizeManager>

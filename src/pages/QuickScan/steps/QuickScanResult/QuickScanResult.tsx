@@ -1,49 +1,31 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import { loader } from "graphql.macro";
 import {
   Context as StorageContext,
   StorageKey
 } from "../../../../components/context/StorageManager";
 import { Context as QuickScanContext } from "../../QuickScan";
 import { LoadingScreen } from "./styled";
-import useGraphql from "../../../../util/hooks/useGraphql";
 
-const graphqlQuery = `
-  mutation createQuickScanResult(
-    $target: Int!
-    $company: QuickScanResultCompanyInput!
-    $person: QuickScanResultPersonInput!
-    $answers: [QuickScanResultAnswerInput!]!
-    $comment: String
-  ) {
-    createQuickScanResult(
-      target: $target
-      company: $company
-      person: $person
-      answers: $answers
-      comment: $comment
-    ) {
-      uuid
-    }
-  }
-`;
+const query = loader("./createQuickScanResult.graphql");
 
 const QuickScanResult: React.FC = () => {
   const quickScan = useContext(QuickScanContext);
   const storage = useContext(StorageContext);
 
-  const graphqlVariables = useMemo(
-    () => ({
-      ...quickScan.result,
-      target: storage.getValue(StorageKey.TargetGroup),
-      answers: Object.keys(quickScan.result.answers).map(key => ({
-        questionId: key,
-        value: quickScan.result.answers[key]
-      }))
-    }),
-    [storage, quickScan]
-  );
+  const answers = Object.keys(quickScan.result.answers).map(key => ({
+    questionId: key,
+    value: quickScan.result.answers[key]
+  }));
 
-  const [data, error] = useGraphql(graphqlQuery, graphqlVariables);
+  const variables: any = {
+    ...quickScan.result,
+    target: storage.getValue(StorageKey.TargetGroup),
+    answers
+  };
+
+  const { data, error } = useQuery(query, { variables });
 
   if (data) {
     storage.setValue(

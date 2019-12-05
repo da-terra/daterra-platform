@@ -34,9 +34,9 @@ const Header: React.FC<HeaderProps> = ({
 
       {navigationLinks && (
         <NavigationLinks>
-          {navigationLinks.map(({ children, ...link }) => (
+          {navigationLinks.map(link => (
             <NavigationLink {...link} fontWeight={FontWeight.Bold} serif>
-              {children}
+              {link.children}
             </NavigationLink>
           ))}
         </NavigationLinks>

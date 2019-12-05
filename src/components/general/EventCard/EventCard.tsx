@@ -17,6 +17,7 @@ type EventCardProps = {
   startDate: string;
   title: string;
   description: string;
+  link?: ILink;
 };
 
 const EventCard: React.FC<EventCardProps> = ({
@@ -24,7 +25,8 @@ const EventCard: React.FC<EventCardProps> = ({
   color,
   startDate,
   title,
-  description
+  description,
+  link
 }) => {
   const date = parseISO(startDate);
 
@@ -43,9 +45,11 @@ const EventCard: React.FC<EventCardProps> = ({
         {description}
       </Description>
 
-      <SubscribeButton fontWeight={FontWeight.Bold} serif>
-        Aanmelden
-      </SubscribeButton>
+      {link && (
+        <SubscribeButton fontWeight={FontWeight.Bold} serif>
+          {link.children}
+        </SubscribeButton>
+      )}
     </Card>
   );
 };

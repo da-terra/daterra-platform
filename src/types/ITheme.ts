@@ -14,15 +14,27 @@ declare module "styled-components" {
 
     button: {
       icon: {
-        color: string;
-        background: string;
-        hoverColor: string;
-        hoverBackground: string;
-        activeColor: string;
-        activeBackground: string;
-        activeHoverColor: string;
-        activeHoverBackground: string;
         radius: string;
+        solid: {
+          color: string;
+          background: string;
+          hoverColor: string;
+          hoverBackground: string;
+          activeColor: string;
+          activeBackground: string;
+          activeHoverColor: string;
+          activeHoverBackground: string;
+        };
+        invertedSolid: {
+          color: string;
+          background: string;
+          hoverColor: string;
+          hoverBackground: string;
+          activeColor: string;
+          activeBackground: string;
+          activeHoverColor: string;
+          activeHoverBackground: string;
+        };
       };
       link: {
         copyColor: string;

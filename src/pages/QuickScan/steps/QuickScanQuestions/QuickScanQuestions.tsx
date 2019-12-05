@@ -20,7 +20,7 @@ const QuickScanQuestions = () => {
   const quickScanContext = useContext(QuickScanContext);
   const [state, dispatch] = useReducer(reducer, initialReducerState);
 
-  const questions = quickScanContext.response!.quickScanQuestions;
+  const questions = quickScanContext.data!.quickScanQuestions;
   const questionCount = questions.length;
 
   const currentIndex = state.currentIndex;

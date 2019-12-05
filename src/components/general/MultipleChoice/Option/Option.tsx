@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import { FontColor, FontSize } from "../../../../data/style/variables";
 import {
-  Wrapper,
+  OptionWrapper,
+  InfoCard,
   Label,
   InfoWrapper,
-  Line,
   ButtonWrapper,
   OptionButton,
   Icon
@@ -36,33 +36,36 @@ const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
   );
 
   return (
-    <Wrapper>
-      <Label serif>{label}</Label>
+    <OptionWrapper>
+      <InfoCard>
+        <Label>{label}</Label>
 
-      {info && (
-        <InfoWrapper
-          fontColor={FontColor.Secondary}
-          fontSize={FontSize.Small}
-          isVisible={isInfoVisible}
-        >
-          {info}
-        </InfoWrapper>
-      )}
-
-      <Line />
-
+        {info && (
+          <InfoWrapper
+            fontColor={FontColor.Secondary}
+            fontSize={FontSize.Small}
+            visible={isInfoVisible}
+          >
+            {info}
+          </InfoWrapper>
+        )}
+      </InfoCard>
       <ButtonWrapper>
         {info && (
-          <OptionButton onClick={handleToggleInfo} active={isInfoVisible}>
+          <OptionButton
+            onClick={handleToggleInfo}
+            active={isInfoVisible}
+            inverted
+          >
             <Icon.Info />
           </OptionButton>
         )}
 
-        <OptionButton onClick={handleSelect} inverted>
+        <OptionButton onClick={handleSelect}>
           <Icon.Forward />
         </OptionButton>
       </ButtonWrapper>
-    </Wrapper>
+    </OptionWrapper>
   );
 };
 

@@ -48,9 +48,9 @@ const Hero: React.FC<HeroProps> = ({ navigationLinks, slogan, buttons }) => {
 
           {navigationLinks && (
             <NavigationLinks>
-              {navigationLinks.map(({ children, uuid, ...link }) => (
+              {navigationLinks.map(({ uuid, ...link }) => (
                 <NavigationLink {...link} key={uuid} serif>
-                  {children}
+                  {link.children}
                 </NavigationLink>
               ))}
             </NavigationLinks>

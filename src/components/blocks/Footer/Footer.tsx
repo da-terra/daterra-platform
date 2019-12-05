@@ -28,7 +28,7 @@ type SocialNetwork = {
 
 type SitemapGroup = {
   uuid: string;
-  tag: "Blog";
+  tag: String;
   links: (ILink & { uuid: string })[];
 };
 
@@ -88,7 +88,7 @@ const Footer: React.FC<FooterProps> = ({
                       fontWeight={FontWeight.Bold}
                       serif
                     >
-                      {link.title}
+                      {link.children}
                     </SitemapLink>
                   ))}
                 </SitemapGroupLinks>

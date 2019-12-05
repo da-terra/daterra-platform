@@ -10,13 +10,12 @@ export const ButtonElement = styled.button`
   color: ${props => props.theme.copy.primary};
   text-decoration: none;
   cursor: pointer;
-  transition: all 1.8s ${Easings.easeOutCubic};
+  transition: all 0.5s ${Easings.easeOutExpo};
 
   &:hover,
   &:disabled,
   &[disabled],
   &.muted {
-    transition-duration: 0.6s;
     transition-timing-function: ${Easings.easeOutExpo};
   }
 

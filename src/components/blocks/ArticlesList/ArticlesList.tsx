@@ -5,7 +5,7 @@ import {
   TagWrapper,
   Heading,
   ArticlesWrapper,
-  ArticlesList,
+  List,
   Card,
   CtaLink
 } from "./styled";
@@ -46,15 +46,17 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
   return (
     <TagWrapper heading={heading} description={body} tag={tag}>
       <ArticlesWrapper>
-        <ArticlesList>
+        <List>
           {articles.map(article => (
             <Card {...article} key={article.uuid} />
           ))}
-        </ArticlesList>
+        </List>
 
-        <CtaLink {...link} serif>
-          {link.title}
-        </CtaLink>
+        {link && (
+          <CtaLink {...link} serif>
+            {link.children}
+          </CtaLink>
+        )}
       </ArticlesWrapper>
     </TagWrapper>
   );

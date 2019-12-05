@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router";
+import { useQuery } from "@apollo/react-hooks";
+import { loader } from "graphql.macro";
 import RoutePath from "../../data/RoutePath";
-import TargetGroup from "../../data/TargetGroup";
 import createPath from "../../util/createPath";
 import {
   Context as StorageContext,
@@ -11,7 +12,8 @@ import ErrorPage from "../Error";
 import { SplashScreen } from "./styled";
 import { QuickScanContextType, QueryResponse, QuickScanProps } from "./types";
 import routes from "./routes";
-import useGraphql from "../../util/hooks/useGraphql";
+
+const graphqlQuery = loader("./quickscan.graphql");
 
 export const Context = React.createContext<QuickScanContextType>({
   progress: 0,
@@ -25,35 +27,22 @@ export const Context = React.createContext<QuickScanContextType>({
   setResult: () => {}
 });
 
-const quickScanQuery = (targetGroup: TargetGroup) => `
-  {
-    quickScanQuestions(target: ${targetGroup}) {
-      _id,
-      question,
-      body,
-      min,
-      max,
-      options {
-        label,
-        value
-      }
-    }
-  }
-`;
-
 const QuickScan: React.FC<QuickScanProps> = () => {
+  const storage = useContext(StorageContext);
+
   const [progress, setProgress] = useState<number>(0);
   const [result, setResult] = useState<IQuickScanResultInput>({
     answers: {}
   });
 
-  const storage = useContext(StorageContext);
-  const [response, error] = useGraphql<QueryResponse>(
-    quickScanQuery(storage.getValue(StorageKey.TargetGroup))
-  );
+  const variables = { target: storage.getValue(StorageKey.TargetGroup) };
+
+  const { loading, data, error } = useQuery<QueryResponse>(graphqlQuery, {
+    variables
+  });
 
   const context: QuickScanContextType = {
-    response,
+    data,
 
     progress,
     setProgress,
@@ -66,7 +55,7 @@ const QuickScan: React.FC<QuickScanProps> = () => {
    * Show error page when api call returns error
    */
   if (error) {
-    return <ErrorPage {...error} />;
+    return <ErrorPage apolloError={error} />;
   }
 
   const uuid = storage.getValue(StorageKey.QuickScanResultUuid);
@@ -78,7 +67,7 @@ const QuickScan: React.FC<QuickScanProps> = () => {
   /**
    * Show loading screen when fetching data
    */
-  if (!response) {
+  if (loading) {
     return <SplashScreen />;
   }
 

@@ -6,14 +6,20 @@ const blocksMap: Record<
 > = {
   "c1-footer": React.lazy(() => import("./Footer")),
   "c2-hero": React.lazy(() => import("./Hero")),
-  "c3-featured-articles": React.lazy(() => import("./FeaturedArticles")),
+  "c3-articles-list": React.lazy(() => import("./ArticlesList")),
   "c4-call-to-action": React.lazy(() => import("./CallToAction")),
   "c5-featured-events": React.lazy(() => import("./FeaturedEvents")),
   "c6-partners": React.lazy(() => import("./Partners")),
   "c7-header": React.lazy(() => import("./Header")),
-  "c8-quickscan-profile-hero": React.lazy(() => import("./QuickscanProfileHero")),
-  "c9-quickscan-profile-sidebar": React.lazy(() => import("./QuickscanProfileSidebar")),
-  "c10-quickscan-profile-body": React.lazy(() => import("./QuickscanProfileBody"))
+  "c8-quickscan-profile-hero": React.lazy(() =>
+    import("./QuickscanProfileHero")
+  ),
+  "c9-quickscan-profile-sidebar": React.lazy(() =>
+    import("./QuickscanProfileSidebar")
+  ),
+  "c10-quickscan-profile-body": React.lazy(() =>
+    import("./QuickscanProfileBody")
+  )
 };
 
 type BlockRendererProps = {

@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from "react";
 import { Redirect, useParams } from "react-router";
-import useGraphql from "../../util/hooks/useGraphql";
+import { useQuery } from "@apollo/react-hooks";
+import { loader } from "graphql.macro";
 import {
   Context as StorageContext,
   StorageKey
@@ -12,31 +13,7 @@ import { SplashScreen, BlockRenderer } from "./styled";
 // Static data
 import profiles from "./profiles";
 
-const graphqlQuery = `
-  query quickScanResult($uuid: String) {
-    quickScanResult(uuid: $uuid) {
-      target
-      company {
-        companyName
-        website
-        sector
-        region
-        employeeCount
-      }
-      person {
-        name
-        role
-        email
-        phone
-      }
-      answers {
-        questionId
-        value
-      }
-      comment
-    }
-  }
-`;
+const quickscanProfileQuery = loader("./quickscanProfile.graphql");
 
 type GraphQLResponse = {
   quickScanResult: IQuickScanResult;
@@ -47,13 +24,11 @@ const QuickScanProfile = () => {
 
   // Create variables for graphql query
   const { uuid } = useParams();
-  const graphqlVariables = useMemo(() => ({ uuid }), [uuid]);
 
   // Process query
-  const [data, error] = useGraphql<GraphQLResponse>(
-    graphqlQuery,
-    graphqlVariables
-  );
+  const { data, error } = useQuery<GraphQLResponse>(quickscanProfileQuery, {
+    variables: { uuid }
+  });
 
   const profile = useMemo(() => {
     if (!data) {
@@ -72,7 +47,7 @@ const QuickScanProfile = () => {
 
   if (error) {
     // Clear key and redirect to quick scan if profile does not exist
-    if (error.status === StatusCode.NotFound) {
+    if (error.name === StatusCode.NotFound) {
       storage.removeValue(StorageKey.QuickScanResultUuid);
 
       return <Redirect to={RoutePath.QuickScan} />;

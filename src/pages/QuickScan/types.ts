@@ -7,7 +7,7 @@ export type QueryResponse = {
 };
 
 export type QuickScanContextType = {
-  response?: QueryResponse;
+  data?: QueryResponse;
 
   progress: number;
   setProgress: (value: number) => void;

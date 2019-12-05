@@ -47,9 +47,11 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
           ))}
         </EventsList>
 
-        <CtaLink {...link} serif>
-          {link.title}
-        </CtaLink>
+        {link && (
+          <CtaLink {...link} serif>
+            {link.children}
+          </CtaLink>
+        )}
       </EventsWrapper>
     </TagWrapper>
   );

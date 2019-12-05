@@ -1,5 +1,5 @@
 enum StatusCode {
-  NotFound = 404
+  NotFound = "NOT_FOUND"
 }
 
 export default StatusCode;

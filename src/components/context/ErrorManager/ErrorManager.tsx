@@ -2,14 +2,14 @@ import React from "react";
 import ErrorPage from "../../../pages/Error";
 
 type IError = Error & {
-  status?: number
-  errors: string[]
-}
+  code?: string;
+  errors: string[];
+};
 
 type ErrorManagerState = {
-  error?: IError,
-  info?: any
-}
+  error?: IError;
+  info?: any;
+};
 
 class ErrorManager extends React.Component {
   state: ErrorManagerState = {};
@@ -22,7 +22,7 @@ class ErrorManager extends React.Component {
 
   render() {
     if (this.state.error) {
-      return <ErrorPage status={this.state.error.status || 0} />;
+      return <ErrorPage code={this.state.error.code} />;
     }
 
     return this.props.children;
