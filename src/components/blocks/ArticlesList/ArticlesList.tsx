@@ -54,7 +54,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
 
         {link && (
           <CtaLink {...link} serif>
-            {link.title}
+            {link.children}
           </CtaLink>
         )}
       </ArticlesWrapper>
