@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Paragraph from "../../../Paragraph";
 
 export const StyledParagraph = styled(Paragraph)`
