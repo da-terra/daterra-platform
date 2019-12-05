@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Heading from "../../../../components/general/Heading";
 import { SolidButton } from "../../../../components/general/Button";
 import Icon from "../../../../components/general/Icon";
+import Paragraph from "../../../../components/general/Paragraph";
 
 export { Circle } from "../../../../util/layout";
 export { default as Header } from "../../../../components/blocks/Header";
@@ -35,6 +36,10 @@ export const FormWrapper = styled.form`
 
 export const FormHeading = styled(Heading)`
   margin-bottom: 3.2rem;
+`;
+
+export const FormParagraph = styled(Paragraph)`
+  margin-bottom: 3.4rem;
 `;
 
 export const SubmitButton = styled(SolidButton)`

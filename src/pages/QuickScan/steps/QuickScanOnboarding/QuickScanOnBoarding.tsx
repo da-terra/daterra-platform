@@ -69,10 +69,9 @@ const QuickScanOnboarding = () => {
             Bedrijfsgegevens
           </FormHeading>
           <FormParagraph>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid
-            consequuntur placeat, architecto reprehenderit ea amet quae
-            provident ipsa consequatur illum. Deserunt nihil assumenda quae
-            labore laudantium facere, amet optio qui.
+            Wij zijn erg geïnteresseerd met welk bedrijf wij het genoegen
+            hebben. Kan u ons wat meer vertellen over het bedrijf? Zodoende
+            kunnen wij een persoonlijke analyse uitvoeren.
           </FormParagraph>
           <InputGroup>
             <Input

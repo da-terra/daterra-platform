@@ -11,6 +11,7 @@ import {
   Content,
   FormWrapper,
   FormHeading,
+  FormParagraph,
   InputGroup,
   Input,
   SubmitButton
@@ -83,6 +84,11 @@ const QuickScanContactDetails = () => {
           >
             Contactgegevens
           </FormHeading>
+
+          <FormParagraph>
+            Mocht u de resultaten vrijblijvend terug willen zien, worden deze
+            naar u gemaild nadat u de volgende gegevens heeft invoert.
+          </FormParagraph>
 
           <InputGroup>
             <Input

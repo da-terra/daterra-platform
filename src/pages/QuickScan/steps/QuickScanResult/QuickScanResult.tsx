@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { useQuery } from "@apollo/react-hooks";
+import React, { useContext, useEffect } from "react";
+import { useMutation } from "@apollo/react-hooks";
 import { loader } from "graphql.macro";
 import {
   Context as StorageContext,
@@ -14,18 +14,22 @@ const QuickScanResult: React.FC = () => {
   const quickScan = useContext(QuickScanContext);
   const storage = useContext(StorageContext);
 
-  const answers = Object.keys(quickScan.result.answers).map(key => ({
-    questionId: key,
-    value: quickScan.result.answers[key]
-  }));
+  const [sendResult, { data, error }] = useMutation(query);
 
-  const variables: any = {
-    ...quickScan.result,
-    target: storage.getValue(StorageKey.TargetGroup),
-    answers
-  };
+  useEffect(() => {
+    const answers = Object.keys(quickScan.result.answers).map(key => ({
+      questionId: key,
+      value: quickScan.result.answers[key]
+    }));
 
-  const { data, error } = useQuery(query, { variables });
+    const variables: any = {
+      ...quickScan.result,
+      target: storage.getValue(StorageKey.TargetGroup),
+      answers
+    };
+
+    sendResult({ variables });
+  }, [storage, quickScan, sendResult]);
 
   if (data) {
     storage.setValue(
