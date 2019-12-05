@@ -1,6 +1,7 @@
 import React from "react";
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, fromUnixTime } from "date-fns";
 import { FontWeight, FontSize } from "../../../data/style/variables";
+import { getTagNames } from "../../../data/ArticleCategory";
 import { WrapperWidth } from "../../general/Wrapper";
 import {
   ArticleHeadingWrapper,
@@ -13,8 +14,8 @@ import {
 
 type ArticleHeadingProps = {
   title: React.ReactNode;
+  tags: number;
   publishedDate: string;
-  category: string;
   author: IUser;
 
   // Props used in FeaturedArticleHero
@@ -29,18 +30,16 @@ const formateDistanceToNowOptions = {
 
 const ArticleHeading: React.FC<ArticleHeadingProps> = ({
   title,
-  category,
+  tags,
   publishedDate,
   author: { fullName, email },
   className,
   width = WrapperWidth.Smaller
 }) => {
   const timeDistance = formatDistanceToNow(
-    new Date(publishedDate!),
+    fromUnixTime(parseInt(publishedDate, 10) / 1000),
     formateDistanceToNowOptions
   );
-
-  const mailToHref = `mailto:${email}`;
 
   return (
     <ArticleHeadingWrapper width={width} className={className}>
@@ -52,7 +51,7 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
           fontWeight={FontWeight.Black}
           fontSize={FontSize.Small}
         >
-          {category}
+          {getTagNames(tags).join(" - ")}
         </ArticleProperty>
 
         <ArticleProperty as="span">
@@ -66,7 +65,7 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
           </PublishedDate>
 
           <AuthorLink
-            href={mailToHref}
+            as="span"
             fontWeight={FontWeight.Bold}
             fontSize={FontSize.Small}
           >

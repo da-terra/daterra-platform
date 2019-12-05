@@ -7,11 +7,17 @@ export { default as Wrapper } from "../../general/Wrapper";
 export { default as Heading } from "../../general/Heading";
 export { default as Logo } from "../../general/Logo";
 
-export const Background = styled.div`
-  background: ${props => props.theme.background.accent};
-  color: ${props => props.theme.copy.primaryInverted};
+export const Background = styled.div<{ inverted: boolean }>`
   padding: 6.4rem 0;
   overflow: hidden;
+  background: ${props =>
+    props.inverted
+      ? props.theme.background.primary
+      : props.theme.background.accent};
+  color: ${props =>
+    props.inverted
+      ? props.theme.copy.primary
+      : props.theme.copy.primaryInverted};
 
   @media (max-width: ${Breakpoints.H500}) {
     padding-bottom: 2rem;

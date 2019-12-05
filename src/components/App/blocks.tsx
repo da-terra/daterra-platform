@@ -4,6 +4,7 @@ import ArticleHero from "../blocks/ArticleHero";
 import RichText from "../blocks/RichText";
 import ArticleHeading from "../blocks/ArticleHeading";
 import FeaturedArticleHero from "../blocks/FeaturedArticleHero";
+import RichTextEditor from "../general/RichTextEditor";
 
 export default () => (
   <Fragment>
@@ -25,6 +26,7 @@ export default () => (
     />
 
     <FeaturedArticleHero
+      slug="test-article"
       image={{
         alt: "Background",
         fallbackColor: "#FD4444",
@@ -34,7 +36,7 @@ export default () => (
         fullName: "Leroy Korterink",
         email: "leroy@test.com"
       }}
-      category="Case study"
+      tags={3}
       publishedDate="2019-12-03T23:54:13.887Z"
       title={"The Expertise of\nConcise Environment"}
       inverted
@@ -45,13 +47,27 @@ export default () => (
         fullName: "Leroy Korterink",
         email: "leroy@test.com"
       }}
-      category="Case study"
+      tags={2}
       publishedDate="2019-12-03T23:54:13.887Z"
       title={"The Expertise of\nConcise Environment"}
     />
 
     <RichText
       nodes={[
+        {
+          type: "paragraph",
+          children: [
+            {
+              text: "A line of text in a paragraph.",
+              marks: []
+            }
+          ]
+        }
+      ]}
+    />
+
+    <RichTextEditor
+      value={[
         {
           type: "paragraph",
           children: [

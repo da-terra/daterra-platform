@@ -20,14 +20,15 @@ type Event = {
 
 type FeaturedArticlesProps = {
   title: string;
+  body: string;
   tag: React.ReactNode;
   events: Event[];
-
   link: ILink;
 };
 
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
   title,
+  body,
   tag,
   events,
   link
@@ -39,7 +40,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
   );
 
   return (
-    <TagWrapper heading={heading} tag={tag}>
+    <TagWrapper heading={heading} description={body} tag={tag}>
       <EventsWrapper>
         <EventsList>
           {events.map(event => (

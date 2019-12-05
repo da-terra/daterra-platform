@@ -1,41 +1,39 @@
 import React from "react";
 import { WrapperWidth } from "../../general/Wrapper";
+import createPath from "../../../util/createPath";
+import RoutePath from "../../../data/RoutePath";
 import {
   BackgroundWrapper,
   Wrapper,
   Logo,
-  FeaturedArticleHeading
+  ArticleHeadingButton,
+  ArticleHeading
 } from "./styled";
 
 type FeaturedArticleHeroProps = {
+  slug: string;
   image: IImage;
   title: React.ReactNode;
   publishedDate: string;
-  category: string;
+  tags: number;
   author: IUser;
   inverted?: boolean;
 };
 
 const FeaturedArticleHero: React.FC<FeaturedArticleHeroProps> = ({
   image,
-  title,
-  publishedDate,
-  category,
-  author,
-  inverted
+  slug,
+  inverted,
+  ...props
 }) => (
   <BackgroundWrapper image={image} inverted={inverted}>
     <Wrapper>
       <Logo showName />
     </Wrapper>
 
-    <FeaturedArticleHeading
-      title={title}
-      publishedDate={publishedDate}
-      category={category}
-      author={author}
-      width={WrapperWidth.Normal}
-    />
+    <ArticleHeadingButton href={createPath(RoutePath.ArticleDetail, { slug })}>
+      <ArticleHeading {...props} width={WrapperWidth.Normal} />
+    </ArticleHeadingButton>
   </BackgroundWrapper>
 );
 

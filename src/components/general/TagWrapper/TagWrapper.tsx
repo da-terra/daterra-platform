@@ -15,15 +15,17 @@ type TagWrapperProps = {
   heading?: React.ReactNode;
   description?: React.ReactNode;
   children: React.ReactNode;
+  className?: string;
 };
 
 const TagWrapper: React.FC<TagWrapperProps> = ({
   children,
   tag,
   heading,
-  description
+  description,
+  className
 }) => (
-  <Background>
+  <Background className={className}>
     <Wrapper width={WrapperWidth.Small}>
       {heading && <HeadingWrapper>{heading}</HeadingWrapper>}
       {description && <Description>{description}</Description>}

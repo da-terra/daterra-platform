@@ -7,7 +7,7 @@ export const ButtonElement = styled.button`
   outline: none;
   display: inline;
   padding: 0;
-  color: ${props => props.theme.copy.primary};
+  color: currentColor;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.5s ${Easings.easeOutExpo};

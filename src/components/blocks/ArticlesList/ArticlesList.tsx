@@ -10,45 +10,40 @@ import {
   CtaLink
 } from "./styled";
 
-type Article = {
-  uuid: string;
-  color: string;
-  publishedDate: string;
-  tag: string;
-  title: string;
-  image: IImage;
-  author: {
-    name: string;
-  };
-};
-
 type FeaturedArticlesProps = {
-  title: string;
-  body: string;
+  title?: string;
+  body?: string;
   tag: React.ReactNode;
-  articles: Article[];
-  link: ILink;
+  articles: IArticle[];
+  link?: ILink;
+  className?: string;
 };
 
-const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
+const ArticlesList: React.FC<FeaturedArticlesProps> = ({
   title,
   body,
   tag,
   articles,
-  link
+  link,
+  className
 }) => {
-  const heading = (
+  const heading = title && (
     <Heading headingType={HeadingType.Secondary} fontWeight={FontWeight.Black}>
       {title}
     </Heading>
   );
 
   return (
-    <TagWrapper heading={heading} description={body} tag={tag}>
+    <TagWrapper
+      className={className}
+      heading={heading}
+      description={body}
+      tag={tag}
+    >
       <ArticlesWrapper>
         <List>
           {articles.map(article => (
-            <Card {...article} key={article.uuid} />
+            <Card {...article} key={article.slug} />
           ))}
         </List>
 
@@ -62,4 +57,4 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
   );
 };
 
-export default FeaturedArticles;
+export default ArticlesList;

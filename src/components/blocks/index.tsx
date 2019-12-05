@@ -19,7 +19,8 @@ const blocksMap: Record<
   ),
   "c10-quickscan-profile-body": React.lazy(() =>
     import("./QuickscanProfileBody")
-  )
+  ),
+  "c11-rich-text": React.lazy(() => import("./RichText"))
 };
 
 type BlockRendererProps = {

@@ -36,12 +36,14 @@ type FooterProps = {
   socialNetworks: SocialNetwork[];
   sitemap: SitemapGroup[];
   disclaimer: string;
+  inverted: boolean;
 };
 
 const Footer: React.FC<FooterProps> = ({
   socialNetworks,
   sitemap,
-  disclaimer
+  disclaimer,
+  inverted
 }) => {
   const renderedSocialNetworks = (
     <SocialNetworks>
@@ -54,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({
   );
 
   return (
-    <Background>
+    <Background inverted={inverted}>
       <Wrapper>
         <Top>
           <SocialWrapper>
@@ -72,7 +74,9 @@ const Footer: React.FC<FooterProps> = ({
             {sitemap.map(({ uuid, tag, links }) => (
               <SitemapGroup key={uuid}>
                 <SitemapGroupTag
-                  fontColor={FontColor.TertiaryInverted}
+                  fontColor={
+                    inverted ? FontColor.Secondary : FontColor.TertiaryInverted
+                  }
                   fontSize={FontSize.Large}
                   fontWeight={FontWeight.Black}
                 >
@@ -100,7 +104,12 @@ const Footer: React.FC<FooterProps> = ({
         <Bottom>
           <Logo showName />
 
-          <Disclaimer fontColor={FontColor.TertiaryInverted} serif>
+          <Disclaimer
+            fontColor={
+              inverted ? FontColor.Secondary : FontColor.TertiaryInverted
+            }
+            serif
+          >
             {disclaimer}
           </Disclaimer>
         </Bottom>

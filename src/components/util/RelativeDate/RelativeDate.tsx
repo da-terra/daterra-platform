@@ -4,9 +4,8 @@ import {
   differenceInDays,
   differenceInMinutes,
   differenceInSeconds,
-  parseISO
+  fromUnixTime
 } from "date-fns";
-import {} from "date-fns/esm";
 
 // @ts-ignore
 const relativeTimeFormat = new Intl.RelativeTimeFormat("nl");
@@ -22,7 +21,7 @@ type RelativeDateProps = {
 };
 
 const RelativeDate: React.FC<RelativeDateProps> = ({ children }) => {
-  const parsedDate = parseISO(children);
+  const parsedDate = fromUnixTime(parseInt(children, 10) / 1000);
   const now = new Date();
 
   const years = differenceInYears(parsedDate, now);

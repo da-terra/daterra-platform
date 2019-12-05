@@ -20,6 +20,18 @@ export const BackgroundWrapper = styled.div<BackgroundWrapperProps>`
   max-height: 60rem;
   padding-top: 6rem;
   padding-bottom: 6rem;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
 
   @media (max-width: ${Breakpoints.H750}) {
     padding-top: 3rem;

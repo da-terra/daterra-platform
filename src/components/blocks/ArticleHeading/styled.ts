@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Heading from "../../general/Heading";
 import Paragraph from "../../general/Paragraph";
 import Wrapper from "../../general/Wrapper";
-import { LinkButton } from "../../general/Button";
 
 export const ArticleHeadingWrapper = styled(Wrapper)`
   padding-top: 7.5rem;
@@ -31,8 +30,4 @@ export const PublishedDate = styled(Paragraph)<{ dateTime: string }>`
   }
 `;
 
-export const AuthorLink = styled(LinkButton)`
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+export const AuthorLink = Paragraph;

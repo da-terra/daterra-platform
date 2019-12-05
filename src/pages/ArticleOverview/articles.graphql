@@ -1,16 +1,17 @@
-query articles(
-  $target: Int!
-  $tags: [String!]
-  $minScore: Float
-  $maxScore: Float
-) {
+query articles($target: Int!, $tags: Int, $minScore: Float, $maxScore: Float) {
   featuredArticle(target: $target) {
     slug
+    image {
+      src
+      alt
+      fallbackColor
+    }
     author {
       fullName
       email
     }
     title
+    tags
     publishedDate
   }
 
@@ -21,9 +22,17 @@ query articles(
     maxScore: $maxScore
   ) {
     slug
+    image {
+      src
+      alt
+      fallbackColor
+    }
     author {
       fullName
       email
     }
+    title
+    tags
+    publishedDate
   }
 }

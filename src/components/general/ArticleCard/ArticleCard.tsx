@@ -1,7 +1,10 @@
 import React from "react";
 import { HeadingType } from "../Heading";
 import { FontSize } from "../../../data/style/variables";
+import { getTagNames } from "../../../data/ArticleCategory";
+import RoutePath from "../../../data/RoutePath";
 import RelativeDate from "../../util/RelativeDate";
+import createPath from "../../../util/createPath";
 import {
   Card,
   CardImage,
@@ -14,53 +17,51 @@ import {
   Paragraph
 } from "./styled";
 
-type ArticleCardProps = {
+type ArticleCardProps = IArticle & {
   className?: string;
-  image: IImage;
-  color: string;
-  publishedDate: string;
-  tag: string;
-  title: string;
-  author: {
-    name: string;
-  };
 };
 
 const ArticleCard: React.FC<ArticleCardProps> = ({
   className,
+  slug,
   image,
-  color,
   publishedDate,
-  tag,
+  tags,
   title,
   author
-}) => (
-  <Card className={className}>
-    <CardImage {...image} />
+}) => {
+  const [firstTag] = getTagNames(tags);
 
-    <CardContent color={color}>
-      <Details>
-        <PublishedDate as="time" fontSize={FontSize.Small}>
-          <RelativeDate>{publishedDate}</RelativeDate>
-        </PublishedDate>
+  return (
+    <Card
+      className={className}
+      href={createPath(RoutePath.ArticleDetail, { slug })}
+    >
+      <CardImage {...image} />
 
-        <Tag serif fontSize={FontSize.Small}>
-          {tag}
-        </Tag>
-      </Details>
+      <CardContent color={image.fallbackColor}>
+        <Details>
+          <PublishedDate as="time" fontSize={FontSize.Small}>
+            <RelativeDate>{publishedDate}</RelativeDate>
+          </PublishedDate>
 
-      <Title headingType={HeadingType.Secondary} serif>
-        {title}
-      </Title>
+          <Tag serif fontSize={FontSize.Small}>
+            {firstTag}
+          </Tag>
+        </Details>
 
-      <Author>
-        <Paragraph fontSize={FontSize.Small}>Geschreven door:</Paragraph>
-        <Paragraph fontSize={FontSize.Small} serif>
-          {author.name}
-        </Paragraph>
-      </Author>
-    </CardContent>
-  </Card>
-);
+        <Title headingType={HeadingType.Secondary} serif>
+          {title}
+        </Title>
 
+        <Author>
+          <Paragraph fontSize={FontSize.Small}>Geschreven door:</Paragraph>
+          <Paragraph fontSize={FontSize.Small} serif>
+            {author.fullName}
+          </Paragraph>
+        </Author>
+      </CardContent>
+    </Card>
+  );
+};
 export default ArticleCard;

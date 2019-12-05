@@ -25,22 +25,7 @@ const ForgotPassword: React.FC = () => {
     <Fragment>
       <Circle x={25} y={-20} />
 
-      <Header
-        navigationLinks={[
-          {
-            uuid: "1",
-            href: "/quick-scan",
-            title: "Doe de Quickscan in minder dan 5 minuten",
-            children: "Doe de Quickscan"
-          },
-          {
-            uuid: "2",
-            href: "/blog",
-            title: "Vind informatie over onze producten en diensten",
-            children: "Blog"
-          }
-        ]}
-      />
+      <Header />
 
       <FormWrapper>
         <Form method="post">

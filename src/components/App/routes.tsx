@@ -7,6 +7,7 @@ const Blocks = React.lazy(() => import("./blocks"));
 
 // Pages
 const ArticleOverview = React.lazy(() => import("../../pages/ArticleOverview"));
+const ArticleDetail = React.lazy(() => import("../../pages/ArticleDetail"));
 const ContentPage = React.lazy(() => import("../../pages/Content"));
 const QuickScanPage = React.lazy(() => import("../../pages/QuickScan"));
 const QuickScanResultDetail = React.lazy(() =>
@@ -28,8 +29,8 @@ export default (
     <Route path={RoutePath.ForgetPassword} exact component={ForgotPassword} />
 
     {/* Blog */}
+    <Route path={RoutePath.ArticleDetail} component={ArticleDetail} />
     <Route path={RoutePath.ArticleOverview} component={ArticleOverview} />
-    <Route path="/test" component={Blocks} />
 
     {/* QuickScan */}
     <Route path={RoutePath.QuickScan} component={QuickScanPage} />
@@ -38,6 +39,9 @@ export default (
       path={RoutePath.QuickScanProfile}
       component={QuickScanResultDetail}
     />
+
+    {/* Debugging */}
+    <Route path="/Debug" component={Blocks} />
 
     {/* Catch all routes for  */}
     <Route

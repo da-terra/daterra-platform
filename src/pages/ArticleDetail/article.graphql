@@ -1,0 +1,18 @@
+query articles($slug: String!) {
+  article(slug: $slug) {
+    slug
+    image {
+      src
+      alt
+      fallbackColor
+    }
+    author {
+      fullName
+      email
+    }
+    title
+    tags
+    publishedDate
+    blocks
+  }
+}

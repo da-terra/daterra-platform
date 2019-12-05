@@ -101,7 +101,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
     <Slate
       editor={editor}
       defaultValue={value || defaultValue}
-      onChange={onChange}
+      onChange={value => console.log(JSON.stringify(value))}
     >
       <Editable
         readOnly={readOnly}

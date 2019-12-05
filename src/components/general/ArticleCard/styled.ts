@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Paragraph from "../Paragraph";
 import Heading from "../Heading";
 import Easings from "../../../data/style/easings";
+import Button from "../Button";
+
 export { default as Paragraph } from "../Paragraph";
 
 type CardContentProps = {
@@ -18,9 +20,12 @@ export const CardImage = styled.img`
 export const CardContent = styled.div<CardContentProps>`
   position: relative;
   padding: ${paddingSize};
-  background: ${props => `#${props.color}`};
+  background: ${props => props.color};
   color: ${props => props.theme.copy.primaryInverted};
-  box-shadow: 0 0 3.5rem 4rem ${props => `#${props.color}`};
+  box-shadow: 0 0 3.5rem 4rem ${props => props.color};
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Details = styled.div`
@@ -46,13 +51,16 @@ export const Title = styled(Heading)`
 `;
 
 export const Author = styled.div`
+  margin-top: auto;
   margin-bottom: 0.5rem;
 `;
 
-export const Card = styled.div`
+export const Card = styled(Button)`
   overflow: hidden;
   border-radius: 1rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 
   ${Author},
   ${Details} {
