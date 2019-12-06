@@ -16,6 +16,7 @@ export const Card = styled.div`
 `;
 
 export const Month = styled(Paragraph)`
+  text-transform: capitalize;
   font-size: 3rem;
 
   @media (max-width: ${Breakpoints.H750}) {

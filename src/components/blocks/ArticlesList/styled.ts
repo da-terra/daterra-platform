@@ -15,7 +15,7 @@ export const ArticlesWrapper = styled.div`
 
 export const List = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   margin: -${marginSize}rem;
 
   @media (max-width: ${Breakpoints.H1250}) {
@@ -26,7 +26,7 @@ export const List = styled.div`
 
 export const Card = styled(ArticleCard)`
   margin: ${marginSize}rem;
-  max-width: 35rem;
+  width: 40rem;
 
   @media (max-width: ${Breakpoints.H1250}) {
     max-width: none;

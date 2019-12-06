@@ -1,20 +1,16 @@
 import React, { Fragment } from "react";
-import { formatDistanceToNow, isAfter } from "date-fns";
+import { isAfter } from "date-fns";
 import { HeadingType } from "../../../Heading";
 import { FontColor, FontWeight } from "../../../../../data/style/variables";
 import {
   ProjectOwner,
   ProjectTitle,
+  RelativeDate,
   Times,
   TimeGroup,
   TimeString,
   ProjectTeamSummary
 } from "./styled";
-
-const formateDistanceToNowOptions = {
-  addSuffix: true,
-  includeSeconds: true
-};
 
 const ActiveProjectCard: React.FC<IProject> = ({
   title,
@@ -50,10 +46,7 @@ const ActiveProjectCard: React.FC<IProject> = ({
             dateTime={updatedDate}
             italic
           >
-            {formatDistanceToNow(
-              new Date(duration!.endDate!),
-              formateDistanceToNowOptions
-            )}
+            <RelativeDate>{duration!.endDate}</RelativeDate>
           </TimeString>
         </TimeGroup>
 
@@ -73,10 +66,7 @@ const ActiveProjectCard: React.FC<IProject> = ({
             fontColor={FontColor.Secondary}
             italic
           >
-            {formatDistanceToNow(
-              new Date(updatedDate!),
-              formateDistanceToNowOptions
-            )}
+            <RelativeDate>{updatedDate}</RelativeDate>
           </TimeString>
         </TimeGroup>
       </Times>

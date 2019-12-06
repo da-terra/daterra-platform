@@ -1,5 +1,6 @@
 import React from "react";
 import { parseISO, format } from "date-fns";
+import { nl } from "date-fns/locale";
 import { HeadingType } from "../Heading";
 import { FontSize, FontWeight } from "../../../data/style/variables";
 import { Card, Month, Day, Title, Description, CtaButton } from "./styled";
@@ -23,8 +24,8 @@ const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const date = parseISO(startDate);
 
-  const month = format(date, "MMMM");
-  const day = format(date, "dd");
+  const month = format(date, "MMMM", { locale: nl });
+  const day = format(date, "dd", { locale: nl });
 
   return (
     <Card className={className} color={color}>

@@ -10,34 +10,23 @@ const footer = {
           fallbackColor: "transparent"
         },
         link: {
-          href: "https://linkedin.com/",
+          href: "https://www.linkedin.com/company/studata/",
+          children: "LinkedIn",
           title: "LinkedIn",
           target: "_blank"
-        }
-      },
-      {
-        uuid: "2",
-        image: {
-          src: "/socialNetworks/twitter.svg",
-          alt: "Twitter logo",
-          fallbackColor: "transparent"
-        },
-        link: {
-          href: "https://twitter.com/",
-          title: "Twitter",
-          target: "_self"
         }
       }
     ],
     sitemap: [
       {
         uuid: "2",
-        tag: "Data Science",
+        tag: "Blog",
         links: [
           {
             uuid: "1",
-            href: "/quick-scan",
-            title: "Quickscan",
+            href: "/article",
+            children: "Blog",
+            title: "Blog",
             target: "_self"
           }
         ]
@@ -49,12 +38,14 @@ const footer = {
           {
             uuid: "1",
             href: "/algemene-voorwaarden",
+            children: "Algemene voorwaarden",
             title: "Algemene voorwaarden",
             target: "_self"
           },
           {
             uuid: "2",
             href: "/privacy-policy",
+            children: "Privacy policy",
             title: "Privacy policy",
             target: "_self"
           }

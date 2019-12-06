@@ -8,6 +8,7 @@ import {
   OverviewArticlesList
 } from "./styled";
 import CallToAction from "../../components/blocks/CallToAction";
+import Footer from "../../components/blocks/Footer";
 
 const graphqlQuery = loader("./articles.graphql");
 
@@ -53,6 +54,61 @@ const ArticleOverview: React.FC = () => {
           alt: "Background shape",
           src: "/cta-shape.png"
         }}
+      />
+
+      <Footer
+        disclaimer="Data Science Platform - Copyright 2019"
+        sitemap={[
+          {
+            uuid: "1",
+            tag: "Blog",
+            links: [
+              {
+                uuid: "1",
+                children: "Blog",
+                title: "Blog",
+                href: "/article",
+                target: "_blank"
+              }
+            ]
+          },
+          {
+            uuid: "2",
+            tag: "Algemeen",
+            links: [
+              {
+                uuid: "1",
+                children: "Algemene voorwaarden",
+                title: "Algemene voorwaarden",
+                href: "/algemene-voorwaarden",
+                target: "_blank"
+              },
+              {
+                uuid: "2",
+                children: "Privacy policy",
+                title: "Privacy policy",
+                href: "/privacy-policy",
+                target: "_blank"
+              }
+            ]
+          }
+        ]}
+        socialNetworks={[
+          {
+            uuid: "1",
+            image: {
+              src: "/socialNetworks/linkedIn-dark.svg",
+              fallbackColor: "transparent",
+              alt: "LinkedIn logo"
+            },
+            link: {
+              children: "",
+              title: "LinkedIn",
+              href: "https://www.linkedin.com/company/studata/"
+            }
+          }
+        ]}
+        inverted
       />
     </Fragment>
   );

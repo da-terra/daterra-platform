@@ -1,11 +1,11 @@
 import React from "react";
-import { formatDistanceToNow, fromUnixTime } from "date-fns";
 import { FontWeight, FontSize } from "../../../data/style/variables";
-import { getTagNames } from "../../../data/ArticleCategory";
+import { getTagNames } from "../../../data/Tags";
 import { WrapperWidth } from "../../general/Wrapper";
 import {
   ArticleHeadingWrapper,
   Title,
+  RelativeTime,
   ArticleProperties,
   ArticleProperty,
   PublishedDate,
@@ -23,11 +23,6 @@ type ArticleHeadingProps = {
   width?: WrapperWidth;
 };
 
-const formateDistanceToNowOptions = {
-  addSuffix: true,
-  includeSeconds: true
-};
-
 const ArticleHeading: React.FC<ArticleHeadingProps> = ({
   title,
   tags,
@@ -36,11 +31,6 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
   className,
   width = WrapperWidth.Smaller
 }) => {
-  const timeDistance = formatDistanceToNow(
-    fromUnixTime(parseInt(publishedDate, 10) / 1000),
-    formateDistanceToNowOptions
-  );
-
   return (
     <ArticleHeadingWrapper width={width} className={className}>
       <Title>{title}</Title>
@@ -61,7 +51,7 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
             fontWeight={FontWeight.Bold}
             fontSize={FontSize.Small}
           >
-            {timeDistance}
+            <RelativeTime>{publishedDate}</RelativeTime>
           </PublishedDate>
 
           <AuthorLink

@@ -12,9 +12,19 @@ type CardContentProps = {
 
 const paddingSize = `1.5rem`;
 
-export const CardImage = styled.img`
+export const CardImageWrapper = styled.div`
+  position: relative;
   min-width: 100%;
   height: 25rem;
+  overflow-hidden;
+`;
+
+export const CardImage = styled.img`
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const CardContent = styled.div<CardContentProps>`
@@ -41,6 +51,10 @@ export const Details = styled.div`
 export const PublishedDate = styled(Paragraph)`
   margin-right: auto;
   letter-spacing: 0.08rem;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 `;
 
 export const Tag = Paragraph;

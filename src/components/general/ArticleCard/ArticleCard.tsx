@@ -1,12 +1,13 @@
 import React from "react";
 import { HeadingType } from "../Heading";
 import { FontSize } from "../../../data/style/variables";
-import { getTagNames } from "../../../data/ArticleCategory";
+import { getTagNames } from "../../../data/Tags";
 import RoutePath from "../../../data/RoutePath";
 import RelativeDate from "../../util/RelativeDate";
 import createPath from "../../../util/createPath";
 import {
   Card,
+  CardImageWrapper,
   CardImage,
   CardContent,
   Details,
@@ -37,7 +38,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       className={className}
       href={createPath(RoutePath.ArticleDetail, { slug })}
     >
-      <CardImage {...image} />
+      <CardImageWrapper>
+        <CardImage {...image} />
+      </CardImageWrapper>
 
       <CardContent color={image.fallbackColor}>
         <Details>

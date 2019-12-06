@@ -1,17 +1,11 @@
 import React, { Fragment } from "react";
-import { formatDistanceToNow } from "date-fns";
 import { HeadingType } from "../../../Heading";
 import {
   FontColor,
   FontSize,
   FontWeight
 } from "../../../../../data/style/variables";
-import { ProjectTitle, Time, ProjectOwner } from "./styled";
-
-const formateDistanceToNowOptions = {
-  addSuffix: true,
-  includeSeconds: true
-};
+import { ProjectTitle, Time, RelativeDate, ProjectOwner } from "./styled";
 
 const FinishedProject: React.FC<IProject> = ({
   title,
@@ -30,10 +24,7 @@ const FinishedProject: React.FC<IProject> = ({
       fontColor={FontColor.Secondary}
       italic
     >
-      {formatDistanceToNow(
-        new Date(finishedDate!),
-        formateDistanceToNowOptions
-      )}
+      <RelativeDate>{finishedDate!}</RelativeDate>
     </Time>
 
     <ProjectOwner {...owner} />

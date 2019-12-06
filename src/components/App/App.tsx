@@ -11,7 +11,7 @@ import { SplashScreen, GlobalStyle } from "./styled";
 import routes from "./routes";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: "https://studata-api.azurewebsites.net/graphql"
 });
 
 const App: React.FC = () => {

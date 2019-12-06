@@ -3,7 +3,9 @@ import Heading from "../../../Heading";
 import Paragraph from "../../../Paragraph";
 import Owner from "../../../User";
 import TeamSummary from "../../../TeamSummary";
+
 export { default as Paragraph } from "../../../Paragraph";
+export { default as RelativeDate } from "../../../../util/RelativeDate";
 
 export const ProjectOwner = styled(Owner)`
   margin-bottom: 1rem;
