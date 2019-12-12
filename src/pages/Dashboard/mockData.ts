@@ -1,4 +1,4 @@
-import Roles from "../../data/Roles";
+import Roles from "../../data/Role";
 
 export const finishedProject: IProject = {
   uuid: "e5072e42-dd55-475a-b1b5-b0908b290db5",

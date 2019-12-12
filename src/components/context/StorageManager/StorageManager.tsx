@@ -46,7 +46,11 @@ class StorageManagerManager extends React.Component<
       localStorage.getItem(applicationKey) ||
       sessionStorage.getItem(applicationKey);
 
-    return (value && JSON.parse(value)) || StorageDefaultValues[key];
+    if (value == null) {
+      return StorageDefaultValues[key];
+    }
+
+    return value && JSON.parse(value);
   };
 
   setValue = (key: StorageKey, value: any, persist?: boolean) => {

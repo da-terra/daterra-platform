@@ -6,33 +6,36 @@ import ErrorManager from "../context/ErrorManager";
 import Layout from "../context/Layout";
 import StorageManager from "../context/StorageManager";
 import ThemeManager from "../context/ThemeManager";
+import TrackingManager from "../context/TrackingManager";
 import WindowResizeManager from "../context/WindowResizeManager";
 import { SplashScreen, GlobalStyle } from "./styled";
 import routes from "./routes";
 
 const client = new ApolloClient({
-  uri: "https://studata-api.azurewebsites.net/graphql"
+  uri: "/graphql"
 });
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <StorageManager prefix="dsp">
-        <ThemeManager>
-          <WindowResizeManager>
-            <Layout>
-              <GlobalStyle gridSize={10} />
+    <ThemeManager>
+      <WindowResizeManager>
+        <StorageManager prefix="dsp">
+          <TrackingManager>
+            <Router>
+              <Layout>
+                <GlobalStyle gridSize={10} />
 
-              <ErrorManager>
-                <ApolloProvider client={client}>
-                  <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
-                </ApolloProvider>
-              </ErrorManager>
-            </Layout>
-          </WindowResizeManager>
-        </ThemeManager>
-      </StorageManager>
-    </Router>
+                <ErrorManager>
+                  <ApolloProvider client={client}>
+                    <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
+                  </ApolloProvider>
+                </ErrorManager>
+              </Layout>
+            </Router>
+          </TrackingManager>
+        </StorageManager>
+      </WindowResizeManager>
+    </ThemeManager>
   );
 };
 

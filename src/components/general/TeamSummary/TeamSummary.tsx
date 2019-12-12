@@ -1,5 +1,5 @@
 import React from "react";
-import Roles from "../../../data/Roles";
+import Roles from "../../../data/Role";
 import { TeamSummaryWrapper, TeamGroup, SummaryAvatar } from "./styled";
 
 type TeamSummaryProps = {

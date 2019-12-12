@@ -1,6 +1,6 @@
 import React from "react";
 import { FontWeight, FontSize } from "../../../data/style/variables";
-import { getTagNames } from "../../../data/Tags";
+import { getTagNames } from "../../../data/Tag";
 import { WrapperWidth } from "../../general/Wrapper";
 import {
   ArticleHeadingWrapper,

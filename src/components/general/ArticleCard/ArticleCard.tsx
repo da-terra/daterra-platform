@@ -1,7 +1,7 @@
 import React from "react";
 import { HeadingType } from "../Heading";
 import { FontSize } from "../../../data/style/variables";
-import { getTagNames } from "../../../data/Tags";
+import { getTagNames } from "../../../data/Tag";
 import RoutePath from "../../../data/RoutePath";
 import RelativeDate from "../../util/RelativeDate";
 import createPath from "../../../util/createPath";
