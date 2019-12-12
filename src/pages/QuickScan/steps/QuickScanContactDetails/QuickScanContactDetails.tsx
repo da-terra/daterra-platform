@@ -2,19 +2,20 @@ import React, { Fragment, useContext, useCallback } from "react";
 import { useHistory, Redirect } from "react-router";
 import { FontColor } from "../../../../data/style/variables";
 import RoutePath from "../../../../data/RoutePath";
+import { WrapperWidth } from "../../../../components/general/Wrapper";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Context as QuickScanContext } from "../../QuickScan";
 import {
   InfoIcon,
   Header,
   Circle,
-  Content,
-  FormWrapper,
+  Form,
   FormHeading,
   FormParagraph,
   InputGroup,
   Input,
-  SubmitButton
+  SubmitButton,
+  Wrapper
 } from "./styled";
 
 const requiredTooltip = {
@@ -76,8 +77,8 @@ const QuickScanContactDetails = () => {
 
       <Circle x={25} y={-20} />
 
-      <Content>
-        <FormWrapper onSubmit={submitHandler}>
+      <Wrapper width={WrapperWidth.Smaller}>
+        <Form onSubmit={submitHandler}>
           <FormHeading
             headingType={HeadingType.Secondary}
             fontColor={FontColor.Accent}
@@ -103,8 +104,8 @@ const QuickScanContactDetails = () => {
           </InputGroup>
 
           <SubmitButton type="submit">Bekijk mijn bedrijfsprofiel</SubmitButton>
-        </FormWrapper>
-      </Content>
+        </Form>
+      </Wrapper>
     </Fragment>
   );
 };

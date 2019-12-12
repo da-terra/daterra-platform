@@ -50,6 +50,12 @@ export const paragraphCss = css<ParagraphProps>`
 `;
 
 /** Export paragraph element with paragraph css as default */
-export default styled.p<ParagraphProps>`
+const Paragraph = styled.p<ParagraphProps>`
   ${paragraphCss}
 `;
+
+Paragraph.defaultProps = {
+  fontSize: FontSize.Normal
+};
+
+export default Paragraph;

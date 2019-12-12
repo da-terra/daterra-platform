@@ -60,6 +60,7 @@ const QuickScanOnboarding = () => {
       <Circle x={25} y={-20} />
 
       <Header />
+      
       <Wrapper width={WrapperWidth.Smaller}>
         <Form onSubmit={submitHandler}>
           <FormHeading

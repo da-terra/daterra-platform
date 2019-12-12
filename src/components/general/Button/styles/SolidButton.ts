@@ -1,10 +1,7 @@
 import styled, { css } from "styled-components";
-import {
-  FontFamily,
-  FontWeight,
-  Breakpoints
-} from "../../../../data/style/variables";
+import { FontWeight, FontSize } from "../../../../data/style/variables";
 import Button, { ButtonProps } from "../Button";
+import { paragraphCss } from "../../Paragraph";
 
 type SolidButtonProps = ButtonProps & {
   inverted?: boolean;
@@ -43,12 +40,11 @@ const mutedCss = css`
  * Extend default button with more styling for button variants
  */
 export const SolidButton = styled(Button)<SolidButtonProps>`
+  ${paragraphCss};
+
   display: inline-block;
   padding: 2rem 2.5rem;
-  font-size: 1.8rem;
   text-align: center;
-  font-family: ${FontFamily.RobotoSlab};
-  font-weight: ${FontWeight.Bold};
   outline: none;
 
   ${props => (props.inverted ? invertedCss : normalCss)}
@@ -57,10 +53,12 @@ export const SolidButton = styled(Button)<SolidButtonProps>`
   &:hover {
     opacity: 1;
   }
-
-  @media (max-width: ${Breakpoints.H500}) {
-    font-size: 1.6rem;
-  }
 `;
+
+SolidButton.defaultProps = {
+  fontSize: FontSize.Normal,
+  fontWeight: FontWeight.Bold,
+  serif: true
+}
 
 export default SolidButton;

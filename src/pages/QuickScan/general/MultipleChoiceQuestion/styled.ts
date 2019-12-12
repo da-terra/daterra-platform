@@ -5,4 +5,7 @@ export {
 } from "../../../../components/general/MultipleChoice";
 
 export const Wrapper = styled.div``;
-export const Question = styled(Heading)``;
+
+export const Question = styled(Heading)`
+  margin-bottom: 4rem;
+`;

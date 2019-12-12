@@ -1,4 +1,5 @@
 import React from "react";
+import { WrapperWidth } from "../../../general/Wrapper";
 import {
   Background,
   Popup,
@@ -7,6 +8,7 @@ import {
   SolidAction,
   LinkAction
 } from "./styled";
+import { FontWeight } from "../../../../data/style/variables";
 
 type CookieConsentProps = {
   onConsent: () => void;
@@ -19,7 +21,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({
 }) => {
   return (
     <Background>
-      <Popup>
+      <Popup width={WrapperWidth.Smaller}>
         <Disclaimer>
           We proberen inzichten te krijgen voor het gebruik van onze website om
           onze diensten te verbeteren, daarvoor gebruiken wij cookies. Wil jij
@@ -29,7 +31,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({
         <ButtonWrapper>
           <SolidAction onClick={onConsent}>Toestaan</SolidAction>
 
-          <LinkAction onClick={onDissent} serif>
+          <LinkAction onClick={onDissent} fontWeight={FontWeight.Bold} serif>
             Weigeren
           </LinkAction>
         </ButtonWrapper>

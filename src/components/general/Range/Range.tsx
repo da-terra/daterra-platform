@@ -86,7 +86,7 @@ const Range: React.FC<RangeProps> = function({
 
   return (
     <Wrapper>
-      <Value>{Math.round(value * scale)}%</Value>
+      <Value>{Math.round(value * 10)}/{10}</Value>
 
       <Slider ref={sliderRef}>
         <Thumb style={{ left: `${value * scale}%` }} ref={thumbRef} />

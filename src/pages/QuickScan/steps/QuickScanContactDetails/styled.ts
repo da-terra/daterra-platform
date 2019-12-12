@@ -5,6 +5,7 @@ import Icon from "../../../../components/general/Icon";
 import Paragraph from "../../../../components/general/Paragraph";
 
 export { Circle } from "../../../../util/layout";
+export { default as Wrapper } from "../../../../components/general/Wrapper";
 export { default as Header } from "../../../../components/blocks/Header";
 export { default as Input } from "../../../../components/general/Input";
 export {
@@ -15,20 +16,10 @@ export const InfoIcon = styled(Icon.Info)`
   fill: ${props => props.theme.copy.tertiary};
 `;
 
-export const Content = styled.div`
-  position: absolute;
-  top: 0;
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-  padding: 10rem 0;
-  pointer-events: none;
-`;
-
-export const FormWrapper = styled.form`
+export const Form = styled.form`
   width: 100%;
   max-width: 60rem;
-  margin: auto;
+  margin: 4rem auto;
   display: flex;
   flex-direction: column;
   pointer-events: all;
