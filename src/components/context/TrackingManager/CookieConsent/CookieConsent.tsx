@@ -23,7 +23,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({
     <Background>
       <Popup width={WrapperWidth.Smaller}>
         <Disclaimer>
-          We proberen inzichten te krijgen voor het gebruik van onze website om
+          We proberen inzichten te krijgen over het gebruik van onze website om
           onze diensten te verbeteren, daarvoor gebruiken wij cookies. Wil jij
           ons helpen onze site te verbeteren?
         </Disclaimer>
