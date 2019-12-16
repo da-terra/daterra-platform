@@ -46,8 +46,10 @@ const QuickScanProfile = () => {
   }, [data]);
 
   if (error) {
+    const notFound = error.graphQLErrors.some(error => error.extensions!.code === StatusCode.NotFound);
+
     // Clear key and redirect to quick scan if profile does not exist
-    if (error.name === StatusCode.NotFound) {
+    if (notFound) {
       storage.removeValue(StorageKey.QuickScanResultUuid);
 
       return <Redirect to={RoutePath.QuickScan} />;
