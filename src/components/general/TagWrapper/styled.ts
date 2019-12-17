@@ -20,7 +20,7 @@ export const HeadingWrapper = styled.div`
 export const Description = styled(Paragraph)`
   margin-bottom: 4.2rem;
   max-width: 75%;
-`
+`;
 
 export const Content = styled.div`
   position: relative;

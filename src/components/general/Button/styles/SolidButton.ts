@@ -59,6 +59,6 @@ SolidButton.defaultProps = {
   fontSize: FontSize.Normal,
   fontWeight: FontWeight.Bold,
   serif: true
-}
+};
 
 export default SolidButton;

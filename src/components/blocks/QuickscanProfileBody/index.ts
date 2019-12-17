@@ -1,1 +1,1 @@
-export { default } from './QuickscanProfileBody';
+export { default } from "./QuickscanProfileBody";

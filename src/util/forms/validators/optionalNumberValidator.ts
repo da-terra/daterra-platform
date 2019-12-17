@@ -2,7 +2,7 @@ import Icon from "../../../components/general/Icon";
 
 const numberValidator = (value: string) => {
   if (value === "") {
-    return null
+    return null;
   }
 
   const isValid = /^[0-9]+$/.test(value);
@@ -14,7 +14,7 @@ const numberValidator = (value: string) => {
   return {
     icon: Icon.Error,
     children: "In dit veld zijn alleen nummers toegstaan"
-  }
+  };
 };
 
 export default numberValidator;

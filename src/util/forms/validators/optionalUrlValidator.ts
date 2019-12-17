@@ -2,10 +2,12 @@ import Icon from "../../../components/general/Icon";
 
 const urlValidator = (value: string) => {
   if (value === "") {
-    return null
+    return null;
   }
 
-  const isValid = /^(https?:\/\/)?[a-z0-9-.]+\.[a-z0-9-]{2,63}\/?$/ig.test(value);
+  const isValid = /^(https?:\/\/)?[a-z0-9-.]+\.[a-z0-9-]{2,63}\/?$/gi.test(
+    value
+  );
 
   if (isValid) {
     return null;
@@ -14,7 +16,7 @@ const urlValidator = (value: string) => {
   return {
     icon: Icon.Error,
     children: "Opgegeven url is niet geldig"
-  }
+  };
 };
 
 export default urlValidator;

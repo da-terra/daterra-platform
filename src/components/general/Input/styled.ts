@@ -37,8 +37,8 @@ export const InputElement = styled.input`
   }
 
   /* Firefox */
-  &[type=number] {
-    -moz-appearance:textfield;
+  &[type="number"] {
+    -moz-appearance: textfield;
   }
 
   &:placeholder-shown {

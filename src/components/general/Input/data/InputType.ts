@@ -5,7 +5,7 @@ enum InputType {
   Search = "search",
   Email = "email",
   Phone = "tel",
-  Password = "password",
+  Password = "password"
 }
 
 export default InputType;

@@ -2,7 +2,7 @@ import Icon from "../../../components/general/Icon";
 
 const optionalPhoneValidator = (value: string) => {
   if (value === "") {
-    return null
+    return null;
   }
 
   const isValid = /^[+() 0-9]+$/gi.test(value);
@@ -14,7 +14,7 @@ const optionalPhoneValidator = (value: string) => {
   return {
     icon: Icon.Error,
     children: "Opgegeven telefoonnummer is niet geldig"
-  }
+  };
 };
 
 export default optionalPhoneValidator;

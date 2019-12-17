@@ -1,1 +1,3 @@
-export { default as LoadingScreen } from '../../../../components/general/SplashScreen';
+export {
+  default as LoadingScreen
+} from "../../../../components/general/SplashScreen";
