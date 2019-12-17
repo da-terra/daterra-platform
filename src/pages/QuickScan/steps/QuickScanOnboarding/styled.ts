@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Heading from "../../../../components/general/Heading";
 import { SolidButton } from "../../../../components/general/Button";
-import Icon from "../../../../components/general/Icon";
 import Logo from "../../../../components/general/Logo";
 import Paragraph from "../../../../components/general/Paragraph";
 
@@ -12,10 +11,6 @@ export { default as Input } from "../../../../components/general/Input";
 export {
   default as InputGroup
 } from "../../../../components/general/InputGroup";
-
-export const InfoIcon = styled(Icon.Info)`
-  fill: ${props => props.theme.copy.tertiary};
-`;
 
 export const Content = styled.div<{ headerHeight: number }>`
   display: flex;
@@ -34,7 +29,7 @@ export const Form = styled.form`
 export const FormLogo = styled(Logo)`
   margin-right: auto;
   margin-bottom: 4rem;
-`
+`;
 
 export const FormHeading = styled(Heading)`
   margin-bottom: 1.2rem;

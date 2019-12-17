@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import RoutePath from "../../data/RoutePath";
+import InputType from "../../components/general/Input/data/InputType";
 import {
   Circle,
   Header,
@@ -24,7 +25,7 @@ const Dashboard: React.FC = () => {
 
       <TopWrapper>
         <SearchForm>
-          <SearchInput label="Zoeken" name="search" type="search" />
+          <SearchInput label="Zoeken" name="search" type={InputType.Search} />
         </SearchForm>
 
         <Sidebar>

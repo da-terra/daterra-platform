@@ -14,7 +14,7 @@ export const Label = styled.label`
   font-weight: ${FontWeight.Black};
   font-size: 1.6rem;
   pointer-events: none;
-  transition: 0.05s ${Easings.easeOutExpo} all;
+  transition: 0.25s ${Easings.easeOutExpo} all;
 `;
 
 export const InputElement = styled.input`
@@ -30,6 +30,16 @@ export const InputElement = styled.input`
   position: relative;
   transition: 0.2s ${Easings.easeOutExpo} border-color;
   width: 100%;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance:textfield;
+  }
 
   &:placeholder-shown {
     padding-top: 1rem;

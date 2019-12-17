@@ -2,11 +2,14 @@ import React, { Fragment, useContext, useCallback } from "react";
 import { useHistory } from "react-router";
 import { FontColor } from "../../../../data/style/variables";
 import RoutePath from "../../../../data/RoutePath";
+import requiredValidator from "../../../../util/forms/validators/requiredValidator";
+import urlValidator from "../../../../util/forms/validators/optionalUrlValidator";
+import numberValidator from "../../../../util/forms/validators/optionalNumberValidator";
+import numberFormatter from "../../../../util/forms/formatters/numberFormatter";
 import { WrapperWidth } from "../../../../components/general/Wrapper";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Context as QuickScanContext } from "../../QuickScan";
 import {
-  InfoIcon,
   Circle,
   Header,
   Form,
@@ -17,11 +20,7 @@ import {
   Input,
   SubmitButton
 } from "./styled";
-
-const requiredTooltip = {
-  icon: InfoIcon,
-  message: "Dit veld is verplicht"
-};
+import InputType from "../../../../components/general/Input/data/InputType";
 
 const QuickScanOnboarding = () => {
   const quickScanContext = useContext(QuickScanContext);
@@ -60,7 +59,7 @@ const QuickScanOnboarding = () => {
       <Circle x={25} y={-20} />
 
       <Header />
-      
+
       <Wrapper width={WrapperWidth.Smaller}>
         <Form onSubmit={submitHandler}>
           <FormHeading
@@ -69,22 +68,38 @@ const QuickScanOnboarding = () => {
           >
             Bedrijfsgegevens
           </FormHeading>
+
           <FormParagraph>
             Wij zijn erg geïnteresseerd met welk bedrijf wij het genoegen
             hebben. Kan u ons wat meer vertellen over het bedrijf? Zodoende
             kunnen wij een persoonlijke analyse uitvoeren.
           </FormParagraph>
+
           <InputGroup>
             <Input
               label="Bedrijfsnaam"
               name="companyName"
-              tooltip={requiredTooltip}
+              validator={requiredValidator}
             />
-            <Input label="Website" name="website" />
+
+            <Input
+              label="Website"
+              name="website"
+              validator={urlValidator}
+            />
+
             <Input label="Sector" name="sector" />
             <Input label="Regio" name="region" />
-            <Input label="Aantal werknemers" name="employeeCount" />
+
+            <Input
+              label="Aantal werknemers"
+              name="employeeCount"
+              type={InputType.Number}
+              formatter={numberFormatter}
+              validator={numberValidator}
+            />
           </InputGroup>
+
           <SubmitButton type="submit">Start de Quickscan</SubmitButton>{" "}
         </Form>
       </Wrapper>

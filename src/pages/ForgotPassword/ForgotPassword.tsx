@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Circle } from "../../util/layout";
 import RoutePath from "../../data/RoutePath";
 import { FontSize, FontWeight, FontColor } from "../../data/style/variables";
+import InputType from "../../components/general/Input/data/InputType";
 import { HeadingType } from "../../components/general/Heading";
 import {
   Header,
@@ -17,7 +18,7 @@ import {
 
 const requiredTooltip = {
   icon: InfoIcon,
-  message: "Dit veld is verplicht"
+  children: "Dit veld is verplicht"
 };
 
 const ForgotPassword: React.FC = () => {
@@ -36,7 +37,7 @@ const ForgotPassword: React.FC = () => {
           <ForgetPasswordInput
             label="E-mailadres"
             name="email"
-            type="email"
+            type={InputType.Email}
             tooltip={requiredTooltip}
           />
 

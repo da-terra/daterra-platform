@@ -4,15 +4,17 @@ import useEvent from "../../../util/hooks/useEvent";
 import Icon from "../Icon";
 import { Wrapper, Tooltip, IconWrapper } from "./styled";
 
-type IconTooltipProps = {
+export type IconTooltipProps = {
   children: React.ReactNode;
   className?: string;
+  error?: boolean;
   icon: React.FC;
 };
 
 const IconTooltip: React.FC<IconTooltipProps> = ({
   children,
   className,
+  error,
   icon = Icon.Info
 }) => {
   const targetRef = useRef(null);
@@ -21,8 +23,10 @@ const IconTooltip: React.FC<IconTooltipProps> = ({
   useEvent(targetRef, "mouseenter", () => setVisible(true));
   useEvent(targetRef, "mouseleave", () => setVisible(false));
 
-  const IconComponent = styled(icon)`
+  const Component = icon;
+  const IconComponent = styled(({error, ...props }) => <Component {...props} />)`
     cursor: pointer;
+    fill: ${props => props.error ? props.theme.copy.error : props.theme.copy.secondary};
   `;
 
   return (
@@ -30,7 +34,7 @@ const IconTooltip: React.FC<IconTooltipProps> = ({
       {isVisible && <Tooltip>{children}</Tooltip>}
 
       <IconWrapper>
-        <IconComponent />
+        <IconComponent error={error} />
       </IconWrapper>
     </Wrapper>
   );

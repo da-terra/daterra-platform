@@ -14,10 +14,11 @@ import {
   ButtonWrapper,
   InfoIcon
 } from "./styled";
+import InputType from "../../components/general/Input/data/InputType";
 
 const requiredTooltip = {
   icon: InfoIcon,
-  message: "Dit veld is verplicht"
+  children: "Dit veld is verplicht"
 };
 
 const Signin: React.FC = () => {
@@ -36,14 +37,14 @@ const Signin: React.FC = () => {
           <SigninInput
             label="E-mailadres"
             name="email"
-            type="email"
+            type={InputType.Email}
             tooltip={requiredTooltip}
           />
 
           <SigninInput
             label="Password"
             name="password"
-            type="password"
+            type={InputType.Password}
             tooltip={requiredTooltip}
           />
 

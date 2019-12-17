@@ -25,7 +25,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({
   options,
   onClick
 }) => {
-  const [value, setValue] = useState<any>();
+  const [value, setValue] = useState<any>("");
   const selectTimeout = useRef(0);
 
   const handleSelect = useCallback(

@@ -2,11 +2,15 @@ import React, { Fragment, useContext, useCallback } from "react";
 import { useHistory, Redirect } from "react-router";
 import { FontColor } from "../../../../data/style/variables";
 import RoutePath from "../../../../data/RoutePath";
+import InputType from "../../../../components/general/Input/data/InputType";
+import requiredValidator from "../../../../util/forms/validators/requiredValidator";
+import emailValidator from "../../../../util/forms/validators/emailValidator";
+import phoneValidator from "../../../../util/forms/validators/optionalPhoneValidator";
+import phoneFormatter from "../../../../util/forms/formatters/phoneFormatter";
 import { WrapperWidth } from "../../../../components/general/Wrapper";
 import { HeadingType } from "../../../../components/general/Heading";
 import { Context as QuickScanContext } from "../../QuickScan";
 import {
-  InfoIcon,
   Header,
   Circle,
   Form,
@@ -18,9 +22,34 @@ import {
   Wrapper
 } from "./styled";
 
-const requiredTooltip = {
-  icon: InfoIcon,
-  message: "Dit veld is verplicht"
+const inputs = {
+  name: {
+    label: "Volledige naam",
+    name: "name",
+    validator: requiredValidator
+  },
+  role: {
+    label: "Functie",
+    name: "role",
+    validator: requiredValidator
+  },
+  email: {
+    label: "E-mailadres",
+    name: "email",
+    type: InputType.Email,
+    validator: emailValidator
+  },
+  phone: {
+    label: "Telefoonnummer",
+    name: "phone",
+    type: InputType.Phone,
+    formatter: phoneFormatter,
+    validator: phoneValidator
+  },
+  comment: {
+    label: "Opmerking",
+    name: "comment"
+  }
 };
 
 const QuickScanContactDetails = () => {
@@ -92,15 +121,11 @@ const QuickScanContactDetails = () => {
           </FormParagraph>
 
           <InputGroup>
-            <Input
-              label="Volledige naam"
-              name="name"
-              tooltip={requiredTooltip}
-            />
-            <Input label="Functie" name="role" tooltip={requiredTooltip} />
-            <Input label="E-mailadres" name="email" tooltip={requiredTooltip} />
-            <Input label="Telefoonnummer" name="phone" />
-            <Input label="Opmerking" name="comment" />
+            <Input {...inputs.name} />
+            <Input {...inputs.role} />
+            <Input {...inputs.email} />
+            <Input {...inputs.phone} />
+            <Input {...inputs.comment} />
           </InputGroup>
 
           <SubmitButton type="submit">Bekijk mijn bedrijfsprofiel</SubmitButton>

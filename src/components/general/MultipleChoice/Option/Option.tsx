@@ -28,10 +28,8 @@ const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
   }, [setShowInfo, isInfoVisible]);
 
   const handleSelect = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      console.log(onSelect, value);
-      onSelect && onSelect(value, event);
-    },
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+      onSelect && onSelect(value, event),
     [onSelect, value]
   );
 
