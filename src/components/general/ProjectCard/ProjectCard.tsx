@@ -1,15 +1,16 @@
 import React from "react";
+import { IProject } from "@data-science-platform/shared";
 import FinishedProjectCard from "./cards/FinishedProjectCard";
 import ActiveProjectCard from "./cards/ActiveProjectCard";
 import NewProjectCard from "./cards/NewProjectCard";
 import { CardWrapper, FallbackCardWrapper } from "./styled";
 
 const getContentComponent = (props: IProject) => {
-  if (props.finishedDate) {
+  if (props.duration?.endDate) {
     return FinishedProjectCard;
   }
 
-  if (props.publishedDate) {
+  if (props.duration?.startDate) {
     return ActiveProjectCard;
   }
 

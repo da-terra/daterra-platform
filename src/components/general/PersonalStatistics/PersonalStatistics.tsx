@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { IProject } from "@data-science-platform/shared";
 import { HeadingType } from "../Heading";
 import { FontSize } from "../../../data/style/variables";
 import {

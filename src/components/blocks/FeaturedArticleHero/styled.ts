@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IImage } from "@data-science-platform/shared";
 import { Breakpoints } from "../../../data/style/variables";
 import Button from "../../general/Button";
 

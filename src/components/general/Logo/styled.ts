@@ -5,12 +5,13 @@ import {
   Breakpoints
 } from "../../../data/style/variables";
 import Icon from "../Icon";
+import { LinkButton } from "../Button";
 
 type LogoWrapperProps = {
   className?: string;
 };
 
-export const LogoWrapper = styled.a<LogoWrapperProps>`
+export const LogoWrapper = styled(LinkButton)<LogoWrapperProps>`
   display: inline-flex;
   align-items: flex-end;
   outline: none;

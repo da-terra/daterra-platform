@@ -1,4 +1,5 @@
 import React from "react";
+import { IImage } from "@data-science-platform/shared";
 import { BackgroundWrapper, Wrapper, Logo } from "./styled";
 
 type ArticleHeroProps = {

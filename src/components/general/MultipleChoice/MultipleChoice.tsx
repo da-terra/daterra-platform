@@ -12,7 +12,7 @@ type MultipleChoiceProps = {
   options: {
     label: React.ReactNode;
     value: any;
-    info: React.ReactNode;
+    info?: React.ReactNode;
   }[];
   onClick?: (
     value: any,

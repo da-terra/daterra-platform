@@ -2,52 +2,54 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import RoutePath from "../../data/RoutePath";
 
-// Demo page
-const Blocks = React.lazy(() => import("./blocks"));
-
-// Pages
-const ArticleOverview = React.lazy(() => import("../../pages/ArticleOverview"));
-const ArticleDetail = React.lazy(() => import("../../pages/ArticleDetail"));
-const ContentPage = React.lazy(() => import("../../pages/Content"));
-const QuickScanPage = React.lazy(() => import("../../pages/QuickScan"));
-const QuickScanResultDetail = React.lazy(() =>
-  import("../../pages/QuickScanProfile")
+// Public Pages
+const EventOverview = React.lazy(() =>
+  import("../../pages/public/ArticleOverview")
 );
-const SettingsPage = React.lazy(() => import("../../pages/Settings"));
-const SigninPage = React.lazy(() => import("../../pages/Signin"));
-const DashboardPage = React.lazy(() => import("../../pages/Dashboard"));
-const ForgotPassword = React.lazy(() => import("../../pages/ForgotPassword"));
+const EventDetail = React.lazy(() => import("../../pages/public/EventDetail"));
+const ArticleOverview = React.lazy(() =>
+  import("../../pages/public/ArticleOverview")
+);
+const ArticleDetail = React.lazy(() =>
+  import("../../pages/public/ArticleDetail")
+);
+const ContentPage = React.lazy(() => import("../../pages/public/Content"));
+const QuickScanPage = React.lazy(() => import("../../pages/public/QuickScan"));
+const QuickScanResultDetail = React.lazy(() =>
+  import("../../pages/public/QuickScanProfile")
+);
+
+const HomePage = React.lazy(() => import("../../pages/public/Home"));
+const SigninPage = React.lazy(() => import("../../pages/public/Signin"));
+
+const SettingsPage = React.lazy(() => import("../../pages/protected/Settings"));
+const DashboardPage = React.lazy(() =>
+  import("../../pages/protected/Dashboard")
+);
 
 export default (
   <Switch>
-    {/* Platform */}
-    <Route path={RoutePath.Settings} exact component={SettingsPage} />
-    <Route path={RoutePath.Dashboard} exact component={DashboardPage} />
-
-    {/* Account */}
+    {/* Public pages */}
+    <Route path={RoutePath.Home} exact component={HomePage} />
     <Route path={RoutePath.Signin} exact component={SigninPage} />
-    <Route path={RoutePath.ForgetPassword} exact component={ForgotPassword} />
 
-    {/* Blog */}
+    <Route path={RoutePath.EventDetail} component={EventDetail} />
+    <Route path={RoutePath.EventOverview} component={EventOverview} />
+
     <Route path={RoutePath.ArticleDetail} component={ArticleDetail} />
     <Route path={RoutePath.ArticleOverview} component={ArticleOverview} />
 
-    {/* QuickScan */}
     <Route path={RoutePath.QuickScan} component={QuickScanPage} />
-
     <Route
       path={RoutePath.QuickScanProfile}
       component={QuickScanResultDetail}
     />
 
-    {/* Debugging */}
-    <Route path="/Debug" component={Blocks} />
+    {/* Protected pages */}
+    <Route path={RoutePath.Settings} exact component={SettingsPage} />
+    <Route path={RoutePath.Dashboard} exact component={DashboardPage} />
 
-    {/* Catch all routes for  */}
-    <Route
-      path={[RoutePath.Content, RoutePath.All]}
-      exact
-      component={ContentPage}
-    />
+    {/* Catch all routes for */}
+    <Route path={RoutePath.Content} exact component={ContentPage} />
   </Switch>
 );

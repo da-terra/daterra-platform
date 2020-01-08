@@ -1,10 +1,12 @@
 import styled, { DefaultTheme } from "styled-components";
+import { Breakpoints } from "../../../data/style/variables";
 import { LinkButton } from "../../general/Button";
 import Wrapper from "../../general/Wrapper";
-import { Breakpoints } from "../../../data/style/variables";
+import NotificationButtonBase from "../../general/NotificationButton";
 
 export { default as Button } from "../../general/Button";
 export { default as Logo } from "../../general/Logo";
+export { default as UserButton } from "../../general/UserButton";
 
 type HeaderWrapperProps = {
   inverted?: boolean;
@@ -27,6 +29,10 @@ export const HeaderWrapper = styled(Wrapper)`
 export const NavigationLinks = styled.div`
   display: flex;
   margin: auto 0 auto 6.2rem;
+
+  @media (max-width: ${Breakpoints.H750}) {
+    display: none;
+  }
 `;
 
 export const NavigationLink = styled(LinkButton)`
@@ -39,6 +45,16 @@ export const NavigationLink = styled(LinkButton)`
   }
 `;
 
-export const ChildrenWrapper = styled.div`
+export const Aside = styled.div`
+  display: flex;
   margin-left: auto;
+  z-index: 2;
+`;
+
+export const NotificationButton = styled(NotificationButtonBase)`
+  margin-left: 4rem;
+
+  @media (max-width: ${Breakpoints.H750}) {
+    margin-left: 0;
+  }
 `;

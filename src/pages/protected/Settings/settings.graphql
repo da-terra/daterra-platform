@@ -1,0 +1,21 @@
+query settings {
+  me {
+    displayName
+    name {
+      givenName
+      middleName
+      familyName
+    }
+    emails {
+      value
+      type
+    }
+    photos {
+      value
+    }
+    role
+    organization {
+      name
+    }
+  }
+}

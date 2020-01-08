@@ -24,9 +24,12 @@ const IconTooltip: React.FC<IconTooltipProps> = ({
   useEvent(targetRef, "mouseleave", () => setVisible(false));
 
   const Component = icon;
-  const IconComponent = styled(({error, ...props }) => <Component {...props} />)`
+  const IconComponent = styled(({ error, ...props }) => (
+    <Component {...props} />
+  ))`
     cursor: pointer;
-    fill: ${props => props.error ? props.theme.copy.error : props.theme.copy.secondary};
+    fill: ${props =>
+      props.error ? props.theme.copy.error : props.theme.copy.secondary};
   `;
 
   return (

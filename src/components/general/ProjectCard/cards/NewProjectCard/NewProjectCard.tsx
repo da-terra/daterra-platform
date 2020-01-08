@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { IProject } from "@data-science-platform/shared";
 import { format } from "date-fns";
 import { HeadingType } from "../../../Heading";
 import {
@@ -20,43 +21,53 @@ const dateFormat = "dd MMM yyyy";
 const NewProjectCard: React.FC<IProject> = ({
   title,
   duration,
-  owner,
-  company
-}) => (
-  <Fragment>
-    <ProjectOwner prefix={company.title} {...owner} />
+  team,
+  organizations
+}) => {
+  const [firstOrganization] = organizations || [];
 
-    <ProjectTitle headingType={HeadingType.Secondary} serif>
-      {title}
-    </ProjectTitle>
+  const teamLead = team.find(user => user.role === 2);
 
-    <Times>
-      <TimeString fontWeight={FontWeight.Bold}>Looptijd</TimeString>
+  return (
+    <Fragment>
+      {firstOrganization && teamLead && (
+        <ProjectOwner prefix={firstOrganization.name} {...teamLead} />
+      )}
 
-      <TimeString italic>
-        <time dateTime={duration!.startDate}>
-          {format(new Date(duration!.startDate), dateFormat)}
-        </time>
-        {" t/m "}
-        <time dateTime={duration!.endDate}>
-          {format(new Date(duration!.endDate), dateFormat)}
-        </time>
-      </TimeString>
-    </Times>
+      <ProjectTitle headingType={HeadingType.Secondary} serif>
+        {title}
+      </ProjectTitle>
 
-    <ProjectDetails>
-      <Paragraph
-        fontColor={FontColor.Secondary}
-        fontSize={FontSize.Small}
-        fontWeight={FontWeight.Bold}
-      >
-        5 Aanmeldingen
-      </Paragraph>
-      <Paragraph fontSize={FontSize.Small} fontWeight={FontWeight.Bold}>
-        € 250
-      </Paragraph>
-    </ProjectDetails>
-  </Fragment>
-);
+      {duration && (
+        <Times>
+          <TimeString fontWeight={FontWeight.Bold}>Looptijd</TimeString>
 
+          <TimeString italic>
+            <time dateTime={duration!.startDate}>
+              {format(new Date(duration!.startDate), dateFormat)}
+            </time>
+            {" t/m "}
+            <time dateTime={duration!.endDate}>
+              {format(new Date(duration!.endDate), dateFormat)}
+            </time>
+          </TimeString>
+        </Times>
+      )}
+
+      <ProjectDetails>
+        <Paragraph
+          fontColor={FontColor.Secondary}
+          fontSize={FontSize.Small}
+          fontWeight={FontWeight.Bold}
+        >
+          5 Aanmeldingen
+        </Paragraph>
+
+        <Paragraph fontSize={FontSize.Small} fontWeight={FontWeight.Bold}>
+          € 250
+        </Paragraph>
+      </ProjectDetails>
+    </Fragment>
+  );
+};
 export default NewProjectCard;

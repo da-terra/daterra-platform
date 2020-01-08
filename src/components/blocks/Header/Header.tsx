@@ -1,4 +1,5 @@
 import React, { useRef, useContext } from "react";
+import { IUser, ILink, INotification } from "@data-science-platform/shared";
 import { FontWeight } from "../../../data/style/variables";
 import { LayoutContext, LayoutStateVariable } from "../../context/Layout";
 import {
@@ -6,19 +7,23 @@ import {
   Logo,
   NavigationLinks,
   NavigationLink,
-  ChildrenWrapper
+  Aside,
+  UserButton,
+  NotificationButton
 } from "./styled";
 
 type HeaderProps = {
+  me?: IUser;
+  notifications?: INotification[];
   inverted?: boolean;
-  navigationLinks?: (ILink & { uuid: string })[];
-  children?: React.ReactNode;
+  navigationLinks?: ILink[];
 };
 
 const Header: React.FC<HeaderProps> = ({
+  me,
+  notifications,
   inverted,
-  navigationLinks,
-  children
+  navigationLinks
 }) => {
   const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const layoutContext = useContext(LayoutContext);
@@ -35,14 +40,27 @@ const Header: React.FC<HeaderProps> = ({
       {navigationLinks && (
         <NavigationLinks>
           {navigationLinks.map(link => (
-            <NavigationLink {...link} fontWeight={FontWeight.Bold} serif>
+            <NavigationLink
+              {...link}
+              key={link.href}
+              fontWeight={FontWeight.Bold}
+              serif
+            >
               {link.children}
             </NavigationLink>
           ))}
         </NavigationLinks>
       )}
 
-      {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
+      {(me || notifications) && (
+        <Aside>
+          {me && <UserButton me={me} />}
+
+          {notifications && (
+            <NotificationButton notifications={notifications} />
+          )}
+        </Aside>
+      )}
     </HeaderWrapper>
   );
 };

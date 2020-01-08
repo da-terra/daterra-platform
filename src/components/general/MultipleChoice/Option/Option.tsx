@@ -13,7 +13,7 @@ import {
 export type OptionProps = {
   label: React.ReactNode;
   value: any;
-  info: React.ReactNode;
+  info?: React.ReactNode;
   onSelect?: (
     value: any,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>

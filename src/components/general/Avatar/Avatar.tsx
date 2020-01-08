@@ -1,4 +1,5 @@
 import React from "react";
+import { IImage } from "@data-science-platform/shared";
 import { AvatarWrapper } from "./styled";
 
 type AvatarProps = IImage & {
@@ -8,7 +9,7 @@ type AvatarProps = IImage & {
 const Avatar: React.FC<AvatarProps> = ({
   src,
   alt,
-  fallbackColor,
+  fallbackColor = "#eee",
   className
 }) => (
   <AvatarWrapper fallbackColor={fallbackColor} className={className}>

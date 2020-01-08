@@ -24,7 +24,8 @@ type ErrorPageProps = {
   apolloError?: ApolloError;
 };
 
-const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
+const min500 = `(min-width: ${Breakpoints.H500})`;
+const max500 = `(max-width: ${Breakpoints.H500})`;
 
 const ErrorPage: React.FC<ErrorPageProps> = ({ code, apolloError }) => {
   const history = useHistory();
@@ -49,11 +50,12 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code, apolloError }) => {
 
       <ContentWrapper width={WrapperWidth.Small}>
         <LogoWrapper>
-          <MediaQuery
-            mediaQuery={h750MediaQuery}
-            fallback={() => <Logo size={LogoSize.Normal} showName />}
-          >
-            <Logo size={LogoSize.Large} showName />
+          <MediaQuery mediaQuery={min500}>
+            {() => <Logo size={LogoSize.Large} showName />}
+          </MediaQuery>
+
+          <MediaQuery mediaQuery={max500}>
+            {() => <Logo size={LogoSize.Normal} showName />}
           </MediaQuery>
         </LogoWrapper>
 

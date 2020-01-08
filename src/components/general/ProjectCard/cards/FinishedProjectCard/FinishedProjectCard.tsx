@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { IProject } from "@data-science-platform/shared";
 import { HeadingType } from "../../../Heading";
 import {
   FontColor,
@@ -7,28 +8,28 @@ import {
 } from "../../../../../data/style/variables";
 import { ProjectTitle, Time, RelativeDate, ProjectOwner } from "./styled";
 
-const FinishedProject: React.FC<IProject> = ({
-  title,
-  finishedDate,
-  owner
-}) => (
-  <Fragment>
-    <ProjectTitle headingType={HeadingType.Secondary} serif>
-      {title}
-    </ProjectTitle>
+const FinishedProject: React.FC<IProject> = ({ title, duration, team }) => {
+  const teamLead = team.find(user => user.role === 2)!;
 
-    <Time
-      as="time"
-      fontSize={FontSize.Small}
-      fontWeight={FontWeight.Bold}
-      fontColor={FontColor.Secondary}
-      italic
-    >
-      <RelativeDate>{finishedDate!}</RelativeDate>
-    </Time>
+  return (
+    <Fragment>
+      <ProjectTitle headingType={HeadingType.Secondary} serif>
+        {title}
+      </ProjectTitle>
 
-    <ProjectOwner {...owner} />
-  </Fragment>
-);
+      <Time
+        as="time"
+        fontSize={FontSize.Small}
+        fontWeight={FontWeight.Bold}
+        fontColor={FontColor.Secondary}
+        italic
+      >
+        <RelativeDate>{duration?.endDate!}</RelativeDate>
+      </Time>
+
+      <ProjectOwner {...teamLead} />
+    </Fragment>
+  );
+};
 
 export default FinishedProject;

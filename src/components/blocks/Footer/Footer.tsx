@@ -1,4 +1,5 @@
 import React from "react";
+import { IImage, ILink } from "@data-science-platform/shared";
 import { HeadingType } from "../../general/Heading";
 import { FontColor, FontWeight, FontSize } from "../../../data/style/variables";
 import {

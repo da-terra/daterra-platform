@@ -1,4 +1,5 @@
 import React from "react";
+import { IArticle } from "@data-science-platform/shared";
 import { WrapperWidth } from "../../general/Wrapper";
 import createPath from "../../../util/createPath";
 import RoutePath from "../../../data/RoutePath";
@@ -10,28 +11,22 @@ import {
   ArticleHeading
 } from "./styled";
 
-type FeaturedArticleHeroProps = {
-  slug: string;
-  image: IImage;
-  title: React.ReactNode;
-  publishedDate: string;
-  tags: number;
-  author: IUser;
+type FeaturedArticleHeroProps = IArticle & {
   inverted?: boolean;
 };
 
 const FeaturedArticleHero: React.FC<FeaturedArticleHeroProps> = ({
-  image,
-  slug,
   inverted,
   ...props
 }) => (
-  <BackgroundWrapper image={image} inverted={inverted}>
+  <BackgroundWrapper image={props.image} inverted={inverted}>
     <Wrapper>
       <Logo showName />
     </Wrapper>
 
-    <ArticleHeadingButton href={createPath(RoutePath.ArticleDetail, { slug })}>
+    <ArticleHeadingButton
+      href={createPath(RoutePath.ArticleDetail, { slug: props.slug })}
+    >
       <ArticleHeading {...props} width={WrapperWidth.Normal} />
     </ArticleHeadingButton>
   </BackgroundWrapper>

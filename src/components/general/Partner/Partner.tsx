@@ -1,4 +1,5 @@
 import React from "react";
+import { IImage, ILink } from "@data-science-platform/shared";
 import { PartnerCard, PartnerImage } from "./styled";
 
 type PartnerProps = {

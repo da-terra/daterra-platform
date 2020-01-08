@@ -1,4 +1,6 @@
 import React from "react";
+import { ILink } from "@data-science-platform/shared";
+import { FontColor, FontWeight } from "../../../data/style/variables";
 import {
   Background,
   BackgroundShape,
@@ -6,7 +8,6 @@ import {
   Heading,
   CtaButton
 } from "./styled";
-import { FontColor, FontWeight } from "../../../data/style/variables";
 
 type CallToActionProps = {
   title: string;

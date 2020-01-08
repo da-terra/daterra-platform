@@ -1,5 +1,6 @@
 import React from "react";
-import Roles from "../../../data/Role";
+import { IUser } from "@data-science-platform/shared";
+import Role from "../../../data/Role";
 import { TeamSummaryWrapper, TeamGroup, SummaryAvatar } from "./styled";
 
 type TeamSummaryProps = {
@@ -8,34 +9,38 @@ type TeamSummaryProps = {
 };
 
 const TeamSummary: React.FC<TeamSummaryProps> = ({ className, team }) => {
-  const developmentTeam = team.filter(
-    user => user.image && user.role === Roles.Developer
-  );
+  const students = team.filter(user => user.role === Role.Student);
 
-  const managementTeam = team.filter(
-    user => user.image && user.role === Roles.Lead
-  );
+  const experts = team.filter(user => user.role === Role.Expert);
 
   return (
     <TeamSummaryWrapper className={className}>
       <TeamGroup>
-        {developmentTeam.map(user => (
-          <SummaryAvatar
-            src={user.image!.src}
-            alt={user.image!.alt}
-            title={user.image!.alt}
-          />
-        ))}
+        {students.map(user => {
+          const [firstPhoto] = user?.photos ?? [];
+
+          return (
+            <SummaryAvatar
+              src={firstPhoto?.value}
+              alt={user.displayName}
+              title={user.displayName}
+            />
+          );
+        })}
       </TeamGroup>
 
       <TeamGroup>
-        {managementTeam.map(user => (
-          <SummaryAvatar
-            src={user.image!.src}
-            alt={user.image!.alt}
-            title={user.image!.alt}
-          />
-        ))}
+        {experts.map(user => {
+          const [firstPhoto] = user?.photos ?? [];
+
+          return (
+            <SummaryAvatar
+              src={firstPhoto?.value}
+              alt={user.displayName}
+              title={user.displayName}
+            />
+          );
+        })}
       </TeamGroup>
     </TeamSummaryWrapper>
   );

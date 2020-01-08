@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo, Fragment } from "react";
 import { createEditor, Node, Operation } from "slate";
 import { withHistory } from "slate-history";
 import { Slate, Editable, withReact } from "slate-react";
-import renderElement from "./elements";
+import renderElement from "./renderElement";
 import renderMark from "./marks";
+import MarkButton from "./components/MarkButton";
 
 const defaultValue: Node[] = [
   {
@@ -103,11 +104,22 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
       defaultValue={value || defaultValue}
       onChange={value => console.log(JSON.stringify(value))}
     >
-      <Editable
-        readOnly={readOnly}
-        renderElement={renderElement}
-        renderMark={renderMark}
-      />
+      <Fragment>
+        {!readOnly &&
+          <Fragment>
+            <MarkButton format="bold">format_bold</MarkButton>
+            <MarkButton format="italic">format_italic</MarkButton>
+            <MarkButton format="underline">format_underlined</MarkButton>
+            <MarkButton format="code">code</MarkButton>
+          </Fragment>
+        }
+
+        <Editable
+          readOnly={readOnly}
+          renderElement={renderElement}
+          renderMark={renderMark}
+        />
+      </Fragment>
     </Slate>
   );
 };

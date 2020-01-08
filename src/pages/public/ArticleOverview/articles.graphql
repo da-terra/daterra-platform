@@ -1,0 +1,36 @@
+query articles($target: Int!, $tags: Int, $minScore: Float, $maxScore: Float) {
+  featuredArticle(target: $target) {
+    slug
+    image {
+      src
+      alt
+      fallbackColor
+    }
+    author {
+      displayName
+    }
+    title
+    tags
+    publishedDate
+  }
+
+  articles(
+    target: $target
+    tags: $tags
+    minScore: $minScore
+    maxScore: $maxScore
+  ) {
+    slug
+    image {
+      src
+      alt
+      fallbackColor
+    }
+    author {
+      displayName
+    }
+    title
+    tags
+    publishedDate
+  }
+}

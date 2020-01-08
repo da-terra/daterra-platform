@@ -25,7 +25,8 @@ type QuickscanProfileHeroProps = {
   subtitle: React.ReactNode;
 };
 
-const h750MediaQuery = `(min-width: ${Breakpoints.H500})`;
+const min500 = `(min-width: ${Breakpoints.H500})`;
+const max500 = `(max-width: ${Breakpoints.H500})`;
 
 const QuickscanProfileHero: React.FC<QuickscanProfileHeroProps> = ({
   eyebrow,
@@ -38,11 +39,12 @@ const QuickscanProfileHero: React.FC<QuickscanProfileHeroProps> = ({
 
       <Content>
         <HeroHeader>
-          <MediaQuery
-            mediaQuery={h750MediaQuery}
-            fallback={() => <Logo size={LogoSize.Normal} showName />}
-          >
-            <Logo size={LogoSize.Large} showName />
+          <MediaQuery mediaQuery={min500}>
+            {() => <Logo size={LogoSize.Large} showName />}
+          </MediaQuery>
+
+          <MediaQuery mediaQuery={max500}>
+            {() => <Logo size={LogoSize.Normal} showName />}
           </MediaQuery>
         </HeroHeader>
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { LinkButton } from "../../general/Button";
 import { default as ArticleCard } from "../../general/ArticleCard";
 import { Breakpoints } from "../../../data/style/variables";
@@ -24,7 +24,7 @@ export const List = styled.div`
   }
 `;
 
-export const Card = styled(ArticleCard)`
+const cardCss = css`
   margin: ${marginSize}rem;
   width: 40rem;
 
@@ -36,6 +36,18 @@ export const Card = styled(ArticleCard)`
   @media (max-width: ${Breakpoints.H750}) {
     width: 100%;
   }
+`;
+
+export const Card = styled(ArticleCard)`
+  ${cardCss}
+`;
+
+export const CardGhost = styled.div`
+  ${cardCss}
+
+  background: rgba(0, 0, 0, 0.05);
+  height: 40rem;
+  border-radius: ${props => props.theme.card.borderRadius}px;
 `;
 
 export const CtaLink = styled(LinkButton)`

@@ -1,4 +1,5 @@
 import React from "react";
+import { ILink, IProject } from "@data-science-platform/shared";
 import { HeadingType } from "../Heading";
 import { FontSize } from "../../../data/style/variables";
 import {
@@ -30,7 +31,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
 
     <ProjectCarouselCards>
       {projects.map(project => (
-        <ProjectCarouselCardWrapper key={project.uuid}>
+        <ProjectCarouselCardWrapper key={project.shortName}>
           <ProjectCard {...project} />
         </ProjectCarouselCardWrapper>
       ))}

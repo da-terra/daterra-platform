@@ -1,7 +1,7 @@
 import React from "react";
+import { IArticle } from "@data-science-platform/shared";
 import { HeadingType } from "../Heading";
 import { FontSize } from "../../../data/style/variables";
-import { getTagNames } from "../../../data/Tag";
 import RoutePath from "../../../data/RoutePath";
 import RelativeDate from "../../util/RelativeDate";
 import createPath from "../../../util/createPath";
@@ -12,7 +12,6 @@ import {
   CardContent,
   Details,
   PublishedDate,
-  Tag,
   Title,
   Author,
   Paragraph
@@ -26,13 +25,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   className,
   slug,
   image,
-  publishedDate,
-  tags,
+  publishDate,
   title,
   author
 }) => {
-  const [firstTag] = getTagNames(tags);
-
   return (
     <Card
       className={className}
@@ -45,24 +41,22 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       <CardContent color={image.fallbackColor}>
         <Details>
           <PublishedDate as="time" fontSize={FontSize.Small}>
-            <RelativeDate>{publishedDate}</RelativeDate>
+            <RelativeDate>{publishDate}</RelativeDate>
           </PublishedDate>
-
-          <Tag serif fontSize={FontSize.Small}>
-            {firstTag}
-          </Tag>
         </Details>
 
         <Title headingType={HeadingType.Secondary} serif>
           {title}
         </Title>
 
-        <Author>
-          <Paragraph fontSize={FontSize.Small}>Geschreven door:</Paragraph>
-          <Paragraph fontSize={FontSize.Small} serif>
-            {author.fullName}
-          </Paragraph>
-        </Author>
+        {author && (
+          <Author>
+            <Paragraph fontSize={FontSize.Small}>Geschreven door:</Paragraph>
+            <Paragraph fontSize={FontSize.Small} serif>
+              {author.displayName}
+            </Paragraph>
+          </Author>
+        )}
       </CardContent>
     </Card>
   );

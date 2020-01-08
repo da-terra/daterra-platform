@@ -1,0 +1,29 @@
+query home {
+  me {
+    displayName
+    photos {
+      value
+    }
+  }
+
+  articles {
+    slug
+    image {
+      src
+      alt
+      fallbackColor
+    }
+    author {
+      displayName
+    }
+    title
+    publishDate
+  }
+
+  events {
+    color
+    slug
+    startDate
+    title
+  }
+}

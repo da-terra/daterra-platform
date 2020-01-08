@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { IProject } from "@data-science-platform/shared";
 import { isAfter } from "date-fns";
 import { HeadingType } from "../../../Heading";
 import { FontColor, FontWeight } from "../../../../../data/style/variables";
@@ -14,16 +15,20 @@ import {
 
 const ActiveProjectCard: React.FC<IProject> = ({
   title,
-  owner,
   team,
-  updatedDate,
+  activity: [lastActivity],
   duration
 }) => {
+  const updatedDate = lastActivity.createdDate;
+  const teamLead = team.find(user => user.role === 2)!;
+
   const isPastDeadline = isAfter(new Date(), new Date(duration!.endDate!));
+
+  console.log(team);
 
   return (
     <Fragment>
-      <ProjectOwner {...owner} />
+      <ProjectOwner {...teamLead} />
 
       <ProjectTitle headingType={HeadingType.Secondary} serif>
         {title}

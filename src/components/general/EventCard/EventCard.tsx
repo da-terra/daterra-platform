@@ -1,49 +1,40 @@
 import React from "react";
-import { parseISO, format } from "date-fns";
-import { nl } from "date-fns/locale";
-import { HeadingType } from "../Heading";
+import { IEvent } from "@data-science-platform/shared";
 import { FontSize, FontWeight } from "../../../data/style/variables";
-import { Card, Month, Day, Title, Description, CtaButton } from "./styled";
+import { HeadingType } from "../Heading";
+import { Card, BigDate, Title, Description, CtaButton } from "./styled";
+import RoutePath from "../../../data/RoutePath";
+import createPath from "../../../util/createPath";
 
-type EventCardProps = {
+type EventCardProps = IEvent & {
   className?: string;
-  color: string;
-  startDate: string;
-  title: string;
-  description: string;
-  link?: ILink;
 };
 
 const EventCard: React.FC<EventCardProps> = ({
   className,
   color,
-  startDate,
   title,
-  description,
-  link
+  richText,
+  slug,
+  startDate
 }) => {
-  const date = parseISO(startDate);
-
-  const month = format(date, "MMMM", { locale: nl });
-  const day = format(date, "dd", { locale: nl });
-
   return (
     <Card className={className} color={color}>
-      <Month>{month}</Month>
-
-      <Day fontWeight={FontWeight.Black}>{day}</Day>
+      <BigDate date={startDate} />
 
       <Title headingType={HeadingType.Secondary}>{title}</Title>
 
       <Description fontSize={FontSize.Small} italic>
-        {description}
+        {richText}
       </Description>
 
-      {link && (
-        <CtaButton {...link} fontWeight={FontWeight.Bold} serif>
-          {link.children}
-        </CtaButton>
-      )}
+      <CtaButton
+        href={createPath(RoutePath.EventDetail, { slug })}
+        fontWeight={FontWeight.Bold}
+        serif
+      >
+        Bekijken
+      </CtaButton>
     </Card>
   );
 };

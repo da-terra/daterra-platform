@@ -1,0 +1,7 @@
+query event($slug: String!) {
+  event(slug: $slug) {
+    color
+    title
+    startDate
+  }
+}

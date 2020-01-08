@@ -7,6 +7,9 @@ enum RoutePath {
   ArticleOverview = "/article",
   ArticleDetail = "/article/:slug",
 
+  EventOverview = "/event",
+  EventDetail = "/event/:slug",
+
   // QuickScan
   QuickScan = "/quickscan",
   QuickScanOnboarding = "/quickscan/onboarding",

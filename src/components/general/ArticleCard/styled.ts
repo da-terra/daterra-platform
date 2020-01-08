@@ -71,7 +71,7 @@ export const Author = styled.div`
 
 export const Card = styled(Button)`
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: ${props => props.theme.card.borderRadius}px;
   cursor: pointer;
   display: flex;
   flex-direction: column;

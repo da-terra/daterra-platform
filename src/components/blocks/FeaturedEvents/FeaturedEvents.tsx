@@ -1,4 +1,5 @@
 import React from "react";
+import { IEvent, ILink } from "@data-science-platform/shared";
 import { HeadingType } from "../../general/Heading";
 import { FontWeight } from "../../../data/style/variables";
 import {
@@ -10,20 +11,12 @@ import {
   CtaLink
 } from "./styled";
 
-type Event = {
-  uuid: string;
-  color: string;
-  startDate: string;
-  title: string;
-  description: string;
-};
-
 type FeaturedArticlesProps = {
   title: string;
   body: string;
   tag: React.ReactNode;
-  events: Event[];
-  link: ILink;
+  events: IEvent[];
+  link?: ILink;
 };
 
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
@@ -44,7 +37,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
       <EventsWrapper>
         <EventsList>
           {events.map(event => (
-            <EventCard {...event} key={event.uuid} />
+            <EventCard {...event} key={event.slug} />
           ))}
         </EventsList>
 

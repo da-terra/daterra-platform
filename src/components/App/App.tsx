@@ -2,40 +2,41 @@ import React, { Suspense } from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { BrowserRouter as Router } from "react-router-dom";
-import ErrorManager from "../context/ErrorManager";
-import Layout from "../context/Layout";
-import StorageManager from "../context/StorageManager";
-import ThemeManager from "../context/ThemeManager";
-import TrackingManager from "../context/TrackingManager";
-import WindowResizeManager from "../context/WindowResizeManager";
+import ErrorProvider from "../context/ErrorManager";
+import LayoutProvider from "../context/Layout";
+import StorageProvider from "../context/StorageManager";
+import ThemeProvider from "../context/ThemeManager";
+import TrackingProvider from "../context/TrackingManager";
+import WindowResizeProvider from "../context/WindowResizeManager";
 import { SplashScreen, GlobalStyle } from "./styled";
 import routes from "./routes";
 
 const client = new ApolloClient({
-  uri: "/graphql"
+  uri: "http://localhost:4000/graphql",
+  credentials: "include"
 });
 
 const App: React.FC = () => {
   return (
-    <ThemeManager>
-      <WindowResizeManager>
-        <StorageManager prefix="dsp">
-          <TrackingManager>
+    <ThemeProvider>
+      <WindowResizeProvider>
+        <StorageProvider prefix="dsp">
+          <TrackingProvider>
             <Router>
-              <Layout>
+              <LayoutProvider>
                 <GlobalStyle gridSize={10} />
 
-                <ErrorManager>
+                <ErrorProvider>
                   <ApolloProvider client={client}>
                     <Suspense fallback={<SplashScreen />}>{routes}</Suspense>
                   </ApolloProvider>
-                </ErrorManager>
-              </Layout>
+                </ErrorProvider>
+              </LayoutProvider>
             </Router>
-          </TrackingManager>
-        </StorageManager>
-      </WindowResizeManager>
-    </ThemeManager>
+          </TrackingProvider>
+        </StorageProvider>
+      </WindowResizeProvider>
+    </ThemeProvider>
   );
 };
 

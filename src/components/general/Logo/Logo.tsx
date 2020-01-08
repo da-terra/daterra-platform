@@ -25,11 +25,7 @@ const Logo: React.FC<LogoProps> = ({
   showName,
   size = LogoSize.Normal
 }) => (
-  <LogoWrapper
-    className={className}
-    href={window.location.origin}
-    rel="noopener"
-  >
+  <LogoWrapper className={className} href="/">
     {size === LogoSize.Normal && (
       <Fragment>
         <NormalLogo />
