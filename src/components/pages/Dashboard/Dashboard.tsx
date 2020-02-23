@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { INotification, IProject, IUser } from "@data-science-platform/shared";
 import { loader } from "graphql.macro";
 import React, { Fragment } from "react";
+import { FormattedMessage } from "react-intl";
 import RoutePath from "../../../data/RoutePath";
 import Footer from "../../blocks/Footer";
 import Header from "../../blocks/Header";
@@ -70,7 +71,11 @@ const Dashboard: React.FC = () => {
 
       <TopWrapper>
         <SearchForm>
-          <SearchInput label="Zoeken" name="search" type={InputType.Search} />
+          <SearchInput
+            label={<FormattedMessage id="Dashboard_search" />}
+            name="search"
+            type={InputType.Search}
+          />
         </SearchForm>
 
         <Sidebar>
@@ -80,19 +85,19 @@ const Dashboard: React.FC = () => {
 
       <Wrapper>
         <DashboardProjectCarousel
-          title="Mijn projecten"
+          title={<FormattedMessage id="Dashboard_myProjects" />}
           link={{
             href: RoutePath.Projects,
-            children: "Bekijk mijn projecten"
+            children: <FormattedMessage id="Dashboard_viewMyProjects" />
           }}
           projects={myProjects}
         />
 
         <DashboardProjectCarousel
-          title="Nieuwe projecten"
+          title={<FormattedMessage id="Dashboard_newProjects" />}
           link={{
             href: RoutePath.Projects,
-            children: "Bekijk nieuwe projecten"
+            children: <FormattedMessage id="Dashboard_viewMyProjects" />
           }}
           projects={newProjects}
         />

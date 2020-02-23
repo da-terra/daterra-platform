@@ -15,7 +15,7 @@ type ProjectCarouselProps = {
   className?: string;
   link: ILink;
   projects: Partial<IProject>[];
-  title: string;
+  title: React.ReactNode;
 };
 
 const ProjectCarousel: React.FC<ProjectCarouselProps> = ({

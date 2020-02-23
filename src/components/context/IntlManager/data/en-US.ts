@@ -1,6 +1,12 @@
 import { Role } from "@data-science-platform/shared";
 
 export default {
+  // Dashboard
+  Dashboard_search: "Search",
+  Dashboard_myProjects: "My projects",
+  Dashboard_newProjects: "New projects",
+  Dashboard_viewMyProjects: "View my projects",
+
   PersonalStatistics_title: "Hi, {givenName}",
   PersonalStatistics_message:
     "You {count, plural, =0 {have not finished any projects yet} one {finished one project} other {finished {count} projects}}",

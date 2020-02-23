@@ -6,7 +6,7 @@ import { InputWrapper, Label, InputElement, Tooltip } from "./styled";
 type InputProps = {
   className?: string;
   defaultValue?: string;
-  label: string;
+  label: React.ReactNode;
   name: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: InputType;
