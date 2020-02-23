@@ -64,15 +64,17 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
       </CarouselTitle>
 
       <CarouselContainer>
-        <CarouselControls>
-          <CarouselButton ref={backButton}>
-            <Icon.ArrowBack />
-          </CarouselButton>
+        {finishedProjects.length > 1 && (
+          <CarouselControls>
+            <CarouselButton ref={backButton}>
+              <Icon.ArrowBack />
+            </CarouselButton>
 
-          <CarouselButton ref={forwardButton}>
-            <Icon.ArrowForward />
-          </CarouselButton>
-        </CarouselControls>
+            <CarouselButton ref={forwardButton}>
+              <Icon.ArrowForward />
+            </CarouselButton>
+          </CarouselControls>
+        )}
 
         <FinishedProjectsCarousel
           forwardButton={forwardButton}
