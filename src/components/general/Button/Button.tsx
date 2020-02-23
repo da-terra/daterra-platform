@@ -22,7 +22,7 @@ export type ButtonProps = {
   inverted?: boolean;
 };
 
-const externalLinkPattern = /^https?:\/\//i;
+const externalLinkPattern = /^(https?:\/\/|mailto:)/i;
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
   (

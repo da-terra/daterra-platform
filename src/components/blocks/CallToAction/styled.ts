@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { SolidButton } from "../../general/Button";
 import { default as Wrapper } from "../../general/Wrapper";
-export { default as Heading } from "../../general/Heading";
 
 export const Background = styled.div`
   display: block;

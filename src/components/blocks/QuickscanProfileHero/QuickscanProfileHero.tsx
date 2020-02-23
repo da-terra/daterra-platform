@@ -4,20 +4,19 @@ import {
   FontColor,
   FontWeight
 } from "../../../data/style/variables";
+import { HeadingType } from "../../general/Heading";
+import Logo, { LogoSize } from "../../general/Logo";
+import Circle from "../../util/Circle";
 import MediaQuery from "../../util/MediaQuery";
-import { LogoSize } from "../../general/Logo";
 import {
   Background,
-  Circle,
   Content,
-  HeroHeader,
-  Logo,
   HeroBody,
   HeroEyebrow,
-  HeroTitle,
-  HeroSubtitle
+  HeroHeader,
+  HeroSubtitle,
+  HeroTitle
 } from "./styled";
-import { HeadingType } from "../../general/Heading";
 
 type QuickscanProfileHeroProps = {
   eyebrow: React.ReactNode;

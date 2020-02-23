@@ -1,0 +1,17 @@
+mutation createQuickscanResult(
+  $target: Int!
+  $company: QuickscanResultCompanyInput!
+  $person: QuickscanResultPersonInput!
+  $answers: [QuickscanResultAnswerInput!]!
+  $comment: String
+) {
+  createQuickscanResult(
+    target: $target
+    company: $company
+    person: $person
+    answers: $answers
+    comment: $comment
+  ) {
+    uuid
+  }
+}

@@ -1,20 +1,20 @@
+import { createPath, IArticle } from "@data-science-platform/shared";
+import { differenceInSeconds } from "date-fns";
 import React from "react";
-import { IArticle } from "@data-science-platform/shared";
-import { HeadingType } from "../Heading";
-import { FontSize } from "../../../data/style/variables";
+import { FormattedRelativeTime } from "react-intl";
 import RoutePath from "../../../data/RoutePath";
-import RelativeDate from "../../util/RelativeDate";
-import createPath from "../../../util/createPath";
+import { FontSize } from "../../../data/style/variables";
+import { HeadingType } from "../Heading";
+import Paragraph from "../Paragraph";
 import {
+  Author,
   Card,
-  CardImageWrapper,
-  CardImage,
   CardContent,
+  CardImage,
+  CardImageWrapper,
   Details,
   PublishedDate,
-  Title,
-  Author,
-  Paragraph
+  Title
 } from "./styled";
 
 type ArticleCardProps = IArticle & {
@@ -25,10 +25,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   className,
   slug,
   image,
-  publishDate,
+  publishDate: publishDateTs,
   title,
   author
 }) => {
+  const publishDate = new Date(publishDateTs);
+
   return (
     <Card
       className={className}
@@ -40,8 +42,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
 
       <CardContent color={image.fallbackColor}>
         <Details>
-          <PublishedDate as="time" fontSize={FontSize.Small}>
-            <RelativeDate>{publishDate}</RelativeDate>
+          <PublishedDate
+            as="time"
+            dateTime={publishDate.toISOString()}
+            fontSize={FontSize.Small}
+          >
+            <FormattedRelativeTime
+              value={differenceInSeconds(publishDate, new Date())}
+              updateIntervalInSeconds={30}
+            />
           </PublishedDate>
         </Details>
 

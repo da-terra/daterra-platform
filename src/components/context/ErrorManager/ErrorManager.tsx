@@ -1,32 +1,62 @@
 import React from "react";
-import ErrorPage from "../../../pages/Error";
-
-type IError = Error & {
-  code?: string;
-  errors: string[];
-};
+import ErrorPage from "../../pages/Error";
+import { ApolloError } from "apollo-boost";
+import { GraphQLError } from "graphql";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
 type ErrorManagerState = {
-  error?: IError;
-  info?: any;
+  code?: string;
+  message?: string;
+  route?: string;
 };
 
-class ErrorManager extends React.Component {
+type ErrorManagerProps = RouteComponentProps;
+
+class ErrorManager extends React.Component<
+  ErrorManagerProps,
+  ErrorManagerState
+> {
   state: ErrorManagerState = {};
 
-  componentDidCatch(error: IError, info: any) {
-    console.error(error, info);
+  componentDidMount() {
+    const { history } = this.props;
+    history.listen(this.onHistoryChange);
+  }
 
-    this.setState({ error, info });
+  private onHistoryChange = () => {
+    this.setState({
+      code: undefined,
+      message: undefined
+    });
+  };
+
+  static getDerivedStateFromError(error: Error | ApolloError) {
+    if (error instanceof ApolloError) {
+      const [firstGraphQlError] = error.graphQLErrors;
+      const [firstNetworkError] = (error.networkError as any)?.result?.errors;
+
+      const firstError =
+        firstGraphQlError || (firstNetworkError as GraphQLError);
+
+      return {
+        code: firstError?.extensions?.code,
+        message: firstError?.message
+      };
+    }
+
+    return {
+      name: error.name,
+      message: error.message
+    };
   }
 
   render() {
-    if (this.state.error) {
-      return <ErrorPage code={this.state.error.code} />;
+    if (this.state.code || this.state.message) {
+      return <ErrorPage code={this.state.code} message={this.state.message} />;
     }
 
     return this.props.children;
   }
 }
 
-export default ErrorManager;
+export default withRouter(ErrorManager);

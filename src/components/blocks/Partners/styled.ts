@@ -2,9 +2,6 @@ import styled from "styled-components";
 import Paragraph from "../../general/Paragraph";
 import Partner from "../../general/Partner";
 import { Breakpoints } from "../../../data/style/variables";
-export { default as TagWrapper } from "../../general/TagWrapper";
-export { default as Heading } from "../../general/Heading";
-
 const marginSize = 4;
 
 export const Background = styled.div`

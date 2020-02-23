@@ -1,15 +1,14 @@
-import React from "react";
 import { IArticle, ILink } from "@data-science-platform/shared";
-import { HeadingType } from "../../general/Heading";
+import React from "react";
 import { FontWeight } from "../../../data/style/variables";
+import Heading, { HeadingType } from "../../general/Heading";
+import TagWrapper from "../../general/TagWrapper";
 import {
-  TagWrapper,
-  Heading,
   ArticlesWrapper,
-  List,
-  Card,
   CardGhost,
-  CtaLink
+  CtaLink,
+  List,
+  StyledArticleCard
 } from "./styled";
 
 type FeaturedArticlesProps = {
@@ -45,7 +44,7 @@ const ArticlesList: React.FC<FeaturedArticlesProps> = ({
       <ArticlesWrapper>
         <List>
           {articles.map(article => (
-            <Card {...article} key={article.slug} />
+            <StyledArticleCard {...article} key={article.slug} />
           ))}
 
           {articles.length < 1 && <CardGhost />}

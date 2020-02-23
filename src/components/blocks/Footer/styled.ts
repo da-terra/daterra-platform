@@ -3,10 +3,6 @@ import Paragraph from "../../general/Paragraph";
 import Button, { LinkButton } from "../../general/Button";
 import { Breakpoints } from "../../../data/style/variables";
 
-export { default as Wrapper } from "../../general/Wrapper";
-export { default as Heading } from "../../general/Heading";
-export { default as Logo } from "../../general/Logo";
-
 export const Background = styled.div<{ inverted: boolean }>`
   padding: 6.4rem 0;
   overflow: hidden;
@@ -55,6 +51,7 @@ export const SocialNetworkLink = styled(Button)`
 
 export const SocialNetworkImage = styled.img`
   height: 100%;
+  color: currentColor;
 `;
 
 export const Sitemap = styled.div`

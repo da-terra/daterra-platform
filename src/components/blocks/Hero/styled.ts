@@ -4,9 +4,6 @@ import { SolidButton, LinkButton } from "../../general/Button";
 import Heading from "../../general/Heading";
 import { Breakpoints } from "../../../data/style/variables";
 
-export { default as Logo } from "../../general/Logo";
-export { Circle } from "../../../util/layout";
-
 export const Background = styled.div`
   background: ${props => props.theme.background.accent};
   color: ${props => props.theme.copy.primaryInverted};

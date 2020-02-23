@@ -1,14 +1,9 @@
+import { IImage, ILink } from "@data-science-platform/shared";
 import React from "react";
 import { FontWeight } from "../../../data/style/variables";
-import { IImage, ILink } from "@data-science-platform/shared";
-import {
-  Background,
-  TagWrapper,
-  Heading,
-  Content,
-  PartnersList,
-  PartnerCard
-} from "./styled";
+import Heading from "../../general/Heading";
+import TagWrapper from "../../general/TagWrapper";
+import { Background, Content, PartnerCard, PartnersList } from "./styled";
 
 type Partner = {
   uuid: string;

@@ -3,10 +3,6 @@ import { IImage } from "@data-science-platform/shared";
 import { Breakpoints } from "../../../data/style/variables";
 import Button from "../../general/Button";
 
-export { default as Logo } from "../../general/Logo";
-export { default as Wrapper } from "../../general/Wrapper";
-export { default as ArticleHeading } from "../ArticleHeading";
-
 type BackgroundWrapperProps = {
   image: IImage;
   inverted?: boolean;

@@ -3,8 +3,6 @@ import Owner from "../../../User";
 import Paragraph from "../../../Paragraph";
 import Heading from "../../../Heading";
 
-export { default as RelativeDate } from "../../../../util/RelativeDate";
-
 export const ProjectTitle = styled(Heading)`
   margin: 0;
 `;

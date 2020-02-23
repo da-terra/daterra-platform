@@ -4,10 +4,6 @@ import { LinkButton } from "../../general/Button";
 import Wrapper from "../../general/Wrapper";
 import NotificationButtonBase from "../../general/NotificationButton";
 
-export { default as Button } from "../../general/Button";
-export { default as Logo } from "../../general/Logo";
-export { default as UserButton } from "../../general/UserButton";
-
 type HeaderWrapperProps = {
   inverted?: boolean;
   theme: DefaultTheme;

@@ -1,0 +1,17 @@
+query organizations($id: ID!) {
+  me {
+    displayName
+    photos {
+      value
+    }
+  }
+  organization(id: $id) {
+    id
+    name
+    image {
+      src
+      alt
+      fallbackColor
+    }
+  }
+}

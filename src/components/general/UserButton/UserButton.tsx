@@ -1,15 +1,17 @@
-import React, { useState, useCallback } from "react";
 import { IUser } from "@data-science-platform/shared";
+import React, { useCallback, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { FontWeight } from "../../../data/style/variables";
+import RoutePath from "../../../data/RoutePath";
 import {
-  Container,
-  ButtonWrapper,
   Button,
+  ButtonWrapper,
+  CardMenuDivider,
+  CardMenuLink,
+  Container,
   DropDownIcon,
-  UserAvatar,
-  Menu,
-  MenuLinkDivider,
-  MenuLink
+  StyledCardMenu,
+  UserAvatar
 } from "./styled";
 
 type UserButtonProps = {
@@ -41,21 +43,21 @@ const UserButton: React.FC<UserButtonProps> = ({ me }) => {
           />
         </Button>
 
-        <Menu show={showMenu}>
-          <MenuLink href="/profile" serif>
-            Mijn profiel
-          </MenuLink>
+        <StyledCardMenu show={showMenu}>
+          <CardMenuLink href={RoutePath.Profile} serif>
+            <FormattedMessage id="UserButton_myProfile" />
+          </CardMenuLink>
 
-          <MenuLink href="/settings" serif>
-            Instellingen
-          </MenuLink>
+          <CardMenuLink href={RoutePath.ProfilePreference} serif>
+            <FormattedMessage id="UserButton_myPreferences" />
+          </CardMenuLink>
 
-          <MenuLinkDivider />
+          <CardMenuDivider />
 
-          <MenuLink href="/signout" fontWeight={FontWeight.Bold} serif>
-            Uitloggen
-          </MenuLink>
-        </Menu>
+          <CardMenuLink href="/signout" fontWeight={FontWeight.Bold} serif>
+            <FormattedMessage id="UserButton_signOut" />
+          </CardMenuLink>
+        </StyledCardMenu>
       </ButtonWrapper>
     </Container>
   );

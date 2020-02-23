@@ -1,4 +1,4 @@
-import getMatchingBitmasks from "../util/getMatchingBitmasks";
+import { getFlaggedBits } from "@data-science-platform/shared";
 
 export const Tags = {
   Announcement: 1 << 0,
@@ -11,4 +11,4 @@ export const TagNames = {
 };
 
 export const getTagNames = (tagBit: number): string[] =>
-  getMatchingBitmasks(tagBit, Tags).map(bit => TagNames[bit]);
+  getFlaggedBits(Tags, tagBit).map(bit => TagNames[bit]);

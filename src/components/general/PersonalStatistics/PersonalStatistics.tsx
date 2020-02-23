@@ -1,45 +1,66 @@
+import { IProject, IUser } from "@data-science-platform/shared";
 import React, { useRef } from "react";
-import { IProject } from "@data-science-platform/shared";
-import { HeadingType } from "../Heading";
+import { FormattedMessage } from "react-intl";
 import { FontSize } from "../../../data/style/variables";
+import { HeadingType } from "../Heading";
+import Icon from "../Icon";
 import {
   CarouselButton,
-  CarouselControls,
   CarouselContainer,
-  Slide,
-  Icon,
-  WrapperCard,
+  CarouselControls,
+  CarouselTitle,
+  FinishedProject,
+  FinishedProjectsCarousel,
   Greeting,
   HorizontalLine,
+  Slide,
   StatisticsParagraph,
-  CarouselTitle,
-  FinishedProjectsCarousel,
-  FinishedProject
+  WrapperCard
 } from "./styled";
 
-type PersonalStatisticsProps = {
+type PersonalStatisticsProps = IUser & {
   finishedProjects: IProject[];
 };
 
+const MIN_PROJECTS = 1;
+
 const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
+  name: { givenName },
   finishedProjects
 }) => {
   const forwardButton = useRef(null);
   const backButton = useRef(null);
 
+  const projects = new Array<Partial<IProject>>(
+    Math.max(MIN_PROJECTS - finishedProjects.length, 0)
+  )
+    .fill({})
+    .concat(finishedProjects);
+
   return (
     <WrapperCard inverted>
-      <Greeting headingType={HeadingType.Secondary}>Hey Matthias</Greeting>
+      <Greeting headingType={HeadingType.Secondary}>
+        <FormattedMessage
+          id="PersonalStatistics_title"
+          values={{
+            givenName
+          }}
+        />
+      </Greeting>
 
       <HorizontalLine />
 
       <StatisticsParagraph fontSize={FontSize.Large}>
-        Je score is 622 en je hebt 3 projecten afgerond. Daarmee heb je €1250.00
-        euro verdiend.
+        <FormattedMessage
+          id="PersonalStatistics_message"
+          values={{
+            count: finishedProjects.length
+          }}
+        />
       </StatisticsParagraph>
 
       <CarouselTitle headingType={HeadingType.Quaternary}>
-        Afgeronde projecten
+        <FormattedMessage id="PersonalStatistics_carouselTitle" />
       </CarouselTitle>
 
       <CarouselContainer>
@@ -57,7 +78,7 @@ const PersonalStatistics: React.FC<PersonalStatisticsProps> = ({
           forwardButton={forwardButton}
           backButton={backButton}
         >
-          {finishedProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <Slide key={index}>
               <FinishedProject {...project} />
             </Slide>

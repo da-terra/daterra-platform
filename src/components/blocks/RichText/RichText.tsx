@@ -1,7 +1,7 @@
 import React from "react";
 import { Node } from "slate";
-import { WrapperWidth } from "../../general/Wrapper";
-import { Wrapper, RichTextEditor } from "./styled";
+import RichTextEditor from "../../general/RichTextEditor";
+import Wrapper, { WrapperWidth } from "../../general/Wrapper";
 
 type RichTextProps = {
   nodes: Node[];

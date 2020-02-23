@@ -1,6 +1,7 @@
 import React from "react";
+import Circle from "../../util/Circle";
 import { LogoSize } from "../Logo";
-import { Background, Circle, LogoWithAnimation } from "./styled";
+import { Background, LogoWithAnimation } from "./styled";
 
 type SplashScreenProps = {
   className?: string;

@@ -1,14 +1,15 @@
-import React, { useRef, useContext } from "react";
-import { IUser, ILink, INotification } from "@data-science-platform/shared";
+import { ILink, INotification, IUser } from "@data-science-platform/shared";
+import React, { useContext, useRef } from "react";
+import RoutePath from "../../../data/RoutePath";
 import { FontWeight } from "../../../data/style/variables";
 import { LayoutContext, LayoutStateVariable } from "../../context/Layout";
+import Logo from "../../general/Logo";
+import UserButton from "../../general/UserButton";
 import {
-  HeaderWrapper,
-  Logo,
-  NavigationLinks,
-  NavigationLink,
   Aside,
-  UserButton,
+  HeaderWrapper,
+  NavigationLink,
+  NavigationLinks,
   NotificationButton
 } from "./styled";
 
@@ -35,7 +36,10 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <HeaderWrapper inverted={inverted} ref={headerRef}>
-      <Logo showName={!navigationLinks} />
+      <Logo
+        showName={!navigationLinks}
+        href={me == null ? RoutePath.Home : RoutePath.Dashboard}
+      />
 
       {navigationLinks && (
         <NavigationLinks>

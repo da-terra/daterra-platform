@@ -1,8 +1,11 @@
 import styled from "styled-components";
-import Heading from "../Heading";
 import { LinkButton } from "../Button";
+import Heading from "../Heading";
+import ProjectCard from "../ProjectCard";
 
-export { default as ProjectCard } from "../ProjectCard";
+export const StyledProjectCard = styled(ProjectCard)`
+  height: 100%;
+`;
 
 export const ProjectCarouselWrapper = styled.div`
   display: flex;

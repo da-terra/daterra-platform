@@ -4,9 +4,6 @@ import Wrapper from "../../general/Wrapper";
 import Heading from "../../general/Heading";
 import Paragraph from "../../general/Paragraph";
 
-export { default as Logo } from "../../general/Logo";
-export { Circle } from "../../../util/layout";
-
 export const Background = styled.div`
   background: ${props => props.theme.background.accent};
   color: ${props => props.theme.copy.primaryInverted};

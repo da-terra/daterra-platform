@@ -1,24 +1,11 @@
 import styled, { css } from "styled-components";
 import {
   FontFamily,
-  FontColor,
   FontSize,
   FontWeight
 } from "../../../data/style/variables";
 import { large, normal, small, richText } from "./styled";
-
-type ParagraphProps = {
-  fontColor?: FontColor;
-  fontSize?: FontSize;
-  fontWeight?: FontWeight;
-  italic?: boolean;
-  left?: boolean;
-  center?: boolean;
-  right?: boolean;
-  serif?: boolean;
-  preserveWhitespace?: boolean;
-  richText?: boolean;
-};
+import { ParagraphProps } from ".";
 
 const paragraphSizes = {
   [FontSize.Large]: large,

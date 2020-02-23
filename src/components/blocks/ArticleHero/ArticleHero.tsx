@@ -1,6 +1,8 @@
-import React from "react";
 import { IImage } from "@data-science-platform/shared";
-import { BackgroundWrapper, Wrapper, Logo } from "./styled";
+import React from "react";
+import Logo from "../../general/Logo";
+import Wrapper from "../../general/Wrapper";
+import { BackgroundWrapper } from "./styled";
 
 type ArticleHeroProps = {
   image: IImage;

@@ -1,73 +1,46 @@
-import React from "react";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import { StorageKey } from "../StorageManager";
-import themes from "../../../data/style/themes";
-
-type ThemeProps = {
-  children: JSX.Element;
-};
+import React, { useCallback, useContext, useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { Context as StorageContext, StorageKey } from "../StorageManager";
+import Theme, { ThemeName } from "./data/Theme";
 
 type ThemeContext = {
-  theme: DefaultTheme;
-  themes: DefaultTheme[];
+  themeName: string;
   setTheme: Function;
-  cycleThemes: Function;
 };
 
 export const Context = React.createContext<ThemeContext>({
-  theme: themes[0],
-  themes: themes,
-  setTheme: () => {},
-  cycleThemes: () => {}
+  themeName: ThemeName.DefaultLight,
+  setTheme: () => {}
 });
 
-class ThemeManager extends React.Component<ThemeProps, ThemeContext> {
-  constructor(props: ThemeProps) {
-    super(props);
+const ThemeManager: React.FC = props => {
+  const storage = useContext(StorageContext);
 
-    const savedThemeUuid = localStorage.getItem(StorageKey.themeUuid);
-    const savedTheme = themes.find(theme => theme.uuid === savedThemeUuid);
+  const initialTheme =
+    storage.getValue(StorageKey.themeName) || ThemeName.DefaultLight;
 
-    const [firstTheme] = themes;
+  const [themeName, setThemeName] = useState<ThemeName>(initialTheme);
 
-    this.state = {
-      theme: savedTheme || firstTheme,
-      themes,
-      setTheme: this.setTheme,
-      cycleThemes: this.cycleThemes
-    };
-  }
+  const setTheme = useCallback(
+    (newThemeName: ThemeName) => {
+      storage.setValue(StorageKey.themeName, newThemeName, true);
+      setThemeName(newThemeName);
+    },
+    [storage]
+  );
 
-  setTheme = (theme: DefaultTheme) => {
-    if (!theme) {
-      return;
-    }
+  const theme = Theme[themeName];
 
-    localStorage.setItem(StorageKey.themeUuid, theme.uuid);
-
-    this.setState({ theme });
-  };
-
-  cycleThemes = () => {
-    const activeThemeUuid = this.state.theme.uuid;
-    const activeThemeIndex = themes.findIndex(
-      theme => theme.uuid === activeThemeUuid
-    );
-
-    const nextThemeIndex = (activeThemeIndex + 1) % themes.length;
-
-    this.setTheme(themes[nextThemeIndex]);
-  };
-
-  render() {
-    return (
-      <Context.Provider value={this.state}>
-        <ThemeProvider theme={this.state.theme}>
-          {this.props.children}
-        </ThemeProvider>
-      </Context.Provider>
-    );
-  }
-}
+  return (
+    <Context.Provider
+      value={{
+        themeName,
+        setTheme
+      }}
+    >
+      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+    </Context.Provider>
+  );
+};
 
 export default ThemeManager;

@@ -2,8 +2,6 @@ import styled, { css } from "styled-components";
 import { LinkButton } from "../../general/Button";
 import { default as ArticleCard } from "../../general/ArticleCard";
 import { Breakpoints } from "../../../data/style/variables";
-export { default as TagWrapper } from "../../general/TagWrapper";
-export { default as Heading } from "../../general/Heading";
 
 const marginSize = 2;
 
@@ -38,7 +36,7 @@ const cardCss = css`
   }
 `;
 
-export const Card = styled(ArticleCard)`
+export const StyledArticleCard = styled(ArticleCard)`
   ${cardCss}
 `;
 
@@ -47,7 +45,7 @@ export const CardGhost = styled.div`
 
   background: rgba(0, 0, 0, 0.05);
   height: 40rem;
-  border-radius: ${props => props.theme.card.borderRadius}px;
+  border-radius: 1rem;
 `;
 
 export const CtaLink = styled(LinkButton)`

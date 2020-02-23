@@ -1,0 +1,58 @@
+query dashboard {
+  me {
+    name {
+      givenName
+    }
+    emails {
+      value
+      type
+    }
+    photos {
+      value
+    }
+  }
+
+  myProjects: projects(userOnly: true) {
+    shortName
+    title
+    organizations {
+      id
+      name
+      locations {
+        address
+        country
+      }
+      image {
+        src
+        alt
+        fallbackColor
+      }
+    }
+    team {
+      displayName
+      photos {
+        value
+      }
+    }
+  }
+
+  newProjects: projects {
+    shortName
+    title
+    organizations {
+      id
+      name
+      image {
+        src
+        alt
+        fallbackColor
+      }
+    }
+    team {
+      displayName
+      photos {
+        value
+      }
+    }
+  }
+}

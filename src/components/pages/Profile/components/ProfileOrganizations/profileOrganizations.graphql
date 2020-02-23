@@ -1,0 +1,13 @@
+query settings {
+  me {
+    organizations {
+      id
+      name
+      locations {
+        address
+        city
+        country
+      }
+    }
+  }
+}

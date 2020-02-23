@@ -4,8 +4,6 @@ import "styled-components";
 // and extend them!
 declare module "styled-components" {
   export interface DefaultTheme {
-    uuid: string;
-
     background: {
       primary: string;
       secondary: string;
@@ -14,7 +12,6 @@ declare module "styled-components" {
 
     button: {
       icon: {
-        radius: string;
         solid: {
           color: string;
           background: string;
@@ -45,7 +42,6 @@ declare module "styled-components" {
         color: string;
         hoverColor: string;
         shadow: string;
-        radius: string;
       };
       invertedSolid: {
         background: string;
@@ -53,14 +49,14 @@ declare module "styled-components" {
         color: string;
         hoverColor: string;
         shadow: string;
-        radius: string;
       };
     };
 
     card: {
-      borderRadius: number;
       background: string;
+      backgroundAccent: string;
       backgroundInverted: string;
+      backgroundInvertedAccent: string;
       shadow: string;
       shadowInverted: string;
     };
@@ -81,8 +77,6 @@ declare module "styled-components" {
       backgroundColor: string;
       borderColor: string;
       copyColor: string;
-      borderRadius: number;
-      padding: number;
     };
 
     font: {

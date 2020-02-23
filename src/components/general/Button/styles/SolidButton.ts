@@ -11,7 +11,6 @@ type SolidButtonProps = ButtonProps & {
 const normalCss = css`
   background: ${props => props.theme.button.solid.background}
   color: ${props => props.theme.button.solid.color}
-  border-radius: ${props => props.theme.button.solid.radius}
   box-shadow: ${props => props.theme.button.solid.shadow}
 
   &:hover {
@@ -23,7 +22,6 @@ const normalCss = css`
 const invertedCss = css`
   background: ${props => props.theme.button.invertedSolid.background}
   color: ${props => props.theme.button.invertedSolid.color}
-  border-radius: ${props => props.theme.button.invertedSolid.radius}
   box-shadow: ${props => props.theme.button.invertedSolid.shadow}
 
   &:hover {
@@ -44,6 +42,7 @@ export const SolidButton = styled(Button)<SolidButtonProps>`
 
   display: inline-block;
   padding: 2rem 2.5rem;
+  border-radius: 1rem;
   text-align: center;
   outline: none;
 

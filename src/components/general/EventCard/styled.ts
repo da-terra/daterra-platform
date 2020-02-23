@@ -3,8 +3,6 @@ import { LinkButton } from "../Button";
 import Paragraph from "../Paragraph";
 import Heading from "../Heading";
 
-export { default as BigDate } from "../BigDate";
-
 export const Card = styled.div`
   display: flex;
   flex-direction: column;

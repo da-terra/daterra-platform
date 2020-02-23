@@ -1,17 +1,14 @@
 import React, { useContext, useRef, useCallback } from "react";
-import { IUser } from "@data-science-platform/shared";
+import { IUser, Role } from "@data-science-platform/shared";
 import { FontWeight, Breakpoints } from "../../../data/style/variables";
 import { Context, StorageKey } from "../../context/StorageManager";
 import MediaQuery from "../../util/MediaQuery";
-import RoutePath from "../../../data/RoutePath";
-import Role from "../../../data/Role";
-import { LogoSize } from "../../general/Logo";
+import Logo, { LogoSize } from "../../general/Logo";
 import { HeadingType } from "../../general/Heading";
+import RoutePath from "../../../data/RoutePath";
 import {
   Background,
-  Circle,
   HeroHeader,
-  Logo,
   NavigationLinks,
   NavigationLink,
   Content,
@@ -20,6 +17,7 @@ import {
   ButtonWrapper,
   TargetButton
 } from "./styled";
+import Circle from "../../util/Circle";
 
 type HeroProps = {
   me?: IUser;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Breakpoints } from "../../../data/style/variables";
 import Paragraph from "../Paragraph";
-export { default as Wrapper } from "../Wrapper";
 
 export const Background = styled.div`
   position: relative;

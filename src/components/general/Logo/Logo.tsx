@@ -9,6 +9,7 @@ import {
 
 type LogoProps = {
   showName?: boolean;
+  href?: string;
   size?: LogoSize;
   className?: string;
 };
@@ -23,9 +24,10 @@ const name = "Data Science\nPlatform";
 const Logo: React.FC<LogoProps> = ({
   className,
   showName,
+  href = "/",
   size = LogoSize.Normal
 }) => (
-  <LogoWrapper className={className} href="/">
+  <LogoWrapper className={className} href={href}>
     {size === LogoSize.Normal && (
       <Fragment>
         <NormalLogo />

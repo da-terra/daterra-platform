@@ -3,8 +3,6 @@ import Heading from "../../general/Heading";
 import Paragraph from "../../general/Paragraph";
 import Wrapper from "../../general/Wrapper";
 
-export { default as RelativeTime } from "../../util/RelativeDate";
-
 export const ArticleHeadingWrapper = styled(Wrapper)`
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;

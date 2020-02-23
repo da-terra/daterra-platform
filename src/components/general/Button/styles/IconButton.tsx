@@ -59,7 +59,7 @@ const IconButtonElement = styled(Button)<IconButtonProps>`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  border-radius: ${props => props.theme.button.icon.radius};
+  border-radius: 1rem;
 
   ${props =>
     props.inverted

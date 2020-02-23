@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Heading from "../../../Heading";
 import Paragraph from "../../../Paragraph";
-export { default as ProjectOwner } from "../../../User";
-export { default as Paragraph } from "../../../Paragraph";
 
 export const ProjectTitle = styled(Heading)`
   margin: 2rem 0 0 0;

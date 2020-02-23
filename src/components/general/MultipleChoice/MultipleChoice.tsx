@@ -1,11 +1,12 @@
 import React, {
   Fragment,
-  useState,
   useCallback,
+  useEffect,
   useRef,
-  useEffect
+  useState
 } from "react";
-import { OptionList, OptionItem, Option } from "./styled";
+import Option from "./Option";
+import { OptionItem, OptionList } from "./styled";
 
 type MultipleChoiceProps = {
   name: string;

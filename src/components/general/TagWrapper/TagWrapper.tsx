@@ -1,12 +1,11 @@
 import React from "react";
-import { WrapperWidth } from "../Wrapper";
 import { FontColor, FontWeight } from "../../../data/style/variables";
+import Wrapper, { WrapperWidth } from "../Wrapper";
 import {
   Background,
-  Wrapper,
-  HeadingWrapper,
-  Description,
   Content,
+  Description,
+  HeadingWrapper,
   Tag
 } from "./styled";
 

@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { FontFamily } from "../../data/style/variables";
 
-export { default as SplashScreen } from "../general/SplashScreen";
-
 export const GlobalStyle = createGlobalStyle<{ gridSize: number }>`
   html,
   body {
@@ -17,6 +15,8 @@ export const GlobalStyle = createGlobalStyle<{ gridSize: number }>`
     background: ${props => props.theme.background.primary};
     color: ${props => props.theme.copy.primary};
     overflow-x: hidden;
+
+    transition: background .5s;
   }
 
   * {

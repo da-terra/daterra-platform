@@ -1,0 +1,17 @@
+query settings {
+  me {
+    activities {
+      id
+      mutation
+      data
+      createdDate
+      user {
+        id
+        displayName
+        photos {
+          value
+        }
+      }
+    }
+  }
+}

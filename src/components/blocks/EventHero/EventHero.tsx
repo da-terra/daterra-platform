@@ -1,14 +1,10 @@
-import React from "react";
 import { IEvent } from "@data-science-platform/shared";
-import {
-  BackgroundWrapper,
-  Wrapper,
-  Logo,
-  Summary,
-  BigDate,
-  Aside,
-  Heading
-} from "./styled";
+import React from "react";
+import BigDate from "../../general/BigDate";
+import Heading from "../../general/Heading";
+import Logo from "../../general/Logo";
+import Wrapper from "../../general/Wrapper";
+import { Aside, BackgroundWrapper, Summary } from "./styled";
 
 type ArticleHeroProps = IEvent;
 

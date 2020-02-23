@@ -1,13 +1,13 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { FontColor, FontSize } from "../../../../data/style/variables";
+import Icon from "../../Icon";
+import Paragraph from "../../Paragraph";
 import {
-  OptionWrapper,
-  InfoCard,
-  Label,
-  InfoWrapper,
   ButtonWrapper,
+  InfoCard,
+  InfoWrapper,
   OptionButton,
-  Icon
+  OptionWrapper
 } from "./styled";
 
 export type OptionProps = {
@@ -36,7 +36,7 @@ const Option: React.FC<OptionProps> = ({ label, value, info, onSelect }) => {
   return (
     <OptionWrapper>
       <InfoCard>
-        <Label>{label}</Label>
+        <Paragraph>{label}</Paragraph>
 
         {info && (
           <InfoWrapper

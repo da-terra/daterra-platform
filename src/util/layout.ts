@@ -24,15 +24,27 @@ type CardProps = {
 
 export const Card = styled.div<CardProps>`
   padding: 2rem;
-  border-radius: ${props => props.theme.card.borderRadius}px;
+  border-radius: 1rem;
 
   box-shadow: ${props =>
     props.inverted ? props.theme.card.shadowInverted : props.theme.card.shadow};
 
   background: ${props =>
     props.inverted
-      ? props.theme.background.accent
-      : props.theme.background.primary};
+      ? props.theme.card.backgroundInverted
+      : props.theme.card.background};
+
+  background: linear-gradient(
+    135deg,
+    ${props =>
+      props.inverted
+        ? props.theme.card.backgroundInverted
+        : props.theme.card.background},
+    ${props =>
+      props.inverted
+        ? props.theme.card.backgroundInvertedAccent
+        : props.theme.card.backgroundAccent}
+  );
 
   color: ${props =>
     props.inverted

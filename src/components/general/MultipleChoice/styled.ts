@@ -2,8 +2,6 @@ import styled, { css } from "styled-components";
 import Icon from "../../../components/general/Icon";
 import Button from "../Button";
 
-export { default as Option } from "./Option";
-
 export const OptionList = styled.ul`
   padding: 0;
   list-style: none;

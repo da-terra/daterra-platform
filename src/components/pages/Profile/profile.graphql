@@ -1,0 +1,13 @@
+query profile {
+  me {
+    displayName
+    emails {
+      value
+      type
+    }
+    photos {
+      value
+    }
+    role
+  }
+}

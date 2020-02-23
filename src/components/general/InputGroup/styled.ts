@@ -17,7 +17,7 @@ export const InputGroup = styled.fieldset`
     &:not(:first-child)::before {
       content: "";
       display: block;
-      width: calc(100% - ${props => props.theme.input.padding * 2}rem);
+      width: calc(100% - 4rem);
       border-bottom: 1px solid ${props => props.theme.input.borderColor};
       position: absolute;
       top: 0;
@@ -25,13 +25,13 @@ export const InputGroup = styled.fieldset`
     }
 
     &:first-child ${InputElement} {
-      border-top-left-radius: ${props => props.theme.input.borderRadius}rem;
-      border-top-right-radius: ${props => props.theme.input.borderRadius}rem;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
     }
 
     &:last-child ${InputElement} {
-      border-bottom-left-radius: ${props => props.theme.input.borderRadius}rem;
-      border-bottom-right-radius: ${props => props.theme.input.borderRadius}rem;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
   }
 `;

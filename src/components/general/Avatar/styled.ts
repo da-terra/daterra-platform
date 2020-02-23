@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-export const AvatarWrapper = styled.div<{ fallbackColor: string }>`
+export const AvatarWrapper = styled.div<{
+  fallbackColor: string;
+  size?: number;
+}>`
   background-color: ${props => props.fallbackColor};
-  width: 4rem;
-  height: 4rem;
+  width: ${props => props.size}rem;
+  height: ${props => props.size}rem;
   border-radius: 100%;
   overflow: hidden;
 

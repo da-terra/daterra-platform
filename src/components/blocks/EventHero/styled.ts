@@ -2,11 +2,6 @@ import styled from "styled-components";
 import { Breakpoints } from "../../../data/style/variables";
 import Wrapper from "../../general/Wrapper";
 
-export { default as Wrapper } from "../../general/Wrapper";
-export { default as Logo } from "../../general/Logo";
-export { default as BigDate } from "../../general/BigDate";
-export { default as Heading } from "../../general/Heading";
-
 type BackgroundWrapperProps = {
   inverted?: boolean;
   color: string;

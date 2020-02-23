@@ -1,30 +1,29 @@
-import React, { Fragment } from "react";
 import { IProject } from "@data-science-platform/shared";
-import { isAfter } from "date-fns";
-import { HeadingType } from "../../../Heading";
+import { differenceInSeconds, isAfter } from "date-fns";
+import React, { Fragment } from "react";
+import { FormattedRelativeTime } from "react-intl";
 import { FontColor, FontWeight } from "../../../../../data/style/variables";
 import {
   ProjectOwner,
+  ProjectTeamSummary,
   ProjectTitle,
-  RelativeDate,
-  Times,
   TimeGroup,
-  TimeString,
-  ProjectTeamSummary
+  Times,
+  TimeString
 } from "./styled";
+import { HeadingType } from "../../../Heading";
 
 const ActiveProjectCard: React.FC<IProject> = ({
   title,
   team,
-  activity: [lastActivity],
+  activities: [lastActivity],
   duration
 }) => {
-  const updatedDate = lastActivity.createdDate;
+  const updatedDate = new Date(lastActivity.createdDate);
+  const endDate = new Date(duration!.endDate);
+
   const teamLead = team.find(user => user.role === 2)!;
-
-  const isPastDeadline = isAfter(new Date(), new Date(duration!.endDate!));
-
-  console.log(team);
+  const isPastDeadline = isAfter(new Date(), endDate);
 
   return (
     <Fragment>
@@ -43,15 +42,16 @@ const ActiveProjectCard: React.FC<IProject> = ({
             <strong>Deadline</strong>
           </TimeString>
 
-          {/*
-            // @ts-ignore */}
           <TimeString
             as="time"
+            dateTime={endDate.toISOString()}
             fontColor={isPastDeadline ? FontColor.Error : FontColor.Primary}
-            dateTime={updatedDate}
             italic
           >
-            <RelativeDate>{duration!.endDate}</RelativeDate>
+            <FormattedRelativeTime
+              value={differenceInSeconds(endDate, new Date())}
+              updateIntervalInSeconds={30}
+            />
           </TimeString>
         </TimeGroup>
 
@@ -63,15 +63,16 @@ const ActiveProjectCard: React.FC<IProject> = ({
             Laatste update
           </TimeString>
 
-          {/*
-            // @ts-ignore */}
           <TimeString
             as="time"
-            dateTime={updatedDate}
+            dateTime={updatedDate.toISOString()}
             fontColor={FontColor.Secondary}
             italic
           >
-            <RelativeDate>{updatedDate}</RelativeDate>
+            <FormattedRelativeTime
+              value={differenceInSeconds(updatedDate, new Date())}
+              updateIntervalInSeconds={30}
+            />
           </TimeString>
         </TimeGroup>
       </Times>

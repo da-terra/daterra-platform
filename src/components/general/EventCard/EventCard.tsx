@@ -1,10 +1,10 @@
+import { createPath, IEvent } from "@data-science-platform/shared";
 import React from "react";
-import { IEvent } from "@data-science-platform/shared";
-import { FontSize, FontWeight } from "../../../data/style/variables";
-import { HeadingType } from "../Heading";
-import { Card, BigDate, Title, Description, CtaButton } from "./styled";
 import RoutePath from "../../../data/RoutePath";
-import createPath from "../../../util/createPath";
+import { FontSize, FontWeight } from "../../../data/style/variables";
+import BigDate from "../BigDate";
+import { HeadingType } from "../Heading";
+import { Card, CtaButton, Description, Title } from "./styled";
 
 type EventCardProps = IEvent & {
   className?: string;

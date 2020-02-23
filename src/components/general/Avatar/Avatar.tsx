@@ -4,16 +4,22 @@ import { AvatarWrapper } from "./styled";
 
 type AvatarProps = IImage & {
   className?: string;
+  size?: number;
 };
 
 const Avatar: React.FC<AvatarProps> = ({
   src,
   alt,
+  size = 4,
   fallbackColor = "#eee",
   className
 }) => (
-  <AvatarWrapper fallbackColor={fallbackColor} className={className}>
-    <img src={src} alt={alt} />
+  <AvatarWrapper
+    fallbackColor={fallbackColor}
+    size={size}
+    className={className}
+  >
+    {src && <img src={src} alt={alt} />}
   </AvatarWrapper>
 );
 

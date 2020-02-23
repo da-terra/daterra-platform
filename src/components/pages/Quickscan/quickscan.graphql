@@ -1,0 +1,13 @@
+query($target: Int) {
+  quickscanQuestions(target: $target) {
+    id
+    question
+    body
+    min
+    max
+    options {
+      label
+      value
+    }
+  }
+}

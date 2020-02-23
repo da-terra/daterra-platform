@@ -1,0 +1,23 @@
+query organizations {
+  me {
+    displayName
+    photos {
+      value
+    }
+  }
+
+  users {
+    id
+    displayName
+    name {
+      givenName
+      middleName
+      familyName
+    }
+    provider
+    role
+    emails {
+      value
+    }
+  }
+}

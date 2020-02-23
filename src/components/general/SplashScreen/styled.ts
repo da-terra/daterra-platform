@@ -2,8 +2,6 @@ import styled, { keyframes } from "styled-components";
 import Logo from "../Logo";
 import Easings from "../../../data/style/easings";
 
-export { Circle } from "../../../util/layout";
-
 export const Background = styled.div`
   background: ${props => props.theme.background.primary};
   color: ${props => props.theme.copy.primary};

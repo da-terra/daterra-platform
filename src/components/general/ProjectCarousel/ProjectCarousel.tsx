@@ -7,14 +7,14 @@ import {
   ProjectCarouselHeading,
   ProjectCarouselCards,
   ProjectCarouselCardWrapper,
-  ProjectCard,
+  StyledProjectCard,
   ProjectCarouselLinkButton
 } from "./styled";
 
 type ProjectCarouselProps = {
   className?: string;
   link: ILink;
-  projects: IProject[];
+  projects: Partial<IProject>[];
   title: string;
 };
 
@@ -30,9 +30,9 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
     </ProjectCarouselHeading>
 
     <ProjectCarouselCards>
-      {projects.map(project => (
-        <ProjectCarouselCardWrapper key={project.shortName}>
-          <ProjectCard {...project} />
+      {projects.map((project, index) => (
+        <ProjectCarouselCardWrapper key={project.shortName || index}>
+          <StyledProjectCard {...project} />
         </ProjectCarouselCardWrapper>
       ))}
     </ProjectCarouselCards>

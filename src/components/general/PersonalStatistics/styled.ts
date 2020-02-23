@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Easings from "../../../data/style/easings";
-import { Card } from "../../../util/layout";
+import Card from "../../util/Card";
+import Button from "../Button";
 import Carousel from "../Carousel";
 import Heading from "../Heading";
 import Paragraph from "../Paragraph";
-import Button from "../Button";
 import ProjectCard from "../ProjectCard";
-export { default as Icon } from "../Icon";
 
 export const WrapperCard = styled(Card)`
   width: 100%;

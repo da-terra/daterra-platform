@@ -3,15 +3,17 @@ type StorageDefaultValuesType = {
 };
 
 export enum StorageKey {
-  themeUuid = "themeUuid",
+  themeName = "themeUuid",
   TargetGroup = "targetGroup",
-  QuickScanResultUuid = "quickScanResultUuid",
-  TrackingConsent = "trackingConsent"
+  QuickscanResultUuid = "quickscanResultUuid",
+  TrackingConsent = "trackingConsent",
+  Locale = "locale"
 }
 
 export const StorageDefaultValues: StorageDefaultValuesType = {
-  [StorageKey.themeUuid]: undefined,
+  [StorageKey.themeName]: undefined,
   [StorageKey.TargetGroup]: 1 << 0,
-  [StorageKey.QuickScanResultUuid]: undefined,
-  [StorageKey.TrackingConsent]: undefined
+  [StorageKey.QuickscanResultUuid]: undefined,
+  [StorageKey.TrackingConsent]: undefined,
+  [StorageKey.Locale]: undefined
 };

@@ -4,8 +4,6 @@ import Heading from "../Heading";
 import Easings from "../../../data/style/easings";
 import Button from "../Button";
 
-export { default as Paragraph } from "../Paragraph";
-
 type CardContentProps = {
   color: string;
 };
@@ -71,7 +69,7 @@ export const Author = styled.div`
 
 export const Card = styled(Button)`
   overflow: hidden;
-  border-radius: ${props => props.theme.card.borderRadius}px;
+  border-radius: 1rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;

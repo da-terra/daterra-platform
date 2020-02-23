@@ -1,0 +1,17 @@
+query organizations {
+  me {
+    displayName
+    photos {
+      value
+    }
+  }
+  organizations {
+    id
+    name
+    image {
+      src
+      alt
+      fallbackColor
+    }
+  }
+}

@@ -1,15 +1,9 @@
-import React from "react";
 import { IEvent, ILink } from "@data-science-platform/shared";
-import { HeadingType } from "../../general/Heading";
+import React from "react";
 import { FontWeight } from "../../../data/style/variables";
-import {
-  TagWrapper,
-  Heading,
-  EventsWrapper,
-  EventsList,
-  EventCard,
-  CtaLink
-} from "./styled";
+import Heading, { HeadingType } from "../../general/Heading";
+import TagWrapper from "../../general/TagWrapper";
+import { CtaLink, EventCard, EventsList, EventsWrapper } from "./styled";
 
 type FeaturedArticlesProps = {
   title: string;
@@ -36,7 +30,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({
     <TagWrapper heading={heading} description={body} tag={tag}>
       <EventsWrapper>
         <EventsList>
-          {events.map(event => (
+          {events?.map(event => (
             <EventCard {...event} key={event.slug} />
           ))}
         </EventsList>

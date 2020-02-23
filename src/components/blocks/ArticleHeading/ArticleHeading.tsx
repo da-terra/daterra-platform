@@ -1,15 +1,16 @@
-import React from "react";
 import { IArticle } from "@data-science-platform/shared";
-import { FontWeight, FontSize } from "../../../data/style/variables";
+import { differenceInSeconds } from "date-fns";
+import React from "react";
+import { FormattedRelativeTime } from "react-intl";
+import { FontSize, FontWeight } from "../../../data/style/variables";
 import { WrapperWidth } from "../../general/Wrapper";
 import {
   ArticleHeadingWrapper,
-  Title,
-  RelativeTime,
   ArticleProperties,
   ArticleProperty,
+  AuthorLink,
   PublishedDate,
-  AuthorLink
+  Title
 } from "./styled";
 
 type ArticleHeadingProps = IArticle & {
@@ -19,12 +20,15 @@ type ArticleHeadingProps = IArticle & {
 
 const ArticleHeading: React.FC<ArticleHeadingProps> = ({
   title,
-  publishDate,
+  publishDate: publishDateTs,
   author,
   className,
   width = WrapperWidth.Smaller
 }) => {
   const { displayName } = author ?? {};
+
+  const publishDate = new Date(publishDateTs);
+  const diff = differenceInSeconds(new Date(publishDate), new Date());
 
   return (
     <ArticleHeadingWrapper width={width} className={className}>
@@ -34,11 +38,11 @@ const ArticleHeading: React.FC<ArticleHeadingProps> = ({
         <ArticleProperty as="span">
           <PublishedDate
             as="time"
-            dateTime={publishDate}
+            dateTime={publishDate.toISOString()}
             fontWeight={FontWeight.Bold}
             fontSize={FontSize.Small}
           >
-            <RelativeTime>{publishDate}</RelativeTime>
+            <FormattedRelativeTime value={diff} updateIntervalInSeconds={30} />
           </PublishedDate>
 
           <AuthorLink

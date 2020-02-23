@@ -1,29 +1,28 @@
+import { ILink } from "@data-science-platform/shared";
 import React from "react";
-import { IImage, ILink } from "@data-science-platform/shared";
-import { HeadingType } from "../../general/Heading";
-import { FontColor, FontWeight, FontSize } from "../../../data/style/variables";
+import { FontColor, FontSize, FontWeight } from "../../../data/style/variables";
+import Heading, { HeadingType } from "../../general/Heading";
+import Icon from "../../general/Icon";
+import Logo from "../../general/Logo";
+import Wrapper from "../../general/Wrapper";
 import {
-  Wrapper,
-  Heading,
   Background,
-  Top,
-  SocialWrapper,
-  SocialNetworks,
-  SocialNetworkLink,
-  SocialNetworkImage,
+  Bottom,
+  Disclaimer,
   Sitemap,
   SitemapGroup,
-  SitemapGroupTag,
   SitemapGroupLinks,
+  SitemapGroupTag,
   SitemapLink,
-  Bottom,
-  Logo,
-  Disclaimer
+  SocialNetworkLink,
+  SocialNetworks,
+  SocialWrapper,
+  Top
 } from "./styled";
 
 type SocialNetwork = {
   uuid: string;
-  image: IImage;
+  icon: React.ReactNode;
   link: ILink;
 };
 
@@ -34,10 +33,10 @@ type SitemapGroup = {
 };
 
 type FooterProps = {
-  socialNetworks: SocialNetwork[];
-  sitemap: SitemapGroup[];
-  disclaimer: string;
-  inverted: boolean;
+  socialNetworks?: SocialNetwork[];
+  sitemap?: SitemapGroup[];
+  disclaimer?: string;
+  inverted?: boolean;
 };
 
 const Footer: React.FC<FooterProps> = ({
@@ -48,16 +47,16 @@ const Footer: React.FC<FooterProps> = ({
 }) => {
   const renderedSocialNetworks = (
     <SocialNetworks>
-      {socialNetworks.map(socialNetwork => (
+      {socialNetworks?.map(socialNetwork => (
         <SocialNetworkLink {...socialNetwork.link} key={socialNetwork.uuid}>
-          <SocialNetworkImage {...socialNetwork.image} />
+          {socialNetwork.icon}
         </SocialNetworkLink>
       ))}
     </SocialNetworks>
   );
 
   return (
-    <Background inverted={inverted}>
+    <Background inverted={inverted || false}>
       <Wrapper>
         <Top>
           <SocialWrapper>
@@ -72,7 +71,7 @@ const Footer: React.FC<FooterProps> = ({
           </SocialWrapper>
 
           <Sitemap>
-            {sitemap.map(({ uuid, tag, links }) => (
+            {sitemap?.map(({ uuid, tag, links }) => (
               <SitemapGroup key={uuid}>
                 <SitemapGroupTag
                   fontColor={
@@ -117,6 +116,61 @@ const Footer: React.FC<FooterProps> = ({
       </Wrapper>
     </Background>
   );
+};
+
+// @ts-ignore
+Footer.defaultProps = {
+  disclaimer: "Data science platform - Copyright 2020",
+  sitemap: [
+    {
+      uuid: "Blog",
+      tag: "Blog",
+      links: [
+        {
+          uuid: "/blog",
+          href: "/blog",
+          children: "Alle blogs"
+        }
+      ]
+    },
+    {
+      uuid: "Algemeen",
+      tag: "Algemeen",
+      links: [
+        {
+          uuid: "/algemene-voorwaarden",
+          href: "/algemene-voorwaarden",
+          children: "Algemene voorwaarden"
+        },
+
+        {
+          uuid: "/privacy-policy",
+          href: "/privacy-policy",
+          children: "Privacy policy"
+        }
+      ]
+    }
+  ],
+  socialNetworks: [
+    {
+      uuid: "linked-in",
+      link: {
+        href: "https://www.linkedin.com/company/studata/",
+        title: "Linked In",
+        target: "_blank"
+      },
+      icon: <Icon.LinkedIn />
+    },
+    {
+      uuid: "mail",
+      link: {
+        href: "mailto:contact@datascienceplatform.nl",
+        title: "contact@datascienceplatform.nl",
+        target: "_blank"
+      },
+      icon: <Icon.Email />
+    }
+  ]
 };
 
 export default Footer;

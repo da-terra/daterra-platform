@@ -1,6 +1,5 @@
 import React from "react";
-import { IUser } from "@data-science-platform/shared";
-import Role from "../../../data/Role";
+import { IUser, Role } from "@data-science-platform/shared";
 import { TeamSummaryWrapper, TeamGroup, SummaryAvatar } from "./styled";
 
 type TeamSummaryProps = {

@@ -1,16 +1,17 @@
-import React, { useState, useCallback } from "react";
 import {
   INotification,
   NotificationState
 } from "@data-science-platform/shared";
-import { FontSize, FontColor } from "../../../data/style/variables";
+import React, { useCallback, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { FontColor, FontSize } from "../../../data/style/variables";
+import Icon from "../Icon";
 import {
-  Container,
   Button,
-  Icon,
-  NotificationsList,
+  Container,
   Notification,
-  NotificationGhost
+  NotificationGhost,
+  NotificationsList
 } from "./styled";
 
 type UserButtonProps = {
@@ -58,7 +59,7 @@ const NotificationButon: React.FC<UserButtonProps> = ({
             fontColor={FontColor.Secondary}
             italic
           >
-            Je hebt geen notificaties
+            <FormattedMessage id="NotificationButton_dropdownTitle" />
           </NotificationGhost>
         )}
       </NotificationsList>

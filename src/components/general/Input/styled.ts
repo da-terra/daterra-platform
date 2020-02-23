@@ -10,7 +10,7 @@ export const Tooltip = styled(IconTooltip)`
 
 export const Label = styled.label`
   position: absolute;
-  left: ${props => props.theme.input.padding}rem;
+  left: 2rem;
   font-weight: ${FontWeight.Black};
   font-size: 1.6rem;
   pointer-events: none;
@@ -20,13 +20,13 @@ export const Label = styled.label`
 export const InputElement = styled.input`
   background: ${props => props.theme.input.backgroundColor};
   border: 1px solid ${props => props.theme.input.borderColor};
-  border-radius: ${props => props.theme.input.borderRadius}rem;
+  border-radius: 1rem;
   color: ${props => props.theme.input.copyColor};
   font-size: 1.6rem;
   line-height: 1;
   min-height: 7rem;
   outline: none;
-  padding: 0 ${props => props.theme.input.padding}rem;
+  padding: 0 2rem;
   position: relative;
   transition: 0.2s ${Easings.easeOutExpo} border-color;
   width: 100%;

@@ -2,8 +2,6 @@ import styled from "styled-components";
 import BaseEventCard from "../../general/EventCard";
 import { LinkButton } from "../../general/Button";
 import { Breakpoints } from "../../../data/style/variables";
-export { default as TagWrapper } from "../../general/TagWrapper";
-export { default as Heading } from "../../general/Heading";
 
 const h1500MarginSize = 4;
 const h1000MarginSize = 2;

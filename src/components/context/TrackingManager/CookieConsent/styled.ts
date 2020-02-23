@@ -25,9 +25,9 @@ export const Background = styled.div`
 
 export const Popup = styled(Wrapper)`
   padding: 3rem;
+  border-radius: 1rem;
   color: ${props => props.theme.copy.primary};
   background: ${props => props.theme.background.primary};
-  border-radius: ${props => props.theme.card.borderRadius}px;
 `;
 
 export const Disclaimer = styled(Paragraph)`

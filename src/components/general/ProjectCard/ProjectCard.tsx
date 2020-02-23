@@ -1,32 +1,44 @@
-import React from "react";
 import { IProject } from "@data-science-platform/shared";
-import FinishedProjectCard from "./cards/FinishedProjectCard";
+import React from "react";
 import ActiveProjectCard from "./cards/ActiveProjectCard";
+import FallbackCard from "./cards/FallbackProjectCard";
+import FinishedProjectCard from "./cards/FinishedProjectCard";
 import NewProjectCard from "./cards/NewProjectCard";
-import { CardWrapper, FallbackCardWrapper } from "./styled";
+import { CardWrapper } from "./styled";
 
-const getContentComponent = (props: IProject) => {
-  if (props.duration?.endDate) {
+const getContentComponent = (
+  props: Partial<IProject>
+): React.FC<IProject> | undefined => {
+  if (props?.duration?.endDate) {
+    // @ts-ignore
     return FinishedProjectCard;
   }
 
-  if (props.duration?.startDate) {
+  if (props?.duration?.startDate) {
+    // @ts-ignore
     return ActiveProjectCard;
   }
 
-  return NewProjectCard;
+  if (props.shortName) {
+    // @ts-ignore
+    return NewProjectCard;
+  }
 };
 
-const ProjectCard: React.FC<IProject> = props => {
+type ProjectCardProps = { className?: string } & Partial<IProject>;
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ className, ...props }) => {
   let ContentComponent = getContentComponent(props);
+
+  if (ContentComponent == null) {
+    return <FallbackCard />;
+  }
 
   return (
     <CardWrapper>
-      <ContentComponent {...props} />
+      <ContentComponent {...(props as IProject)} />
     </CardWrapper>
   );
 };
-
-export const ProjectCardFallback = <FallbackCardWrapper />;
 
 export default ProjectCard;
