@@ -28,6 +28,8 @@ const PublicRoute = {
   ProfileOrganizations: "/profile/organizations",
 
   //
+  Projects: "/project",
+  Project: "/project/:id",
   Organization: "/organization/:id",
 
   // Misc

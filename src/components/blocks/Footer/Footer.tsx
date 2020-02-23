@@ -1,4 +1,5 @@
 import { ILink } from "@data-science-platform/shared";
+import { getYear } from "date-fns";
 import React from "react";
 import { FontColor, FontSize, FontWeight } from "../../../data/style/variables";
 import Heading, { HeadingType } from "../../general/Heading";
@@ -58,55 +59,63 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <Background inverted={inverted || false}>
       <Wrapper>
-        <Top>
-          <SocialWrapper>
-            <Heading
-              headingType={HeadingType.Secondary}
-              fontWeight={FontWeight.Black}
-            >
-              Vind ons op
-            </Heading>
-
-            {renderedSocialNetworks}
-          </SocialWrapper>
-
-          <Sitemap>
-            {sitemap?.map(({ uuid, tag, links }) => (
-              <SitemapGroup key={uuid}>
-                <SitemapGroupTag
-                  fontColor={
-                    inverted ? FontColor.Secondary : FontColor.TertiaryInverted
-                  }
-                  fontSize={FontSize.Large}
+        {(socialNetworks?.length || sitemap?.length) && (
+          <Top>
+            {socialNetworks?.length && (
+              <SocialWrapper>
+                <Heading
+                  headingType={HeadingType.Secondary}
                   fontWeight={FontWeight.Black}
                 >
-                  {tag}
-                </SitemapGroupTag>
+                  Vind ons op
+                </Heading>
 
-                <SitemapGroupLinks>
-                  {links.map(link => (
-                    <SitemapLink
-                      {...link}
-                      key={link.uuid}
+                {renderedSocialNetworks}
+              </SocialWrapper>
+            )}
+
+            {sitemap?.length && (
+              <Sitemap>
+                {sitemap?.map(({ uuid, tag, links }) => (
+                  <SitemapGroup key={uuid}>
+                    <SitemapGroupTag
+                      fontColor={
+                        inverted
+                          ? FontColor.Primary
+                          : FontColor.TertiaryInverted
+                      }
                       fontSize={FontSize.Large}
-                      fontWeight={FontWeight.Bold}
-                      serif
+                      fontWeight={FontWeight.Black}
                     >
-                      {link.children}
-                    </SitemapLink>
-                  ))}
-                </SitemapGroupLinks>
-              </SitemapGroup>
-            ))}
-          </Sitemap>
-        </Top>
+                      {tag}
+                    </SitemapGroupTag>
+
+                    <SitemapGroupLinks>
+                      {links.map(link => (
+                        <SitemapLink
+                          {...link}
+                          key={link.uuid}
+                          fontSize={FontSize.Large}
+                          fontWeight={FontWeight.Bold}
+                          serif
+                        >
+                          {link.children}
+                        </SitemapLink>
+                      ))}
+                    </SitemapGroupLinks>
+                  </SitemapGroup>
+                ))}
+              </Sitemap>
+            )}
+          </Top>
+        )}
 
         <Bottom>
           <Logo showName />
 
           <Disclaimer
             fontColor={
-              inverted ? FontColor.Secondary : FontColor.TertiaryInverted
+              inverted ? FontColor.Primary : FontColor.TertiaryInverted
             }
             serif
           >
@@ -120,7 +129,7 @@ const Footer: React.FC<FooterProps> = ({
 
 // @ts-ignore
 Footer.defaultProps = {
-  disclaimer: "Data science platform - Copyright 2020",
+  disclaimer: `Data Science Platform - Copyright ${getYear(new Date())}`,
   sitemap: [
     {
       uuid: "Blog",
