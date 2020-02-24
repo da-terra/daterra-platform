@@ -3,18 +3,18 @@ import { getFlaggedBits, IUser, Role } from "@data-science-platform/shared";
 import { loader } from "graphql.macro";
 import React from "react";
 import { useParams } from "react-router-dom";
+import RoutePath from "../../../data/RoutePath";
 import { FontWeight } from "../../../data/style/variables";
+import Modal from "../../general/Modal";
+import Card from "../../util/Card";
 import {
-  Card,
   Group,
   Label,
-  Modal,
   RoleTagWrapper,
   StyledRoleTag,
   StyledWrapper,
   Value
 } from "./styled";
-import RoutePath from "../../../data/RoutePath";
 
 const userQuery = loader("./user.graphql");
 

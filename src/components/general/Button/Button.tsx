@@ -20,6 +20,7 @@ export type ButtonProps = {
   fontColor?: any;
   serif?: boolean;
   inverted?: boolean;
+  external?: boolean;
 };
 
 const externalLinkPattern = /^(https?:\/\/|mailto:)/i;
@@ -34,6 +35,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
       fontColor,
       serif,
       inverted,
+      external,
       ...props
     },
     ref: any
@@ -41,7 +43,9 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
     let element: any;
     const attributes: any = { onClick, ...props };
 
-    const isExternalLink = props.href && externalLinkPattern.test(props.href);
+    const isExternalLink =
+      props.href && (external || externalLinkPattern.test(props.href));
+
     const isInternalLink = !isExternalLink && props.href;
 
     if (isExternalLink) {

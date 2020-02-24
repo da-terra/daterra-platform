@@ -13,6 +13,7 @@ import BlockRenderer from "../../blocks";
 import SplashScreen from "../../general/SplashScreen";
 // Static data
 import profiles from "./profiles";
+import Footer from "../../blocks/Footer";
 
 const quickscanProfileQuery = loader("./quickscanProfile.graphql");
 
@@ -65,7 +66,12 @@ const QuickscanProfile = () => {
     return <SplashScreen />;
   }
 
-  return <BlockRenderer {...profile} context={profile} />;
+  return (
+    <>
+      <BlockRenderer {...profile} context={profile} />;
+      <Footer />
+    </>
+  );
 };
 
 export default QuickscanProfile;

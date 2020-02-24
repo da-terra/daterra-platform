@@ -45,6 +45,7 @@ const PublicRoute = {
     Event: "/cms/event/:slug",
     Organizations: "/cms/organization",
     Organization: "/cms/organization/:id",
+    OrganizationCreate: "/cms/organization/create",
     Pages: "/cms/page",
     Page: "/cms/page/:slug",
     Projects: "/cms/project",

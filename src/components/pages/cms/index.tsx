@@ -14,9 +14,9 @@ export default (
       component={QuickscanQuestions}
     />
     <Route path={RoutePath.Cms.Organizations} component={OrganizationsPage} />
-    <Route path={RoutePath.Cms.QuickscanResult} component={QuickscanResults} />
+    <Route path={RoutePath.Cms.QuickscanResults} component={QuickscanResults} />
     <Route path={RoutePath.Cms.Users} component={UsersPage} />
 
-    <Redirect to={RoutePath.Cms.QuickscanResult} />
+    <Redirect to={RoutePath.Cms.QuickscanResults} />
   </Switch>
 );

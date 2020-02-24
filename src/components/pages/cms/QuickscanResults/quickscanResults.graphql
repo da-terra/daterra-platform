@@ -1,5 +1,13 @@
-query quickscanResult($uuid: String!) {
-  quickscanResult(uuid: $uuid) {
+query organizations {
+  me {
+    displayName
+    photos {
+      value
+    }
+  }
+
+  quickscanResults {
+    uuid
     target
     company {
       companyName
@@ -19,5 +27,9 @@ query quickscanResult($uuid: String!) {
       value
     }
     comment
+    activities {
+      mutation
+      createdDate
+    }
   }
 }

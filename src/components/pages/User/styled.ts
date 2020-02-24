@@ -3,10 +3,6 @@ import Paragraph from "../../general/Paragraph";
 import RoleTag from "../../general/RoleTag";
 import Wrapper from "../../general/Wrapper";
 
-export { Card } from "../../../util/layout";
-export { default as Modal } from "../../general/Modal";
-export { default as SplashScreen } from "../../general/SplashScreen";
-
 export const StyledWrapper = styled(Wrapper)`
   margin: auto;
 `;

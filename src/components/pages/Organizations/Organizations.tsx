@@ -10,16 +10,12 @@ import React, { Fragment } from "react";
 import { Route } from "react-router";
 import { WrapperWidth } from "../../../components/general/Wrapper";
 import RoutePath from "../../../data/RoutePath";
-import {
-  Circle,
-  Header,
-  LinkButton,
-  List,
-  ListItem,
-  Organization,
-  PageWrapper,
-  SplashScreen
-} from "./styled";
+import Header from "../../blocks/Header";
+import Organization from "../../general/Organization";
+import SplashScreen from "../../general/SplashScreen";
+import Circle from "../../util/Circle";
+import { List, ListItem, PageWrapper } from "./styled";
+import { LinkButton } from "../../general/Button";
 
 const OrganizationDetail = React.lazy(() => import("./OrganizationDetail"));
 const CreateOrganization = React.lazy(() => import("./CreateOrganization"));
@@ -68,8 +64,11 @@ const Organizations: React.FC = () => {
         </List>
       </PageWrapper>
 
-      <Route path={RoutePath.Organization} component={OrganizationDetail} />
-      <Route path={"/organization/create"} component={CreateOrganization} />
+      <Route path={RoutePath.Cms.Organization} component={OrganizationDetail} />
+      <Route
+        path={RoutePath.Cms.OrganizationCreate}
+        component={CreateOrganization}
+      />
     </Fragment>
   );
 };

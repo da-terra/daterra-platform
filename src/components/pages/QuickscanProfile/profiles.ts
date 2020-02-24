@@ -1,61 +1,3 @@
-const footer = {
-  type: "c1-footer",
-  data: {
-    socialNetworks: [
-      {
-        uuid: "1",
-        image: {
-          src: "/socialNetworks/linkedIn.svg",
-          alt: "LinkedIn logo",
-          fallbackColor: "transparent"
-        },
-        link: {
-          href: "https://www.linkedin.com/company/studata/",
-          children: "LinkedIn",
-          title: "LinkedIn",
-          target: "_blank"
-        }
-      }
-    ],
-    sitemap: [
-      {
-        uuid: "2",
-        tag: "Blog",
-        links: [
-          {
-            uuid: "1",
-            href: "/article",
-            children: "Blog",
-            title: "Blog",
-            target: "_self"
-          }
-        ]
-      },
-      {
-        uuid: "3",
-        tag: "Algemeen",
-        links: [
-          {
-            uuid: "1",
-            href: "/algemene-voorwaarden",
-            children: "Algemene voorwaarden",
-            title: "Algemene voorwaarden",
-            target: "_self"
-          },
-          {
-            uuid: "2",
-            href: "/privacy-policy",
-            children: "Privacy policy",
-            title: "Privacy policy",
-            target: "_self"
-          }
-        ]
-      }
-    ],
-    disclaimer: "Data Science Platform - Copyright 2019"
-  }
-};
-
 export default [
   {
     scoreRange: [0, 14.4],
@@ -93,8 +35,7 @@ export default [
             }
           ]
         }
-      },
-      footer
+      }
     ]
   },
   {
@@ -133,8 +74,7 @@ export default [
             }
           ]
         }
-      },
-      footer
+      }
     ]
   },
   {
@@ -173,8 +113,7 @@ export default [
             }
           ]
         }
-      },
-      footer
+      }
     ]
   },
   {
@@ -211,8 +150,7 @@ export default [
             }
           ]
         }
-      },
-      footer
+      }
     ]
   },
   {
@@ -249,8 +187,7 @@ export default [
             }
           ]
         }
-      },
-      footer
+      }
     ]
   }
 ];
